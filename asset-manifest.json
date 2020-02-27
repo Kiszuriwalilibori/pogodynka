@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/pogodynka/static/css/main.a3728f82.chunk.css",
+    "main.js": "/pogodynka/static/js/main.f739c324.chunk.js",
+    "main.js.map": "/pogodynka/static/js/main.f739c324.chunk.js.map",
+    "runtime-main.js": "/pogodynka/static/js/runtime-main.10e786b6.js",
+    "runtime-main.js.map": "/pogodynka/static/js/runtime-main.10e786b6.js.map",
+    "static/js/2.836dcabd.chunk.js": "/pogodynka/static/js/2.836dcabd.chunk.js",
+    "static/js/2.836dcabd.chunk.js.map": "/pogodynka/static/js/2.836dcabd.chunk.js.map",
+    "index.html": "/pogodynka/index.html",
+    "precache-manifest.1039cd45ceab77229c54e52de3483f95.js": "/pogodynka/precache-manifest.1039cd45ceab77229c54e52de3483f95.js",
+    "service-worker.js": "/pogodynka/service-worker.js",
+    "static/css/main.a3728f82.chunk.css.map": "/pogodynka/static/css/main.a3728f82.chunk.css.map",
+    "static/js/2.836dcabd.chunk.js.LICENSE.txt": "/pogodynka/static/js/2.836dcabd.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.10e786b6.js",
+    "static/js/2.836dcabd.chunk.js",
+    "static/css/main.a3728f82.chunk.css",
+    "static/js/main.f739c324.chunk.js"
+  ]
+}
