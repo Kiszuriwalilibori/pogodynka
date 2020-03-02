@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/pogodynka/static/css/main.cdf14ee4.chunk.css",
-    "main.js": "/pogodynka/static/js/main.2f5d3437.chunk.js",
-    "main.js.map": "/pogodynka/static/js/main.2f5d3437.chunk.js.map",
+    "main.js": "/pogodynka/static/js/main.2dfeef36.chunk.js",
+    "main.js.map": "/pogodynka/static/js/main.2dfeef36.chunk.js.map",
     "runtime-main.js": "/pogodynka/static/js/runtime-main.10e786b6.js",
     "runtime-main.js.map": "/pogodynka/static/js/runtime-main.10e786b6.js.map",
     "static/js/2.f543f640.chunk.js": "/pogodynka/static/js/2.f543f640.chunk.js",
     "static/js/2.f543f640.chunk.js.map": "/pogodynka/static/js/2.f543f640.chunk.js.map",
     "index.html": "/pogodynka/index.html",
-    "precache-manifest.86425c274319c9c1bf7a196e2bf56ab8.js": "/pogodynka/precache-manifest.86425c274319c9c1bf7a196e2bf56ab8.js",
+    "precache-manifest.548f9d3a884d76f59a910d70e926640b.js": "/pogodynka/precache-manifest.548f9d3a884d76f59a910d70e926640b.js",
     "service-worker.js": "/pogodynka/service-worker.js",
     "static/css/main.cdf14ee4.chunk.css.map": "/pogodynka/static/css/main.cdf14ee4.chunk.css.map",
     "static/js/2.f543f640.chunk.js.LICENSE.txt": "/pogodynka/static/js/2.f543f640.chunk.js.LICENSE.txt",
@@ -18,6 +18,6 @@
     "static/js/runtime-main.10e786b6.js",
     "static/js/2.f543f640.chunk.js",
     "static/css/main.cdf14ee4.chunk.css",
-    "static/js/main.2f5d3437.chunk.js"
+    "static/js/main.2dfeef36.chunk.js"
   ]
 }
