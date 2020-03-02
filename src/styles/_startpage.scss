@@ -1,0 +1,7 @@
+.start__body{
+    @include centered1200max;
+}
+.start__text{
+    @include typical_div;
+    padding: 50px;
+}

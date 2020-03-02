@@ -1,10 +1,7 @@
-
-//importować od razu weather.main bo inaczej jest dwa razy zamieniane w groups i weather
-
-import React from "react";
-import Location from './components/location';
-import Content from './components/content';
-import Error from './components/error';
+import React,{ useState} from "react";
+import StartPage from './components/startpage';
+import ContentPage from './components/contentpage';
+import ErrorPage from './components/errorpage';
 import Search from './components/search';
 
 import {
@@ -13,24 +10,25 @@ import {
   Route,
 } from "react-router-dom";
 
- const App =()=>{
-
+  const App =()=>{
+  const [path, setPath] = useState("/city");
+  const getPath =(value)=>{setPath(value);} /*defines callback that will modify Route so it leads to given city*/
+  
   return (    
         <Router> 
-              <Search /> 
-              <Switch>
-                <Route exact path="/">
-                  <Location />
-                </Route>
-                <Route path="/city">
-                  <Content />
-                </Route>
-                <Route path="/404">
-                  <Error />
-                </Route>
-              </Switch>
+          <Search getPath ={getPath} /> {/*sends callback for new path*/}
+          <Switch>
+            <Route exact path="/">
+              <StartPage />
+            </Route>
+            <Route path={path}>{/*path is dynamic and depends on local state */}
+              <ContentPage />
+            </Route>
+            <Route path="/404">
+              <ErrorPage />
+            </Route>
+          </Switch>   
         </Router>     
   );
 }
-    
- export default App;
+export default App;

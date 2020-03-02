@@ -1,0 +1,14 @@
+.comparative__table{
+
+    @include typical_div;
+
+    & td{
+        padding: 10px 60px;
+        text-align: center;
+    }
+    
+    & th{
+        margin: 0 5px;
+    }
+
+}

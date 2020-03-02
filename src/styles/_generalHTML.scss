@@ -1,0 +1,44 @@
+* {box-sizing: border-box}
+
+html, body, #root{
+  width: 100%;
+  min-height:100%;}
+
+html { 
+  background: url(../images/back1.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
+  @media (max-width: 330px){ font-size:10px;}
+  @media (min-width: 331px)and (max-width: 568px) { font-size:12px;}  
+  @media (min-width: 569px){ font-size:16px;}
+
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-width:100%;
+}
+
+
+h1{
+  color:white; 
+  text-align:center; 
+  margin:60px auto;
+  font-family: 'Montserrat';
+}
+
+
+.cityNameWrapper{
+    max-width:1200px;
+    width:100%;
+    margin: 0 auto;
+}
+

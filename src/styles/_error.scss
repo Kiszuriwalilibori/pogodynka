@@ -129,8 +129,9 @@
 }
 
 .error-page_wrapper{
-background-color: #416475;
+
 width:100%;
+min-height:100vh;
 position:absolute; 
 display:flex;
 flex-direction:column;

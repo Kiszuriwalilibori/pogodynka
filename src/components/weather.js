@@ -1,9 +1,6 @@
 import React from "react";  
 import { connect } from 'react-redux';
-
-import _ from 'lodash';
-import {WeatherNowTemp, WeatherNowMoisture, WeatherNowFeelsLike, WeatherNowPressure, WeatherNowContent, WeatherNow,CityHeader,CityNameWrapper } from'../utils/details';
-
+import {WeatherNowTemp, WeatherNowMoisture, WeatherNowFeelsLike, WeatherNowPressure, WeatherNowContent} from'../utils/details';
 
 const _weather =(props)=> {
 
@@ -16,7 +13,8 @@ const _weather =(props)=> {
               <WeatherNowFeelsLike feels = {data.main.feels_like} />
               <WeatherNowMoisture moisture = {data.main.humidity} />
               <WeatherNowPressure pressure = {data.main.pressure} />
-        </WeatherNowContent>:null  
+        </WeatherNowContent>
+        :null  
     )
     
 }

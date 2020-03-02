@@ -5,7 +5,7 @@
 
   export  const forecastListKelvin = [1,2];
 
-
+  // table with headers for forecast table
   export const forecastHeaders = [
     'Data i godzina',
     'Temperatura',
@@ -13,16 +13,15 @@
     'Wilgotność', 
     'Ciśnienie'
   ]
-  
+  // Open Weather API ID's of some polish towns
   export const citiesArray = [
   ['Kraków','3094802'], 
   ['Gdańsk','3099434'], 
   ['Poznań','7530858'],
-  ['Rzeszów','759734'],  
   ['Rzeszów','759734'], 
   ['Warszawa','756135']
 ]
-
+// table with description of relations of some weather parameters
 export const comments ={
   temp:['zimniej','tak samo','cieplej'],
   feels_like:['zimniej','tak samo','cieplej'],
@@ -33,7 +32,7 @@ export const comments ={
 }
 
 
-
+// headers for comparative weather table
 export const groupTableHeaders = [
   'Temperatura',
   'T. odczuwalna',
@@ -41,4 +40,10 @@ export const groupTableHeaders = [
   'T. maksymalna',
   'Wilgotność', 
   'Ciśnienie'
+]
+
+export const weatherItems = [
+    {id:'feels_like',label: 'Temperatura odczuwalna', postfix:'°C'},
+    {id:'humidity', label:'Wilgotność powietrza', postfix:'%'},
+    {id:'pressure', label:'Ciśnienie', postfix:'hPa'},
 ]
