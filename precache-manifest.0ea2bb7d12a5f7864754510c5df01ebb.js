@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "84d011c23881e6abb92514d0c662e74d",
+    "revision": "7f02119a8610deda53b80959d3ad3904",
     "url": "/pogodynka/index.html"
   },
   {
-    "revision": "8a0e574dd068d6540a56",
+    "revision": "0a80b219fbac736bd5bb",
     "url": "/pogodynka/static/css/main.cdf14ee4.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/pogodynka/static/js/2.f543f640.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "8a0e574dd068d6540a56",
-    "url": "/pogodynka/static/js/main.110614e0.chunk.js"
+    "revision": "0a80b219fbac736bd5bb",
+    "url": "/pogodynka/static/js/main.00905ce1.chunk.js"
   },
   {
     "revision": "bebbc9c18714ac19a4f3",
