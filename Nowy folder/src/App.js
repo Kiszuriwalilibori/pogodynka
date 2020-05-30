@@ -3,7 +3,7 @@ import StartPage from './components/startpage';
 import ContentPage from './components/contentpage';
 import ErrorPage from './components/errorpage';
 import Search from './components/search';
-import * as ROUTES from'./utils/routes';
+
 import {
   BrowserRouter as Router,
   Switch,
@@ -15,23 +15,20 @@ import {
   const getPath =(value)=>{setPath(value);} /*defines callback that will modify Route so it leads to given city*/
   
   return (    
-    <Router basename={process.env.PUBLIC_URL}> 
-      
-      <Switch>
-        <Route exact path={ROUTES.LANDING}>
-          <StartPage />
-        </Route>
-        <Route path ={ROUTES.SEARCH}>
+        <Router> 
           <Search getPath ={getPath} /> {/*sends callback for new path*/}
-        </Route>
-        <Route path={path}>{/*path is dynamic and depends on local state */}
-          <ContentPage />
-        </Route>
-        <Route path={ROUTES.ERROR}>
-          <ErrorPage />
-        </Route>
-      </Switch>   
-    </Router>     
-);
+          <Switch>
+            <Route exact path="/">
+              <StartPage />
+            </Route>
+            <Route path={path}>{/*path is dynamic and depends on local state */}
+              <ContentPage />
+            </Route>
+            <Route path="/404">
+              <ErrorPage />
+            </Route>
+          </Switch>   
+        </Router>     
+  );
 }
 export default App;

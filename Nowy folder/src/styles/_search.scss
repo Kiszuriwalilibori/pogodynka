@@ -14,15 +14,4 @@
 
 .search__container{
     @include centeredflex;
-    
-}
-
-
-.search__container {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	color: inherit;
-	font-family: inherit;
-	height: 100vh;
 }

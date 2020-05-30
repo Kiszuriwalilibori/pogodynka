@@ -1,7 +1,7 @@
 import{comments } from "./arrays";
 import{forecastListPaths, forecastListKelvin} from "./arrays";
 import _ from 'lodash';
-// Czasami wyrzuca błąd w linii 69
+
 // supporting function for validation, checks for very basic correctness of data (cod =200 means that data is OK in grabbed data file)
 const cityExists =(obj)=>{
 
@@ -56,6 +56,7 @@ export const createURL = {
 
 // creates table with data representing comparision of weather in target city and group of polsih cities
 export const compareWeather =(weatherRow, groupRow, keys)=>{
+
   var resultArray =[];
      
    const getRelation =(a,b)=>{
@@ -65,7 +66,6 @@ export const compareWeather =(weatherRow, groupRow, keys)=>{
    keys.forEach((item)=>{
      
        const relation = getRelation(Math.round(weatherRow[item]), Math.round(groupRow[item]));
-       
        const relativeRatio = (comments[item])[relation];// array comments contains strings representing lexically relations between weather parameters(type of parameter is reflected) 
        const result ={value: Math.round(groupRow[item]), comment: relativeRatio};//creates object that keeps both value of weather parameter in certain polish city and text representing relation to same parameter in target city
        resultArray.push(result); //updates array of results of comparision

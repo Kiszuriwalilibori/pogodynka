@@ -1,18 +1,21 @@
 import React from "react"; 
+import * as ROUTES from'../utils/routes';
+import {
+  Link,
+} from "react-router-dom";
 
-  const StartPage =React.memo(()=> {
+  const StartPage = React.memo(()=> {
 
     return (
-    <React.Fragment>
-      <div className= 'start__body'>
-        <h1>Witamy w pogodynce :)</h1>
-        <div className ='start__text'>
-        Niniejsza aplikacja ma jeszcze cokolwiek surowy wygląd (brak w niej chociażby ikon, planuję też dołączenie ogólnej informacji o stanie pogody w docelowej lokalizacji), jednak moim zdaniem spełnia przedstawione kryteria. zgodnie z złaożeniami, w wypadku błędu przenosi do strony 404 (od siebie dodałem opis rodzaju błędu).<br />
+      <Link to= {ROUTES.SEARCH} style={{ textDecoration: 'none' }} >
+        <div className= 'start__body'>
+          <h1>Witamy w pogodynce :)</h1>
+          <div className ='start__text'>
+          To jest wersja robocza. Mogą być błędy. Jest cały czas poprawiana i testowana. Ma jeszcze cokolwiek surowy wygląd (brak w niej chociażby ikon, planuję też dołączenie ogólnej informacji o stanie pogody w docelowej lokalizacji, pobieranie pogody dla lokalizacji ze współrzędnych, zapisywanie profilu w firebase).Kliknij gdziekoliwek, żeby przejść dalej<br />
+          </div>
         </div>
-      </div>
-    </React.Fragment>
-    )
-    
-    })
-
- export default StartPage;
+      </Link>
+    )  
+})
+   
+    export default StartPage;

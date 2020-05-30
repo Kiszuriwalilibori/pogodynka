@@ -1,12 +1,12 @@
 import React from "react";  
 import { connect } from 'react-redux';
 import {compareWeather} from '../utils/functions';
-import {citiesArray, groupTableHeaders, parameters} from '../utils/arrays'
+import {citiesArray, groupTableHeaders} from '../utils/arrays'
 
 const _group = (props)=>{
 
     const{weather, group, city} = props;
-    console.log('weather, group:',weather, group );
+    
     const header = 'Porównanie pogody w miejscowości ' + city +' i innych miejscowościach';
 
     var createCell= (item)=>{return (typeof(item)== 'string')? <td key={String(Math.random())}>{item}</td >:<td key ={item}><p>{item.value}</p><p>{item.comment}</p></td> }
@@ -16,17 +16,7 @@ const _group = (props)=>{
 
     if (group && weather && city){
      
-        
-        //const Weather = weather.main;///
-        //console.log(Weather);
-        let Weather ={};
-        parameters.forEach((element)=>{Weather[element]= weather.main[element]});
-        console.log(Weather);
-
-
-
-
-        
+        const Weather = weather.main;
         const group_main_array = [];
         let Group = group.forEach((item)=>{group_main_array.push(item.main)});
         Group = group_main_array;

@@ -22,29 +22,15 @@
   ['Warszawa','756135']
 ]
 // table with description of relations of some weather parameters
-// export const comments ={
-//   temp:['zimniej','tak samo','cieplej'],
-//   feels_like:['zimniej','tak samo','cieplej'],
-//   temp_min: ['zimniej','tak samo','cieplej'],
-//   temp_max: ['zimniej','tak samo','cieplej'],
-//   humidity:['niższa','taka sama','wyższa'],
-//   pressure:['niższe','takie samo','wyższe']
-// }
-
-
 export const comments ={
   temp:['zimniej','tak samo','cieplej'],
   feels_like:['zimniej','tak samo','cieplej'],
   temp_min: ['zimniej','tak samo','cieplej'],
   temp_max: ['zimniej','tak samo','cieplej'],
-  pressure:['niższe','takie samo','wyższe'],
-  humidity:['niższa','taka sama','wyższa']
-  }
+  humidity:['niższa','taka sama','wyższa'],
+  pressure:['niższe','takie samo','wyższe']
+}
 
-
-
-
-export const parameters =['temp','feels_like', 'temp_min','temp_max','humidity','pressure'];
 
 // headers for comparative weather table
 export const groupTableHeaders = [
