@@ -6,8 +6,8 @@ import './styles/App.css';
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
-import App from './App';
-import reducer from './reducer';
+import App from './components/App';
+import reducer from './js/reducers/reducer';
 import * as serviceWorker from './serviceWorker';
 
 
@@ -17,6 +17,5 @@ ReactDOM.render(
 <Provider store={store}>
     <App />
 </Provider>, document.getElementById('root'));
-
 
 serviceWorker.unregister();

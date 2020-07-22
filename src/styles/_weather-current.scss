@@ -1,0 +1,49 @@
+//styles for weather component
+
+.weather__header{
+    font-size:16px;
+    font-family: 'Open Sans', sans-serif;
+    color:white;
+    margin:60px 0;
+}
+.weather__tempearture{
+    font-family: 'Montserrat', sans-serif;
+    color:white;
+    font-size: 6.2em;
+    letter-spacing: -4.5px;
+    margin-right:40px; 
+}
+
+.weather-item__container{
+    min-height:100%;
+    padding: 0 20px;
+    @include centeredflex;
+    flex-direction:column;
+}
+
+.weather-item__header{
+    align-self: top;
+    color:inherit;
+    font-family:inherit;
+    font-size: 14px;
+}
+
+.weather-item__content{
+    color:inherit;
+    font-family:inherit;
+    font-size: 40px;
+}
+
+
+.weather__content{
+    height: 125px;
+    //margin-top: 30px;
+    width: 100%;
+    //color:white;
+    font-family: Montserrat;
+    display: flex;
+    justify-content: center;
+    @include typical_div;
+    margin-top: 60px;
+    padding: 5px 0 0 0;
+}
