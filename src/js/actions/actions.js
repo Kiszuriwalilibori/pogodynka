@@ -1,5 +1,5 @@
 import fetch from 'isomorphic-fetch';
-import {createURL, createResults, validate} from '../../js/functions';
+import {createURLofWeatherAPI, createResults, validate} from '../../js/functions';
 import {citiesArray, messages} from "../fixtures";
 
 export const GET_DATA_REQUESTED = 'GET_DATA_REQUESTED';
@@ -67,7 +67,7 @@ export function getWeather(city, redirectFailure, redirectSuccess) {
     dispatch(getDataRequested());//sends action that data is requested  
     if (table.length){let [city, code] = table.shift(); //checks whether passed argumets are not empty - if OK takes first elelment and destructurises it
         let reduced =[...table];   //copies remaining elements to new table
-      fetch((createURL[code])(city))// initiates connection with server where URL is dynamically created
+      fetch((createURLofWeatherAPI[code])(city))// initiates connection with server where URL is dynamically created
         .then((response) => response.json())
           .then((data) => {
             if((validate[code])(data)){ // if conection is OK, validates resulting data

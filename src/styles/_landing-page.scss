@@ -1,11 +1,11 @@
-.start__body{
-    @include centered1200max;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
+.start__body {
+  @include centered1200max;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
-.start__text{
-    @include typical_div;
-    padding: 50px;
+.start__text {
+  @include typical_div;
+  padding: 50px;
 }

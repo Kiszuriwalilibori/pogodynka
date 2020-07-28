@@ -1,28 +1,25 @@
-
-.search__form{
-    display:flex;
-    flex-direction:row;
-    justify-content:space-between;
-    align-items: center;
-    width: 400px;
-    border-radius: 20px;
-    border: 2px solid $my_bckgr; 
-    padding: 20px 20px;
-    background: $my_bckgr_trs;
-    margin: 20px 0;
+.search__form {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 400px;
+  border-radius: 20px;
+  border: 2px solid $my_bckgr;
+  padding: 20px 20px;
+  background: $my_bckgr_trs;
+  margin: 20px 0;
 }
-
-.search__container{
-    @include centeredflex;
-    
-}
-
 
 .search__container {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	color: inherit;
-	font-family: inherit;
-	height: 100vh;
+  @include centeredflex;
+}
+
+.search__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: inherit;
+  font-family: inherit;
+  height: 100vh;
 }
