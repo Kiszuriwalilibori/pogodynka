@@ -42,3 +42,6 @@ icons and more info
 w actions w punkcie 76 jest zapętlenie search from url. To powinno dać sie przerobić z axiosem.all
 former home page (add to package.json for deployment)
 "homepage": "http://gitname.github.io/pogodynka",
+searchsection - czy na pewno city jest 
+rzowiązac problez z key w tr
+dodać spinner page

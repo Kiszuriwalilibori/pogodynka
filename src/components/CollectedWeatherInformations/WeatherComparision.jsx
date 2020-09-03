@@ -2,15 +2,20 @@ import React from "react";
 import { connect } from "react-redux";
 import { compareWeather } from "../../js/functions";
 import { citiesArray, groupTableHeaders, parameters } from "../../js/fixtures";
-
-const _WeatherComparision = (props) => {
+import PropTypes from 'prop-types';
+var index =0;
+const ind = ind ||function(){ 
+  index = index+1;
+  return index;
+}
+const prepareWeatherComparision = (props) => {
   const { weather, group, city } = props;
   const header = "Porównanie pogody w miejscowości " + city + " i innych miejscowościach";
   var createCell = (item) => {
     return typeof item == "string" ? (
       <td key={String(Math.random())}>{item}</td>
     ) : (
-      <td key={item}>
+      <td key={ind()}>
         <p>{item.value}</p>
         <p>{item.comment}</p>
       </td>
@@ -18,7 +23,7 @@ const _WeatherComparision = (props) => {
   };
   var createRow = (data, index) => {
     return (
-      <tr key={index}>
+      <tr key={data}>
         {data.map((item) => {
           return createCell(item);
         })}
@@ -68,6 +73,13 @@ const mapStateToProps = (state) => ({
   city: state.currentCity,
 });
 
-const WeatherComparision = connect(mapStateToProps)(_WeatherComparision);
+const WeatherComparision = connect(mapStateToProps)(prepareWeatherComparision);
 
 export default WeatherComparision;
+
+prepareWeatherComparision.propTypes ={
+  weather:PropTypes.object,
+  group:PropTypes.array,
+  city:PropTypes.string,
+
+}

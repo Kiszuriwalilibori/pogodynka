@@ -3,11 +3,10 @@ import { connect } from 'react-redux';
 import {TextField} from '@material-ui/core';
 import {useHistory } from "react-router-dom";
 import {getWeather} from '../js/actions/actions';
-
-const _SearchSection =(props)=> {
+import PropTypes from 'prop-types';
+const PrepareSearchSection =(props)=> {
 
   const {onSubmit, getPath} = props;
-
   let [input_value, set_input_value] = useState('');
   const input = useRef(null); //prepare ref for future use
   let history = useHistory();
@@ -45,5 +44,10 @@ const _SearchSection =(props)=> {
       onSubmit: (data, failureFunction, successFunction) => dispatch(getWeather(data, failureFunction, successFunction)),//here we send to actions locally defined callbacks
     });
     
-const SearchSection = connect(mapStateToProps, mapDispatchToProps)(_SearchSection);
+const SearchSection = connect(mapStateToProps, mapDispatchToProps)(PrepareSearchSection);
 export default SearchSection;  
+
+PrepareSearchSection.prepTypes ={
+  city:PropTypes.string,
+  onSubmit:PropTypes.func
+}

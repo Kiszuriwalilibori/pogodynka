@@ -1,7 +1,8 @@
 import React from "react"; 
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
-const _ErrorMessage =(props)=> {
+const prepareErrorMessage =(props)=> {
 
   const {message} = props;
   
@@ -23,6 +24,10 @@ const mapStateToProps = (state) => ({
 }
 )
 
-const ErrorMessage = connect(mapStateToProps)(_ErrorMessage);
+const ErrorMessage = connect(mapStateToProps)(prepareErrorMessage);
 
 export default ErrorMessage;
+
+prepareErrorMessage.propTypes ={
+  message: PropTypes.string
+}

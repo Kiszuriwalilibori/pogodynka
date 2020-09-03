@@ -3,7 +3,9 @@
           box-sizing: border-box;
 }
 
-html, body, #root {
+html,
+body,
+#root {
   width: 100%;
   min-height: 100%;
 }
@@ -33,7 +35,7 @@ html {
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   min-width: 100%;
@@ -43,7 +45,7 @@ h1 {
   color: white;
   text-align: center;
   margin: 60px auto;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
 }
 
 .cityNameWrapper {
@@ -54,13 +56,13 @@ h1 {
 
 .weather__header {
   font-size: 16px;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   color: white;
   margin: 60px 0;
 }
 
 .weather__tempearture {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   color: white;
   font-size: 6.2em;
   letter-spacing: -4.5px;
@@ -202,7 +204,7 @@ h1 {
 .error-container {
   text-align: center;
   font-size: 180px;
-  font-family: 'Catamaran', sans-serif;
+  font-family: "Catamaran", sans-serif;
   font-weight: 800;
   margin: 20px 15px;
 }
@@ -211,7 +213,7 @@ h1 {
   display: inline-block;
   line-height: 0.7;
   position: relative;
-  color: #FFB485;
+  color: #ffb485;
 }
 
 .error-container > span {
@@ -221,13 +223,13 @@ h1 {
 }
 
 .error-container > span:nth-of-type(1) {
-  color: #D1F2A5;
+  color: #d1f2a5;
   -webkit-animation: colordancing 4s infinite;
           animation: colordancing 4s infinite;
 }
 
 .error-container > span:nth-of-type(3) {
-  color: #F56991;
+  color: #f56991;
   -webkit-animation: colordancing2 4s infinite;
           animation: colordancing2 4s infinite;
 }
@@ -313,73 +315,73 @@ h1 {
 
 @-webkit-keyframes colordancing {
   0% {
-    color: #D1F2A5;
+    color: #d1f2a5;
   }
   25% {
-    color: #F56991;
+    color: #f56991;
   }
   50% {
-    color: #FFC48C;
+    color: #ffc48c;
   }
   75% {
-    color: #EFFAB4;
+    color: #effab4;
   }
   100% {
-    color: #D1F2A5;
+    color: #d1f2a5;
   }
 }
 
 @keyframes colordancing {
   0% {
-    color: #D1F2A5;
+    color: #d1f2a5;
   }
   25% {
-    color: #F56991;
+    color: #f56991;
   }
   50% {
-    color: #FFC48C;
+    color: #ffc48c;
   }
   75% {
-    color: #EFFAB4;
+    color: #effab4;
   }
   100% {
-    color: #D1F2A5;
+    color: #d1f2a5;
   }
 }
 
 @-webkit-keyframes colordancing2 {
   0% {
-    color: #FFC48C;
+    color: #ffc48c;
   }
   25% {
-    color: #EFFAB4;
+    color: #effab4;
   }
   50% {
-    color: #D1F2A5;
+    color: #d1f2a5;
   }
   75% {
-    color: #F56991;
+    color: #f56991;
   }
   100% {
-    color: #FFC48C;
+    color: #ffc48c;
   }
 }
 
 @keyframes colordancing2 {
   0% {
-    color: #FFC48C;
+    color: #ffc48c;
   }
   25% {
-    color: #EFFAB4;
+    color: #effab4;
   }
   50% {
-    color: #D1F2A5;
+    color: #d1f2a5;
   }
   75% {
-    color: #F56991;
+    color: #f56991;
   }
   100% {
-    color: #FFC48C;
+    color: #ffc48c;
   }
 }
 
@@ -434,11 +436,11 @@ a.more-link {
 
 .MuiInputBase-root {
   color: white !important;
-  font-family: 'Open Sans', sans-serif !important;
+  font-family: "Open Sans", sans-serif !important;
 }
 
 .MuiOutlinedInput-notchedOutline {
-  border-color: #416467  !important;
+  border-color: #416467 !important;
 }
 
 .MuiFormLabel-root {
@@ -450,7 +452,7 @@ a.more-link {
   background: transparent;
   border: 2px solid #416467;
   border-radius: 2px;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-size: 18px;
   font-weight: 400;
   color: #ffffff;

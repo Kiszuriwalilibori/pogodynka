@@ -1,15 +1,20 @@
 import React from "react";
 import { connect } from "react-redux";
 import { forecastHeaders } from "../../js/fixtures";
-
-const _WeatherForecast = (props) => {
+import PropTypes from 'prop-types';
+var index =0;
+const ind = ind ||function(){ 
+  index = index+1;
+  return index;
+}
+const prepareWeatherForecast = (props) => {
   const { forecast } = props;
-
+  
   const tableRow = (data) => {
     return (
-      <tr key={data}>
+      <tr key={ind()}>
         {data.map((item) => {
-          return <td key={item}>{String(item)}</td>;
+          return <td key={ind()}>{String(item)}</td>;
         })}
       </tr>
     );
@@ -36,5 +41,10 @@ const mapStateToProps = (state) => ({
   forecast: state.Forecast,
 });
 
-const WeatherForecast = connect(mapStateToProps)(_WeatherForecast);
+const WeatherForecast = connect(mapStateToProps)(prepareWeatherForecast);
 export default WeatherForecast;
+
+prepareWeatherForecast.propTypes={
+
+  forecast:PropTypes.arrayOf(PropTypes.array)
+}
