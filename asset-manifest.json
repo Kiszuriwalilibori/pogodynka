@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/pogodynka/static/css/main.8abc3b8d.chunk.css",
-    "main.js": "/pogodynka/static/js/main.ae3cefed.chunk.js",
-    "main.js.map": "/pogodynka/static/js/main.ae3cefed.chunk.js.map",
+    "main.js": "/pogodynka/static/js/main.ef58cd7f.chunk.js",
+    "main.js.map": "/pogodynka/static/js/main.ef58cd7f.chunk.js.map",
     "runtime-main.js": "/pogodynka/static/js/runtime-main.a2a00185.js",
     "runtime-main.js.map": "/pogodynka/static/js/runtime-main.a2a00185.js.map",
     "static/js/2.bb7ec755.chunk.js": "/pogodynka/static/js/2.bb7ec755.chunk.js",
@@ -20,6 +20,6 @@
     "static/js/runtime-main.a2a00185.js",
     "static/js/2.bb7ec755.chunk.js",
     "static/css/main.8abc3b8d.chunk.css",
-    "static/js/main.ae3cefed.chunk.js"
+    "static/js/main.ef58cd7f.chunk.js"
   ]
 }
