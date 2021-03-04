@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { WeatherNowTemp, WeatherNowMoisture, WeatherNowFeelsLike, WeatherNowPressure, WeatherNowContent } from "./details/details";
+import { WeatherNowTemp, WeatherNowMoisture, WeatherNowFeelsLike, WeatherNowPressure, WeatherNowContent } from "../details/details";
 import PropTypes from 'prop-types';
 const prepareCurrentWeather = (props) => {
   const { data } = props;

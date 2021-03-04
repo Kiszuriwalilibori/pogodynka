@@ -10,7 +10,6 @@ import App from './components/App';
 import reducer from './js/reducers/reducer';
 import * as serviceWorker from './serviceWorker';
 
-
 const store = createStore(reducer, applyMiddleware(thunk));
 
 ReactDOM.render(

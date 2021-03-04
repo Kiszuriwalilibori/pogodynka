@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, lazy } from "react";
+
 import LandingPage from "./LandingPage";
-import CollectedWeatherInfos from "./CollectedWeatherInformations/CollectedWeatherInfos";
-import ErrorMessage from "./ErrorMessage";
+import Awaiting from './details/Awaiting';
 import SearchSection from "./SearchSection";
 import * as ROUTES from "../js/routes";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+const CollectedWeatherInfos = lazy(()=>import('./CollectedWeatherInformations/CollectedWeatherInfos'));
+const ErrorMessage = lazy(()=>import('./ErrorMessage'));
+
 
 const App = () => {
   const [path, setPath] = useState("/city");
@@ -13,23 +16,20 @@ const App = () => {
   }; /*defines callback that will modify Route so it leads to given city*/
 
   return (
+   
     <Router basename={process.env.PUBLIC_URL}>
       <Switch>
         <Route exact path={ROUTES.LANDING}>
           <LandingPage />
         </Route>
         <Route path={ROUTES.SEARCH}>
-          <SearchSection getPath={getPath} /> {/*sends callback for new path*/}
+          <SearchSection getPath={getPath} />
         </Route>
-        <Route path={path}>
-          {/*path is dynamic and depends on local state */}
-          <CollectedWeatherInfos />
-        </Route>
-        <Route path={ROUTES.ERROR}>
-          <ErrorMessage />
-        </Route>
+        <Route path = {path} component ={Awaiting(CollectedWeatherInfos)} />
+        <Route path={ROUTES.ERROR} component ={Awaiting(ErrorMessage)} />
       </Switch>
     </Router>
   );
 };
 export default App;
+

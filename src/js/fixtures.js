@@ -56,3 +56,19 @@ export const messages ={
   forecast: 'Niestety nie mamy danych do dwudniowej prognozy pogody w miejscowości ',
   group: 'Niestety nie mamy danych z grupy miast polskich do porównania',
 }
+
+
+export const APP_ACCESS_KEY = "DQqGbYve6sTIg4j9f9EPdU12FLtjyb4hiplBbNECOZA";
+export const accessKey= { accessKey: APP_ACCESS_KEY}
+
+
+
+
+
+export const urlFragments = {
+postfix: "&units=metric&appid=da16d6de03fba61dd8b294b58864d4b7",
+prefixForecast: "https://api.openweathermap.org/data/2.5/forecast?",
+prefixWeather: "https://api.openweathermap.org/data/2.5/weather?",
+prefixGroup: "https://api.openweathermap.org/data/2.5/group?",
+middlefix: {forecast:"q=", weather:"q=",group:'id='},
+}

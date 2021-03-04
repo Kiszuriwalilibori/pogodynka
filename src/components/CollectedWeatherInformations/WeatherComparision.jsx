@@ -2,16 +2,25 @@ import React from "react";
 import { connect } from "react-redux";
 import { compareWeather } from "../../js/functions";
 import { citiesArray, groupTableHeaders, parameters } from "../../js/fixtures";
-import PropTypes from 'prop-types';
-var index =0;
-const ind = ind ||function(){ 
-  index = index+1;
-  return index;
-}
-const prepareWeatherComparision = (props) => {
-  const { weather, group, city } = props;
+import PropTypes from "prop-types";
+var index = 0;
+const ind =
+  ind ||
+  function () {
+    index = index + 1;
+    return index;
+  };
+const prepareWeatherComparision = props => {
+  let { weather, group, city } = props;
+
+
+  if (typeof city === 'object' && city !== null){
+    city = "Latitude: " + city.lat + "Longitude: " + city.lon;
+  }
+
+
   const header = "Porównanie pogody w miejscowości " + city + " i innych miejscowościach";
-  var createCell = (item) => {
+  var createCell = item => {
     return typeof item == "string" ? (
       <td key={String(Math.random())}>{item}</td>
     ) : (
@@ -24,7 +33,7 @@ const prepareWeatherComparision = (props) => {
   var createRow = (data, index) => {
     return (
       <tr key={data}>
-        {data.map((item) => {
+        {data.map(item => {
           return createCell(item);
         })}
       </tr>
@@ -33,15 +42,15 @@ const prepareWeatherComparision = (props) => {
 
   if (group && weather && city) {
     let Weather = {};
-    parameters.forEach((element) => {
+    parameters.forEach(element => {
       Weather[element] = weather.main[element];
     });
     const group_main_array = [];
-    let Group = group.forEach((item) => {
+    let Group = group.forEach(item => {
       group_main_array.push(item.main);
     });
     Group = group_main_array;
-    var ComparativeTable = Group.map((item) => {
+    var ComparativeTable = Group.map(item => {
       return compareWeather(Weather, item, Object.keys(Weather));
     });
     ComparativeTable.forEach((item, index) => {
@@ -56,7 +65,7 @@ const prepareWeatherComparision = (props) => {
         <thead>
           <tr key={String(Math.random())}>
             <th>Miasto</th>
-            {groupTableHeaders.map((item) => (
+            {groupTableHeaders.map(item => (
               <th key={item}>{item}</th>
             ))}
           </tr>
@@ -67,7 +76,7 @@ const prepareWeatherComparision = (props) => {
   ) : null;
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   weather: state.currentCityData,
   group: state.Group,
   city: state.currentCity,
@@ -77,9 +86,8 @@ const WeatherComparision = connect(mapStateToProps)(prepareWeatherComparision);
 
 export default WeatherComparision;
 
-prepareWeatherComparision.propTypes ={
-  weather:PropTypes.object,
-  group:PropTypes.array,
-  city:PropTypes.string,
-
-}
+prepareWeatherComparision.propTypes = {
+  weather: PropTypes.object,
+  group: PropTypes.array,
+  city: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+};

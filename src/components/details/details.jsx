@@ -1,14 +1,20 @@
 // this file contains small React views, too meaningfull to be regarded as components
 
 import React from "react";
-import { stringifyWeatherData } from "../../../js/functions";
+import { stringifyWeatherData } from "../../js/functions";
+import { TextField, Button} from "@material-ui/core";
+import { makeStyles, withStyles } from "@material-ui/core/styles";
+import Icon from '@material-ui/core/Icon';
+import { MicNoneTwoTone } from "@material-ui/icons";
+
+
 
 // Displays headline with info about date and time of weather datacollection
 export const WeatherNowHeader = ({ time }) => {
   return (
     <p className="weather__header">
       <strong>Pogoda </strong>
-      <span>zgodnie z danymi zebranymi dzisiaj, godź. </span>
+      <span>godź. </span>
       <span>{time}</span>
     </p>
   );
@@ -58,7 +64,7 @@ export const WeatherNowContent = (props) => {
 };
 //element displaying neme of current city
 export const ContentHeaderCity = (props) => {
-  return <div className="content__header-cityname">{props.children}</div>;
+   return <div className="content__header-cityname">{props.children}</div>;
 };
 
 //wrapper for element displaying name of the current city
@@ -69,3 +75,65 @@ export const ContentHeaderWrapper = (props) => {
 export const ContentBodyWrapper = (props) => {
   return <div className="content__body">{props.children}</div>;
 };
+
+
+export const SearchContainer = (props)=>{
+  return   <section className="search__container">{props.children}</section>
+}
+
+export const MyButton = withStyles(() => ({
+  root: {
+    color: 'white',
+    backgroundColor: '#416467',
+    height: '50px',
+    margin: '8px',
+    padding: '0 16px',
+    fontFamily: 'Montserrat',
+    borderRadius: 'initial',
+    boxShadow: "0 1px 1px rgba(0,0,0,0.08), 0 2px 2px rgba(0,0,0,0.12), 0 4px 4px rgba(0,0,0,0.16),0 8px 8px rgba(0,0,0,0.20);",
+    
+    '&:hover': {
+      backgroundColor:  '#5b7a7c',
+    },
+  },
+}))(Button);
+
+
+export const useFormStyles = makeStyles(theme => ({
+  root: {
+    display: "flex",
+    flexDirection: "row",
+    flexWrap: "wrap",
+    justifyContent: "center",
+    border:"4px solid #224749",
+    borderRadius: "42px",
+    padding: "10px 20px",
+    background: "#B7B6B2",
+    margin: "0 1vw",
+    marginTop: '60px',
+    boxShadow: "0 1px 1px rgba(0,0,0,0.08), 0 2px 2px rgba(0,0,0,0.12), 0 4px 4px rgba(0,0,0,0.16),0 8px 8px rgba(0,0,0,0.20);",
+    "@media (max-width: 548px)": {flexDirection: 'column'},
+    "& .MuiOutlinedInput-root":{
+      borderRadius: 'initial',
+    },
+
+    "& .MuiTextField-root": {
+      margin: theme.spacing(1),
+      width: "25ch",
+      boxShadow: "0 1px 1px rgba(0,0,0,0.08), 0 2px 2px rgba(0,0,0,0.12), 0 4px 4px rgba(0,0,0,0.16),0 8px 8px rgba(0,0,0,0.20);",
+    },
+    "& .MuiInputBase-root": {
+      color: "white !important",
+      fontFamily: "Open Sans, sans-serif !important",
+      backgroundColor: "#416467",
+      padding: '5px 0',
+      '&:hover': {
+        backgroundColor:  '#5b7a7c',
+      },
+    },
+    "& .MuiFormLabel-root": { color: "white !important" },
+    "& .MuiOutlinedInput-notchedOutline": { border: "3px solid", borderColor: "#224749 !important" },
+    // "& .MuiOutlinedInput-notchedOutline": { border: 'none'},
+  },
+}));
+

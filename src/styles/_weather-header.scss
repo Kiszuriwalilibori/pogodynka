@@ -1,24 +1,31 @@
 .content__header {
-  padding-right: 13px;
+  padding-right: 2vw;
   font-size: 55px;
+  font-size: calc(20px + 35 * ((100vw - 320px) / 1080));
   line-height: 55px;
   font-family: Montserrat;
   background-color: #416467;
   color: white;
   text-transform: capitalize;
   height: 100px;
+  height: calc(50px + 50 * ((100vw - 320px) / 1080));
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   border-top: 2px solid white;
   border-bottom: 2px solid white;
-  box-shadow: 0px 0px 14px 0px;
+  @include shadow;
 }
 
 .content__body {
   @include centered1200max;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
 }
 
 .content__header-cityname {
-  @include centered1200max;
+  padding-left: 3vw;
+  display: flex;
+  align-items: center;
 }

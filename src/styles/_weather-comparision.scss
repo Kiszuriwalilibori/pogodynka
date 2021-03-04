@@ -1,8 +1,9 @@
 .comparative__table {
   @include typical_div;
+  @include weather-table;
 
   & td {
-    padding: 10px 60px;
+    padding: 10px 50px;
     text-align: center;
   }
 

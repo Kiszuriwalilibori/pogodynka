@@ -35,13 +35,20 @@
 ## Versions
 ##### 1 
 - initial
+##### 2
+- new layout
+- dynamically created background
+- weather available also for geolocation
 
 ### To do
 
-icons and more info
+- W zasadzie w Citysearchform success function bierze od razu dane które mogloby brać z data (bo data to miasto). W ten sposób uprościlibyśmy callbacka redrectCities
+- lepiej obrobić router
+- pogoda z bieżącej lokalizacji
+- przechowywanie lokalizacji w ulubionych
+- ikony
 w actions w punkcie 76 jest zapętlenie search from url. To powinno dać sie przerobić z axiosem.all
 former home page (add to package.json for deployment)
 "homepage": "http://gitname.github.io/pogodynka",
-searchsection - czy na pewno city jest 
-rzowiązac problez z key w tr
-dodać spinner page
+
+

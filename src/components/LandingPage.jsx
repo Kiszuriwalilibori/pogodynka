@@ -1,10 +1,21 @@
-import React from "react"; 
+import React, {useEffect} from "react"; 
+import { connect } from "react-redux";
+import {fetchBackgroundImage, checkGeoLocation} from '../js/actions/actions';
 import * as ROUTES from'../js/routes';
 import {
   Link,
 } from "react-router-dom";
 
-  const LandingPage = React.memo(()=> {
+  const Page = props=> {
+
+    const{fetchBackgroundImage, checkGeoLocation} = props;
+
+    useEffect(() => {
+      fetchBackgroundImage('weather');
+      checkGeoLocation();
+    }, [fetchBackgroundImage]);
+  
+
 
     return (
       <Link to= {ROUTES.SEARCH} style={{ textDecoration: 'none' }} >
@@ -16,6 +27,13 @@ import {
         </div>
       </Link>
     )  
-})
+}
    
+const mapDispatchToProps = dispatch => ({
+  fetchBackgroundImage: (x) => dispatch(fetchBackgroundImage(x)),
+  checkGeoLocation: ()=>dispatch(checkGeoLocation()),
+});
+
+const LandingPage = connect(null, mapDispatchToProps)(Page);
+
 export default LandingPage;

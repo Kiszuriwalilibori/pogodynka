@@ -9,8 +9,9 @@ body,
   min-height: 100%;
 }
 
+* {margin:0; padding:0;}
 html {
-  background: url(../images/back1.jpg) no-repeat center center fixed;
+  background: url(../images/legia.jpg) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -19,9 +20,9 @@ html {
   @media (max-width: 330px) {
     font-size: 10px;
   }
-  @media (min-width: 331px) and (max-width: 568px) {
-    font-size: 12px;
-  }
+  // @media (min-width: 331px) and (max-width: 568px) {
+  //   font-size: 12px;
+  // }
   @media (min-width: 569px) {
     font-size: 16px;
   }
@@ -40,10 +41,71 @@ h1 {
   text-align: center;
   margin: 60px auto;
   font-family: "Montserrat";
+  //text-shadow: -2px -2px 0 #224749, 2px -2px 0 #224749, -2px 2px 0 #224749, 2px 2px 0 #224749;
+  text-shadow: -1px -1px 0 #224749, 1px -1px 0 #224749, -1px 1px 0 #224749, 1px 1px 0 #224749;
+  font-weight:600;
+}
+
+.framed-text{
+  color:white;
+  text-shadow: -1px -1px 0 #224749, 1px -1px 0 #224749, -1px 1px 0 #224749, 1px 1px 0 #224749;
 }
 
 .cityNameWrapper {
   max-width: 1200px;
   width: 100%;
   margin: 0 auto;
+}
+
+
+#root{
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+min-width:1200px;
+height: 100%;
+overflow: auto;
+}
+
+
+
+
+
+
+
+
+@media (max-width: 480px) {
+  .root--fallback-background {
+    background: url(../images/background_mobile.jpg) no-repeat center center fixed;
+    background-size: cover;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 759px) {
+  .root--fallback-background {
+    background: url(../images/background_small.jpg) no-repeat center center fixed;
+    background-size: cover;
+  }
+}
+
+@media (min-width: 1601px) {
+  .root--fallback-background {
+    background: url(../images/background.jpg) no-repeat center center fixed;
+    background-size: cover;
+  }
+}
+
+@media (min-width: 760px) and (max-width: 1024px) {
+  .root--fallback-background {
+    background: url(../images/background_tablet.jpg) no-repeat center center fixed;
+    background-size: cover;
+  }
+}
+
+@media (min-width: 1025px) and (max-width: 1600px) {
+  .root--fallback-background {
+    background: url(../images/background_desktop.jpg) no-repeat center center fixed;
+    background-size: cover;
+  }
 }
