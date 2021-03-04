@@ -1,23 +1,25 @@
 {
   "files": {
-    "main.css": "/pogodynka/static/css/main.8aec4034.chunk.css",
-    "main.js": "/pogodynka/static/js/main.9a4926cc.chunk.js",
-    "main.js.map": "/pogodynka/static/js/main.9a4926cc.chunk.js.map",
-    "runtime-main.js": "/pogodynka/static/js/runtime-main.10e786b6.js",
-    "runtime-main.js.map": "/pogodynka/static/js/runtime-main.10e786b6.js.map",
-    "static/js/2.e5214474.chunk.js": "/pogodynka/static/js/2.e5214474.chunk.js",
-    "static/js/2.e5214474.chunk.js.map": "/pogodynka/static/js/2.e5214474.chunk.js.map",
+    "main.css": "/pogodynka/static/css/main.8abc3b8d.chunk.css",
+    "main.js": "/pogodynka/static/js/main.ae3cefed.chunk.js",
+    "main.js.map": "/pogodynka/static/js/main.ae3cefed.chunk.js.map",
+    "runtime-main.js": "/pogodynka/static/js/runtime-main.a2a00185.js",
+    "runtime-main.js.map": "/pogodynka/static/js/runtime-main.a2a00185.js.map",
+    "static/js/2.bb7ec755.chunk.js": "/pogodynka/static/js/2.bb7ec755.chunk.js",
+    "static/js/2.bb7ec755.chunk.js.map": "/pogodynka/static/js/2.bb7ec755.chunk.js.map",
+    "static/js/3.aea07fed.chunk.js": "/pogodynka/static/js/3.aea07fed.chunk.js",
+    "static/js/3.aea07fed.chunk.js.map": "/pogodynka/static/js/3.aea07fed.chunk.js.map",
+    "static/js/4.b7036efd.chunk.js": "/pogodynka/static/js/4.b7036efd.chunk.js",
+    "static/js/4.b7036efd.chunk.js.map": "/pogodynka/static/js/4.b7036efd.chunk.js.map",
     "index.html": "/pogodynka/index.html",
-    "precache-manifest.72641db6fbfd01238f62ae53aa61c0c8.js": "/pogodynka/precache-manifest.72641db6fbfd01238f62ae53aa61c0c8.js",
-    "service-worker.js": "/pogodynka/service-worker.js",
-    "static/css/main.8aec4034.chunk.css.map": "/pogodynka/static/css/main.8aec4034.chunk.css.map",
-    "static/js/2.e5214474.chunk.js.LICENSE.txt": "/pogodynka/static/js/2.e5214474.chunk.js.LICENSE.txt",
-    "static/media/App.css": "/pogodynka/static/media/back1.a0c8e79d.jpg"
+    "static/css/main.8abc3b8d.chunk.css.map": "/pogodynka/static/css/main.8abc3b8d.chunk.css.map",
+    "static/js/2.bb7ec755.chunk.js.LICENSE.txt": "/pogodynka/static/js/2.bb7ec755.chunk.js.LICENSE.txt",
+    "static/media/App.css": "/pogodynka/static/media/montserrat-v15-latin-ext_latin-regular.dbd57c04.woff"
   },
   "entrypoints": [
-    "static/js/runtime-main.10e786b6.js",
-    "static/js/2.e5214474.chunk.js",
-    "static/css/main.8aec4034.chunk.css",
-    "static/js/main.9a4926cc.chunk.js"
+    "static/js/runtime-main.a2a00185.js",
+    "static/js/2.bb7ec755.chunk.js",
+    "static/css/main.8abc3b8d.chunk.css",
+    "static/js/main.ae3cefed.chunk.js"
   ]
 }
