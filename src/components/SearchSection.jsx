@@ -7,13 +7,13 @@ import PropTypes from "prop-types";
 import Loader from "./details/loader";
 
 const PrepareSearchSection = props => {
-  const { getPath, searchFormSourceType } = props;
+  const { searchFormSourceType } = props;
 
   return (
     <SearchContainer>
       <Loader />
       <SourceSection />
-      <SearchFormFactory formType={searchFormSourceType} getPath={getPath} />
+      <SearchFormFactory formType={searchFormSourceType} />
     </SearchContainer>
   );
 };

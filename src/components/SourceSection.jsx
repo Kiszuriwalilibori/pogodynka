@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useCallback } from "react";
+import { useHistory } from "react-router-dom";
 import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
 import FormLabel from "@material-ui/core/FormLabel";
+import { getWeather } from "../js/actions/actions";
 import clsx from "clsx";
 import { connect } from "react-redux";
 import { setSearchFormSourceType } from "../js/actions/actions";
@@ -12,7 +14,6 @@ import useStyles from "./details/useStyles";
 
 function StyledRadio(props) {
   const classes = useStyles();
-
   return <Radio className={classes.root} disableRipple color="default" checkedIcon={<span className={clsx(classes.icon, classes.checkedIcon)} />} icon={<span className={classes.icon} />} {...props} />;
 }
 
@@ -24,8 +25,17 @@ function StyledRadioGroup(props) {
 
 const Section = props => {
   const classes = useStyles();
+  let history = useHistory();
 
-  const { favoritesNotEmpty, geolocationAvailable, setSearchFormSourceType } = props;
+  const { favoritesNotEmpty, setSearchFormSourceType, currentPosition, fetchWeather } = props;
+  
+  const redirectNoLocation = useCallback(() => {
+    history.push("/404");
+  }, []);
+
+  const redirectCities = useCallback(() => {
+    history.push("/" + "Latitude: " + currentPosition.latitude + "Longitude: " + currentPosition.longitude);
+  }, [currentPosition]);
 
   const actionHandlers = {
     city: {
@@ -35,7 +45,9 @@ const Section = props => {
       run: () => setSearchFormSourceType("location"),
     },
     current: {
-      run: () => {},
+      run: () => {
+        fetchWeather({ lat: currentPosition.latitude, lon: currentPosition.longitude }, redirectNoLocation, redirectCities, "location");
+      },
     },
   };
 
@@ -52,7 +64,7 @@ const Section = props => {
         </FormLabel>
         <StyledRadioGroup row defaultValue="female" aria-label="source" name="customized-radios" onChange={handleChange}>
           <FormControlLabel value="city" control={<StyledRadio />} label="miasta" />
-          <FormControlLabel value="current" disabled={!geolocationAvailable} control={<StyledRadio />} label="aktualnej lokalizacji" />
+          <FormControlLabel value="current" disabled={!currentPosition} control={<StyledRadio />} label="aktualnej lokalizacji" />
           <FormControlLabel value="location" control={<StyledRadio />} label="innej lokalizacji" />
           <FormControlLabel value="favorites" disabled={!favoritesNotEmpty} control={<StyledRadio />} label="z Ulubionych" />
         </StyledRadioGroup>
@@ -63,11 +75,12 @@ const Section = props => {
 
 const mapStateToProps = state => ({
   favoritesNotEmpty: state.favoritesContainsLocation,
-  geolocationAvailable: state.geolocationAvailable,
+  currentPosition: state.geoLocationPosition,
 });
 
 const mapDispatchToProps = dispatch => ({
   setSearchFormSourceType: x => dispatch(setSearchFormSourceType(x)),
+  fetchWeather: (data, failureFunction, successFunction, source) => dispatch(getWeather(data, failureFunction, successFunction, source)),
 });
 
 const SourceSection = connect(mapStateToProps, mapDispatchToProps)(Section);

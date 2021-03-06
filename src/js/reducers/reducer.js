@@ -98,6 +98,10 @@ const reducer = (state = initialState, action) => {
         geoLocationSupported: action.payload,
       };
     case actions.SET_GEOLOCATION_POSITION:
+      console.log(action.payload);
+      let coords = action.payload;
+      let obj = coords.GeolocationCoordinates;
+
       return {
         ...state,
         geoLocationPosition: action.payload,

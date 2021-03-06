@@ -3,14 +3,14 @@ import CitySearchForm from "./CitySearchForm";
 import LocationSearchForm from "./LocationSearchForm";
 
 const SearchFormFactory = props => {
-  const { formType, getPath } = props;
+  const { formType } = props;
 
   switch (formType) {
     case "city":
-      return <CitySearchForm getPath={getPath} />;
+      return <CitySearchForm />;
       break;
     case "location":
-      return <LocationSearchForm getPath={getPath} />;
+      return <LocationSearchForm />;
       break;
     default:
       return null;

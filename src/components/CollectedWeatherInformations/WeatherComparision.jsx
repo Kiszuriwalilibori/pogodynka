@@ -2,6 +2,9 @@ import React from "react";
 import { connect } from "react-redux";
 import { compareWeather } from "../../js/functions";
 import { citiesArray, groupTableHeaders, parameters } from "../../js/fixtures";
+import { getLabelfromPath } from "../../js/functions";
+import { useLocation } from "react-router-dom";
+
 import PropTypes from "prop-types";
 var index = 0;
 const ind =
@@ -10,16 +13,14 @@ const ind =
     index = index + 1;
     return index;
   };
-const prepareWeatherComparision = props => {
-  let { weather, group, city } = props;
+const PrepareWeatherComparision = props => {
+  let { weather, group} = props;
 
+  
+  let locationObj = useLocation();
+  const location = getLabelfromPath(locationObj.pathname);
 
-  if (typeof city === 'object' && city !== null){
-    city = "Latitude: " + city.lat + "Longitude: " + city.lon;
-  }
-
-
-  const header = "Porównanie pogody w miejscowości " + city + " i innych miejscowościach";
+  const header = "Porównanie pogody w " + location + " i innych miejscach";
   var createCell = item => {
     return typeof item == "string" ? (
       <td key={String(Math.random())}>{item}</td>
@@ -40,7 +41,7 @@ const prepareWeatherComparision = props => {
     );
   };
 
-  if (group && weather && city) {
+  if (group && weather) {
     let Weather = {};
     parameters.forEach(element => {
       Weather[element] = weather.main[element];
@@ -79,15 +80,14 @@ const prepareWeatherComparision = props => {
 const mapStateToProps = state => ({
   weather: state.currentCityData,
   group: state.Group,
-  city: state.currentCity,
+  
 });
 
-const WeatherComparision = connect(mapStateToProps)(prepareWeatherComparision);
+const WeatherComparision = connect(mapStateToProps)(PrepareWeatherComparision);
 
 export default WeatherComparision;
 
-prepareWeatherComparision.propTypes = {
+PrepareWeatherComparision.propTypes = {
   weather: PropTypes.object,
   group: PropTypes.array,
-  city: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
 };

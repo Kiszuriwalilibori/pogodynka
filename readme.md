@@ -39,12 +39,15 @@
 - new layout
 - dynamically created background
 - weather available also for geolocation
+#### 3
+- simplified routing
+- new feature of getting weather from current position
 
 ### To do
 
 - W zasadzie w Citysearchform success function bierze od razu dane które mogloby brać z data (bo data to miasto). W ten sposób uprościlibyśmy callbacka redrectCities
-- lepiej obrobić router
-- pogoda z bieżącej lokalizacji
+- uprościć komponent sourceSection /coś powinno iść do useeffect
+- 
 - przechowywanie lokalizacji w ulubionych
 - ikony
 w actions w punkcie 76 jest zapętlenie search from url. To powinno dać sie przerobić z axiosem.all

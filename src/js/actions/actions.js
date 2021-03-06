@@ -173,7 +173,12 @@ export function checkGeoLocation(){
 
     if (navigator.geolocation) {
       dispatch(setGeoLocationSupport(true));
-      navigator.geolocation.getCurrentPosition(position=>dispatch(setGeoLocationPosition(position)));
+      function getCoordsFromResponse(resp){
+        resp = resp.coords;
+        let coords ={latitude:resp.latitude, longitude:resp.longitude}
+        return coords;
+      }
+      navigator.geolocation.getCurrentPosition(position=>dispatch(setGeoLocationPosition(getCoordsFromResponse(position))));
     } else {
       dispatch(setGeoLocationSupport(false));
     }

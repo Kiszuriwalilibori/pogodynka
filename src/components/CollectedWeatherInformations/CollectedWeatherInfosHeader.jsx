@@ -1,30 +1,17 @@
 import React from "react";
-import { connect } from "react-redux";
 import { ContentHeaderWrapper, ContentHeaderCity, WeatherNowHeader } from "../details/details";
-import { getCurrentTime } from "../../js/functions";
-import PropTypes from "prop-types";
+import { getCurrentTime, getLabelfromPath } from "../../js/functions";
+import { useLocation } from "react-router-dom";
 
-const prepareCollectedWeatherInfosHeader = props => {
-  let { city } = props;
-
-  if (typeof city === "object" && city !== null) {
-    city = "Latitude: " + city.lat + "Longitude: " + city.lon;
-  }
-  return city ? (
+const Header = props => {
+  let locationObj = useLocation();
+  const location = getLabelfromPath(locationObj.pathname);
+  return location ? (
     <ContentHeaderWrapper>
-      <ContentHeaderCity>{city}</ContentHeaderCity>
+      <ContentHeaderCity>{location}</ContentHeaderCity>
       <WeatherNowHeader time={getCurrentTime()} />
     </ContentHeaderWrapper>
   ) : null;
 };
 
-const mapStateToProps = state => ({
-  city: state.currentCity,
-});
-const CollectedWeatherInfosHeader = connect(mapStateToProps)(prepareCollectedWeatherInfosHeader);
-
-export default CollectedWeatherInfosHeader;
-
-prepareCollectedWeatherInfosHeader.propTypes = {
-  city: PropTypes.string,
-};
+export default Header;

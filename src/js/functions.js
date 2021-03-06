@@ -1,6 +1,6 @@
 import { comments, urlFragments } from "../js/fixtures";
 import { forecastListPaths, forecastListKelvin } from "../js/fixtures";
-import _ from "lodash";
+import _, { stubString } from "lodash";
 // Czasami wyrzuca błąd w linii 69
 // supporting function for validation, checks for very basic correctness of data (cod =200 means that data is OK in grabbed data file)
 const cityExists = obj => {
@@ -181,7 +181,6 @@ export function createURLofWeatherAPI(type, item, source) {
         ids = ids + "," + x[1];
       });
       ids = ids.slice(1);
-      console.log("ids", ids);
       return urlFragments.prefixGroup + "id=" + ids + urlFragments.postfix;
 
     default:
@@ -214,3 +213,12 @@ export const validateInput = {
     },
   },
 };
+
+export function getLabelfromPath(str) {
+  if (str && (typeof str === "string" || str instanceof String) && str.indexOf("/") === 0) {
+    str = str.substring(1);
+    return str;
+  } else {
+    return str;
+  }
+}

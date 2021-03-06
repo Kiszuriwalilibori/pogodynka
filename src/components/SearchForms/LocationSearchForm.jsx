@@ -19,7 +19,7 @@ const Btn = props => (
 );
 
 const Form = props => {
-  const { fetchWeather, getPath } = props;
+  const { fetchWeather} = props;
   const classes = useFormStyles();
   let [latitude, setLatitude] = useState("");
   let [longitude, setLongitude] = useState("");
@@ -30,10 +30,9 @@ const Form = props => {
     history.push("/404");
   }, []);
 
-  
   const redirectCities = useCallback(() => {
-    getPath("/" + "Latitude: " + latitude + "Longitude: " + longitude); //executes callback from App (sends local state to App)
-    history.push("/" + "Latitude: " + latitude + "Longitude: " + longitude); // performs redirection
+    
+    history.push("/" + "Latitude: " + latitude + "Longitude: " + longitude); 
   }, [latitude, longitude]);
 
   useEffect(() => {
@@ -43,7 +42,7 @@ const Form = props => {
   return (
     <>
        <Fade in={true} timeout ={1000}>
-      <form className={classes.root} id="search__form" autocomplete="off">
+      <form className={classes.root} id="search__form" autoComplete="off">
         <MyTooltip title="Liczba z zakresu <-90, 90> " arrow>
           <TextField
             required
@@ -94,7 +93,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchWeather: (data, failureFunction, successFunction, source) => dispatch(getWeather(data, failureFunction, successFunction, source)), //here we send to actions locally defined callbacks
+  fetchWeather: (data, failureFunction, successFunction, source) => dispatch(getWeather(data, failureFunction, successFunction, source)), 
 });
 
 const CitySearchForm = connect(mapStateToProps, mapDispatchToProps)(Form);

@@ -21,7 +21,7 @@ const Btn = props => (
 
 const Form = props => {
   
-  const { fetchWeather, getPath } = props;
+  const { fetchWeather } = props;
   const classes = useFormStyles();
   let [inputValue, setInputValue] = useState("");
   let [validationStatus, setValidationStatus] = useState(initialValidation);
@@ -32,7 +32,6 @@ const Form = props => {
   }, []);
 
   const redirectCities = useCallback(() => {
-    getPath("/" + inputValue);
     history.push("/" + inputValue);
   }, [inputValue]);
 
@@ -43,7 +42,7 @@ const Form = props => {
   return (
     <>
     <Fade in={true} timeout ={1000}>
-      <form className={classes.root} autocomplete="off">
+      <form className={classes.root} autoComplete="off">
         <MyTooltip title="Nie mniej niż dwa znaki w tym jeden alfanumeryczny" arrow>
           <TextField
             required
