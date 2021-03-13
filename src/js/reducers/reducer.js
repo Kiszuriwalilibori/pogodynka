@@ -4,7 +4,7 @@ import * as actions from "../actions/actions";
 // export const getDataRequested = createAction("GET_DATA_REQUESTED");
 // export const setGeoLocationPosition =createAction('SET_GEOLOCATION_POSITION');
 // export const setGeoLocationSupport = createAction('SET_GEOLOCATION_SUPPORT');
-// export const getCityDataFailed = createAction('GET_DATA_FAILED');
+// export const fetchWeatherFailed = createAction('GET_DATA_FAILED');
 // //poniższe są dublowane poniżej
 // export const GET_CITY_DATA_RECEIVED = 'GET_CITY_DATA_RECEIVED';
 // export const GET_CITY_FORECAST_RECEIVED ='GET_CITY_FORECAST_RECEIVED';
@@ -31,7 +31,8 @@ const initialState = {
   geoLocationSupported: false,
   geoLocationPosition: null,
   searchFormSourceType: null,
- 
+  isProblemModalVisible: false,
+  weatherAvailable: false,
 };
 
 // export const reducer = createReducer(initialState, builder => {
@@ -52,7 +53,7 @@ const initialState = {
 //       state.geoLocationSupported = action.payload;
 //     }
 //   })
-//   .addCase(getCityDataFailed, (state, action) => {
+//   .addCase(fetchWeatherFailed, (state, action) => {
 //     if (action.payload) {
 //         state.isLoading = false;
 //         state.errorMessage= action.payload;
@@ -65,15 +66,31 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
+    case actions.SHOW_RESULTS:
+      console.log('shos.results');
+      return {
+        ...state,
+        weatherAvailable: true,
+      };
 
-    
+    case actions.SHOW_ERROR_MESSAGE:
+      return {
+        ...state,
+        errorMessage: action.payload,
+        isError: true,
+      };
+    case actions.HIDE_ERROR_MESSAGE:
+      return {
+        ...state,
+        errorMessage: "",
+        isError: false,
+      };
     case actions.GET_DATA_REQUESTED:
       return {
         ...state,
         isLoading: true,
       };
     case actions.SET_SEARCH_FORM_SOURCE_TYPE:
-      
       return {
         ...state,
         searchFormSourceType: action.payload,
@@ -98,14 +115,13 @@ const reducer = (state = initialState, action) => {
         geoLocationSupported: action.payload,
       };
     case actions.SET_GEOLOCATION_POSITION:
-      console.log(action.payload);
       let coords = action.payload;
-      let obj = coords.GeolocationCoordinates;
-
-      return {
-        ...state,
-        geoLocationPosition: action.payload,
-      };
+      if (coords.latitude && coords.longitude) {
+        return {
+          ...state,
+          geoLocationPosition: action.payload,
+        };
+      }
     case actions.GET_GROUP_RECEIVED:
       return {
         ...state,
@@ -121,7 +137,7 @@ const reducer = (state = initialState, action) => {
       };
 
     case actions.GET_TEST:
-      console.log("test");
+      console.log(action.payload);
 
     case actions.GET_DATA_FAILED:
       return { ...state, isLoading: false, isError: true };

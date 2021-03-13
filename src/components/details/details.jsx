@@ -1,13 +1,8 @@
-// this file contains small React views, too meaningfull to be regarded as components
-
 import React from "react";
 import { stringifyWeatherData } from "../../js/functions";
-import { TextField, Button} from "@material-ui/core";
+import { Button} from "@material-ui/core";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
-import Icon from '@material-ui/core/Icon';
-import { MicNoneTwoTone } from "@material-ui/icons";
-
-
+import {colors} from "../../js/fixtures";
 
 // Displays headline with info about date and time of weather datacollection
 export const WeatherNowHeader = ({ time }) => {
@@ -84,7 +79,7 @@ export const SearchContainer = (props)=>{
 export const MyButton = withStyles(() => ({
   root: {
     color: 'white',
-    backgroundColor: '#416467',
+    backgroundColor: colors.background,
     height: '50px',
     margin: '8px',
     padding: '0 16px',
@@ -93,7 +88,7 @@ export const MyButton = withStyles(() => ({
     boxShadow: "0 1px 1px rgba(0,0,0,0.08), 0 2px 2px rgba(0,0,0,0.12), 0 4px 4px rgba(0,0,0,0.16),0 8px 8px rgba(0,0,0,0.20);",
     
     '&:hover': {
-      backgroundColor:  '#5b7a7c',
+      backgroundColor:  colors.background_hover,
     },
   },
 }))(Button);
@@ -108,7 +103,7 @@ export const useFormStyles = makeStyles(theme => ({
     border:"4px solid #224749",
     borderRadius: "42px",
     padding: "10px 20px",
-    background: "#B7B6B2",
+    background: colors.background_grey,
     margin: "0 1vw",
     marginTop: '60px',
     boxShadow: "0 1px 1px rgba(0,0,0,0.08), 0 2px 2px rgba(0,0,0,0.12), 0 4px 4px rgba(0,0,0,0.16),0 8px 8px rgba(0,0,0,0.20);",
@@ -125,15 +120,15 @@ export const useFormStyles = makeStyles(theme => ({
     "& .MuiInputBase-root": {
       color: "white !important",
       fontFamily: "Open Sans, sans-serif !important",
-      backgroundColor: "#416467",
+      backgroundColor: colors.background,
       padding: '5px 0',
       '&:hover': {
-        backgroundColor:  '#5b7a7c',
+        backgroundColor: colors.background_hover,
       },
     },
     "& .MuiFormLabel-root": { color: "white !important" },
     "& .MuiOutlinedInput-notchedOutline": { border: "3px solid", borderColor: "#224749 !important" },
-    // "& .MuiOutlinedInput-notchedOutline": { border: 'none'},
+    
   },
 }));
 

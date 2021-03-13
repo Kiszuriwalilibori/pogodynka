@@ -72,3 +72,9 @@ prefixWeather: "https://api.openweathermap.org/data/2.5/weather?",
 prefixGroup: "https://api.openweathermap.org/data/2.5/group?",
 middlefix: {forecast:"q=", weather:"q=",group:'id='},
 }
+
+export const colors = {
+  background: '#416467',
+  background_hover:"#5b7a7c",
+  background_grey: "#B7B6B2",
+}

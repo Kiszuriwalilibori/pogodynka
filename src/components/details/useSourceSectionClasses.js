@@ -1,20 +1,16 @@
 import { makeStyles } from "@material-ui/core/styles";
+import {colors} from "../../js/fixtures";
 
-const backgroundColor = "#B7B6B2";
-const textColor = "#416467";
-const textColorImportant = textColor + " !important";
-const hoverColor = "#5b7a7c";
-
-const useStyles = makeStyles({
+const useSourceSectionClasses = makeStyles({
   area: {
-    backgroundColor: backgroundColor,
+    backgroundColor: colors.background_grey,
     borderRadius: "initial",
-    border: "4px solid" + textColor,
+    border: "4px solid" + colors.background,
     padding: "20px",
     margin: "10px",
     marginTop: "60px",
     "@media (max-width: 548px)": { marginTop: "120px" },
-    color: textColor,
+    color: colors.background,
     margin: "0 1vw",
     fontWeight: "600",
     boxShadow: "0 1.3px 2.2px rgba(0, 0, 0, 0.039), 0 3.1px 5.3px rgba(0, 0, 0, 0.057), 0 5.8px 10px rgba(0, 0, 0, 0.069), 0 10.3px 17.9px rgba(0, 0, 0, 0.08), 0 19.2px 33.4px rgba(0, 0, 0, 0.097), 0 46px 80px rgba(0, 0, 0, 0.14)",
@@ -25,7 +21,6 @@ const useStyles = makeStyles({
   },
 
   formLabel: {
-    color: textColorImportant,
     color: "white !important",
     textShadow: "-1px -1px 0 #224749, 1px -1px 0 #224749, -1px 1px 0 #224749, 1px 1px 0 #224749",
     fontFamily: "Montserrat",
@@ -58,7 +53,7 @@ const useStyles = makeStyles({
       outlineOffset: 2,
     },
     "input:hover ~ &": {
-      backgroundColor: hoverColor,
+      backgroundColor: colors.background_hover,
     },
     "input:disabled ~ &": {
       boxShadow: "none",
@@ -66,7 +61,7 @@ const useStyles = makeStyles({
     },
   },
   checkedIcon: {
-    backgroundColor: textColor,
+    backgroundColor: colors.background,
     backgroundImage: "linear-gradient(180deg,hsla(0,0%,100%,.1),hsla(0,0%,100%,0))",
     "&:before": {
       display: "block",
@@ -76,10 +71,10 @@ const useStyles = makeStyles({
       content: '""',
     },
     "input:hover ~ &": {
-      backgroundColor: hoverColor,
+      backgroundColor: colors.background_hover,
     },
   },
 });
 
 
-export default useStyles;
+export default useSourceSectionClasses;

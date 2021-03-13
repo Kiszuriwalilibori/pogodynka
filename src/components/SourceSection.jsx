@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
@@ -10,28 +10,25 @@ import clsx from "clsx";
 import { connect } from "react-redux";
 import { setSearchFormSourceType } from "../js/actions/actions";
 import Slide from "@material-ui/core/Slide";
-import useStyles from "./details/useStyles";
+import useSourceSectionClasses from "./details/useSourceSectionClasses";
+import PropTypes from "prop-types";
+
+const fetchWeather = (data, successFunction) => getWeather("location", data, successFunction);
 
 function StyledRadio(props) {
-  const classes = useStyles();
+  const classes = useSourceSectionClasses();
   return <Radio className={classes.root} disableRipple color="default" checkedIcon={<span className={clsx(classes.icon, classes.checkedIcon)} />} icon={<span className={classes.icon} />} {...props} />;
 }
 
 function StyledRadioGroup(props) {
-  const classes = useStyles();
-
+  const classes = useSourceSectionClasses();
   return <RadioGroup className={classes.formControlLabel} {...props} />;
 }
 
-const Section = props => {
-  const classes = useStyles();
+function Section(props) {
+  const classes = useSourceSectionClasses();
   let history = useHistory();
-
   const { favoritesNotEmpty, setSearchFormSourceType, currentPosition, fetchWeather } = props;
-  
-  const redirectNoLocation = useCallback(() => {
-    history.push("/404");
-  }, []);
 
   const redirectCities = useCallback(() => {
     history.push("/" + "Latitude: " + currentPosition.latitude + "Longitude: " + currentPosition.longitude);
@@ -46,15 +43,15 @@ const Section = props => {
     },
     current: {
       run: () => {
-        fetchWeather({ lat: currentPosition.latitude, lon: currentPosition.longitude }, redirectNoLocation, redirectCities, "location");
+        fetchWeather({ lat: currentPosition.latitude, lon: currentPosition.longitude }, redirectCities);
       },
     },
   };
 
-  const handleChange = event => {
+  const handleChange = useCallback(event => {
     const type = event.target.value;
     actionHandlers[type].run();
-  };
+  });
 
   return (
     <Slide direction="down" timeout={500} in={true} mountOnEnter unmountOnExit>
@@ -71,17 +68,25 @@ const Section = props => {
       </FormControl>
     </Slide>
   );
-};
+}
 
 const mapStateToProps = state => ({
   favoritesNotEmpty: state.favoritesContainsLocation,
   currentPosition: state.geoLocationPosition,
+  weatherAvailable: state.weatherAvailable,
 });
 
 const mapDispatchToProps = dispatch => ({
   setSearchFormSourceType: x => dispatch(setSearchFormSourceType(x)),
-  fetchWeather: (data, failureFunction, successFunction, source) => dispatch(getWeather(data, failureFunction, successFunction, source)),
+  fetchWeather: (data, successFunction) => dispatch(fetchWeather(data, successFunction)),
 });
 
 const SourceSection = connect(mapStateToProps, mapDispatchToProps)(Section);
 export default SourceSection;
+
+Section.propTypes = {
+  favoritesNotEmpty: PropTypes.bool,
+  setSearchFormSourceType: PropTypes.func,
+  currentPosition: PropTypes.object,
+  fetchWeather: PropTypes.func,
+};

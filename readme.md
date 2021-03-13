@@ -3,7 +3,6 @@
 [![N|Solid](https://cldup.com/dTxpPi9lDf.thumb.png)](https://nodesource.com/products/nsolid)
 
 
-
 # The objective
 
   - present my skills 
@@ -23,9 +22,7 @@
  - REDUX
  - REACT-ROUTER
 
-
 ## Installation
-- 
 - That site is hosted on GH Pages
 
 ## Browser Support
@@ -42,16 +39,17 @@
 #### 3
 - simplified routing
 - new feature of getting weather from current position
+#### 3.1
+- simplified error handling
+- IE fallback
 
 ### To do
 
-- W zasadzie w Citysearchform success function bierze od razu dane które mogloby brać z data (bo data to miasto). W ten sposób uprościlibyśmy callbacka redrectCities
-- uprościć komponent sourceSection /coś powinno iść do useeffect
-- 
+- w sourceSection można by zrobić hooka kreaującego tą strategię coś jak w GoogleBooks
+- rozważyć podział reducera
+- CurrentWeather komponenty mogłyby być generowane z tablicy parametrów
 - przechowywanie lokalizacji w ulubionych
 - ikony
 w actions w punkcie 76 jest zapętlenie search from url. To powinno dać sie przerobić z axiosem.all
-former home page (add to package.json for deployment)
-"homepage": "http://gitname.github.io/pogodynka",
 
 
