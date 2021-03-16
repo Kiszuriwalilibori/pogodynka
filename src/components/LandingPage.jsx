@@ -1,6 +1,6 @@
 import React, {useEffect} from "react"; 
 import { connect } from "react-redux";
-import {fetchBackgroundImage, checkGeoLocation} from '../js/actions/actions';
+import {fetchBackgroundImage, checkGeoLocation} from '../js/Redux/thunks';
 import { finishWhenInternetExplorer } from '../js/functions';
 import ProblemMessage from "./details/ProblemMessage";
 

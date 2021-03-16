@@ -2,7 +2,7 @@ import React, { useState, useCallback, useEffect } from "react";
 import { connect } from "react-redux";
 import { TextField } from "@material-ui/core";
 import { useHistory } from "react-router-dom";
-import { getWeather } from "../../js/actions/actions";
+import { getWeather } from "../../js/Redux/thunks";
 import NotValidated from "../details/NotValidated";
 import { validateInput } from "../../js/functions";
 import { useFormStyles } from "../details/details";

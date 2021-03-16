@@ -1,6 +1,6 @@
 import React, { useCallback } from "react";
 import { connect } from "react-redux";
-import { hideErrorMessage } from "../../js/actions/actions";
+import { hideErrorMessage } from "../../js/Redux/reducers/reducer";
 import Fade from "@material-ui/core/Fade";
 import CancelIcon from "@material-ui/icons/Cancel";
 import PropTypes from "prop-types";

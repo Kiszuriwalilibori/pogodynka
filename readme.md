@@ -13,7 +13,6 @@
  - This app also presents weather forecast for that city
  - Last but not least it compares weather in target city and weather in few polish towns
  
-
 ## Technologies
  - HTML 5.2
  - SASS/SCSS
@@ -42,11 +41,12 @@
 #### 3.1
 - simplified error handling
 - IE fallback
+#### 3.2 
+- simplified reducer
 
 ### To do
 
 - w sourceSection można by zrobić hooka kreaującego tą strategię coś jak w GoogleBooks
-- rozważyć podział reducera
 - CurrentWeather komponenty mogłyby być generowane z tablicy parametrów
 - przechowywanie lokalizacji w ulubionych
 - ikony

@@ -132,24 +132,6 @@ export const setBackground = backgroundURL => {
   }
 };
 
-// export const createURLofWeatherAPI = {
-//   forecast: function (str, source) {
-//     return urlFragments.prefixForecast + "q=" + str + urlFragments.postfix;
-//   },
-//   weather: function (str, source) {
-//     return urlFragments.prefixWeather + "q=" + str + urlFragments.postfix;
-//   },
-//   group: function (arr) {
-//     let ids = "";
-//     arr.forEach(item => {
-//       ids = ids + "," + item[1];
-//     });
-//     ids = ids.slice(1);
-//     const result = urlFragments.prefixGroup + "id=" + ids + urlFragments.postfix;
-//     return result;
-//   },
-// };
-
 export function createURLofWeatherAPI(type, item, source) {
   function createCoreURL(type, something, source) {
     switch (source) {
@@ -192,7 +174,7 @@ export const validateInput = {
   city: {
     run: item => {
       if (item.length < 2) {
-        return { status: false, message: "Za krótki ciag, minimum 2 znaki" };
+        return { status: false, message: "Za krótki ciąg, minimum 2 znaki" };
       }
       if (/\d|[A-z]/.test(item) === false) {
         return { status: false, message: "Dopuszczalne wyłącznie litery i cyfry" };
@@ -230,5 +212,4 @@ export function finishWhenInternetExplorer( ){
   if ( isIE ) {
     window.location = "https://kiszuriwalilibori.github.io/IE/";
   }
-
 }

@@ -1,14 +1,14 @@
-import React, { useCallback, useEffect } from "react";
+import React, { useCallback} from "react";
 import { useHistory } from "react-router-dom";
 import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
 import FormLabel from "@material-ui/core/FormLabel";
-import { getWeather } from "../js/actions/actions";
+import { getWeather } from "../js/Redux/thunks";
 import clsx from "clsx";
 import { connect } from "react-redux";
-import { setSearchFormSourceType } from "../js/actions/actions";
+import { setSearchFormSourceType } from "../js/Redux/reducers/reducer";
 import Slide from "@material-ui/core/Slide";
 import useSourceSectionClasses from "./details/useSourceSectionClasses";
 import PropTypes from "prop-types";
