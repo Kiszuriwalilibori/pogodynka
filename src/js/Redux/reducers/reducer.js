@@ -1,8 +1,8 @@
 import { createAction, createReducer } from "@reduxjs/toolkit";
 
-export const showResults = createAction("SHOW_RESULTS");
-export const showErrorMessage = createAction("SHOW_ERROR_MESSAGE");
-export const hideErrorMessage = createAction("HIDE_ERROR_MESSAGE");
+export const showResults = createAction("RESULTS_SHOW");
+export const showErrorMessage = createAction("ERROR_MESSAGE_SHOW");
+export const hideErrorMessage = createAction("ERROR_MESSAGE_HIDE");
 export const getDataRequested = createAction("GET_DATA_REQUESTED");
 export const setGeoLocationPosition = createAction("SET_GEOLOCATION_POSITION");
 export const setGeoLocationSupport = createAction("SET_GEOLOCATION_SUPPORT");
@@ -12,6 +12,13 @@ export const getCityDataReceived = createAction("GET_CITY_DATA_RECEIVED");
 export const getCityForecastReceived = createAction("GET_CITY_FORECAST_RECEIVED");
 export const getGroupReceived = createAction("GET_GROUP_RECEIVED");
 export const getTest = createAction("GET_TEST");
+export const cacheSupported = createAction("CACHE_SET_SUPPORTED");
+export const cacheNotEmpty = createAction("CACHE_SET_AVAILABLE");
+export const setStoreToFavorites = createAction("SET_STORE_TO_FAVORITES");
+export const createCurrentLocationLabel = createAction("CURRENT_LOCATION_LABEL_CREATE");
+export const setPlace = createAction("PLACE_SET");
+export const clearPlace = createAction("PLACE_CLEAR");
+export const toggleSnackBar = createAction("SNACKBAR_TOGGLE");
 
 const initialState = {
   isLoading: false,
@@ -22,17 +29,46 @@ const initialState = {
   errorCity: "",
   errorMessage: "",
   path: "./city",
-  favoritesContainsLocation: false,
   geoLocationSupported: false,
   geoLocationPosition: null,
   searchFormSourceType: null,
   isProblemModalVisible: false,
   weatherAvailable: false,
+  cacheSupported: false,
+  cacheNotEmpty: false,
+  storeToFavorites: false,
+  currentLocationLabel:'',
+  place:undefined,
+  isSnackBarVisible: false,
+  snackBarItem: '',
 };
 
 const reducer = createReducer(initialState, builder => {
   builder
 
+  .addCase(toggleSnackBar, (state, action) => {
+    state.isSnackBarVisible = !state.isSnackBarVisible;
+    if (action && action.payload) {
+      state.snackBarItem = action.payload;
+    }
+  })
+  .addCase(setPlace, (state, action) => {
+    if (action.payload) {
+      state.place = action.payload;
+      //console.log(state.place);
+       }
+  })
+  .addCase(clearPlace, (state, action) => {
+    
+      state.place = undefined;
+       
+  })
+  .addCase(createCurrentLocationLabel, (state, action) => {
+    if (action.payload) {
+      state.currentLocationLabel = action.payload;
+      //console.log('createCurrentLocationLabel from reducer',state.currentLocationLabel);
+       }
+  })
     .addCase(showResults, (state, action) => {
       state.weatherAvailable = true;
     })
@@ -40,7 +76,14 @@ const reducer = createReducer(initialState, builder => {
       if (action.payload) {
         state.errorMessage = action.payload;
         state.isError = true;
+       
       }
+    })
+    .addCase(setStoreToFavorites, (state, action) => {
+      if (action.payload) {
+        state.storeToFavorites = action.payload;
+       
+         }
     })
     .addCase(setSearchFormSourceType, (state, action) => {
       if (action.payload) {
@@ -51,7 +94,12 @@ const reducer = createReducer(initialState, builder => {
       state.errorMessage = "";
       state.isError = false;
     })
-
+    .addCase(cacheSupported, state => {
+      state.cacheSupported = true;
+    })
+    .addCase(cacheNotEmpty, state => {
+      state.cacheNotEmpty = true;
+    })
     .addCase(getDataRequested, (state) => {
         state.isLoading = true;
     })

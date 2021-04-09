@@ -28,9 +28,9 @@ function StyledRadioGroup(props) {
 function Section(props) {
   const classes = useSourceSectionClasses();
   let history = useHistory();
-  const { favoritesNotEmpty, setSearchFormSourceType, currentPosition, fetchWeather } = props;
-
-  const redirectCities = useCallback(() => {
+  const {setSearchFormSourceType, currentPosition, fetchWeather } = props;
+  
+   const redirectCities = useCallback(() => {
     history.push("/" + "Latitude: " + currentPosition.latitude + "Longitude: " + currentPosition.longitude);
   }, [currentPosition]);
 
@@ -40,6 +40,9 @@ function Section(props) {
     },
     location: {
       run: () => setSearchFormSourceType("location"),
+    },
+    favorites:{
+      run: () => setSearchFormSourceType("favorites"),
     },
     current: {
       run: () => {
@@ -63,7 +66,7 @@ function Section(props) {
           <FormControlLabel value="city" control={<StyledRadio />} label="miasta" />
           <FormControlLabel value="current" disabled={!currentPosition} control={<StyledRadio />} label="aktualnej lokalizacji" />
           <FormControlLabel value="location" control={<StyledRadio />} label="innej lokalizacji" />
-          <FormControlLabel value="favorites" disabled={!favoritesNotEmpty} control={<StyledRadio />} label="z Ulubionych" />
+          <FormControlLabel value="favorites" disabled={!window?.Storage?.local?.hasPlaces()} control={<StyledRadio />} label="z Ulubionych" />
         </StyledRadioGroup>
       </FormControl>
     </Slide>
@@ -71,7 +74,6 @@ function Section(props) {
 }
 
 const mapStateToProps = state => ({
-  favoritesNotEmpty: state.favoritesContainsLocation,
   currentPosition: state.geoLocationPosition,
   weatherAvailable: state.weatherAvailable,
 });

@@ -21,7 +21,7 @@ const Message = props => {
       <article className="not-validated">
         <CancelIcon onClick={handleClose} style={cancel_icon_style} />
         <hr></hr>
-        <p>Wystąpił błąd:</p>
+        <p>Ojejku, błąd:(</p>
         <p>{errorMessage}</p>
       </article>
     </Fade>

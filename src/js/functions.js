@@ -205,11 +205,11 @@ export function getLabelfromPath(str) {
   }
 }
 
-export function finishWhenInternetExplorer( ){
+export function finishWhenInternetExplorer() {
   var ua = window.navigator.userAgent;
   var isIE = /MSIE|Trident/.test(ua);
-  
-  if ( isIE ) {
+
+  if (isIE) {
     window.location = "https://kiszuriwalilibori.github.io/IE/";
   }
 }

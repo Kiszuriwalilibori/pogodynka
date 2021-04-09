@@ -10,7 +10,6 @@ const CollectedWeatherInfos = lazy(()=>import('./CollectedWeatherInformations/Co
 const App = () => {
   
   const location = useLocation();
-  
   return (
       <Switch>
         <Route exact path={ROUTES.LANDING}>

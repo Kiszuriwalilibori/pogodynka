@@ -10,6 +10,7 @@ import MyTooltip from "../details/MyTooltip";
 import Fade from "@material-ui/core/Fade";
 import PropTypes from "prop-types";
 import FindButton from "../details/FindButton";
+import StorePlaceInFavorites_Switch from '../StorePlaceInFavorites_Switch';
 
 const fetchWeather = (data, successFunction) => getWeather("location", data, successFunction);
 const initialValidation = { status: false, message: "" };
@@ -74,6 +75,7 @@ const Form = props => {
         </form>
       </Fade>
       <NotValidated isValidated={validationStatus.status} message={validationStatus.message} />
+      
     </>
   );
 };

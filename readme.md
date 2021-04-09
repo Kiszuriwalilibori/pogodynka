@@ -44,12 +44,18 @@
 #### 3.2 
 - simplified reducer
 
+### 3.3 
+011 partially
+
 ### To do
-
-- w sourceSection można by zrobić hooka kreaującego tą strategię coś jak w GoogleBooks
-- CurrentWeather komponenty mogłyby być generowane z tablicy parametrów
-- przechowywanie lokalizacji w ulubionych
-- ikony
-w actions w punkcie 76 jest zapętlenie search from url. To powinno dać sie przerobić z axiosem.all
-
-
+001 to style select component
+002 implement removing form favorites functionality
+003 source/type/location and its activities are cumberosme. Apply class
+004 comparision should be mead based on favirites and not fixed cities
+005 in sourceSection thre should be hook that generates the strategy (like in Google Books Finder)
+006 in CurrentWeather components should be created from and array of args
+007 icons at least one for general weather description
+008 looping searchfromurl (acrtions 76) could be simplified with axios.all
+009 when the source is 'favorites' the app shoudn not ask whether store to favorites
+010 clearer components naming
+011 apply storing location in favorites

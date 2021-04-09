@@ -1,30 +1,41 @@
 import fetch from "isomorphic-fetch";
 import { createURLofWeatherAPI, createResults, validate } from "../functions";
+import { initGlobalStorage, storageAvailable } from "../storage";
 import { citiesArray } from "../fixtures";
 import Unsplash, { toJson } from "unsplash-js";
 import { setBackground } from "../functions";
 import { accessKey } from "../fixtures";
 import errorDictionary from "../errorDictionary";
-import { setGeoLocationPosition, fetchWeatherFailed, getCityDataReceived, getCityForecastReceived, getGroupReceived, getDataRequested, showErrorMessage, setGeoLocationSupport } from "./reducers/reducer";
+import { setGeoLocationPosition, fetchWeatherFailed, getCityDataReceived, getCityForecastReceived, getGroupReceived, getDataRequested, showErrorMessage, setGeoLocationSupport, cacheSupported, cacheNotEmpty, setPlace } from "./reducers/reducer";
+
+const createLabel = label => {
+  return (dispatch, getState) => {
+    dispatch();
+  };
+};
 
 const successDispatcher = {
   weather: {
-    run: (dispatch, data) => {dispatch(getCityDataReceived(data));
+    run: (dispatch, data) => {
+      dispatch(getCityDataReceived(data));
     },
   },
   forecast: {
-    run: (dispatch, data) => {dispatch(getCityForecastReceived(data));
+    run: (dispatch, data) => {
+      dispatch(getCityForecastReceived(data));
     },
   },
   group: {
-    run: (dispatch, data) => {dispatch(getGroupReceived(data));
+    run: (dispatch, data) => {
+      dispatch(getGroupReceived(data));
     },
   },
 };
 
 export function getWeather(source, city, handleFetchSuccesfullyCompleted) {
   return dispatch => {
-
+    let place = createPlace();
+   
     const handleNoData = (code, place) => {
       let message = errorDictionary[code];
       if (code !== "networkProblem" && code !== "group") message = message + place;
@@ -38,20 +49,29 @@ export function getWeather(source, city, handleFetchSuccesfullyCompleted) {
       [citiesArray, "group"],
     ];
 
+    console.log("table", table);
+
     const readfromURL = table => {
       dispatch(getDataRequested()); //sends action that data is requested
       if (table.length) {
-        let [city, code] = table.shift(); //checks whether passed argumets are not empty - if OK takes first elelment and destructurises it
+        let [city, code] = table.shift(); //checks whether passed argumets are not empty - if OK takes first element and destructurises it
         let reduced = [...table]; //copies remaining elements to new table
+        
         fetch(createURLofWeatherAPI(code, city, source))
-          // initiates connection with server where URL is dynamically created
           .then(response => response.json())
           .then(data => {
             if (validate[code](data)) {
-              
-              let load = createResults[code](data,city);
-              successDispatcher[code].run(dispatch,load);
-              reduced.length ? readfromURL(reduced) : handleFetchSuccesfullyCompleted(); //if there is still something in the table with arguments the function calls itself again(with reduced arguments) otherwise it dispatches redirect request to success page
+              let load = createResults[code](data, city);
+              successDispatcher[code].run(dispatch, load);
+
+              if (reduced.length) {
+                readfromURL(reduced);
+              } else {
+                dispatch(setPlace(place));
+                handleFetchSuccesfullyCompleted();
+              }
+
+              //if there is still something in the table with arguments the function calls itself again(with reduced arguments) otherwise it dispatches redirect request to success page
             } else {
               handleNoData(code, city);
             } //if validation failed it calls failure handler with code(which informs at which stage it happened)
@@ -63,6 +83,12 @@ export function getWeather(source, city, handleFetchSuccesfullyCompleted) {
     };
 
     readfromURL(table);
+
+    function createPlace() {
+      const result = new Map();
+      result.set("source", source).set("place", city);
+      return result;
+    }
   };
 }
 
@@ -110,3 +136,21 @@ export function checkGeoLocation() {
 }
 
 export function getCurrentWeatherData() {}
+
+export function checkSupportForCache() {
+  return dispatch => {
+    if (storageAvailable("localStorage")) {
+      dispatch(cacheSupported());
+      console.warn("Storage available");
+      initGlobalStorage();
+      if (window.Storage.local.hasItems()) {
+        console.log("Storage contains " + window.Storage.local.getLength() + " items");
+        dispatch(cacheNotEmpty());
+      } else {
+        console.warn("No items in storage");
+      }
+    } else {
+      console.warn("Storage not available");
+    }
+  };
+}

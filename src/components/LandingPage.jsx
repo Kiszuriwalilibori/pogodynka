@@ -1,6 +1,6 @@
 import React, {useEffect} from "react"; 
 import { connect } from "react-redux";
-import {fetchBackgroundImage, checkGeoLocation} from '../js/Redux/thunks';
+import {fetchBackgroundImage, checkGeoLocation, checkSupportForCache} from '../js/Redux/thunks';
 import { finishWhenInternetExplorer } from '../js/functions';
 import ProblemMessage from "./details/ProblemMessage";
 
@@ -11,12 +11,16 @@ import {
 
   const Page = props=> {
     finishWhenInternetExplorer();
-    const{fetchBackgroundImage, checkGeoLocation} = props;
+    const{fetchBackgroundImage, checkGeoLocation, checkSupportForCache} = props;
 
     useEffect(() => {
       fetchBackgroundImage('weather');
       checkGeoLocation();
     }, [fetchBackgroundImage]);
+
+    useEffect(() => {checkSupportForCache();
+    }, [checkSupportForCache]);
+  
   
     return (
       <Link to= {ROUTES.SEARCH} style={{ textDecoration: 'none' }} >
@@ -33,6 +37,9 @@ import {
 const mapDispatchToProps = dispatch => ({
   fetchBackgroundImage: (x) => dispatch(fetchBackgroundImage(x)),
   checkGeoLocation: ()=>dispatch(checkGeoLocation()),
+  // cacheSupported: () => dispatch(cacheSupported()),
+  // cacheNotEmpty: () => dispatch(cacheNotEmpty()),
+  checkSupportForCache:()=>dispatch(checkSupportForCache()),
 });
 
 const LandingPage = connect(null, mapDispatchToProps)(Page);
