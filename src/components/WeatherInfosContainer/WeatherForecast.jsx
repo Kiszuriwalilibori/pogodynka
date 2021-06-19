@@ -8,7 +8,7 @@ const ind = ind ||function(){
   return index;
 }
 const prepareWeatherForecast = (props) => {
-  const { forecast } = props;
+  const { forecast, isVisible } = props;
   
   const tableRow = (data) => {
     return (
@@ -20,7 +20,7 @@ const prepareWeatherForecast = (props) => {
     );
   };
 
-  return forecast.length ? (
+  return forecast.length && isVisible ? (
     <React.Fragment>
       <h1>Prognoza 3-dniowa</h1>
       <table className="forecast__table">
@@ -39,6 +39,7 @@ const prepareWeatherForecast = (props) => {
 
 const mapStateToProps = (state) => ({
   forecast: state.Forecast,
+  isVisible: state.isForecastVisible
 });
 
 const WeatherForecast = connect(mapStateToProps)(prepareWeatherForecast);
@@ -46,5 +47,6 @@ export default WeatherForecast;
 
 prepareWeatherForecast.propTypes={
 
-  forecast:PropTypes.arrayOf(PropTypes.array)
+  forecast:PropTypes.arrayOf(PropTypes.array),
+  isVisible:PropTypes.bool
 }

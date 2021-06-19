@@ -1,12 +1,13 @@
-.start__body {
+.landing-page {
   @include centered1200max;
   position: absolute;
   top: 30%;
   left: 50%;
   transform: translate(-50%, -30%);
+  &__welcome-text{
+    @include typical_div;
+    margin: 4vw;
+    padding: 50px;}
+  &__header{ margin: 60px auto;}
 }
-.start__text {
-  @include typical_div;
-  margin: 4vw;
-  padding: 50px;
-}
+

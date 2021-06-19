@@ -1,11 +1,11 @@
 import React from "react";
-import { stringifyWeatherData } from "../../js/functions";
+import { stringifyWeatherData, isPlaceOfLocationType } from "../../js/functions";
 import { Button} from "@material-ui/core";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 import {colors} from "../../js/fixtures";
 
 // Displays headline with info about date and time of weather datacollection
-export const WeatherNowHeader = ({ time }) => {
+export const WeatherInfos_Time = ({ time }) => {
   return (
     <p className="weather__header">
       <strong>Pogoda </strong>
@@ -55,20 +55,18 @@ export const WeatherNowPressure = ({ pressure }) => {
 
 //wrapper for all items rereferring to  current weather in target city
 export const WeatherNowContent = (props) => {
+
   return <div className="weather__content">{props.children}</div>;
 };
 //element displaying neme of current city
-export const ContentHeaderCity = (props) => {
-   return <div className="content__header-cityname">{props.children}</div>;
+export const WeatherInfos_Place = (props) => {
+  const {place} = props;
+  const style =  isPlaceOfLocationType(place)? "weatherinfos__location-name" : "weatherinfos__city-name";
+   return <div className={style}>{place}</div>;
 };
 
-//wrapper for element displaying name of the current city
-export const ContentHeaderWrapper = (props) => {
-  return <div className="content__header">{props.children}</div>;
-};
-//wrapper for all but header elements of content page
-export const ContentBodyWrapper = (props) => {
-  return <div className="content__body">{props.children}</div>;
+export const WeatherInfosContentContainer = (props) => {
+  return <div className="weatherinfos__content">{props.children}</div>;
 };
 
 

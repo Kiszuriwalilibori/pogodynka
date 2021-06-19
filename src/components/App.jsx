@@ -5,7 +5,7 @@ import Awaiting from './details/Awaiting';
 import SearchSection from "./SearchSection";
 import * as ROUTES from "../js/routes";
 import { Switch, Route, useLocation, } from "react-router-dom";
-const CollectedWeatherInfos = lazy(()=>import('./CollectedWeatherInformations/CollectedWeatherInfos'));
+const WeatherInfosContainer = lazy(()=>import('./WeatherInfosContainer/WeatherInfosContainer'));
 
 const App = () => {
   
@@ -18,7 +18,7 @@ const App = () => {
         <Route path={ROUTES.SEARCH}>
           <SearchSection />
         </Route>
-        <Route path = {location.pathname} component ={Awaiting(CollectedWeatherInfos)} />
+        <Route path = {location.pathname} component ={Awaiting(WeatherInfosContainer)} />
         
       </Switch>
   );

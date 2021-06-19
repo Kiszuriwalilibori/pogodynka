@@ -1,19 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { setStoreToFavorites, showErrorMessage, toggleSnackBar } from "../js/Redux/reducers/reducer";
-import Switch from "@material-ui/core/Switch";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import { withStyles } from "@material-ui/core/styles";
 import Label_Form from "./SearchForms/Label_Form";
+import Core_Switch from './Core_Switch';
 
-const MyFormControlLabel = withStyles({
-  label: {
-    fontSize: "20px",
-    color: "white",
-    textShadow: "-1px -1px 0 #224749, 1px -1px 0 #224749, -1px 1px 0 #224749, 1px 1px 0 #224749",
-    fontFamily: "Montserrat",
-  },
-})(FormControlLabel);
 
 function MySwitch(props) {
   const { cacheSupported, place, currentLocationLabel, showErrorMessage, toggleSnackBar } = props;
@@ -27,14 +17,12 @@ function MySwitch(props) {
     setCheck(prev => !prev);
   };
 
-
   useEffect(() => {
     if (check) label = source === "city" ? place.get("place") : source === "location" ? currentLocationLabel : "";
     if (check && label) {
       try {
         const record = { category: "place", label: label, source: source, place: place.get("place") };
-        console.log('source', source);
-        console.log('label', label);
+        
         if (!window.Storage.local.get(label)) {
           window.Storage.local.set(label, record);
           toggleSnackBar('Pomyślnie dodano '+ label + ' do ulubionych');
@@ -50,17 +38,8 @@ function MySwitch(props) {
   
   return cacheSupported && !favoritesStored  && place? (
     <>
-      <MyFormControlLabel
-        control={
-          <div className="switch__wrapper">
-            <span className="option">Nie</span>
-            <Switch checked={check} onChange={toggleChecked} name="checked" />
-            <span className="option">Tak</span>
-          </div>
-        }
-        label="Czy zapisać to miejsce do Ulubionych?"
-        labelPlacement="top"
-      />
+      
+      < Core_Switch func ={toggleChecked} labelText ='Czy zapisać to miejsce do Ulubionych?' status = {check} />
       {check && source && source != "city" ? <Label_Form /> : null}
     </>
   ) : null;

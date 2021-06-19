@@ -24,13 +24,13 @@ import {
   
     return (
       <Link to= {ROUTES.SEARCH} style={{ textDecoration: 'none' }} >
-        <div className= 'start__body'>
-          <h1>Witamy w pogodynce :)</h1>
-          <div className ='start__text'>
+        <article className= 'landing-page'>
+          <h1 className ='header-1 landing-page__header'>Witamy w pogodynce :)</h1>
+          <div className ='landing-page__welcome-text'>
           To jest wersja robocza. Mogą być błędy. Jest cały czas poprawiana i testowana. Ma jeszcze cokolwiek surowy wygląd (brak w niej chociażby ikon, planuję też dołączenie ogólnej informacji o stanie pogody w docelowej lokalizacji, pobieranie pogody dla lokalizacji ze współrzędnych, zapisywanie profilu w firebase).Kliknij gdziekoliwek, żeby przejść dalej<br />
           </div>
           <ProblemMessage />
-        </div>
+        </article>
       </Link>
     )  
 }

@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { compareWeather } from "../../js/functions";
-import { citiesArray, groupTableHeaders, parameters } from "../../js/fixtures";
+import { groupTableHeaders, parameters } from "../../js/fixtures";
 import { getLabelfromPath } from "../../js/functions";
 import { useLocation } from "react-router-dom";
 
@@ -14,8 +14,7 @@ const ind =
     return index;
   };
 const PrepareWeatherComparision = props => {
-  let { weather, group} = props;
-
+  let { weather, favoritesWeather, isVisible} = props;
   
   let locationObj = useLocation();
   const location = getLabelfromPath(locationObj.pathname);
@@ -41,13 +40,14 @@ const PrepareWeatherComparision = props => {
     );
   };
 
-  if (group && weather) {
+  if (favoritesWeather.data && weather && isVisible) {
+    //console.log('group and weather', group, weather);
     let Weather = {};
     parameters.forEach(element => {
       Weather[element] = weather.main[element];
     });
     const group_main_array = [];
-    let Group = group.forEach(item => {
+    let Group = favoritesWeather.data.forEach(item => {
       group_main_array.push(item.main);
     });
     Group = group_main_array;
@@ -55,11 +55,11 @@ const PrepareWeatherComparision = props => {
       return compareWeather(Weather, item, Object.keys(Weather));
     });
     ComparativeTable.forEach((item, index) => {
-      item.unshift(citiesArray[index][0]);
+      item.unshift(favoritesWeather.labels[index]);
     }); //add as city names to the array from static table, if taken from API response would be without polish characters
   }
 
-  return ComparativeTable ? (
+  return ComparativeTable && isVisible? (
     <React.Fragment>
       <h1>{header}</h1>
       <table className="comparative__table">
@@ -80,6 +80,9 @@ const PrepareWeatherComparision = props => {
 const mapStateToProps = state => ({
   weather: state.currentCityData,
   group: state.Group,
+  favoritesWeather: state.favoritesWeather,
+  isVisible:state.isWeatherComparisionVisible,
+
   
 });
 

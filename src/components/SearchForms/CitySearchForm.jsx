@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { TextField } from "@material-ui/core";
 import { useHistory } from "react-router-dom";
-import { getWeather } from "../../js/Redux/thunks";
+import { getWeather, getWeatherSimple } from "../../js/Redux/thunks";
 import MyTooltip from "../details/MyTooltip";
 import { useFormStyles } from "../details/details";
 import NotValidated from "../details/NotValidated";
@@ -12,7 +12,9 @@ import PropTypes from "prop-types";
 import FindButton from '../details/FindButton';
 
 
-const fetchWeather = (data, successFunction) => getWeather("city", data, successFunction);
+/*const fetchWeather = (data, successFunction) => getWeather("city", data, successFunction);*/
+
+const fetchWeather = (data, successFunction) => getWeatherSimple("city", data, successFunction);
 
 const initialValidation = { status: false, message: "" };
 

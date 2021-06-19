@@ -14,7 +14,8 @@ const cityExists = obj => {
 //creates string with current data and time
 export const getCurrentTime = () => {
   const today = new Date();
-  const time = today.getHours() + ":" + today.getMinutes();
+  const minutes = today.getMinutes() < 10 ? "0" + today.getMinutes() : today.getMinutes();
+  const time = today.getHours() + ":" + minutes;
   return time;
 };
 
@@ -107,6 +108,9 @@ export const createResults = {
   group: function (data) {
     return data.list;
   },
+  favorite: function (data) {
+    return data;
+  },
 };
 
 export var validate = {
@@ -170,6 +174,44 @@ export function createURLofWeatherAPI(type, item, source) {
   }
 }
 
+export function createURLfromFavorite(type, item, source) {
+  function createCoreURL(type, something, source) {
+    switch (source) {
+      case "city":
+        return urlFragments.middlefix[type] + something;
+        break;
+      case "location":
+        const location = "lat=" + something.lat + "&lon=" + something.lon;
+
+        return location;
+        break;
+      default:
+        return;
+    }
+  }
+
+  switch (type) {
+    case "forecast":
+      return urlFragments.prefixForecast + createCoreURL(type, item, source) + urlFragments.postfix;
+      break;
+
+    case "weather":
+      return urlFragments.prefixWeather + createCoreURL(type, item, source) + urlFragments.postfix;
+      break;
+
+    case "group":
+      let ids = "";
+      item.forEach(x => {
+        ids = ids + "," + x[1];
+      });
+      ids = ids.slice(1);
+      return urlFragments.prefixGroup + "id=" + ids + urlFragments.postfix;
+
+    default:
+      return urlFragments.prefixForecast + createCoreURL(type, item, source) + urlFragments.postfix;
+  }
+}
+
 export const validateInput = {
   city: {
     run: item => {
@@ -196,9 +238,15 @@ export const validateInput = {
   },
 };
 
+export function isPlaceOfLocationType(placeString) {
+  return placeString.includes("Longitude");
+}
 export function getLabelfromPath(str) {
   if (str && (typeof str === "string" || str instanceof String) && str.indexOf("/") === 0) {
     str = str.substring(1);
+    if (str.includes("Longitude")) {
+      str = str.substr(0, str.indexOf("Longitude")) + " " + str.substr(str.indexOf("Longitude"));
+    }
     return str;
   } else {
     return str;

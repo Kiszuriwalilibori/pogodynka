@@ -1,4 +1,4 @@
-.content__header {
+.weatherinfos__header {
   padding-right: 2vw;
   font-size: 55px;
   font-size: calc(20px + 35 * ((100vw - 320px) / 1080));
@@ -17,15 +17,33 @@
   @include shadow;
 }
 
-.content__body {
+.weatherinfos__content {
   @include centered1200max;
   display:flex;
   flex-direction:column;
   align-items:center;
+  padding: 15px;
 }
 
-.content__header-cityname {
+.weatherinfos__city-name {
   padding-left: 3vw;
   display: flex;
   align-items: center;
+}
+
+.weatherinfos__location-name {
+  padding-left: 3vw;
+  display: flex;
+  align-items: center;
+  font-size: calc(20px + 15 * ((100vw - 320px) / 1080));
+}
+
+.weatherinfos__link{
+  background-color:#F7F700;
+  border-radius:4px;
+  border:2px solid black;
+  color:black;
+  padding:1rem;
+  font-size:16px;
+  text-decoration:none;
 }

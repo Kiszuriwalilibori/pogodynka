@@ -19,7 +19,12 @@ export const createCurrentLocationLabel = createAction("CURRENT_LOCATION_LABEL_C
 export const setPlace = createAction("PLACE_SET");
 export const clearPlace = createAction("PLACE_CLEAR");
 export const toggleSnackBar = createAction("SNACKBAR_TOGGLE");
+export const toggleWeatherComparisionSwitchVisibility = createAction("wEATHER_COMPARISION_SWITCH_VISIBLE");
+export const toggleWeatherComparisionVisibility = createAction("WEATHER_COMPARISION_SWITCH_VISIBLE");
+export const toggleForecastVisibility = createAction("WEATHER_FORECAST_SWITCH_VISIBLE");
+export const getFavoritesWeatherReceived = createAction("FAVORITES_WEATHER_RECEIVED");
 
+export const test = createAction("TEST");
 const initialState = {
   isLoading: false,
   items: [],
@@ -37,38 +42,47 @@ const initialState = {
   cacheSupported: false,
   cacheNotEmpty: false,
   storeToFavorites: false,
-  currentLocationLabel:'',
-  place:undefined,
+  currentLocationLabel: "",
+  place: undefined,
   isSnackBarVisible: false,
-  snackBarItem: '',
+  isWeatherComparisionVisible: false,
+  isForecastVisible: false,
+  favoritesWeather: [],
+  snackBarItem: "",
 };
 
 const reducer = createReducer(initialState, builder => {
   builder
 
-  .addCase(toggleSnackBar, (state, action) => {
-    state.isSnackBarVisible = !state.isSnackBarVisible;
-    if (action && action.payload) {
-      state.snackBarItem = action.payload;
-    }
-  })
-  .addCase(setPlace, (state, action) => {
-    if (action.payload) {
-      state.place = action.payload;
-      //console.log(state.place);
-       }
-  })
-  .addCase(clearPlace, (state, action) => {
-    
+    .addCase(test, (state, action) => {
+      state.test = action.payload;
+      console.log("state.test", state.test);
+    })
+    .addCase(toggleWeatherComparisionVisibility, (state, action) => {
+      state.isWeatherComparisionVisible = action.payload;
+    })
+    .addCase(toggleForecastVisibility, (state, action) => {
+      state.isForecastVisible = action.payload;
+    })
+    .addCase(toggleSnackBar, (state, action) => {
+      state.isSnackBarVisible = !state.isSnackBarVisible;
+      if (action && action.payload) {
+        state.snackBarItem = action.payload;
+      }
+    })
+    .addCase(setPlace, (state, action) => {
+      if (action.payload) {
+        state.place = action.payload;
+      }
+    })
+    .addCase(clearPlace, (state, action) => {
       state.place = undefined;
-       
-  })
-  .addCase(createCurrentLocationLabel, (state, action) => {
-    if (action.payload) {
-      state.currentLocationLabel = action.payload;
-      //console.log('createCurrentLocationLabel from reducer',state.currentLocationLabel);
-       }
-  })
+    })
+    .addCase(createCurrentLocationLabel, (state, action) => {
+      if (action.payload) {
+        state.currentLocationLabel = action.payload;
+      }
+    })
     .addCase(showResults, (state, action) => {
       state.weatherAvailable = true;
     })
@@ -76,21 +90,19 @@ const reducer = createReducer(initialState, builder => {
       if (action.payload) {
         state.errorMessage = action.payload;
         state.isError = true;
-       
       }
     })
     .addCase(setStoreToFavorites, (state, action) => {
       if (action.payload) {
         state.storeToFavorites = action.payload;
-       
-         }
+      }
     })
     .addCase(setSearchFormSourceType, (state, action) => {
       if (action.payload) {
         state.searchFormSourceType = action.payload;
       }
     })
-    .addCase(hideErrorMessage, (state) => {
+    .addCase(hideErrorMessage, state => {
       state.errorMessage = "";
       state.isError = false;
     })
@@ -100,8 +112,8 @@ const reducer = createReducer(initialState, builder => {
     .addCase(cacheNotEmpty, state => {
       state.cacheNotEmpty = true;
     })
-    .addCase(getDataRequested, (state) => {
-        state.isLoading = true;
+    .addCase(getDataRequested, state => {
+      state.isLoading = true;
     })
     .addCase(setGeoLocationPosition, (state, action) => {
       if (action.payload) {
@@ -120,7 +132,7 @@ const reducer = createReducer(initialState, builder => {
         state.isError = true;
       }
     })
-    
+
     .addCase(getCityDataReceived, (state, action) => {
       if (action.payload) {
         state.isLoading = false;
@@ -138,6 +150,11 @@ const reducer = createReducer(initialState, builder => {
       if (action.payload) {
         state.isLoading = false;
         state.Group = action.payload;
+      }
+    })
+    .addCase(getFavoritesWeatherReceived, (state, action) => {
+      if (action.payload) {
+        state.favoritesWeather = action.payload;
       }
     })
     .addDefaultCase(() => {});

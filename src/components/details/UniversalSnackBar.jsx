@@ -40,8 +40,8 @@ const mapDispatchToProps = dispatch => ({
   toggle: (value) => dispatch(toggleSnackBar(value)),
 });
 
-const MySnackBar = connect(mapStateToProps, mapDispatchToProps)(MessageSnackbar);
-export default MySnackBar;
+const UniversalSnackBar = connect(mapStateToProps, mapDispatchToProps)(MessageSnackbar);
+export default UniversalSnackBar;
 
 MessageSnackbar.propTypes = {
   open: PropTypes.bool,

@@ -6,7 +6,7 @@ import Unsplash, { toJson } from "unsplash-js";
 import { setBackground } from "../functions";
 import { accessKey } from "../fixtures";
 import errorDictionary from "../errorDictionary";
-import { setGeoLocationPosition, fetchWeatherFailed, getCityDataReceived, getCityForecastReceived, getGroupReceived, getDataRequested, showErrorMessage, setGeoLocationSupport, cacheSupported, cacheNotEmpty, setPlace } from "./reducers/reducer";
+import { setGeoLocationPosition, fetchWeatherFailed, getCityDataReceived, getCityForecastReceived, getGroupReceived, getDataRequested, showErrorMessage, setGeoLocationSupport, cacheSupported, cacheNotEmpty, setPlace, test, getFavoritesWeatherReceived } from "./reducers/reducer";
 
 const createLabel = label => {
   return (dispatch, getState) => {
@@ -30,12 +30,17 @@ const successDispatcher = {
       dispatch(getGroupReceived(data));
     },
   },
+  favorites: {
+    run: (dispatch, data) => {
+      dispatch(getFavoritesWeatherReceived(data));
+    },
+  },
 };
 
 export function getWeather(source, city, handleFetchSuccesfullyCompleted) {
   return dispatch => {
     let place = createPlace();
-   
+
     const handleNoData = (code, place) => {
       let message = errorDictionary[code];
       if (code !== "networkProblem" && code !== "group") message = message + place;
@@ -49,14 +54,12 @@ export function getWeather(source, city, handleFetchSuccesfullyCompleted) {
       [citiesArray, "group"],
     ];
 
-    console.log("table", table);
-
     const readfromURL = table => {
       dispatch(getDataRequested()); //sends action that data is requested
       if (table.length) {
         let [city, code] = table.shift(); //checks whether passed argumets are not empty - if OK takes first element and destructurises it
         let reduced = [...table]; //copies remaining elements to new table
-        
+
         fetch(createURLofWeatherAPI(code, city, source))
           .then(response => response.json())
           .then(data => {
@@ -89,6 +92,94 @@ export function getWeather(source, city, handleFetchSuccesfullyCompleted) {
       result.set("source", source).set("place", city);
       return result;
     }
+  };
+}
+
+export function fetchForecast(source, city, handleFetchSuccesfullyCompleted) {
+  return dispatch => {
+    let place = createPlace();
+    const code = "forecast";
+    const handleNoData = (code, place) => {
+      let message = errorDictionary[code];
+      if (code !== "networkProblem" && code !== "group") message = message + place;
+      dispatch(fetchWeatherFailed(message));
+      return;
+    };
+
+    const readfromURL = city => {
+      dispatch(getDataRequested()); //sends action that data is requested
+      if (city) {
+        fetch(createURLofWeatherAPI(code, city, source))
+          .then(response => response.json())
+          .then(data => {
+            if (validate[code](data)) {
+              let load = createResults[code](data, city);
+              successDispatcher[code].run(dispatch, load);
+              dispatch(setPlace(place));
+              handleFetchSuccesfullyCompleted();
+            } else {
+              handleNoData(code, city);
+            } //if validation failed it calls failure handler with code(which informs at which stage it happened)
+          })
+          .catch(err => {
+            dispatch(fetchWeatherFailed(errorDictionary[err.message]));
+          });
+      } // if connection is not OK it calls failure handler with network problem code
+    };
+
+    readfromURL(city);
+
+    function createPlace() {
+      const result = new Map();
+      result.set("source", source).set("place", city);
+      return result;
+    }
+  };
+}
+
+export function getWeatherForComparision(handleFetchSuccesfullyCompleted) {
+  return dispatch => {
+    const code = "weather";
+    const rawFavorites = window?.Storage?.local?.getAllPlaces();
+    const favorites = rawFavorites.map(item => {
+      return { label: item.label, url: createURLofWeatherAPI("weather", item.place, item.source) };
+    });
+
+    const handleNoData = (code, place) => {
+      let message = errorDictionary[code];
+      if (code !== "networkProblem" && code !== "group") message = message + place;
+      dispatch(fetchWeatherFailed(message));
+      return;
+    };
+
+    const weatherDataForComparision = { labels: [], data: [] };
+    const readfromURL = table => {
+      //dispatch(getDataRequested()); //sends action that data is requested
+      if (table.length) {
+        let singleURL = table.shift(); //checks whether passed argumets are not empty - if OK takes first element and destructurises it
+        let reducedURL = [...table]; //copies remaining elements to new table
+        fetch(singleURL.url)
+          .then(response => response.json())
+          .then(data => {
+            if (/*validate['weather'](data)*/ true) {
+              weatherDataForComparision.labels.push(singleURL.label);
+              weatherDataForComparision.data.push(data);
+
+              if (reducedURL.length) {
+                readfromURL(reducedURL);
+              } else {
+                handleFetchSuccesfullyCompleted();
+                successDispatcher["favorites"].run(dispatch, weatherDataForComparision);
+              }
+
+              //if there is still something in the table with arguments the function calls itself again(with reduced arguments) otherwise it dispatches redirect request to success page
+            } else {
+              handleNoData("weather", singleURL.label);
+            } //if validation failed it calls failure handler with code(which informs at which stage it happened)
+          });
+      }
+    };
+    readfromURL(favorites);
   };
 }
 
@@ -151,6 +242,48 @@ export function checkSupportForCache() {
       }
     } else {
       console.warn("Storage not available");
+    }
+  };
+}
+
+export function getWeatherSimple(source, city, handleFetchSuccesfullyCompleted) {
+  return dispatch => {
+    let place = createPlace();
+    const code = "weather";
+    const handleNoData = (code, place) => {
+      let message = errorDictionary[code];
+      if (code !== "networkProblem" && code !== "group") message = message + place;
+      dispatch(fetchWeatherFailed(message));
+      return;
+    };
+
+    const readfromURL = city => {
+      dispatch(getDataRequested());
+      if (city) {
+        fetch(createURLofWeatherAPI(code, city, source))
+          .then(response => response.json())
+          .then(data => {
+            if (validate[code](data)) {
+              let load = createResults[code](data, city);
+              successDispatcher[code].run(dispatch, load);
+              dispatch(setPlace(place));
+              handleFetchSuccesfullyCompleted();
+            } else {
+              handleNoData(code, city);
+            }
+          })
+          .catch(err => {
+            dispatch(fetchWeatherFailed(errorDictionary[err.message]));
+          });
+      }
+    };
+
+    readfromURL(city);
+
+    function createPlace() {
+      const result = new Map();
+      result.set("source", source).set("place", city);
+      return result;
     }
   };
 }
