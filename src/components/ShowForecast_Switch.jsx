@@ -22,7 +22,7 @@ function ForecastSwitch(props) {
     check === false && toggleForecastVisibility(check);
   }, [check]);
 
-  return (place.get('source')&& place.get('place'))?(
+  return ( place && place.get('source')&& place.get('place'))?(
     
     < Core_Switch func ={toggleChecked} labelText ='Czy pokazać prognozę' status = {check} />
   ):null;

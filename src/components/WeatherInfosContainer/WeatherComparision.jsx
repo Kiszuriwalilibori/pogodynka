@@ -41,7 +41,6 @@ const PrepareWeatherComparision = props => {
   };
 
   if (favoritesWeather.data && weather && isVisible) {
-    //console.log('group and weather', group, weather);
     let Weather = {};
     parameters.forEach(element => {
       Weather[element] = weather.main[element];

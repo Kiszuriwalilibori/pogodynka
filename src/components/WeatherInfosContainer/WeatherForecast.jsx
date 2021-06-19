@@ -21,7 +21,7 @@ const prepareWeatherForecast = (props) => {
   };
 
   return forecast.length && isVisible ? (
-    <React.Fragment>
+    <>
       <h1>Prognoza 3-dniowa</h1>
       <table className="forecast__table">
         <thead>
@@ -33,7 +33,7 @@ const prepareWeatherForecast = (props) => {
         </thead>
         <tbody>{forecast.map((item) => tableRow(item))}</tbody>
       </table>
-    </React.Fragment>
+    </>
   ) : null;
 };
 
