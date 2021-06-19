@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/pogodynka/static/css/main.4e7ad044.chunk.css",
-    "main.js": "/pogodynka/static/js/main.81b6de0a.chunk.js",
-    "main.js.map": "/pogodynka/static/js/main.81b6de0a.chunk.js.map",
-    "runtime-main.js": "/pogodynka/static/js/runtime-main.74a91a99.js",
-    "runtime-main.js.map": "/pogodynka/static/js/runtime-main.74a91a99.js.map",
-    "static/js/2.645e9293.chunk.js": "/pogodynka/static/js/2.645e9293.chunk.js",
-    "static/js/2.645e9293.chunk.js.map": "/pogodynka/static/js/2.645e9293.chunk.js.map",
+    "main.css": "/pogodynka/static/css/main.7cd01e90.chunk.css",
+    "main.js": "/pogodynka/static/js/main.1d41a8a7.chunk.js",
+    "main.js.map": "/pogodynka/static/js/main.1d41a8a7.chunk.js.map",
+    "runtime-main.js": "/pogodynka/static/js/runtime-main.0acc4120.js",
+    "runtime-main.js.map": "/pogodynka/static/js/runtime-main.0acc4120.js.map",
+    "static/js/2.9b24a2e7.chunk.js": "/pogodynka/static/js/2.9b24a2e7.chunk.js",
+    "static/js/2.9b24a2e7.chunk.js.map": "/pogodynka/static/js/2.9b24a2e7.chunk.js.map",
     "static/js/3.0388ecef.chunk.js": "/pogodynka/static/js/3.0388ecef.chunk.js",
     "static/js/3.0388ecef.chunk.js.map": "/pogodynka/static/js/3.0388ecef.chunk.js.map",
-    "static/js/4.0ceca8de.chunk.js": "/pogodynka/static/js/4.0ceca8de.chunk.js",
-    "static/js/4.0ceca8de.chunk.js.map": "/pogodynka/static/js/4.0ceca8de.chunk.js.map",
+    "static/js/4.4951293e.chunk.js": "/pogodynka/static/js/4.4951293e.chunk.js",
+    "static/js/4.4951293e.chunk.js.map": "/pogodynka/static/js/4.4951293e.chunk.js.map",
     "index.html": "/pogodynka/index.html",
-    "static/css/main.4e7ad044.chunk.css.map": "/pogodynka/static/css/main.4e7ad044.chunk.css.map",
-    "static/js/2.645e9293.chunk.js.LICENSE.txt": "/pogodynka/static/js/2.645e9293.chunk.js.LICENSE.txt",
+    "static/css/main.7cd01e90.chunk.css.map": "/pogodynka/static/css/main.7cd01e90.chunk.css.map",
+    "static/js/2.9b24a2e7.chunk.js.LICENSE.txt": "/pogodynka/static/js/2.9b24a2e7.chunk.js.LICENSE.txt",
     "static/media/App.css": "/pogodynka/static/media/montserrat-v15-latin-ext_latin-regular.dbd57c04.woff"
   },
   "entrypoints": [
-    "static/js/runtime-main.74a91a99.js",
-    "static/js/2.645e9293.chunk.js",
-    "static/css/main.4e7ad044.chunk.css",
-    "static/js/main.81b6de0a.chunk.js"
+    "static/js/runtime-main.0acc4120.js",
+    "static/js/2.9b24a2e7.chunk.js",
+    "static/css/main.7cd01e90.chunk.css",
+    "static/js/main.1d41a8a7.chunk.js"
   ]
 }
