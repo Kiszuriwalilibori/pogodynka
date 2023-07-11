@@ -1,0 +1,40 @@
+{
+  "files": {
+    "main.css": "/pogodynka/static/css/main.5b358eed.css",
+    "main.js": "/pogodynka/static/js/main.0c47cc80.js",
+    "static/media/background.webp": "/pogodynka/static/media/background.3e3f69d4f1ab2fcddfcb.webp",
+    "static/media/brush.ttf": "/pogodynka/static/media/brush.3df63a6f8112a52db22d.ttf",
+    "static/media/background_desktop.webp": "/pogodynka/static/media/background_desktop.1b013843d6095bcefaa6.webp",
+    "static/media/background_tablet.webp": "/pogodynka/static/media/background_tablet.20044038897101353488.webp",
+    "static/media/background_small.webp": "/pogodynka/static/media/background_small.57a2861c2af807c43eab.webp",
+    "static/media/montserrat-v15-latin-ext_latin-regular.ttf": "/pogodynka/static/media/montserrat-v15-latin-ext_latin-regular.548eda5edd1e08c57e68.ttf",
+    "static/media/montserrat-v15-latin-ext_latin-700.ttf": "/pogodynka/static/media/montserrat-v15-latin-ext_latin-700.9044a6c9dc892dd9ab9d.ttf",
+    "static/media/montserrat-v15-latin-ext_latin-600.ttf": "/pogodynka/static/media/montserrat-v15-latin-ext_latin-600.e55b527ef96ad65b4b56.ttf",
+    "static/media/montserrat-v15-latin-ext_latin-500.ttf": "/pogodynka/static/media/montserrat-v15-latin-ext_latin-500.04c894a9563d2160db48.ttf",
+    "static/media/background_mobile.webp": "/pogodynka/static/media/background_mobile.a30a63658a1cd9c76b82.webp",
+    "static/media/montserrat-v15-latin-ext_latin-regular.svg": "/pogodynka/static/media/montserrat-v15-latin-ext_latin-regular.a33247ee19cd20c634b5.svg",
+    "static/media/montserrat-v15-latin-ext_latin-500.svg": "/pogodynka/static/media/montserrat-v15-latin-ext_latin-500.25e5806ab5b17a0cefcb.svg",
+    "static/media/montserrat-v15-latin-ext_latin-600.svg": "/pogodynka/static/media/montserrat-v15-latin-ext_latin-600.4f455386517a32fe092e.svg",
+    "static/media/montserrat-v15-latin-ext_latin-700.svg": "/pogodynka/static/media/montserrat-v15-latin-ext_latin-700.0897cd29b7625f35ad22.svg",
+    "service-worker.js": "/pogodynka/service-worker.js",
+    "static/media/montserrat-v15-latin-ext_latin-700.woff": "/pogodynka/static/media/montserrat-v15-latin-ext_latin-700.6a509a96f3c87d432524.woff",
+    "static/media/montserrat-v15-latin-ext_latin-500.woff": "/pogodynka/static/media/montserrat-v15-latin-ext_latin-500.5a5a2824a5b2000f1e7e.woff",
+    "static/media/montserrat-v15-latin-ext_latin-regular.woff": "/pogodynka/static/media/montserrat-v15-latin-ext_latin-regular.dbd57c048932943ca441.woff",
+    "static/media/montserrat-v15-latin-ext_latin-600.woff": "/pogodynka/static/media/montserrat-v15-latin-ext_latin-600.e50f62de181356bd65c7.woff",
+    "static/media/montserrat-v15-latin-ext_latin-500.eot": "/pogodynka/static/media/montserrat-v15-latin-ext_latin-500.9ea6901971de61e2e58b.eot",
+    "static/media/montserrat-v15-latin-ext_latin-700.eot": "/pogodynka/static/media/montserrat-v15-latin-ext_latin-700.77e5944342d13e7961d6.eot",
+    "static/media/montserrat-v15-latin-ext_latin-regular.eot": "/pogodynka/static/media/montserrat-v15-latin-ext_latin-regular.5993ba9d29eadeee9831.eot",
+    "static/media/montserrat-v15-latin-ext_latin-600.eot": "/pogodynka/static/media/montserrat-v15-latin-ext_latin-600.433375d471ed1f436656.eot",
+    "static/media/montserrat-v15-latin-ext_latin-500.woff2": "/pogodynka/static/media/montserrat-v15-latin-ext_latin-500.76be2cdf69c3b67d2854.woff2",
+    "static/media/montserrat-v15-latin-ext_latin-700.woff2": "/pogodynka/static/media/montserrat-v15-latin-ext_latin-700.1f256dfe24d3d9eff2cf.woff2",
+    "static/media/montserrat-v15-latin-ext_latin-regular.woff2": "/pogodynka/static/media/montserrat-v15-latin-ext_latin-regular.35b478a95ecaa73a446a.woff2",
+    "static/media/montserrat-v15-latin-ext_latin-600.woff2": "/pogodynka/static/media/montserrat-v15-latin-ext_latin-600.f6d165b6156c888a5da2.woff2",
+    "index.html": "/pogodynka/index.html",
+    "main.5b358eed.css.map": "/pogodynka/static/css/main.5b358eed.css.map",
+    "main.0c47cc80.js.map": "/pogodynka/static/js/main.0c47cc80.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.5b358eed.css",
+    "static/js/main.0c47cc80.js"
+  ]
+}
