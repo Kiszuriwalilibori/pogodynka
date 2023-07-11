@@ -1,0 +1,41 @@
+{
+  "buttons": { "save": "Zapisz" },
+  "params": { "temp": "Temperatura" },
+  "landing": { "welcome": "Witamy w Pogodynce :)", "click": "Kliknij aby przejść dalej" },
+  "msgs": {
+    "gees": "Ojejku, błąd!",
+    "nopage": "Strony o adresie  {{url}} po prostu nie ma  &#128549;",
+    "too_short": "Za krótki ciąg - muszą być conajmniej dwa znaki",
+    "name_requested": "Wpisanie nazwy jest wymagane",
+    "chars&nums_only": "Dopuszczalne wyłącznie litery i cyfry",
+    "two_and_alpha": " Nie mniej niż dwa znaki w tym jeden alfanumeryczny",
+    "no_API_key": "Nie znaleziono klucza API. Aplikacja nie będzie działać",
+    "invalid_data": "W {{type}} wystapił błąd przetwarzania pobranych danych. Nazwa błędu: {{name}} Opis błędu: {{description}} ",
+    "no_background": " W tej chwili nie można pobrać obrazu tła"
+  },
+  "search": {
+    "search": "Wyszukaj",
+    "select": "Wybierz miejsce",
+    "longitude": "Liczba z zakresu <-90, 90> ",
+    "latitude": "Liczba z zakresu <-180, 180> ",
+    "long_required": "Długość geograficzna jest wymagana",
+    "lat_required": "Szerokość geograficzna jest wymagana",
+    "latitude_isNaN": "Długość geograficzna nie jest liczbą",
+    "longitude_isNaN": "Szerokość geograficzna nie jest liczbą",
+    "latitude_OutOFRange": "Długość geograficzna spoza zakresu <-90, 90> ",
+    "longitude_OutOFRange": "Szerokość geograficzna spoza zakresu <-180, 180>",
+    "show_for": "Pokaż pogodę dla: ",
+    "city": "miasta",
+    "current": "aktualnej lokalizacji",
+    "other": "innej lokalizacji",
+    "favorites": "z Ulubionych"
+  },
+  "favs": {
+    "empty": "Ulubione są puste",
+    "serviced": "Ulubione są obsługiwane",
+    "not_serviced": "Ulubione nie są obsługiwane",
+    "place_number": "W ulubionych jest zapisane {{length}} miejsc.",
+    "add_success": "Pomyślnie dodano {{label}} do ulubionych",
+    "add_error": "Podczas próby dodania {{label}} do ulubionych wystąpił błąd"
+  }
+}

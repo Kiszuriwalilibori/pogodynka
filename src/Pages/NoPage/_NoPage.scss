@@ -1,0 +1,9 @@
+@use "styles/abstracts/variables&mixins" as *;
+
+.LandingPage {
+  @include centered1200max;
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -30%);
+}

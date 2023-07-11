@@ -1,0 +1,55 @@
+@use "styles/abstracts/variables&mixins" as *;
+
+$WeatherCurrent-breakpoint: 885px;
+
+.CurrentWeather {
+  &__table {
+    min-height: 125px;
+    flex-wrap: wrap;
+    font-family: Montserrat;
+    display: flex;
+    justify-content: space-around;
+    @media (max-width: $WeatherCurrent-breakpoint) {
+      flex-direction: column;
+    }
+  }
+  &__item {
+    @include centeredflex;
+    min-height: 100%;
+    padding: 0 20px;
+    flex-direction: column;
+    @media (max-width: $WeatherCurrent-breakpoint) {
+      margin: 10px 0;
+    }
+    & > p {
+      align-self: top;
+      color: inherit;
+      font-family: inherit;
+      font-size: 14px;
+    }
+    & > span {
+      color: inherit;
+      font-family: inherit;
+      font-size: 40px;
+      @media (max-width: $WeatherCurrent-breakpoint) {
+        font-size: 25px;
+      }
+    }
+    &--large {
+      margin-right: 40px;
+      @media (max-width: $WeatherCurrent-breakpoint) {
+        padding: 0 20px;
+        margin-right: 0;
+      }
+      & > span {
+        font-size: 6.2em;
+        letter-spacing: -4.5px;
+        @media (max-width: $WeatherCurrent-breakpoint) {
+          padding: none;
+          margin-right: initial;
+          font-size: 3em;
+        }
+      }
+    }
+  }
+}

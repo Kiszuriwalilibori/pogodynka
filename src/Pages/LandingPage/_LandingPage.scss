@@ -1,0 +1,41 @@
+@use "styles/abstracts/variables&mixins" as *;
+
+.LandingPage {
+  @include centered1200max;
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -30%);
+
+  &__header {
+    margin: 60px auto;
+    font-family: brush;
+    font-size: 120px;
+    text-shadow: none;
+    @media (min-width: 320px) and (max-width: 1441px) {
+      font-size: calc(50px + 85 * ((100vw - 320px) / 1120));
+    }
+    background: -webkit-linear-gradient(red, #154caf);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  & h1 {
+    text-align: center;
+    margin: 60px auto;
+    font-family: brush;
+    font-size: 120px;
+    font-weight: 600;
+    text-shadow: none;
+    @media (min-width: 320px) and (max-width: 1441px) {
+      font-size: calc(50px + 85 * ((100vw - 320px) / 1120));
+    }
+    background: -webkit-linear-gradient(red, #154caf);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  & h2 {
+    text-align: center;
+  }
+}

@@ -1,0 +1,65 @@
+import { QueryClientProvider } from "@tanstack/react-query";
+import { FC } from "react";
+import { configureStore } from "@reduxjs/toolkit";
+
+import { Provider } from "react-redux";
+import { SnackbarProvider } from "notistack";
+import { HashRouter as Router } from "react-router-dom";
+import { ThemeProvider, Theme, StyledEngineProvider } from "@mui/material";
+import { register } from "../serviceWorkerRegistration";
+
+import useQueryClient from "../hooks/useQueryClient";
+import reducer from "../js/Redux/reducer";
+import CheckSupportForLocalStorage from "./CheckSupportForLocalStorage";
+import CheckSupportForGeolocation from "./CheckSupportForGeolocation";
+import SetBackground from "./SetBackground";
+import theme from "themes/theme";
+
+import { PlaceContextProvider } from "contexts";
+
+import "styles/App.css";
+import "../i18n/config";
+
+declare module "@mui/styles/defaultTheme" {
+  // eslint-disable-next-line @typescript-eslint/no-empty-interface
+  interface DefaultTheme extends Theme {}
+}
+
+export const store = configureStore({ reducer });
+const AppProvider: FC = ({ children }) => {
+  return (
+    <Provider store={store}>
+      <QueryClientProvider client={useQueryClient()}>
+        <StyledEngineProvider injectFirst>
+          <ThemeProvider theme={theme}>
+            <SnackbarProvider
+              maxSnack={3}
+              anchorOrigin={{
+                vertical: "bottom",
+                horizontal: "center",
+              }}
+            >
+              <PlaceContextProvider>
+                <CheckSupportForLocalStorage>
+                  <CheckSupportForGeolocation>
+                    <SetBackground>
+                      <Router>{children}</Router>
+                    </SetBackground>
+                  </CheckSupportForGeolocation>
+                </CheckSupportForLocalStorage>
+              </PlaceContextProvider>
+            </SnackbarProvider>
+          </ThemeProvider>
+        </StyledEngineProvider>
+      </QueryClientProvider>
+    </Provider>
+  );
+};
+
+register();
+
+export type RootStateType = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;
+export default AppProvider;
+
+//todo jeżeli łapanie błędu miałoby bbyć centralne tjs przez coś tam w useQueryClient to tylko react-hot-toast działa. Zarówno dispatch jak i  toastify walą błędy
