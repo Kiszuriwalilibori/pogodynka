@@ -1,17 +1,17 @@
-import StorePlaceInFavoritesSwitch from "components/StorePlaceInFavoritesSwitch";
-import { DescriptionWithIcon, WeatherPageHeader, PageContentContainer, WeatherAspectsTabs } from "./parts";
+import { AddToFavorites, Banner, VisualDescription, WeatherTabs } from "./parts";
+import { Container } from "./styled";
 
-const Page = () => {
+const WeatherPage = () => {
   return (
     <>
-      <WeatherPageHeader />
-      <PageContentContainer>
-        <StorePlaceInFavoritesSwitch />
-        <DescriptionWithIcon />
-        <WeatherAspectsTabs />
-      </PageContentContainer>
+      <Banner />
+      <Container>
+        <AddToFavorites />
+        <VisualDescription />
+        <WeatherTabs />
+      </Container>
     </>
   );
 };
 
-export default Page;
+export default WeatherPage;

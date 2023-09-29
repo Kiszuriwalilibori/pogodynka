@@ -1,4 +1,5 @@
 import createURL from "./createURL";
+import i18next from "i18next";
 
 import { PlaceVariants, Geolocation, Position } from "types";
 
@@ -19,7 +20,7 @@ export class Place {
     this.place = place;
     this.isFromFavorites = isFromFavorites;
     this.forecastURL = createURL.forecast(place as Geolocation, type);
-    this.weatherURL = createURL.weather(place as Geolocation, type);
+    this.weatherURL = createURL.weather(place as Geolocation, type, i18next.language);
 
     switch (this.type) {
       case PlaceVariants.CITY:
@@ -31,7 +32,7 @@ export class Place {
         ).longitude.toFixed(4)}`;
         break;
       default:
-        this.label = "non-specified value (type) passed to  createLabelforHeader method";
+        this.label = i18next.t("place.invalid_header");
     }
 
     switch (this.type) {
@@ -44,12 +45,14 @@ export class Place {
         }`;
         break;
       default:
-        this.redirectURL = "non-specified value (type) passed to  redirectURL method";
+        this.redirectURL = i18next.t("place.invalid_URL");
     }
 
-    this.labelComparision = `Porównanie pogody w ${this.label} i innych miejscach`;
-    this.labelForecast = `Prognoza 3-dniowa dla ${this.label}`;
-    this.labelCurrent = `Bieżąca pogoda dla ${this.label}`;
+    this.labelComparision = ` ${i18next.t("place.comparision_pre")}  ${this.label} ${i18next.t(
+      "place.comparision_post"
+    )}`;
+    this.labelForecast = `${i18next.t("place.forecast")} ${this.label}`;
+    this.labelCurrent = `${i18next.t("place.current")} ${this.label}`;
   }
 
   get getPlace() {

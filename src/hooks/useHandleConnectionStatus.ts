@@ -15,6 +15,6 @@ export const useHandleConnectionStatus = () => {
       window.removeEventListener("offline", handleStatusChange);
       window.removeEventListener("online", handleStatusChange);
     };
-  }, []);
+  }, [showMessage]);
 };
 export default useHandleConnectionStatus;

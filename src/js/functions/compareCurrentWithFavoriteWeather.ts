@@ -1,5 +1,4 @@
-import { comparision } from "models";
-import { ComparisionResult } from "types";
+import { getComparision, ComparisionParameter, ComparisionResults } from "models";
 
 /**
  * compares weather data for current and given favorite, with rounding numerical values
@@ -19,9 +18,11 @@ const getRelation = (a: number, b: number) => {
 const compareCurrentWithFavoriteWeather = (
   currentDataArray: { [key: string]: number },
   favoriteDataArray: { [key: string]: number },
-  keys: string[]
+  keys: ComparisionParameter[]
 ) => {
-  let resultArray: ComparisionResult[] = [];
+  let resultArray: ComparisionResults = [];
+
+  const comparision = getComparision();
 
   keys.forEach((item, index) => {
     if (currentDataArray[item] && favoriteDataArray[item]) {

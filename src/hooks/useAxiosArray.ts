@@ -4,7 +4,7 @@ import { useState, useEffect, useCallback } from "react";
 import { useSnackbar } from "notistack";
 
 import { useBoolean } from "hooks";
-import { FavoriteItemWeatherWithEndpointLabel } from "types";
+import { WeatherDataWithEndpoint } from "types";
 
 type endpoints = {
   label: string;
@@ -12,17 +12,15 @@ type endpoints = {
 }[];
 
 const useAxiosArray = (endpoints: endpoints, validator: Function) => {
-  const [data, setData] = useState<{ data: FavoriteItemWeatherWithEndpointLabel[] }>(
-    {} as { data: FavoriteItemWeatherWithEndpointLabel[] }
-  );
-  const [error, setErrorTrue, ,] = useBoolean(false);
+  const [data, setData] = useState<{ data: WeatherDataWithEndpoint[] }>({} as { data: WeatherDataWithEndpoint[] });
+  const [isError, setIsErrorTrue, ,] = useBoolean(false);
   const [loading, , setLoadingFalse] = useBoolean(true);
   const { enqueueSnackbar } = useSnackbar();
 
-  let favoritesWeatherData = { data: [] as FavoriteItemWeatherWithEndpointLabel[] };
+  let favoritesWeatherData = { data: [] as WeatherDataWithEndpoint[] };
 
   const fatalError = useCallback(() => {
-    setErrorTrue();
+    setIsErrorTrue();
     enqueueSnackbar(`No data fetched at all for favorites`, {
       variant: "error",
     });
@@ -48,7 +46,7 @@ const useAxiosArray = (endpoints: endpoints, validator: Function) => {
       axios
         .get(singleFavorite.url)
         .then(data => {
-          const weatherData: FavoriteItemWeatherWithEndpointLabel = { ...data?.data };
+          const weatherData: WeatherDataWithEndpoint = { ...data?.data };
           if (validator(weatherData)) {
             if (singleFavorite) weatherData.endpointLabel = singleFavorite?.label; // funny name but also hardly repeatble by accident
             favoritesWeatherData.data.push(weatherData);
@@ -77,7 +75,7 @@ const useAxiosArray = (endpoints: endpoints, validator: Function) => {
           }
         });
     } else {
-      setErrorTrue();
+      setIsErrorTrue();
       enqueueSnackbar(`Thre are no favorites in local storage or passed empty array of URL due to unknown error`, {
         variant: "error",
       });
@@ -88,7 +86,7 @@ const useAxiosArray = (endpoints: endpoints, validator: Function) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  return { data, error, loading };
+  return { data, error: isError, loading };
 };
 
 export default useAxiosArray;

@@ -1,6 +1,6 @@
 import createURL from "./createURL";
-
-import { FavoritesItem } from "types";
+import i18next from "i18next";
+import { Favorite } from "types";
 
 type FilteringFunction = (item: any) => boolean;
 //type FilteringFunction = <T>(item: T) => boolean;
@@ -80,7 +80,7 @@ export class LocalStorage {
 }
 
 export class FilteredStorage extends LocalStorage {
-  data: FavoritesItem[];
+  data: Favorite[];
 
   constructor(fn: FilteringFunction) {
     super();
@@ -97,7 +97,7 @@ export class FilteredStorage extends LocalStorage {
   }
   getForComparision() {
     const result = this.data.map(item => {
-      return { label: item.label, url: createURL.weather(item.place, item.source) };
+      return { label: item.label, url: createURL.weather(item.place, item.source, i18next.language) };
     });
 
     return result;

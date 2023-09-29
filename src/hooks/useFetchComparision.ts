@@ -3,7 +3,7 @@ import { useQueries } from "@tanstack/react-query";
 import getWeather from "js/functions/getWeather";
 import useGetParamsForComparision from "./useGetParamsForComparision";
 
-import { FavoriteItemWeatherWithEndpointLabel } from "types";
+import { WeatherDataWithEndpoint } from "types";
 
 export const useFetchComparision = () => {
   const { label, endpoints } = useGetParamsForComparision();
@@ -20,7 +20,7 @@ export const useFetchComparision = () => {
   });
   const favoritesWeatherDataForComparision = roughData
     .map(item => item.data)
-    .filter(item => Boolean(item)) as FavoriteItemWeatherWithEndpointLabel[];
+    .filter(item => Boolean(item)) as WeatherDataWithEndpoint[];
   const isComparisionLoading = roughData.some(query => query.isLoading);
   const isComparisionError = roughData.some(result => result.isError);
   return { favoritesWeatherDataForComparision, isComparisionLoading, isComparisionError, label };

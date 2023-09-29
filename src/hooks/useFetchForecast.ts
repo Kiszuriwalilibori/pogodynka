@@ -6,9 +6,9 @@ import { usePlaceContext } from "contexts/placeContext";
 
 export const useFetchForecast = () => {
   const { forecastURL } = { ...usePlaceContext().place };
-  const { data, isError, error, isLoading } = useQuery([forecastURL], () => getWeather(forecastURL));
+  const { data, isLoading } = useQuery([forecastURL], () => getWeather(forecastURL));
 
-  return { data, isError, error, isLoading };
+  return { data, isLoading };
 };
 
 export default useFetchForecast;

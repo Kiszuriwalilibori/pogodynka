@@ -1,17 +1,15 @@
-import * as React from "react";
-
 import { connect } from "react-redux";
 
-import CitySearchForm from "./CitySearchForm";
-import LocationSearchForm from "./LocationSearchForm";
-import FavoritesSearchForm from "./FavoritesSearchForm";
+import CitySearchForm from "./SearchByCity";
+import SearchByLocation from "./SearchByLocation";
+import SearchInFavorites from "./SearchInFavorites";
 
 import { renderConditionally } from "HOCs";
 import { FormVariants, RootStateType } from "types";
 
 type Props = {
   formVariant: string;
-  renderCondition: boolean;
+  shouldRender: boolean;
 };
 /**
  * Component Factory which renders certain adequate component depending on props
@@ -26,16 +24,16 @@ const _SearchFormFactory = (props: Props): JSX.Element | null => {
     case FormVariants.CITY:
       return <CitySearchForm />;
     case FormVariants.LOCATION:
-      return <LocationSearchForm />;
+      return <SearchByLocation />;
     case FormVariants.FAVORITES:
-      return <FavoritesSearchForm />;
+      return <SearchInFavorites />;
     default:
       return null;
   }
 };
 
 const mapStateToProps = (state: RootStateType) => ({
-  renderCondition: state.isSearchFactoryVisible,
+  shouldRender: state.isSearchFactoryVisible,
   formVariant: state.searchFormSourceType,
 });
 const SearchFormFactory = connect(mapStateToProps, null)(renderConditionally(_SearchFormFactory));

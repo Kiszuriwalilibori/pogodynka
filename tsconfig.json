@@ -26,7 +26,8 @@
       "components/*": ["components/*"],
       "styles/*": ["styles/*"],
       "images/*": ["images/*"],
-      "fixtures": ["fixtures"]
+      "fixtures": ["fixtures"],
+      "routes": ["routes"]
     }
   },
   "include": ["src"]

@@ -15,10 +15,9 @@ const NoPage = loadable(() => import("Pages/NoPage"));
 
 const App = () => {
   useHandleConnectionStatus();
-
   breakWhenInternetExplorer();
-  const isAPIKeyAvailable = useCheckApiKey();
 
+  const isAPIKeyAvailable = useCheckApiKey();
   const location = useLocation();
 
   if (!isAPIKeyAvailable) return null;

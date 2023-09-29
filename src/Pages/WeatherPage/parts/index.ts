@@ -1,21 +1,10 @@
-import WeatherComparision from "./WeatherComparision";
-import WeatherCurrent from "./WeatherCurrent";
-import WeatherForecast from "./WeatherForecast";
-import WeatherPageHeader from "./WeatherPageHeader";
-import ShortDescription from "./ShortDescription";
-import WeatherInformationsPageContent from "./WeatherInformationsPageContent";
-import PageContentContainer from "./PageContentContainer";
-import WeatherAspectsTabs from "./WeatherAspectsTabs";
-import DescriptionWithIcon from "./DescriptionWithIcon";
+import Comparision from "./Comparision";
+import Current from "./Current";
+import Forecast from "./Forecast";
+import Banner from "./Banner";
+import TabTitle from "./TabTitle";
+import WeatherTabs from "./WeatherTabs";
+import VisualDescription from "./VisualDescription";
+import AddToFavorites from "./AddToFavorites";
 
-export {
-  DescriptionWithIcon,
-  PageContentContainer,
-  ShortDescription,
-  WeatherAspectsTabs,
-  WeatherComparision,
-  WeatherCurrent,
-  WeatherForecast,
-  WeatherInformationsPageContent,
-  WeatherPageHeader,
-};
+export { AddToFavorites, Banner, Comparision, Current, Forecast, TabTitle, WeatherTabs, VisualDescription };

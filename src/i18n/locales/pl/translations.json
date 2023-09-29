@@ -37,5 +37,44 @@
     "place_number": "W ulubionych jest zapisane {{length}} miejsc.",
     "add_success": "Pomyślnie dodano {{label}} do ulubionych",
     "add_error": "Podczas próby dodania {{label}} do ulubionych wystąpił błąd"
+  },
+  "tabs": {
+    "current": "Bieżąca",
+    "forecast": "Prognoza",
+    "comparision": "Porównanie"
+  },
+  "page-weather": {
+    "addtofavs?": "Czy dodać to miejsce do Ulubionych?",
+    "label": "Etykieta",
+    "add_place": "Miejscowość",
+    "weather": "Pogoda"
+  },
+  "place": {
+    "current": "Bieżąca pogoda dla ",
+    "forecast": "Prognoza 3-dniowa dla",
+    "comparision_pre": "Porównanie pogody w ",
+    "comparision_post": " i innych miejscach",
+    "invalid_URL": "nieznana wartość przekazana do metody redirectURL method",
+    "invalid_header": "nieznana wartość przekazana do metody createLabelforHeader"
+  },
+  "model-weather": {
+    "temp": "Temperatura",
+    "humidity": "Wilgotność",
+    "feels_like": "T. odczuwalna",
+    "pressure": "Ciśnienie",
+    "temp_min": "T.min",
+    "temp_max": "T.max",
+    "forecast_prefix": "Data i godzina",
+    "place": "Miejsce",
+    "description": "Opis",
+    "colder_adv": "zimniej",
+    "warmer_adv": "cieplej",
+    "same_adv": "taka sama",
+    "lower_neutral": "niższe",
+    "higher_neutral": "wyższe",
+    "same_neutral": "takie samo",
+    "lower_feminine": "niższa",
+    "higher_feminine": "wyższa",
+    "same_feminine": "taka sama"
   }
 }

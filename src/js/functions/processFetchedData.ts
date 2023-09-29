@@ -1,18 +1,16 @@
-import compareCurrentWithFavoriteWeather from "./compareCurrentWithFavoriteWeather";
-
 import moment from "moment";
 
-import {
-  ForecastObject,
-  ComparisionResult,
-  ComparableWeatherData,
-  WeatherParameters,
-  FavoriteItemWeatherWithEndpointLabel,
-} from "types";
+import compareCurrentWithFavoriteWeather from "./compareCurrentWithFavoriteWeather";
 
+import {
+  ComparableWeatherData,
+  ComparisionResult,
+  WeatherDataWithEndpoint,
+  ForecastDetails,
+  WeatherParameters,
+} from "types";
 import { getValue, selectParamsForComparision } from "js/functions";
-import { comparision } from "models";
-import { currentArray, weatherConfig, copySelectedWeatherProperties, forecastArray } from "models/Weather";
+import { copySelectedWeatherProperties, currentArray, forecastArray, getComparision, weatherConfig } from "models";
 
 const processFetchedData = {
   /**
@@ -45,12 +43,12 @@ const processFetchedData = {
   //   return { currentCity: city, currentCityData: data };
   // },
   // /**
-  //  * Processes raw data fetched to prefereable structure
+  //  * Processes raw data fetched to preferred structure
   //  * @param {*} data fetched data
   //  * @returns array containing arrays which contain date,time and forecasted weather params
   //  */
 
-  forecast: function (data: ForecastObject) {
+  forecast: function (data: ForecastDetails) {
     const forecastsArray = { ...data }.list.map((item: any) => {
       return copySelectedWeatherProperties(forecastArray, item.main);
     });
@@ -73,10 +71,7 @@ const processFetchedData = {
    * @param currentWeather
    * @returns array grouping other arrays. Each of these arrays contains place label and comparision data(value of given weather param in given place and descriptive comparision with current place)
    */
-  comparision: function (
-    favoritesData: FavoriteItemWeatherWithEndpointLabel[],
-    currentWeather: ComparableWeatherData | undefined
-  ) {
+  comparision: function (favoritesData: WeatherDataWithEndpoint[], currentWeather: ComparableWeatherData | undefined) {
     if (favoritesData.length && currentWeather) {
       const selectedParamsCurrent = currentWeather;
       const selectedParamsFavorites: ComparableWeatherData[] = [];
@@ -92,8 +87,8 @@ const processFetchedData = {
         const description = getValue(favorite, "description");
         generalDescriptionsFromFavorites.push(description);
       });
-
-      const comparativeArray: (ComparisionResult | string)[][] = selectedParamsFavorites.map(item => {
+      const comparision = getComparision();
+      const comparativeArray: ComparisionResult[][] = selectedParamsFavorites.map(item => {
         return compareCurrentWithFavoriteWeather(
           selectedParamsCurrent as ComparableWeatherData,
           item,
@@ -109,7 +104,7 @@ const processFetchedData = {
       });
       const objectParameters = comparativeArray.map(item => {
         const result = {} as any;
-        item.forEach((x: ComparisionResult | string, index) => {
+        item.forEach((x: ComparisionResult, index) => {
           result[comparision.fields[index]] = x;
         });
 

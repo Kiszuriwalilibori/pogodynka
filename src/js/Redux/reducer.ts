@@ -1,7 +1,7 @@
 import { createReducer } from "@reduxjs/toolkit";
 
 import { actionCreators } from ".";
-import { Geolocation, PermittedPlaceVariants } from "types";
+import { Geolocation, Source } from "types";
 
 const {
   cacheSupported,
@@ -17,12 +17,11 @@ const initialState = {
   errorMessage: "",
   geoLocationSupported: false,
   geoLocationPosition: undefined as Geolocation | undefined,
-  searchFormSourceType: undefined as PermittedPlaceVariants | undefined,
+  searchFormSourceType: undefined as Omit<Source, "current"> | undefined,
   isProblemModalVisible: false,
   cacheSupported: false,
   isWeatherComparisionVisible: false,
   isForecastVisible: false,
-  isShortDescriptionWithIconSet: false,
   isSearchFactoryVisible: false,
   isError: false,
 };

@@ -1,10 +1,10 @@
 import { t } from "i18next";
 import processFetchedData from "../js/functions/processFetchedData";
 import useDispatchAction from "./useDispatchAction";
-import { ReportVariants, FavoriteItemWeatherWithEndpointLabel, ComparableWeatherData, ComparisionObject } from "types";
+import { ReportVariants, WeatherDataWithEndpoint, ComparableWeatherData, ComparisionResult } from "types";
 
 function useCreateComparisionData(
-  favoritesWeather: FavoriteItemWeatherWithEndpointLabel[],
+  favoritesWeather: WeatherDataWithEndpoint[],
   currentWeather: ComparableWeatherData | undefined
 ) {
   const { showErrorMessage } = useDispatchAction();
@@ -13,7 +13,7 @@ function useCreateComparisionData(
     if (favoritesWeather && favoritesWeather.length && currentWeather) {
       return processFetchedData[ReportVariants.COMPARISION](favoritesWeather, currentWeather) as [
         string,
-        ...Array<ComparisionObject>
+        ...Array<ComparisionResult>
       ][];
     } else {
       return undefined;

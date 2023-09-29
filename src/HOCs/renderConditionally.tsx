@@ -1,11 +1,11 @@
 interface RenderCondition {
-  renderCondition: boolean;
+  shouldRender: boolean;
 }
 
 function renderConditionally(Component: React.ComponentType<RenderCondition | any>) {
   return function (props: RenderCondition | any) {
-    let { renderCondition, ...newProps } = props;
-    return props.renderCondition ? <Component {...newProps} /> : null;
+    let { shouldRender, ...newProps } = props;
+    return props.shouldRender ? <Component {...newProps} /> : null;
   };
 }
 

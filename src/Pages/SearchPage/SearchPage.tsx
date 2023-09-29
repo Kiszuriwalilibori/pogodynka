@@ -1,13 +1,17 @@
-import SourceSection from "./parts/SourceSection";
+import Sources from "./parts/Sources";
 import SearchFormFactory from "./parts/SearchFormFactory";
 import "./_SearchPage.scss";
+import { HiddenH1 } from "components";
 
 const SearchPage = () => {
   return (
-    <section className="SearchPage">
-      <SourceSection />
-      <SearchFormFactory />
-    </section>
+    <>
+      <HiddenH1 headingText="Search Page" />
+      <section className="SearchPage">
+        <Sources />
+        <SearchFormFactory />
+      </section>
+    </>
   );
 };
 

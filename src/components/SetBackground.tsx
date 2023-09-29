@@ -1,17 +1,18 @@
 import * as React from "react";
+
 import { connect } from "react-redux";
 
 import { fetchBackgroundImage_Thunk } from "../js/Redux/fetchBackgroundImageThunk";
-import { ExtendedThunkDispatch } from "types";
+import { AnyAction, AppDispatch, ExtendedThunkDispatch, RootStateType, ThunkAction } from "types";
 import { showErrorMessage } from "js/Redux/actionCreators";
 import { useMessage } from "hooks";
 
 type Props = {
   children: React.ReactNode;
-  fetchBackgroundImage: () => void;
+  fetchBackgroundImage: () => ThunkAction<void, RootStateType, unknown, AnyAction>;
 };
 
-const SetBackground = ({ fetchBackgroundImage, children }: Props) => {
+const SetBackground = ({ fetchBackgroundImage, children }: Readonly<Props>) => {
   const showMessage = useMessage();
   React.useEffect(() => {
     if (!process.env.REACT_APP_UNSPLASH_ACCESS_KEY) {
@@ -26,7 +27,7 @@ const SetBackground = ({ fetchBackgroundImage, children }: Props) => {
   return children;
 };
 
-const mapDispatchToProps = (dispatch: ExtendedThunkDispatch<ReturnType<typeof showErrorMessage>>) => ({
+const mapDispatchToProps = (dispatch: AppDispatch) => ({
   fetchBackgroundImage: () => dispatch(fetchBackgroundImage_Thunk()),
 });
 

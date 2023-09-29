@@ -1,4 +1,3 @@
-import { QueryClientProvider } from "@tanstack/react-query";
 import { FC } from "react";
 import { configureStore } from "@reduxjs/toolkit";
 
@@ -8,7 +7,6 @@ import { HashRouter as Router } from "react-router-dom";
 import { ThemeProvider, Theme, StyledEngineProvider } from "@mui/material";
 import { register } from "../serviceWorkerRegistration";
 
-import useQueryClient from "../hooks/useQueryClient";
 import reducer from "../js/Redux/reducer";
 import CheckSupportForLocalStorage from "./CheckSupportForLocalStorage";
 import CheckSupportForGeolocation from "./CheckSupportForGeolocation";
@@ -26,32 +24,32 @@ declare module "@mui/styles/defaultTheme" {
 }
 
 export const store = configureStore({ reducer });
-const AppProvider: FC = ({ children }) => {
+
+export const AppProvider: FC = ({ children }) => {
   return (
     <Provider store={store}>
-      <QueryClientProvider client={useQueryClient()}>
-        <StyledEngineProvider injectFirst>
-          <ThemeProvider theme={theme}>
-            <SnackbarProvider
-              maxSnack={3}
-              anchorOrigin={{
-                vertical: "bottom",
-                horizontal: "center",
-              }}
-            >
-              <PlaceContextProvider>
-                <CheckSupportForLocalStorage>
-                  <CheckSupportForGeolocation>
-                    <SetBackground>
-                      <Router>{children}</Router>
-                    </SetBackground>
-                  </CheckSupportForGeolocation>
-                </CheckSupportForLocalStorage>
-              </PlaceContextProvider>
-            </SnackbarProvider>
-          </ThemeProvider>
-        </StyledEngineProvider>
-      </QueryClientProvider>
+      <StyledEngineProvider injectFirst>
+        <ThemeProvider theme={theme}>
+          <SnackbarProvider
+            preventDuplicate
+            maxSnack={3}
+            anchorOrigin={{
+              vertical: "bottom",
+              horizontal: "center",
+            }}
+          >
+            <PlaceContextProvider>
+              <CheckSupportForLocalStorage>
+                <CheckSupportForGeolocation>
+                  <SetBackground>
+                    <Router>{children}</Router>
+                  </SetBackground>
+                </CheckSupportForGeolocation>
+              </CheckSupportForLocalStorage>
+            </PlaceContextProvider>
+          </SnackbarProvider>
+        </ThemeProvider>
+      </StyledEngineProvider>
     </Provider>
   );
 };
@@ -61,5 +59,3 @@ register();
 export type RootStateType = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
 export default AppProvider;
-
-//todo jeżeli łapanie błędu miałoby bbyć centralne tjs przez coś tam w useQueryClient to tylko react-hot-toast działa. Zarówno dispatch jak i  toastify walą błędy

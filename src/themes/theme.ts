@@ -94,17 +94,17 @@ theme = createTheme({
         colorPrimary: {
           "&.Mui-checked": {
             // Controls checked color for the thumb
-            color: COLOR_SUNNY,
+            color: COLOR_BACKGROUND,
           },
         },
         track: {
           // Controls default (unchecked) color for the track
-          opacity: 0.3,
-          backgroundColor: COLOR_SUNNY,
+          opacity: 0.6,
+          backgroundColor: COLOR_BACKGROUND,
           ".Mui-checked.Mui-checked + &": {
             // Controls checked color for the track
-            opacity: 0.6,
-            backgroundColor: COLOR_SUNNY,
+            opacity: 0.9,
+            backgroundColor: COLOR_BACKGROUND,
           },
         },
       },

@@ -2,7 +2,7 @@ import { t } from "i18next";
 import { useState, useEffect } from "react";
 
 import processFetchedData from "js/functions/processFetchedData";
-import { ReportVariants, ForecastObject } from "types";
+import { ReportVariants, ForecastDetails } from "types";
 import useDispatchAction from "./useDispatchAction";
 
 export const useProcessForecastData = (data: Object | undefined) => {
@@ -11,7 +11,7 @@ export const useProcessForecastData = (data: Object | undefined) => {
   useEffect(() => {
     if (data) {
       try {
-        let parameters = processFetchedData[ReportVariants.FORECAST](data as ForecastObject);
+        let parameters = processFetchedData[ReportVariants.FORECAST](data as ForecastDetails);
         setPreparedData(parameters);
       } catch (err) {
         if (err) {

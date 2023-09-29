@@ -30,7 +30,6 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
     "Droid Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   min-width: 100%;
 }
 
@@ -47,4 +46,10 @@ p,
 span,
 div {
   user-select: none;
+}
+
+*:focus {
+  outline: 2px ridge #6909ae;
+  outline-offset: 2px;
+  z-index: 2000;
 }

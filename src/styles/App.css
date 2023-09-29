@@ -96,7 +96,6 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   min-width: 100%;
 }
 
@@ -117,6 +116,12 @@ div {
           user-select: none;
 }
 
+*:focus {
+  outline: 2px ridge #6909ae;
+  outline-offset: 2px;
+  z-index: 2000;
+}
+
 .not-validated {
   display: block;
   background-color: orange;
@@ -125,12 +130,12 @@ div {
   margin-top: 60px !important;
   padding: 10px 20px;
   font-size: 20px;
-  font-weight: 600px;
+  font-weight: 600;
   -webkit-user-select: none;
      -moz-user-select: none;
           user-select: none;
   max-width: 300px;
-  box-shadow: "0 1px 1px rgba(0,0,0,0.08), 0 2px 2px rgba(0,0,0,0.12), 0 4px 4px rgba(0,0,0,0.16),0 8px 8px rgba(0,0,0,0.20);";
+  box-shadow: "0 1px 1px rgba(0,0,0,0.08), 0 2px 2px rgba(0,0,0,0.12), 0 4px 4px rgba(0,0,0,0.16),0 8px 8px rgba(0,0,0,0.20)";
 }
 .not-validated hr {
   background-color: black;
@@ -150,4 +155,13 @@ div {
 .responsiveTableContainer {
   overflow-x: auto;
   width: 100%;
+}
+
+.sr-only {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
 }

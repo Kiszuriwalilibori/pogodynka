@@ -1,5 +1,6 @@
 import { Action } from "redux";
 import { ThunkDispatch } from "redux-thunk";
+
 import { RootStateType } from "components";
 
 enum favorites {
@@ -15,7 +16,7 @@ export enum ReportVariants {
 
 export type Units = "°C" | "hPa" | "°K" | "%" | "";
 
-export type PermittedPlaceVariants = "city" | "location" | "favorites";
+export type Source = "city" | "location" | "favorites" | "current";
 
 export type WeatherParameters =
   | "temp"
@@ -38,33 +39,31 @@ export interface Geolocation {
 }
 
 export type Position = Geolocation | string;
-export interface ComparisionObject {
-  value: number;
-  comment: string;
-}
+
+export type ComparisionResult =
+  | {
+      value: number;
+      comment: string;
+    }
+  | string;
 
 export const FormVariants = { ...PlaceVariants, ...favorites };
-export interface ForecastObject {
+export interface ForecastDetails {
   list: [{ dt_txt: string }];
 }
 
 export type ComparableWeatherData = { [key in WeatherParameters]: number };
 
-export interface ComparisionResult {
-  value: number;
-  comment: string;
-}
-
 export type ExtendedThunkDispatch<T extends Action<any>> = ThunkDispatch<RootStateType, any, T>;
 
-export interface FavoritesItem {
+export interface Favorite {
   category: string;
   label: string;
   source: PlaceVariants;
   place: Position;
 }
 
-export interface FavoriteItemWeatherWithEndpointLabel {
+export interface WeatherDataWithEndpoint {
   endpointLabel: string;
   [key: string]: any;
 }

@@ -1,30 +1,28 @@
-import SubmitButton from "./SubmitButton";
 import App from "./App";
-import AppProvider from "./AppProvider";
-import SaveFavoritesButton from "./SaveFavoritesButton";
 import CheckSupportForGeolocation from "./CheckSupportForGeolocation";
 import CheckSupportForLocalStorage from "./CheckSupportForLocalStorage";
-import FavoriteLabelForm from "./FavoriteLabelForm";
-import StorePlaceInFavoritesSwitch from "./StorePlaceInFavoritesSwitch";
+import HiddenH1 from "./HiddenH1";
 import Loader from "./Loader";
+import NotValidated from "./NotValidated";
+import SubmitButton from "./SubmitButton";
+import TextField from "./TextField";
+import { RootStateType, AppDispatch, AppProvider } from "./AppProvider";
+import { TanstackQueryProvider } from "./TanstackQueryProvider";
 
-import { RootStateType, AppDispatch } from "./AppProvider";
-import { Awaiting, Tooltip, NotValidated, TextField } from "./details";
+import Tooltip from "./Tooltip";
 
 export {
-  Awaiting,
-  Tooltip,
-  NotValidated,
-  SubmitButton,
   App,
   AppProvider,
-  SaveFavoritesButton,
   CheckSupportForGeolocation,
   CheckSupportForLocalStorage,
-  FavoriteLabelForm,
-  StorePlaceInFavoritesSwitch,
-  TextField,
+  HiddenH1,
   Loader,
+  NotValidated,
+  SubmitButton,
+  TanstackQueryProvider,
+  TextField,
+  Tooltip,
 };
 
 export type { RootStateType, AppDispatch };

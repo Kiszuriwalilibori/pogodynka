@@ -8,12 +8,7 @@ import { usePlaceContext } from "contexts/placeContext";
 export const useFetchCurrentWeather = () => {
   const { weatherURL } = { ...usePlaceContext().place };
 
-  const {
-    data,
-    isError: isCurrentError,
-    error: currentError,
-    isLoading: isCurrentWeatherLoading,
-  } = useQuery([weatherURL], () => getWeather(weatherURL));
+  const { data, isLoading: isCurrentWeatherLoading } = useQuery([weatherURL], () => getWeather(weatherURL));
 
   const currentWeatherDataForComparision = data ? selectParamsForComparision(data) : undefined;
   const currentWeatherData = useProcessCurrentData(data);
@@ -23,8 +18,6 @@ export const useFetchCurrentWeather = () => {
 
   return {
     currentWeatherData,
-    isCurrentError,
-    currentError,
     isCurrentWeatherLoading,
     currentWeatherDataForComparision,
     descriptionData,

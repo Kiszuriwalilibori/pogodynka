@@ -1,43 +1,45 @@
-import { RootStateType, AppDispatch } from "components";
+import { AnyAction } from "redux";
+import { ThunkAction } from "redux-thunk";
 
+import { RootStateType, AppDispatch } from "components";
 import { PlaceType } from "js/functions/place";
 
 import {
-  ComparisionObject,
   ComparableWeatherData,
-  ComparisionResult,
   Description,
   ExtendedThunkDispatch,
-  FavoritesItem,
-  FavoriteItemWeatherWithEndpointLabel,
+  Favorite,
   FormVariants,
   Geolocation,
-  ForecastObject,
-  PermittedPlaceVariants,
+  ForecastDetails,
   PlaceVariants,
   Position,
   ReportVariants,
+  Source,
   Units,
+  WeatherDataWithEndpoint,
   WeatherParameters,
+  ComparisionResult,
 } from "./types";
 
 export type {
-  Geolocation,
-  Position,
-  ComparisionObject,
-  PermittedPlaceVariants,
-  ForecastObject,
-  WeatherParameters,
-  ComparableWeatherData,
-  Units,
-  ComparisionResult,
-  RootStateType,
+  AnyAction,
   AppDispatch,
-  ExtendedThunkDispatch,
-  FavoritesItem,
-  PlaceType,
-  FavoriteItemWeatherWithEndpointLabel,
+  ComparableWeatherData,
+  ComparisionResult,
   Description,
+  ExtendedThunkDispatch,
+  Favorite,
+  ForecastDetails,
+  Geolocation,
+  PlaceType,
+  Position,
+  RootStateType,
+  Source,
+  ThunkAction,
+  Units,
+  WeatherDataWithEndpoint,
+  WeatherParameters,
 };
 
 export { PlaceVariants, ReportVariants, FormVariants };

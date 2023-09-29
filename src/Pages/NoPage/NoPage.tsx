@@ -23,4 +23,3 @@ const NoPage = () => {
 };
 
 export default NoPage;
-// todo teraz działa poprawnie ale nie wiadomo jak zrobić to na tłumaczeniu

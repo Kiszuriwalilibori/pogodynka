@@ -16,7 +16,7 @@ const prefix = {
 function createCoreURL(place: Position, source: PlaceVariants): string {
   switch (source) {
     case PlaceVariants.CITY:
-      return `q=${place as string}`;
+      return `q=${place}`;
     case PlaceVariants.LOCATION:
       return "lat=" + (place as Geolocation).latitude + "&lon=" + (place as Geolocation).longitude;
     default:
@@ -38,10 +38,10 @@ const createURL = {
     }&lang=pl`;
   },
 
-  weather: (place: Position, source: PlaceVariants): string => {
+  weather: (place: Position, source: PlaceVariants, language: string): string => {
     return `${prefix.weather}${createCoreURL(place, source)}&units=metric&appid=${
       process.env.REACT_APP_WEATHER_API_KEY
-    }&lang=pl`;
+    }${language === "pl" ? "&lang=pl" : ""}`;
   },
 };
 

@@ -1,7 +1,8 @@
-import { WeatherParameters, Units } from "types";
-import toArray from "./common/toArray";
+import i18next from "i18next";
 
-enum ComparisionItems { // this enum keeps order of comparision items
+import { ComparisionResult } from "types";
+
+enum ComparisionItems {
   temp,
   feels_like,
   temp_min,
@@ -10,73 +11,55 @@ enum ComparisionItems { // this enum keeps order of comparision items
   humidity,
 }
 
-type RelationDescriptions = { [key: string]: [string, string, string] };
-const temperatureRelationDescription: [string, string, string] = ["zimniej", "taka sama", "cieplej"];
-const relationDescriptions: RelationDescriptions = {
-  temp: temperatureRelationDescription,
-  feels_like: temperatureRelationDescription,
-  temp_min: temperatureRelationDescription,
-  temp_max: temperatureRelationDescription,
-  pressure: ["niższe", "takie samo", "wyższe"],
-  humidity: ["niższa", "taka sama", "wyższa"],
+export type ComparisionParameter = keyof typeof ComparisionItems;
+export const comparisionArray: ComparisionParameter[] = [
+  "temp",
+  "feels_like",
+  "temp_min",
+  "temp_max",
+  "pressure",
+  "humidity",
+];
+// type RelationDescriptions = { [key in ComparisionParameter]: [string, string, string] };
+
+export function getComparisionPrefix() {
+  return [
+    { field: "place", headerName: i18next.t("model-weather.place") },
+    { field: "description", headerName: i18next.t("model-weather.description") },
+  ];
+}
+
+export const getComparision = () => {
+  const temperatureRelation = [
+    i18next.t("model-weather.colder_adv"),
+    i18next.t("model-weather.same_adv"),
+    i18next.t("model-weather.warmer_adv"),
+  ];
+  const neutralRelation = [
+    i18next.t("model-weather.lower_neutral"),
+    i18next.t("model-weather.same_neutral"),
+    i18next.t("model-weather.higher_neutral"),
+  ];
+  const feminineRelation = [
+    i18next.t("model-weather.lower_feminine"),
+    i18next.t("model-weather.same_feminine"),
+    i18next.t("model-weather.higher_feminine"),
+  ];
+
+  return {
+    fields: ["place", "description", ...comparisionArray],
+    parameters: comparisionArray,
+    relation: {
+      temp: temperatureRelation,
+      feels_like: temperatureRelation,
+      temp_min: temperatureRelation,
+      temp_max: temperatureRelation,
+      pressure: neutralRelation,
+      humidity: feminineRelation,
+    },
+  };
 };
 
-type ComparisionHeaders =
-  | "Temperatura"
-  | "T. odczuwalna"
-  | "T. minimalna"
-  | "T. maksymalna"
-  | "Ciśnienie"
-  | "Wilgotność";
+export type ComparisionResults = ComparisionResult[];
 
-type Headers = {
-  [key in ComparisionItems]: ComparisionHeaders;
-};
-
-const headers: Headers = {
-  [ComparisionItems.temp]: "Temperatura",
-  [ComparisionItems.feels_like]: "T. odczuwalna",
-  [ComparisionItems.temp_min]: "T. minimalna",
-  [ComparisionItems.temp_max]: "T. maksymalna",
-  [ComparisionItems.humidity]: "Wilgotność",
-  [ComparisionItems.pressure]: "Ciśnienie",
-};
-
-type Parameters = {
-  [key in ComparisionItems]: WeatherParameters;
-};
-
-const parameters: Parameters = {
-  [ComparisionItems.temp]: "temp",
-  [ComparisionItems.feels_like]: "feels_like",
-  [ComparisionItems.temp_min]: "temp_min",
-  [ComparisionItems.temp_max]: "temp_max",
-  [ComparisionItems.humidity]: "humidity",
-  [ComparisionItems.pressure]: "pressure",
-};
-
-type ParamUnits = {
-  [key in ComparisionItems]: Units;
-};
-
-const paramUnits: ParamUnits = {
-  [ComparisionItems.temp]: "°C",
-  [ComparisionItems.feels_like]: "°C",
-  [ComparisionItems.temp_min]: "°C",
-  [ComparisionItems.temp_max]: "°C",
-  [ComparisionItems.humidity]: "%",
-  [ComparisionItems.pressure]: "hPa",
-};
-
-const comparision = {
-  headers: toArray(headers),
-  relation: relationDescriptions,
-  parameters: toArray(parameters),
-  parameterUnits: toArray(paramUnits),
-  readableNames: ["miejsce", "opis", ...toArray(headers)],
-  fields: ["place", "description", ...toArray(parameters)],
-};
-
-export default comparision;
-
-// tdo pytanie na ile jest to aktualne, poszły wszakże updaty i może idzie obejść się bez toArray itp
+export default getComparision;

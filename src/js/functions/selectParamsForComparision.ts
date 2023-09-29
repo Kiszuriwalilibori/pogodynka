@@ -1,4 +1,5 @@
-import { comparisionArray } from "models/Weather";
+// import { comparisionArray } from "models/Weather";
+import { comparisionArray } from "models";
 import { ComparableWeatherData } from "types";
 import getValue from "./getValue";
 
