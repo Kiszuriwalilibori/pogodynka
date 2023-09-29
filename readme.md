@@ -50,6 +50,8 @@ REACT_APP_WEATHER_API_KEY = &units=metric&appid=your_WeatherApi_key_here&lang=pl
 
 initial version with tanstack-query
 
-## TODO
+### 0.2.0
 
-the way error of tanstack query is handled is doubtfull
+Better WCAG compliance, more meaningfull names, simplified
+
+## TODO
