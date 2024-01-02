@@ -18,8 +18,7 @@ const initialState = {
   geoLocationSupported: false,
   geoLocationPosition: undefined as Geolocation | undefined,
   searchFormSourceType: undefined as Omit<Source, "current"> | undefined,
-  isProblemModalVisible: false,
-  cacheSupported: false,
+  isCacheSupported: false,
   isWeatherComparisionVisible: false,
   isForecastVisible: false,
   isSearchFactoryVisible: false,
@@ -47,7 +46,7 @@ const reducer = createReducer(initialState, builder => {
     })
     .addCase(cacheSupported, (state, action) => {
       if (action.payload) {
-        state.cacheSupported = action.payload;
+        state.isCacheSupported = action.payload;
       }
     })
     .addCase(setGeoLocationPosition, (state, action) => {
@@ -68,11 +67,3 @@ const reducer = createReducer(initialState, builder => {
 });
 
 export default reducer;
-
-// reducer powinien być w kawałkach albo slicach
-
-// error: showErrorMessage, hideErrorMessage
-
-// cache: cacheSuuported
-
-// geo: setGeolocationPosition, setGeolocationSupport

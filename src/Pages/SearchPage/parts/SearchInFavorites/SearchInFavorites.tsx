@@ -1,5 +1,5 @@
 import * as React from "react";
-import { InputLabel, MenuItem, FormControl, Select, Paper } from "@mui/material";
+import { InputLabel, MenuItem, FormControl, Select, Paper, SelectChangeEvent } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
 import useStyles from "./styled";
@@ -10,10 +10,14 @@ import { useFavorites, useDispatchAction } from "hooks";
 import { PlaceVariants, Position } from "types";
 import { t } from "i18next";
 
+const paperSx = { padding: "0", marginTop: "60px" };
+
 interface eventTargetValue {
   source: PlaceVariants;
   place: Position;
 }
+
+type ChangeEvent = React.ChangeEvent<{ name?: string | undefined; value: unknown }>;
 
 const SearchInFavorites = () => {
   const placeContext = usePlaceContext();
@@ -23,7 +27,7 @@ const SearchInFavorites = () => {
   const favorites = Favorites.getAllItems();
   let navigate = useNavigate();
 
-  const handleChange = (event: React.ChangeEvent<{ name?: string | undefined; value: unknown }>) => {
+  const handleChange = (event: ChangeEvent) => {
     const input = event.target.value as eventTargetValue;
     const place = new Place(input.source, input.place, true);
     placeContext.setPlace(place);
@@ -34,7 +38,7 @@ const SearchInFavorites = () => {
   if (!favorites) return null;
 
   return (
-    <Paper variant="dark" sx={{ padding: "0", marginTop: "60px" }}>
+    <Paper variant="dark" sx={paperSx}>
       <FormControl className={classes.formControl}>
         <InputLabel className={classes.inputLabel}>{t("search.select")}</InputLabel>
         <Select
@@ -43,8 +47,8 @@ const SearchInFavorites = () => {
           className={classes.select}
           MenuProps={{ classes: { paper: classes.dropdownStyle } }}
           value=""
-          onChange={(event: any) => {
-            handleChange(event);
+          onChange={(event: SelectChangeEvent<"">) => {
+            handleChange(event as ChangeEvent);
           }}
         >
           {favorites.map(item => {

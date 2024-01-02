@@ -1,9 +1,11 @@
 import moment from "moment";
-
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
-const getTime = () => moment().format("D MMMM [godzina ]H:mm");
+const INTERVAL = 60000;
+const TIME_FORMAT = "D MMMM [godzina ]H:mm";
+
+const getTime = () => moment().format(TIME_FORMAT);
 
 const Time = () => {
   const [time, setTime] = useState(getTime());
@@ -13,7 +15,7 @@ const Time = () => {
     const intervalId = setInterval(() => {
       const time = getTime();
       setTime(time);
-    }, 60000);
+    }, INTERVAL);
 
     return () => clearInterval(intervalId);
   }, []);

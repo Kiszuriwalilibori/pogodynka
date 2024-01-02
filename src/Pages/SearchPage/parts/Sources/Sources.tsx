@@ -14,20 +14,21 @@ import useStyles from "./styles";
 
 import { Place } from "js/functions";
 import { usePlaceContext } from "contexts";
-import { FormVariants, PlaceVariants, Geolocation, RootStateType, Source } from "types";
+import { FormVariants, PlaceVariants, RootStateType, Source } from "types";
 import { useFavorites, useDispatchAction } from "hooks";
+import { TIMEOUT_SHORT } from "fixtures";
 
 interface Props {
-  currentPosition: Geolocation | undefined;
+  currentPosition: RootStateType["geoLocationPosition"];
 }
 function Sources(props: Props) {
   const placeContext = usePlaceContext();
-  const { t } = useTranslation();
   const classes = useStyles();
-  let navigate = useNavigate();
+  const navigate = useNavigate();
+
+  const { t } = useTranslation();
   const { Favorites } = useFavorites();
   const { clearSearchFactory, setSearchFormSourceType } = useDispatchAction();
-
   const { currentPosition } = props;
 
   const handleChange = React.useCallback(
@@ -69,7 +70,7 @@ function Sources(props: Props) {
   );
 
   return (
-    <Fade in={true} timeout={400}>
+    <Fade in={true} timeout={TIMEOUT_SHORT}>
       <FormControl component="fieldset" className={classes.sources}>
         <FormLabel className={classes.formLabel} component="legend">
           {t("search.show_for")}

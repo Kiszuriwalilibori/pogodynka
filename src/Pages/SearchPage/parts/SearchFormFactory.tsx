@@ -8,8 +8,8 @@ import { renderConditionally } from "HOCs";
 import { FormVariants, RootStateType } from "types";
 
 type Props = {
-  formVariant: string;
-  shouldRender: boolean;
+  formVariant: RootStateType["searchFormSourceType"];
+  shouldRender: RootStateType["isSearchFactoryVisible"];
 };
 /**
  * Component Factory which renders certain adequate component depending on props

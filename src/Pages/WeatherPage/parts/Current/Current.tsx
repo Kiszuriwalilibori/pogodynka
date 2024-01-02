@@ -7,6 +7,7 @@ import { usePlaceContext } from "contexts";
 import { useFetchCurrentWeather } from "hooks";
 import { CurrentData } from "./parts";
 import { WeatherDataStack } from "Pages/styled";
+import { TIMEOUT_SHORT } from "fixtures";
 
 import "./_CurrentWeather.scss";
 
@@ -20,7 +21,7 @@ const Current = () => {
   if (!currentWeatherData) return null;
 
   return (
-    <Fade in={true} timeout={400}>
+    <Fade in={true} timeout={TIMEOUT_SHORT}>
       <WeatherDataStack spacing="50px">
         <TabTitle title={labelCurrent} />
         <CurrentData weatherData={currentWeatherData} />

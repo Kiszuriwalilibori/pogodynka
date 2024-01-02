@@ -9,6 +9,9 @@ import { ProblemBox, ProblemBoxContainer } from "styles/styled";
 import { RootStateType } from "types";
 import { hideErrorMessage } from "js/Redux/actionCreators";
 
+const dividerSx = { height: "2px !important" };
+const iconButtonSx = { marginLeft: "-10px", alignSelf: "flex-start" };
+
 const mapStateToProps = (state: RootStateType) => ({
   isError: state.isError,
   errorMessage: state.errorMessage,
@@ -35,10 +38,10 @@ const withProblemMessage = (Component: React.ComponentType<unknown>) => {
             <ProblemBoxContainer>
               <ProblemBox component="article">
                 <Stack spacing="8px">
-                  <IconButton onClick={handleClose} sx={{ marginLeft: "-10px", alignSelf: "flex-start" }}>
+                  <IconButton onClick={handleClose} sx={iconButtonSx}>
                     <CancelIcon />
                   </IconButton>
-                  <Divider sx={{ height: "2px !important" }} />
+                  <Divider sx={dividerSx} />
                   <Box>
                     {t("msgs.gees")}
                     <span role="img" aria-label="crying face">

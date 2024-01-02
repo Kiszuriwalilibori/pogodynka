@@ -14,7 +14,6 @@ const Comparision = () => {
   const { favoritesWeatherDataForComparision, isComparisionLoading, isComparisionError, label } = useFetchComparision();
   const { isCurrentWeatherLoading, currentWeatherDataForComparision } = useFetchCurrentWeather();
   const isLoading = isComparisionLoading || isCurrentWeatherLoading;
-  // const [loads, SetLoads] = useState(false)
   const weatherComparisionData = useCreateComparisionData(
     favoritesWeatherDataForComparision,
     currentWeatherDataForComparision
@@ -24,18 +23,6 @@ const Comparision = () => {
     isComparisionError && showErrorMessage(t("favs.fetch_error")); // todo w tym momencie nie rozróżnia sytuacji pojedynczego błędu gdzie powinno dać tylko komentarz ale i wyświetlić resztę od błędu całości. W sumie powinno wywalać ciąg złożony z poszczególnych błędów
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isComparisionError]);
-
-  // useEffect(() => {
-  //   console.log("from effect", isLoading);
-  //   if (isLoading) {
-  //     setTimeout(() => {
-  //       if (isLoading) {
-  //         console.log("loading from timeot");
-  //       }
-  //     }, 5000);
-  //   }
-  // }, [isLoading]);
-  // console.log("outeffect", isLoading);
 
   if (isLoading) return <Loader />;
 

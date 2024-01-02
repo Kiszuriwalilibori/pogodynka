@@ -10,9 +10,11 @@ import { Paper } from "@mui/material";
  * @returns Component being header of page with search results or null
  */
 
+const paperSx = { borderRadius: "0", padding: "none" };
+
 const Banner = (): JSX.Element | null => {
   return (
-    <Paper variant="dark" sx={{ borderRadius: "0", padding: "none" }}>
+    <Paper variant="dark" sx={paperSx}>
       <header className="WeatherInformationsPage__header" id="header">
         <Place />
         <ReSearchButton />

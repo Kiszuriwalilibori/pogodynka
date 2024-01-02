@@ -2,6 +2,7 @@ import { Fade, TextField } from "@mui/material";
 import { FieldInputProps } from "formik/dist/types";
 import { useTranslation } from "react-i18next";
 import { Tooltip, SubmitButton } from "components";
+import { TIMEOUT_LONG } from "fixtures";
 
 interface Props {
   formClassName: string | undefined;
@@ -13,7 +14,7 @@ const Form = (props: Props) => {
   const { formClassName, handleSubmit, fieldProps } = props;
   const { t } = useTranslation();
   return (
-    <Fade in={true} timeout={1000}>
+    <Fade in={true} timeout={TIMEOUT_LONG}>
       <form className={formClassName} autoComplete="off" onSubmit={handleSubmit}>
         <Tooltip title={t("msgs.two_and_alpha")} arrow>
           <TextField

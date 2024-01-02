@@ -11,7 +11,7 @@ import { Confirm } from "./Confirm";
 import { useTranslation } from "react-i18next";
 
 interface Props {
-  shouldRender: boolean;
+  shouldRender: RootStateType["isCacheSupported"];
 }
 
 const AddToFavorites = (props: Props): JSX.Element | null => {
@@ -55,7 +55,7 @@ const AddToFavorites = (props: Props): JSX.Element | null => {
 };
 
 const mapStateToProps = (state: RootStateType) => ({
-  shouldRender: state.cacheSupported,
+  shouldRender: state.isCacheSupported,
 });
 
 export default connect(mapStateToProps, null)(renderConditionally(AddToFavorites));

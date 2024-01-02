@@ -3,10 +3,12 @@ import { GridColDef, GridRenderCellParams, GridTreeNodeWithRender } from "@mui/x
 
 import { addHeaders, comparisionArray, getComparisionPrefix, Parameter, weatherConfig } from "models";
 
+const boxSx = { textAlign: "center" };
+
 const cellRender = (params: GridRenderCellParams<any, any, any, GridTreeNodeWithRender>) => (
   <Box>
-    <Box sx={{ textAlign: "center" }}>{params.row[params.field].value}</Box>
-    <Box sx={{ textAlign: "center" }}>{params.row[params.field].comment}</Box>
+    <Box sx={boxSx}>{params.row[params.field].value}</Box>
+    <Box sx={boxSx}>{params.row[params.field].comment}</Box>
   </Box>
 );
 

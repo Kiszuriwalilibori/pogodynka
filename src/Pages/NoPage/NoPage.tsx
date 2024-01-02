@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 import useDispatchAction from "hooks/useDispatchAction";
 import "./_NoPage.scss";
+import { TIMEOUT_VERY_LONG } from "fixtures";
 
 const NoPage = () => {
   // const { t } = useTranslation();
@@ -16,7 +17,7 @@ const NoPage = () => {
     // showErrorMessage(t("msgs.nopage", { url: window.location.href }));
     setTimeout(() => {
       navigate(-1);
-    }, 2000);
+    }, TIMEOUT_VERY_LONG);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return <section className="NoPage"></section>;

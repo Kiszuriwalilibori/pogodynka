@@ -1,12 +1,13 @@
 import { Fade } from "@mui/material";
 
-import Loader from "components/Loader/Loader";
 import TabTitle from "../TabTitle";
 import ForecastData from "./ForecastData";
 
 import { useFetchForecast, useProcessForecastData } from "hooks";
 import { usePlaceContext } from "contexts";
 import { WeatherDataStack } from "Pages/styled";
+import { Loader } from "components";
+import { TIMEOUT_SHORT } from "fixtures";
 
 const Forecast = () => {
   const labelForecast = usePlaceContext().place.labelForecast;
@@ -18,7 +19,7 @@ const Forecast = () => {
   if (!preparedData || !preparedData.length) return null;
 
   return (
-    <Fade in={true} timeout={300}>
+    <Fade in={true} timeout={TIMEOUT_SHORT}>
       <WeatherDataStack spacing="50px">
         <TabTitle title={labelForecast} />
         <ForecastData forecastData={preparedData} />
