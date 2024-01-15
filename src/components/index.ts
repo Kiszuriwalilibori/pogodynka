@@ -6,10 +6,11 @@ import Loader from "./Loader";
 import NotValidated from "./NotValidated";
 import SubmitButton from "./SubmitButton";
 import TextField from "./TextField";
+import Tooltip from "./Tooltip";
+import WeatherPageHeader from "./WeatherPageHeader";
+
 import { RootStateType, AppDispatch, AppProvider } from "./AppProvider";
 import { TanstackQueryProvider } from "./TanstackQueryProvider";
-
-import Tooltip from "./Tooltip";
 
 export {
   App,
@@ -23,6 +24,7 @@ export {
   TanstackQueryProvider,
   TextField,
   Tooltip,
+  WeatherPageHeader,
 };
 
 export type { RootStateType, AppDispatch };

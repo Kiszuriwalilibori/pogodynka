@@ -2,8 +2,8 @@ import { Box } from "@mui/material";
 import { GridColDef, GridRenderCellParams, GridTreeNodeWithRender } from "@mui/x-data-grid";
 
 import { addHeaders, comparisionArray, getComparisionPrefix, Parameter, weatherConfig } from "models";
-
-const boxSx = { textAlign: "center" };
+import { COLUMN_ALIGN, COLUMN_WIDTH } from "./config";
+import { boxSx } from "./createColumns.styles";
 
 const cellRender = (params: GridRenderCellParams<any, any, any, GridTreeNodeWithRender>) => (
   <Box>
@@ -11,8 +11,6 @@ const cellRender = (params: GridRenderCellParams<any, any, any, GridTreeNodeWith
     <Box sx={boxSx}>{params.row[params.field].comment}</Box>
   </Box>
 );
-
-const COLUMN_WIDTH = 170;
 
 export function createColumns() {
   addHeaders(weatherConfig);
@@ -24,7 +22,7 @@ export function createColumns() {
   });
   columns.forEach(column => {
     column.minWidth = COLUMN_WIDTH;
-    column.headerAlign = "center";
+    column.headerAlign = COLUMN_ALIGN;
     if (comparisionArray.includes(column.field as Parameter)) {
       column.renderCell = params => cellRender(params);
     }

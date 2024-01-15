@@ -1,5 +1,5 @@
-import { createColumns } from "./columns";
-import { StyledDataGrid, WeatherPaper } from "Pages/styled";
+import { createColumns } from "./createColumns";
+import { StyledDataGrid, WeatherPaper } from "styles/Common.styles";
 
 interface Props {
   parameters: (string | number | object)[][];

@@ -3,7 +3,7 @@ import * as Yup from "yup";
 import { useFormik } from "formik";
 
 import { NotValidated } from "components";
-import { useFormStyles } from "styles/useFormStyles";
+import { useFormStyles } from "styles/Common.styles";
 import { usePlaceContext } from "contexts";
 import { useFavorites } from "hooks";
 

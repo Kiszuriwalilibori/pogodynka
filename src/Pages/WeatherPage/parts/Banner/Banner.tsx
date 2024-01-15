@@ -1,8 +1,6 @@
-import Time from "./parts/Time";
-import Place from "./parts/Place";
-import ReSearchButton from "./parts/ReSearchButton/ReSearchButton";
 import "./_WeatherInformationsPage__Header.scss";
-import { Paper } from "@mui/material";
+import { BannerPaper } from "./Banner.styles";
+import { Place, ReSearchButton, Time } from "./parts";
 
 /**
  * Renders header of page with search results
@@ -10,17 +8,15 @@ import { Paper } from "@mui/material";
  * @returns Component being header of page with search results or null
  */
 
-const paperSx = { borderRadius: "0", padding: "none" };
-
 const Banner = (): JSX.Element | null => {
   return (
-    <Paper variant="dark" sx={paperSx}>
+    <BannerPaper variant="dark">
       <header className="WeatherInformationsPage__header" id="header">
         <Place />
         <ReSearchButton />
         <Time />
       </header>
-    </Paper>
+    </BannerPaper>
   );
 };
 

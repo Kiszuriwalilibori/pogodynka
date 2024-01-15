@@ -5,9 +5,8 @@ import { useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import Switch from "./switch";
-import Stack from "@mui/material/Stack";
 
-const stackSx = { margin: "0 auto", width: "150px", alignItems: "center" };
+import { LanguageSwitchStack } from "./LanguageSwitch.styles";
 
 export default function LanguageSwitch() {
   const [language, setLanguage] = useState("pl");
@@ -30,10 +29,10 @@ export default function LanguageSwitch() {
   );
 
   return (
-    <Stack onClick={e => e.stopPropagation()} direction="row" spacing={2} sx={stackSx}>
-      <img className="country-image switch-image" alt="country flag" src="https://flagcdn.com/28x21/pl.png" />
+    <LanguageSwitchStack onClick={e => e.stopPropagation()} direction="row" spacing={2}>
+      <img alt="country flag" src={require("images/pl.png")} />
       <Switch onChangeHandler={changeLanguage} optionClassName="option option--desktop-visible" />
-      <img className="country-image switch-image" alt="country flag" src="https://flagcdn.com/28x21/gb.png" />
-    </Stack>
+      <img alt="country flag" src={require("images/gb.png")} />
+    </LanguageSwitchStack>
   );
 }

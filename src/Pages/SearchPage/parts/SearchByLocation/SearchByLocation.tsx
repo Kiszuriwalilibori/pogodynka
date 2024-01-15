@@ -9,7 +9,7 @@ import { Place } from "js/functions";
 import { usePlaceContext } from "contexts";
 import { PlaceVariants } from "types";
 import { useDispatchAction } from "hooks";
-import { useFormStyles } from "styles/useFormStyles";
+import { useFormStyles } from "styles/Common.styles";
 
 import Form from "./Form";
 import { t } from "i18next";

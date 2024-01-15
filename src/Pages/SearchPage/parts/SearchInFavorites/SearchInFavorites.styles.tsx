@@ -50,3 +50,5 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default useStyles;
+
+export const paperSx = { padding: "0", marginTop: "60px" };

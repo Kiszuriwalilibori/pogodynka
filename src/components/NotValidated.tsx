@@ -1,6 +1,6 @@
 import Box from "@mui/material/Box";
 
-import { ProblemBox } from "styles/styled";
+import { ProblemBox } from "styles/Common.styles";
 
 type Props = { message?: string };
 /**

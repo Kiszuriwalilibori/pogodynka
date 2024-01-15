@@ -1,11 +1,9 @@
-import RestartAltOutlinedIcon from "@mui/icons-material/RestartAltOutlined";
-
 import { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 
 import * as ROUTES from "routes";
 
-import { SearchButton } from "./styled";
+import { SearchButton, RestartIcon } from "./ReSearchButton.styles";
 
 export default function ReSearchButton() {
   const navigate = useNavigate();
@@ -16,7 +14,7 @@ export default function ReSearchButton() {
 
   return (
     <SearchButton color="primary" aria-label="add" disableFocusRipple onClick={handleClick}>
-      <RestartAltOutlinedIcon sx={{ color: "black" }} />
+      <RestartIcon />
     </SearchButton>
   );
 }

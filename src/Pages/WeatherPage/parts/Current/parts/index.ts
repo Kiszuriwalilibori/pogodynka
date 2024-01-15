@@ -1,4 +1,4 @@
-import DescriptionWithIcon from "../../VisualDescription";
+import DescriptionWithIcon from "../../VisualDescription/VisualDescription";
 import Cell from "./Cell";
 import CurrentData from "./CurrentData";
 

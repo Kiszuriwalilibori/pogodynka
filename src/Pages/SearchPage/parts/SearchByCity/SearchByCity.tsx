@@ -7,7 +7,7 @@ import { useTranslation } from "react-i18next";
 import Form from "./Form";
 
 import { NotValidated } from "components";
-import { useFormStyles } from "styles/useFormStyles";
+import { useFormStyles } from "styles/Common.styles";
 import { Place } from "js/functions";
 import { usePlaceContext } from "contexts";
 import { PlaceVariants, PlaceType } from "types";

@@ -8,9 +8,9 @@ import { connect } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
-import StyledRadio from "./parts/StyledRadio";
-import StyledRadioGroup from "./parts/StyledRadioGroup";
-import useStyles from "./styles";
+import Radio from "./parts/Radio";
+import Radios from "./parts/Radios";
+import useStyles from "./Sources.styles";
 
 import { Place } from "js/functions";
 import { usePlaceContext } from "contexts";
@@ -70,27 +70,27 @@ function Sources(props: Props) {
   );
 
   return (
-    <Fade in={true} timeout={TIMEOUT_SHORT}>
+    <Fade in={true} timeout={TIMEOUT_SHORT} id="Sources">
       <FormControl component="fieldset" className={classes.sources}>
         <FormLabel className={classes.formLabel} component="legend">
           {t("search.show_for")}
         </FormLabel>
-        <StyledRadioGroup row defaultValue="" aria-label="source" name="customized-radios" onChange={handleChange}>
-          <FormControlLabel value="city" control={<StyledRadio />} label={t("search.city")} />
+        <Radios row defaultValue="" aria-label="source" name="customized-radios" onChange={handleChange}>
+          <FormControlLabel value="city" control={<Radio />} label={t("search.city")} />
           <FormControlLabel
             value="current"
             disabled={!currentPosition}
-            control={<StyledRadio />}
+            control={<Radio />}
             label={t("search.current")}
           />
-          <FormControlLabel value="location" control={<StyledRadio />} label={t("search.other")} />
+          <FormControlLabel value="location" control={<Radio />} label={t("search.other")} />
           <FormControlLabel
             value="favorites"
             disabled={!Favorites.hasContent()}
-            control={<StyledRadio />}
+            control={<Radio />}
             label={t("search.favorites")}
           />
-        </StyledRadioGroup>
+        </Radios>
       </FormControl>
     </Fade>
   );

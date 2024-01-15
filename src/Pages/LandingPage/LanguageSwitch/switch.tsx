@@ -1,4 +1,4 @@
-import Switch from "@mui/material/Switch";
+import RoughSwitch from "@mui/material/Switch";
 import FormControlLabel from "@mui/material/FormControlLabel";
 
 type Props = {
@@ -17,7 +17,7 @@ type Props = {
  * @param isChecked boolean indicating whether switch is checked or not
  * @returns basic switch component
  */
-const SwitchComponent = (props: Props): JSX.Element => {
+const Switch = (props: Props): JSX.Element => {
   const { onChangeHandler, labelLeft, labelRight, labelText, isChecked, optionClassName = "option" } = props;
 
   return (
@@ -25,7 +25,7 @@ const SwitchComponent = (props: Props): JSX.Element => {
       control={
         <div className="switch">
           <span className={optionClassName}>{labelLeft}</span>
-          <Switch checked={isChecked} onChange={onChangeHandler} name="checked" color="warning" />
+          <RoughSwitch checked={isChecked} onChange={onChangeHandler} name="checked" color="warning" />
           <span className={optionClassName}>{labelRight}</span>
         </div>
       }
@@ -34,4 +34,4 @@ const SwitchComponent = (props: Props): JSX.Element => {
     />
   );
 };
-export default SwitchComponent;
+export default Switch;

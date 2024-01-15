@@ -1,5 +1,5 @@
 import Progress from "@mui/material/CircularProgress";
-import { LoaderContainer } from "./styled";
+import { LoaderContainer } from "./Loader.styles";
 
 /**
  * creates  spinner that indicates loading state

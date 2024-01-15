@@ -1,6 +1,6 @@
 import createColumns from "./columns";
 
-import { StyledDataGrid, WeatherPaper } from "Pages/styled";
+import { StyledDataGrid, WeatherPaper } from "styles/Common.styles";
 
 interface Props {
   forecastData: (string | number)[][];

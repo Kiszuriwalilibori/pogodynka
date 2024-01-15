@@ -5,7 +5,7 @@ import { t } from "i18next";
 import { connect, ConnectedProps } from "react-redux";
 import { Fade, Box, Divider, Stack, IconButton } from "@mui/material";
 
-import { ProblemBox, ProblemBoxContainer } from "styles/styled";
+import { ProblemBox, ProblemBoxContainer } from "styles/Common.styles";
 import { RootStateType } from "types";
 import { hideErrorMessage } from "js/Redux/actionCreators";
 

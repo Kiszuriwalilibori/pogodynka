@@ -2,15 +2,13 @@ import * as React from "react";
 import { InputLabel, MenuItem, FormControl, Select, Paper, SelectChangeEvent } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
-import useStyles from "./styled";
+import useStyles, { paperSx } from "./SearchInFavorites.styles";
 
 import { Place } from "js/functions";
 import { usePlaceContext } from "contexts";
 import { useFavorites, useDispatchAction } from "hooks";
 import { PlaceVariants, Position } from "types";
 import { t } from "i18next";
-
-const paperSx = { padding: "0", marginTop: "60px" };
 
 interface eventTargetValue {
   source: PlaceVariants;
@@ -22,10 +20,10 @@ type ChangeEvent = React.ChangeEvent<{ name?: string | undefined; value: unknown
 const SearchInFavorites = () => {
   const placeContext = usePlaceContext();
   const classes = useStyles();
-  const { Favorites } = useFavorites();
-  const { clearSearchFactory } = useDispatchAction();
-  const favorites = Favorites.getAllItems();
   let navigate = useNavigate();
+  const { Favorites } = useFavorites();
+  const favorites = Favorites.getAllItems();
+  const { clearSearchFactory } = useDispatchAction();
 
   const handleChange = (event: ChangeEvent) => {
     const input = event.target.value as eventTargetValue;

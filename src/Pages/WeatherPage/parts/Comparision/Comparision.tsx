@@ -1,14 +1,14 @@
+import { useEffect } from "react";
 import { t } from "i18next";
 import { Fade } from "@mui/material";
 
-import TabTitle from "../TabTitle";
 import ComparisionData from "./ComparisionData";
-import Loader from "components/Loader/Loader";
 
+import { Loader, WeatherPageHeader } from "components";
 import { useFetchCurrentWeather, useCreateComparisionData, useFetchComparision } from "hooks";
-import { WeatherDataStack } from "Pages/styled";
+import { WeatherDataStack } from "styles/Common.styles";
 import { showErrorMessage } from "js/Redux/actionCreators";
-import { useEffect } from "react";
+import { WEATHER_DATA_STACK_SPACING } from "./config";
 
 const Comparision = () => {
   const { favoritesWeatherDataForComparision, isComparisionLoading, isComparisionError, label } = useFetchComparision();
@@ -29,8 +29,8 @@ const Comparision = () => {
   if (!weatherComparisionData) return null;
   return (
     <Fade in={true} timeout={400}>
-      <WeatherDataStack spacing="50px">
-        <TabTitle title={label} />
+      <WeatherDataStack spacing={WEATHER_DATA_STACK_SPACING}>
+        <WeatherPageHeader title={label} />
         <ComparisionData parameters={weatherComparisionData} />
       </WeatherDataStack>
     </Fade>

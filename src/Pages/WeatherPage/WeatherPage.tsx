@@ -1,5 +1,5 @@
 import { AddToFavorites, Banner, VisualDescription, WeatherTabs } from "./parts";
-import { Container } from "./styled";
+import { Container } from "./WeatherPage.styles";
 
 const WeatherPage = () => {
   return (
