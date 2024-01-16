@@ -8,6 +8,7 @@ import { useSpeechRecognition } from "react-speech-kit";
 import { Tooltip, SubmitButton } from "components";
 import { TIMEOUT_LONG } from "fixtures";
 import { listeningMicrophoneSx, microphoneSx } from "./Form.styles";
+import useManageTextField from "hooks/useManageTextField";
 
 interface Props {
   formClassName: string | undefined;
@@ -22,6 +23,13 @@ const Form = (props: Props) => {
   const { listen, listening, stop, supported } = useSpeechRecognition({
     onResult: (result: string) => {
       if (result && textFieldRef.current) textFieldRef.current.value = result;
+      console.log(
+        " textFieldRef, textFieldRef.current,result, textFieldRef.current.value",
+        textFieldRef,
+        textFieldRef.current,
+        result,
+        textFieldRef.current ? textFieldRef.current.value : "nothing"
+      );
     },
   });
 
@@ -35,7 +43,7 @@ const Form = (props: Props) => {
       <form className={formClassName} autoComplete="off" onSubmit={handleSubmit}>
         <Tooltip title={t("msgs.two_and_alpha")} arrow>
           <TextField
-            ref={textFieldRef}
+            inputRef={textFieldRef}
             required
             id="city_name_input"
             size="small"
