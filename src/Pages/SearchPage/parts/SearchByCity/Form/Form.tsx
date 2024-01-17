@@ -1,4 +1,4 @@
-import { useCallback, useRef } from "react";
+import { useCallback, useRef, useState } from "react";
 import { Fade, IconButton, TextField } from "@mui/material";
 import KeyboardVoiceIcon from "@mui/icons-material/KeyboardVoice";
 import { FieldInputProps } from "formik/dist/types";
@@ -19,17 +19,18 @@ interface Props {
 const Form = (props: Props) => {
   const { formClassName, handleSubmit, fieldProps } = props;
   const textFieldRef = useRef<HTMLInputElement | null>(null);
+  const [told, setTold] = useState<string>("");
 
   const { listen, listening, stop, supported } = useSpeechRecognition({
     onResult: (result: string) => {
-      if (result && textFieldRef.current) textFieldRef.current.value = result;
-      console.log(
-        " textFieldRef, textFieldRef.current,result, textFieldRef.current.value",
-        textFieldRef,
-        textFieldRef.current,
-        result,
-        textFieldRef.current ? textFieldRef.current.value : "nothing"
-      );
+      if (result) setTold(result);
+      // console.log(
+      //   " textFieldRef, textFieldRef.current,result, textFieldRef.current.value",
+      //   textFieldRef,
+      //   textFieldRef.current,
+      //   result,
+      //   textFieldRef.current ? textFieldRef.current.value : "nothing"
+      // );
     },
   });
 
@@ -39,19 +40,22 @@ const Form = (props: Props) => {
 
   const { t } = useTranslation();
 
-  console.log(fieldProps);
   return (
     <Fade in={true} timeout={TIMEOUT_LONG}>
       <form className={formClassName} autoComplete="off" onSubmit={handleSubmit}>
         <Tooltip title={t("msgs.two_and_alpha")} arrow>
           <TextField
-            inputRef={textFieldRef}
+            // inputRef={textFieldRef}
             required
             id="city_name_input"
             size="small"
             label={t("page-weather.add_place")}
             variant="outlined"
             {...fieldProps}
+            // value={told ? told : ""}
+            // onChange={e => {
+            //   setTold(e.target.value);
+            // }}
           />
         </Tooltip>
         <IconButton
