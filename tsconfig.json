@@ -27,7 +27,8 @@
       "models/*": ["models/*"],
       "routes": ["routes"],
       "styles/*": ["styles/*"],
-      "types/*": ["types/*"]
+      "types/*": ["types/*"],
+      "themes/*": ["themes/*"]
     }
   },
   "include": ["src"]

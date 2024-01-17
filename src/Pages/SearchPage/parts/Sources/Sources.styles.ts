@@ -1,5 +1,6 @@
 import makeStyles from "@mui/styles/makeStyles";
 import { colors } from "fixtures";
+import theme from "themes/theme";
 
 const useStyles = makeStyles({
   sources: {
@@ -7,11 +8,10 @@ const useStyles = makeStyles({
     display: "flex",
     justifyContent: "center",
     borderRadius: "initial",
-    border: "4px solid" + colors.background,
+    border: "4px solid" + theme.palette.greenish.main,
     padding: "20px",
     marginTop: "60px",
     "@media (max-width: 548px)": { marginTop: "11vw" },
-    color: colors.background,
     margin: "0 1vw",
     fontWeight: "bold",
     boxShadow:
@@ -36,7 +36,7 @@ const useStyles = makeStyles({
     "@media (max-width: 700px)": { marginTop: "-60px", top: "-80px" },
   },
   formControlLabel: {
-    color: "black",
+    color: theme.palette.common.black,
     "& span": { fontWeight: "700 !important" },
   },
   root: {

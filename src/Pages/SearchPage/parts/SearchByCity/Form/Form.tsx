@@ -38,6 +38,8 @@ const Form = (props: Props) => {
   }, [listening, listen, stop]);
 
   const { t } = useTranslation();
+
+  console.log(fieldProps);
   return (
     <Fade in={true} timeout={TIMEOUT_LONG}>
       <form className={formClassName} autoComplete="off" onSubmit={handleSubmit}>

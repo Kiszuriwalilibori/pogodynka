@@ -1,7 +1,7 @@
 import SendIcon from "@mui/icons-material/Send";
 import { Button } from "@mui/material";
 
-import useStyles from "./style";
+import useStyles from "./SubmitButton.style";
 
 type Props = { text: string };
 

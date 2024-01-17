@@ -1,5 +1,4 @@
-import { colors } from "fixtures";
-import { COLOR_SUNNY_DARK, COLOR_SUNNY_HOVER } from "themes/constans";
+import theme from "themes/theme";
 
 export const microphoneSx = {
   width: "40px",
@@ -11,29 +10,29 @@ export const microphoneSx = {
 export const listeningMicrophoneSx = (listening: boolean) => {
   if (listening) {
     return {
-      backgroundColor: COLOR_SUNNY_DARK,
+      backgroundColor: theme.palette.sunny.dark,
       animation: "bgr 1s infinite",
       "&:hover": {
-        backgroundColor: COLOR_SUNNY_HOVER,
+        backgroundColor: theme.palette.sunny.dark,
       },
 
       "@keyframes bgr": {
         "0%": {
-          backgroundColor: COLOR_SUNNY_DARK,
+          backgroundColor: theme.palette.sunny.dark,
         },
         "50%": {
-          backgroundColor: COLOR_SUNNY_HOVER,
+          backgroundColor: theme.palette.sunny.light,
         },
         "100%": {
-          backgroundColor: COLOR_SUNNY_DARK,
+          backgroundColor: theme.palette.sunny.dark,
         },
       },
     };
   } else {
     return {
-      backgroundColor: colors.background,
+      backgroundColor: theme.palette.greenish.main,
       "&:hover": {
-        backgroundColor: colors.background_hover,
+        backgroundColor: theme.palette.greenish.light,
       },
     };
   }

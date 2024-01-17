@@ -1,7 +1,15 @@
 import { createTheme } from "@mui/material";
 import { common, grey } from "@mui/material/colors";
 
-import { COLOR_BACKGROUND, COLOR_BORDERS, COLOR_SUNNY } from "./constans";
+import {
+  COLOR_BACKGROUND,
+  COLOR_BORDERS,
+  COLOR_GREENISH,
+  COLOR_GREENISH_LIGHTER,
+  COLOR_SUNNY,
+  COLOR_SUNNY_DARK,
+  COLOR_SUNNY_HOVER,
+} from "./constans";
 
 declare module "@mui/material/styles" {
   interface TypographyVariants {
@@ -10,6 +18,15 @@ declare module "@mui/material/styles" {
 
   interface TypographyVariantsOptions {
     h2Bordered?: React.CSSProperties;
+  }
+  interface Palette {
+    sunny: Palette["primary"];
+    greenish: Palette["primary"];
+  }
+
+  interface PaletteOptions {
+    sunny?: PaletteOptions["primary"];
+    greenish?: PaletteOptions["primary"];
   }
 }
 declare module "@mui/material/Typography" {
@@ -135,6 +152,10 @@ theme = createTheme({
         },
       },
     },
+  },
+  palette: {
+    sunny: { main: COLOR_SUNNY, light: COLOR_SUNNY_HOVER, dark: COLOR_SUNNY_DARK },
+    greenish: { light: COLOR_GREENISH_LIGHTER, main: COLOR_GREENISH },
   },
 });
 export default theme;
