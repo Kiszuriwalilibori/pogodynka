@@ -58,13 +58,13 @@ const Form = (props: Props) => {
             // }}
           />
         </Tooltip>
-        <IconButton
+        {/* <IconButton
           disabled={!supported}
           onClick={handleClickMicrophone}
           sx={{ ...microphoneSx, ...listeningMicrophoneSx(listening) }}
         >
           <KeyboardVoiceIcon />
-        </IconButton>
+        </IconButton> */}
         <SubmitButton text={t("search.search")} />
       </form>
     </Fade>
