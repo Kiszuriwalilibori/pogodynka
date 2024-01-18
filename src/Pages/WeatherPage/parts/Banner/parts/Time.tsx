@@ -3,7 +3,8 @@ import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 const INTERVAL = 60000;
-const TIME_FORMAT = "D MMMM [godzina ]H:mm";
+// const TIME_FORMAT = "D MMMM [godzina ]H:mm";
+const TIME_FORMAT = "D MMMM H:mm";
 
 const getTime = () => moment().format(TIME_FORMAT);
 

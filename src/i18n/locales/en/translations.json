@@ -55,7 +55,8 @@
     "addtofavs?": "Add to favorites?",
     "label": "label",
     "add_place": "City",
-    "weather": "Weather "
+    "weather": "Weather ",
+    "weather_today": " Weather forecast for today"
   },
   "place": {
     "current": "Current weather in ",

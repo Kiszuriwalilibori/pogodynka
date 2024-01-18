@@ -1,5 +1,6 @@
 import { Fade } from "@mui/material";
 import { useSpeechSynthesis } from "react-speech-kit";
+import { useTranslation } from "react-i18next";
 
 import { useFetchCurrentWeather } from "hooks";
 import { TIMEOUT_LONG } from "fixtures";
@@ -9,12 +10,13 @@ import { useEffect } from "react";
 
 const VisualDescription = () => {
   const { descriptionData: data } = useFetchCurrentWeather();
-  const { speak } = useSpeechSynthesis();
+  const { t } = useTranslation();
+  const { speak, voices } = useSpeechSynthesis();
 
   useEffect(() => {
     if (data && data.weatherDescription) {
-      console.log("it speaks");
-      speak(data.weatherDescription);
+      const text = t("page-weather.weather_today") + ": " + data.weatherDescription;
+      speak({ text: text, voice: voices[2] });
     }
   }, [JSON.stringify(data)]);
 

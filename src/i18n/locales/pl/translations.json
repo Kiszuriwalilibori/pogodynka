@@ -47,7 +47,8 @@
     "addtofavs?": "Czy dodać to miejsce do Ulubionych?",
     "label": "Etykieta",
     "add_place": "Miejscowość",
-    "weather": "Pogoda"
+    "weather": "Pogoda",
+    "weather_today": "Prognoza pogody na dzisiaj "
   },
   "place": {
     "current": "Bieżąca pogoda dla ",
