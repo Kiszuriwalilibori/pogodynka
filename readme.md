@@ -54,4 +54,6 @@ initial version with tanstack-query
 
 Better WCAG compliance, more meaningfull names, simplified
 
+### 0.2.2 voice message om weather
+
 ## TODO
