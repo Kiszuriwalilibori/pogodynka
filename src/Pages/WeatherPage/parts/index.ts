@@ -4,7 +4,16 @@ import Forecast from "./Forecast";
 import Banner from "./Banner";
 import TabTitle from "../../../components/WeatherPageHeader";
 import WeatherTabs from "./WeatherTabs";
-import VisualDescription from "./VisualDescription";
+import TextAndVoiceWeatherDescription from "./TextAndVoiceWeatherDescription";
 import AddToFavorites from "./AddToFavorites";
 
-export { AddToFavorites, Banner, Comparision, Current, Forecast, TabTitle, WeatherTabs, VisualDescription };
+export {
+  AddToFavorites,
+  Banner,
+  Comparision,
+  Current,
+  Forecast,
+  TabTitle,
+  WeatherTabs,
+  TextAndVoiceWeatherDescription,
+};

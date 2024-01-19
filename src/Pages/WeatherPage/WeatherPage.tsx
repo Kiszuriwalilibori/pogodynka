@@ -1,4 +1,4 @@
-import { AddToFavorites, Banner, VisualDescription, WeatherTabs } from "./parts";
+import { AddToFavorites, Banner, TextAndVoiceWeatherDescription, WeatherTabs } from "./parts";
 import { Container } from "./WeatherPage.styles";
 
 const WeatherPage = () => {
@@ -7,7 +7,7 @@ const WeatherPage = () => {
       <Banner />
       <Container>
         <AddToFavorites />
-        <VisualDescription />
+        <TextAndVoiceWeatherDescription />
         <WeatherTabs />
       </Container>
     </>
