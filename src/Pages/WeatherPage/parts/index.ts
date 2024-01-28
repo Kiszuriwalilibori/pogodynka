@@ -4,7 +4,7 @@ import Forecast from "./Forecast";
 import Banner from "./Banner";
 import TabTitle from "../../../components/WeatherPageHeader";
 import WeatherTabs from "./WeatherTabs";
-import TextAndVoiceWeatherDescription from "./TextAndVoiceWeatherDescription";
+import TextAndVoiceWeatherDescription from "./WeatherDescription";
 import AddToFavorites from "./AddToFavorites";
 
 export {

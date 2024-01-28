@@ -48,7 +48,11 @@
     "label": "Etykieta",
     "add_place": "Miejscowość",
     "weather": "Pogoda",
-    "weather_today": "Prognoza pogody na dzisiaj "
+    "weather_today": "Prognoza pogody na dzisiaj ",
+    "weather_today_city": "Prognoza pogody na dzisiaj dla miejscowości ",
+    "weather_today_location": "Prognoza pogody na dzisiaj dla miejsca o koordynatach: ",
+    "latitude": "szerokość geograficzna",
+    "longitude": "długość geograficzna"
   },
   "place": {
     "current": "Bieżąca pogoda dla ",

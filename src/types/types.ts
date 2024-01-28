@@ -1,5 +1,6 @@
 import { Action } from "redux";
 import { ThunkDispatch } from "redux-thunk";
+import { TFunction } from "i18next";
 
 import { RootStateType } from "components";
 
@@ -74,3 +75,5 @@ export type Description =
       weatherDescription: string;
       icon: string;
     };
+
+export type Translation = TFunction<"translation", undefined, "translation">;

@@ -1,19 +1,19 @@
+import { useEffect } from "react";
 import { Fade } from "@mui/material";
 import { useSpeechSynthesis } from "react-speech-kit";
 
 import { useFetchCurrentWeather } from "hooks";
 import { TIMEOUT_LONG } from "fixtures";
-import { TextAndVoiceWeatherDescriptionPaper } from "./TextAndVoiceWeatherDescription.styles";
-import { createWeatherIconURL, getVoiceCode } from "./utils";
-import { useEffect } from "react";
+import { TextAndVoiceWeatherDescriptionPaper } from "./WeatherDescription.styles";
+import { createWeatherIconURL, getVoiceCode } from "./WeatherDescription.utils";
 
 const TextAndVoiceWeatherDescription = () => {
-  const { descriptionData, voiceDescriptionText } = useFetchCurrentWeather();
+  const { descriptionData, speakableWeatherDescription } = useFetchCurrentWeather();
   const { speak, voices } = useSpeechSynthesis();
 
   useEffect(() => {
-    speak({ text: voiceDescriptionText, voice: voices[getVoiceCode()] });
-  }, [voiceDescriptionText]);
+    speak({ text: speakableWeatherDescription, voice: voices[getVoiceCode()] });
+  }, [speakableWeatherDescription]);
 
   if (!descriptionData) return null;
 

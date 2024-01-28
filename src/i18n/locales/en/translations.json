@@ -56,7 +56,11 @@
     "label": "label",
     "add_place": "City",
     "weather": "Weather ",
-    "weather_today": " Weather forecast for today"
+    "weather_today": " Weather forecast for today",
+    "weather_today_city": " Weather forecast for today in ",
+    "weather_today_location": " Weather forecast for today for the place with coordinates: ",
+    "latitude": "latitude",
+    "longitude": "longitude"
   },
   "place": {
     "current": "Current weather in ",

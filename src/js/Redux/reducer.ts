@@ -1,7 +1,8 @@
 import { createReducer } from "@reduxjs/toolkit";
+import { useSelector } from "react-redux";
 
 import { actionCreators } from ".";
-import { Geolocation, Source } from "types";
+import { Geolocation, Source, RootStateType } from "types";
 
 const {
   cacheSupported,
@@ -67,3 +68,7 @@ const reducer = createReducer(initialState, builder => {
 });
 
 export default reducer;
+
+export function useGetSourceType() {
+  return useSelector((state: RootStateType) => state.searchFormSourceType);
+}
