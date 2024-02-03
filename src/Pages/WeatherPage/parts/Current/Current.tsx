@@ -2,7 +2,7 @@ import { Fade } from "@mui/material";
 
 import { Loader, WeatherPageHeader } from "components";
 import { usePlaceContext } from "contexts";
-import { useFetchCurrentWeather } from "hooks";
+import { useDelayedCondition, useFetchCurrentWeather } from "hooks";
 import { CurrentData } from "./parts";
 import { WeatherDataStack } from "styles/Common.styles";
 import { TIMEOUT_SHORT } from "fixtures";
@@ -11,11 +11,11 @@ import "./_CurrentWeather.scss";
 
 const Current = () => {
   const { labelCurrent } = { ...usePlaceContext().place };
-
   const { currentWeatherData, isCurrentWeatherLoading } = useFetchCurrentWeather();
+  const { delayedCondition: loading } = useDelayedCondition(isCurrentWeatherLoading);
 
   if (!navigator.onLine) return null;
-  if (isCurrentWeatherLoading) return <Loader />;
+  if (loading) return <Loader />;
   if (!currentWeatherData) return null;
 
   return (

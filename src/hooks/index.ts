@@ -1,5 +1,6 @@
 import useAxiosArray from "./useAxiosArray";
 import useBoolean from "./useBoolean";
+import useDelayedCondition from "./useDelayedCondition";
 import useDispatchAction from "./useDispatchAction";
 import useFavorites from "./useFavorites";
 import useHandleConnectionStatus from "./useHandleConnectionStatus";
@@ -18,6 +19,7 @@ export {
   useAxiosArray,
   useBoolean,
   useCheckApiKey,
+  useDelayedCondition,
   useDispatchAction,
   useFavorites,
   useHandleConnectionStatus,
