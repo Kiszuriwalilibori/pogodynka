@@ -30,6 +30,10 @@ export const useDelayedCondition = (condition: boolean, delay = DELAY, duration 
         }
       }
     }
+    return () => {
+      delayTimeout.current && clearTimeout(delayTimeout.current);
+      durationTimeout.current && clearTimeout(durationTimeout.current);
+    };
   }, [condition]);
 
   return { delayedCondition };
