@@ -1,20 +1,19 @@
-import { LOADING_DELAY } from "fixtures";
 import { useEffect, useRef, useState } from "react";
 
-export const useDelayedCondition = (condition: boolean) => {
+const DELAY = 1000;
+
+export const useDelayedCondition = (condition: boolean, delay = DELAY) => {
   const [delayedCondition, setDelayedCondition] = useState(false);
-  const myTimeout = useRef(undefined as undefined | NodeJS.Timeout);
-  const startTime = useRef(undefined as undefined | number);
+  const delayTimeout = useRef(undefined as undefined | NodeJS.Timeout);
 
   useEffect(() => {
     if (condition) {
-      myTimeout.current = setTimeout(() => {
+      delayTimeout.current = setTimeout(() => {
         setDelayedCondition(true);
-        startTime.current = Date.now();
-      }, LOADING_DELAY);
+      }, delay);
     }
     if (!condition) {
-      myTimeout.current && clearTimeout(myTimeout.current);
+      delayTimeout.current && clearTimeout(delayTimeout.current);
       setDelayedCondition(false);
     }
   }, [condition]);
