@@ -12,6 +12,8 @@ import { WeatherTabsWrapper, tabSX } from "./WeatherTabs.styles";
 import { TabPanel } from "./TabPanel";
 import { a11yProps } from "./utils";
 
+const TAB = "Tab ";
+
 export function WeatherTabs() {
   const [value, setValue] = React.useState(0);
   const { Favorites } = useFavorites();
@@ -34,8 +36,22 @@ export function WeatherTabs() {
   return (
     <WeatherTabsWrapper>
       <Tabs value={value} onChange={handleChange} aria-label="Available reports">
-        <Tab sx={tabSX} label={t("tabs.current")} {...a11yProps(0)} tabIndex={0} disableFocusRipple id="dupa" />
-        <Tab sx={tabSX} label={t("tabs.forecast")} {...a11yProps(1)} tabIndex={0} disableFocusRipple />
+        <Tab
+          sx={tabSX}
+          label={t("tabs.current")}
+          {...a11yProps(0)}
+          tabIndex={0}
+          disableFocusRipple
+          id={TAB + t("tabs.current")}
+        />
+        <Tab
+          sx={tabSX}
+          label={t("tabs.forecast")}
+          {...a11yProps(1)}
+          tabIndex={0}
+          disableFocusRipple
+          id={TAB + t("tabs.current")}
+        />
         <Tab
           sx={tabSX}
           label={t("tabs.comparision")}
@@ -43,6 +59,7 @@ export function WeatherTabs() {
           disabled={comparisionDisabled}
           tabIndex={0}
           disableFocusRipple
+          id={TAB + t("tabs.current")}
         />
       </Tabs>
 

@@ -7,7 +7,7 @@ import NotValidated from "./NotValidated";
 import SubmitButton from "./SubmitButton";
 import TextField from "./TextField";
 import Tooltip from "./Tooltip";
-import WeatherPageHeader from "./WeatherPageHeader";
+import TabHeader from "./TabHeader";
 
 import { RootStateType, AppDispatch, AppProvider } from "./AppProvider";
 import { TanstackQueryProvider } from "./TanstackQueryProvider";
@@ -24,7 +24,7 @@ export {
   TanstackQueryProvider,
   TextField,
   Tooltip,
-  WeatherPageHeader,
+  TabHeader,
 };
 
 export type { RootStateType, AppDispatch };

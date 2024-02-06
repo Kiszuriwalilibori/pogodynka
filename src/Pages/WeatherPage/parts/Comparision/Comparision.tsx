@@ -4,7 +4,7 @@ import { Fade } from "@mui/material";
 
 import ComparisionData from "./ComparisionData";
 
-import { Loader, WeatherPageHeader } from "components";
+import { Loader, TabHeader } from "components";
 import { useFetchCurrentWeather, useCreateComparisionData, useFetchComparision, useDelayedCondition } from "hooks";
 import { WeatherDataStack } from "styles/Common.styles";
 import { showErrorMessage } from "js/Redux/actionCreators";
@@ -31,7 +31,7 @@ const Comparision = () => {
   return (
     <Fade in={true} timeout={400}>
       <WeatherDataStack spacing={WEATHER_DATA_STACK_SPACING}>
-        <WeatherPageHeader title={label} />
+        <TabHeader title={label} />
         <ComparisionData parameters={weatherComparisionData} />
       </WeatherDataStack>
     </Fade>

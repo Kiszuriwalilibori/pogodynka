@@ -13,11 +13,11 @@ import {
 
 declare module "@mui/material/styles" {
   interface TypographyVariants {
-    h2Bordered: React.CSSProperties;
+    tabHeader: React.CSSProperties;
   }
 
   interface TypographyVariantsOptions {
-    h2Bordered?: React.CSSProperties;
+    tabHeader?: React.CSSProperties;
   }
   interface Palette {
     sunny: Palette["primary"];
@@ -31,7 +31,7 @@ declare module "@mui/material/styles" {
 }
 declare module "@mui/material/Typography" {
   interface TypographyPropsVariantOverrides {
-    h2Bordered: true;
+    tabHeader: true;
   }
 }
 declare module "@mui/material/Paper" {
@@ -45,7 +45,7 @@ let theme = createTheme({});
 theme = createTheme({
   typography: {
     fontFamily: `MontSerrat,"Roboto", "Helvetica", "Arial", sans-serif`,
-    h2Bordered: {
+    tabHeader: {
       fontSize: "32px",
       fontWeight: 600,
       textShadow: `-1px -1px 0 ${COLOR_BORDERS}, 1px -1px 0 #224749, -1px 1px 0 ${COLOR_BORDERS}, 1px 1px 0 ${COLOR_BORDERS}`,
