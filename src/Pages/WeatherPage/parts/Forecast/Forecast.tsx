@@ -2,7 +2,7 @@ import { Fade } from "@mui/material";
 
 import ForecastData from "./ForecastData";
 
-import { useFetchForecast, useProcessForecastData } from "hooks";
+import { useDelayedCondition, useFetchForecast, useProcessForecastData } from "hooks";
 import { usePlaceContext } from "contexts";
 import { WeatherDataStack } from "styles/Common.styles";
 import { Loader, WeatherPageHeader } from "components";
@@ -11,9 +11,10 @@ import { TIMEOUT_SHORT } from "fixtures";
 const Forecast = () => {
   const labelForecast = usePlaceContext().place.labelForecast;
   const { data, isLoading } = useFetchForecast();
+  const shouldDisplayLoader = useDelayedCondition(isLoading);
   const preparedData = useProcessForecastData(data);
 
-  if (isLoading) return <Loader />;
+  if (shouldDisplayLoader) return <Loader />;
 
   if (!preparedData || !preparedData.length) return null;
 

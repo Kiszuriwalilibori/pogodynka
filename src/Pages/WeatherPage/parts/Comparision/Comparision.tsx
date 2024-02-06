@@ -5,7 +5,7 @@ import { Fade } from "@mui/material";
 import ComparisionData from "./ComparisionData";
 
 import { Loader, WeatherPageHeader } from "components";
-import { useFetchCurrentWeather, useCreateComparisionData, useFetchComparision } from "hooks";
+import { useFetchCurrentWeather, useCreateComparisionData, useFetchComparision, useDelayedCondition } from "hooks";
 import { WeatherDataStack } from "styles/Common.styles";
 import { showErrorMessage } from "js/Redux/actionCreators";
 import { WEATHER_DATA_STACK_SPACING } from "./config";
@@ -13,7 +13,8 @@ import { WEATHER_DATA_STACK_SPACING } from "./config";
 const Comparision = () => {
   const { favoritesWeatherDataForComparision, isComparisionLoading, isComparisionError, label } = useFetchComparision();
   const { isCurrentWeatherLoading, currentWeatherDataForComparision } = useFetchCurrentWeather();
-  const isLoading = isComparisionLoading || isCurrentWeatherLoading;
+  const isLoading = useDelayedCondition(isComparisionLoading || isCurrentWeatherLoading);
+
   const weatherComparisionData = useCreateComparisionData(
     favoritesWeatherDataForComparision,
     currentWeatherDataForComparision

@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Fade } from "@mui/material";
 import { useSpeechSynthesis } from "react-speech-kit";
 
@@ -8,8 +8,13 @@ import { TextAndVoiceWeatherDescriptionPaper } from "./WeatherDescription.styles
 import { createWeatherIconURL, getVoiceCode } from "./WeatherDescription.utils";
 
 const TextAndVoiceWeatherDescription = () => {
+  const [isLoadingImageCompleted, setIsLoadingImageCompleted] = useState(false);
   const { descriptionData, speakableWeatherDescription } = useFetchCurrentWeather();
   const { speak, voices } = useSpeechSynthesis();
+
+  const handleLoadingImageCompleted = useCallback(() => {
+    setIsLoadingImageCompleted(true);
+  }, []);
 
   useEffect(() => {
     speak({ text: speakableWeatherDescription, voice: voices[getVoiceCode()] });
@@ -22,9 +27,14 @@ const TextAndVoiceWeatherDescription = () => {
   if (!weatherDescription || !icon) return null;
 
   return (
-    <Fade in={true} timeout={TIMEOUT_LONG}>
+    <Fade in={isLoadingImageCompleted} timeout={TIMEOUT_LONG}>
       <TextAndVoiceWeatherDescriptionPaper variant="dark" elevation={2}>
-        <img src={createWeatherIconURL(icon)} alt="weather"></img>
+        <img
+          src={createWeatherIconURL(icon)}
+          alt="weather"
+          onLoad={handleLoadingImageCompleted}
+          onError={handleLoadingImageCompleted}
+        ></img>
         {weatherDescription}
       </TextAndVoiceWeatherDescriptionPaper>
     </Fade>

@@ -12,10 +12,10 @@ import "./_CurrentWeather.scss";
 const Current = () => {
   const { labelCurrent } = { ...usePlaceContext().place };
   const { currentWeatherData, isCurrentWeatherLoading } = useFetchCurrentWeather();
-  const { delayedCondition: loading } = useDelayedCondition(isCurrentWeatherLoading);
+  const isLoading = useDelayedCondition(isCurrentWeatherLoading);
 
   if (!navigator.onLine) return null;
-  if (loading) return <Loader />;
+  if (isLoading) return <Loader />;
   if (!currentWeatherData) return null;
 
   return (

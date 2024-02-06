@@ -36,7 +36,7 @@ export const useDelayedCondition = (condition: boolean, delay = DELAY, duration 
     };
   }, [condition]);
 
-  return { delayedCondition };
+  return delayedCondition;
 };
 
 export default useDelayedCondition;
