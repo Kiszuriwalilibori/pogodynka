@@ -1,15 +1,15 @@
 import makeStyles from "@mui/styles/makeStyles";
-import { colors } from "fixtures";
+import { COLOR_BORDERS } from "themes/constans";
 import theme from "themes/theme";
 
 const useStyles = makeStyles({
   sources: {
-    backgroundColor: colors.background_grey,
+    backgroundColor: theme.palette.grey[400],
     display: "flex",
     justifyContent: "center",
     borderRadius: "initial",
-    border: "4px solid" + theme.palette.greenish.main,
-    padding: "20px",
+    border: `${theme.spacing(0.5)} solid ${theme.palette.greenish.main}`,
+    padding: theme.spacing(2.5),
     marginTop: "60px",
     "@media (max-width: 548px)": { marginTop: "11vw" },
     margin: "0 1vw",
@@ -24,7 +24,7 @@ const useStyles = makeStyles({
 
   formLabel: {
     color: "white !important",
-    textShadow: "-1px -1px 0 #224749, 1px -1px 0 #224749, -1px 1px 0 #224749, 1px 1px 0 #224749",
+    textShadow: `-1px -1px 0 ${COLOR_BORDERS}, 1px -1px 0 ${COLOR_BORDERS}, -1px 1px 0 ${COLOR_BORDERS}, 1px 1px 0 ${COLOR_BORDERS}`,
     position: "absolute",
     fontWeight: "bolder",
     fontSize: "2rem",
@@ -58,7 +58,7 @@ const useStyles = makeStyles({
       outlineOffset: 2,
     },
     "input:hover ~ &": {
-      backgroundColor: colors.background_hover,
+      backgroundColor: theme.palette.greenish.light,
     },
     "input:disabled ~ &": {
       boxShadow: "none",
@@ -66,7 +66,7 @@ const useStyles = makeStyles({
     },
   },
   checkedIcon: {
-    backgroundColor: colors.background,
+    backgroundColor: theme.palette.greenish.main,
     backgroundImage: "linear-gradient(180deg,hsla(0,0%,100%,.1),hsla(0,0%,100%,0))",
     "&:before": {
       display: "block",
@@ -76,7 +76,7 @@ const useStyles = makeStyles({
       content: '""',
     },
     "input:hover ~ &": {
-      backgroundColor: colors.background_hover,
+      backgroundColor: theme.palette.greenish.light,
     },
   },
 });

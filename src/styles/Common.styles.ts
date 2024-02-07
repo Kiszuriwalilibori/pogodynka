@@ -1,10 +1,9 @@
 import makeStyles from "@mui/styles/makeStyles";
 
 import { styled } from "@mui/material/styles";
-
-import { colors } from "fixtures";
 import { Box, Stack, Paper } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
+import { COLOR_BORDERS } from "themes/constans";
 
 export const ProblemBox = styled(Box)(({ theme }) => ({
   display: "block",
@@ -41,10 +40,10 @@ export const useFormStyles = makeStyles(theme => ({
     flexDirection: "row",
     flexWrap: "wrap",
     justifyContent: "center",
-    border: "4px solid #224749",
-    borderRadius: "42px",
+    border: `4px solid ${COLOR_BORDERS}`,
+    borderRadius: theme.spacing(6),
     padding: "10px 20px",
-    background: colors.background_grey,
+    background: theme.palette.grey[400],
     margin: "0 1vw",
     marginTop: "60px",
     boxShadow:
@@ -63,14 +62,14 @@ export const useFormStyles = makeStyles(theme => ({
     "& .MuiInputBase-root": {
       color: "white !important",
       fontFamily: "Open Sans, sans-serif !important",
-      backgroundColor: colors.background,
+      backgroundColor: theme.palette.greenish.main,
       padding: "5px 0",
       "&:hover": {
-        backgroundColor: colors.background_hover,
+        backgroundColor: theme.palette.greenish.light,
       },
     },
-    "& .MuiFormLabel-root": { color: "white !important" },
-    "& .MuiOutlinedInput-notchedOutline": { border: "3px solid", borderColor: "#224749 !important" },
+    "& .MuiFormLabel-root": { color: `${theme.palette.common.white} !important` },
+    "& .MuiOutlinedInput-notchedOutline": { border: "3px solid", borderColor: `${COLOR_BORDERS} !important` },
   },
 }));
 
@@ -102,7 +101,7 @@ export const StyledDataGrid = styled(DataGrid)(({ theme }) => ({
     margin: "0 auto",
     color: "white",
   },
-  "& svg": { color: "white" },
+  "& svg": { color: theme.palette.common.white },
 }));
 
 export const WeatherDataStack = styled(Stack)(({ theme }) => ({

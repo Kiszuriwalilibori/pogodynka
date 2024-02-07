@@ -48,7 +48,7 @@ theme = createTheme({
     tabHeader: {
       fontSize: "32px",
       fontWeight: 600,
-      textShadow: `-1px -1px 0 ${COLOR_BORDERS}, 1px -1px 0 #224749, -1px 1px 0 ${COLOR_BORDERS}, 1px 1px 0 ${COLOR_BORDERS}`,
+      textShadow: `-1px -1px 0 ${COLOR_BORDERS}, 1px -1px 0 ${COLOR_BORDERS}, -1px 1px 0 ${COLOR_BORDERS}, 1px 1px 0 ${COLOR_BORDERS}`,
       color: common.white,
     },
   },
@@ -64,7 +64,7 @@ theme = createTheme({
           fontWeight: "600",
           gap: theme.spacing(1),
           padding: theme.spacing(3, 3.5),
-          textShadow: `-1px -1px 0 ${COLOR_BORDERS}, 1px -1px 0 #224749, -1px 1px 0 ${COLOR_BORDERS}, 1px 1px 0 ${COLOR_BORDERS}`,
+          textShadow: `-1px -1px 0 ${COLOR_BORDERS}, 1px -1px 0 ${COLOR_BORDERS}, -1px 1px 0 ${COLOR_BORDERS}, 1px 1px 0 ${COLOR_BORDERS}`,
           color: common.white,
           "@media (max-width: 548px)": { padding: "0" },
           [`& > .MuiTab-iconWrapper`]: {
