@@ -25,13 +25,13 @@ const SearchInFavorites = () => {
   const favorites = Favorites.getAllItems();
   const { clearSearchFactory } = useDispatchAction();
 
-  const handleChange = (event: ChangeEvent) => {
+  const handleChange = React.useCallback((event: ChangeEvent) => {
     const input = event.target.value as eventTargetValue;
     const place = new Place(input.source, input.place, true);
     placeContext.setPlace(place);
     navigate(place.redirectURL, { state: { results: place.redirectURL } });
     clearSearchFactory();
-  };
+  }, []);
 
   if (!favorites) return null;
 

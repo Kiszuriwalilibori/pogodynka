@@ -15,6 +15,7 @@ const setBackground = (handleDone: ActionCreatorWithoutPayload<"BACKGROUND_IS_RE
       if (backgroundURL) {
         root.style.background = `url(${backgroundURL}) no-repeat center center fixed`;
         root.style.backgroundSize = `cover`;
+
         handleDone();
       }
     }

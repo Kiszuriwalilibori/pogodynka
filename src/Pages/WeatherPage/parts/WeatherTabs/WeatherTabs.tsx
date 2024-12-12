@@ -27,10 +27,12 @@ export function WeatherTabs() {
       forceUpdate();
     });
 
-  const handleChange = (event: React.SyntheticEvent, newValue: React.SetStateAction<number>) => {
+  const handleChange = React.useCallback((event: React.SyntheticEvent, newValue: React.SetStateAction<number>) => {
     setValue(newValue);
-  };
+  }, []);
+
   const placeContext = usePlaceContext();
+
   if (isEmpty(placeContext.place)) return null;
 
   return (

@@ -15,8 +15,9 @@ export const TextAndVoiceWeatherDescriptionPaper = styled(Paper)(({ theme }) => 
 }));
 
 export const MuteButton = styled(IconButton)(({ theme }) => ({
-  position: "absolute",
-  bottom: theme.spacing(-2),
+  position: "fixed",
+  bottom: "10vh",
+  right: "10vh",
   backgroundColor: theme.palette.warning.main,
   color: theme.palette.common.black,
   "&:hover": {
