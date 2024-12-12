@@ -18,7 +18,8 @@
     "two_and_alpha": " At least two characters, including one alphanumeric",
     "no_API_key": "API key not found. ",
     "invalid_data": "IN {{type}} An error occurred while processing the downloaded data.  {{name}} Error description: {{description}} ",
-    "no_background": " The background image cannot be downloaded at this time"
+    "no_background": " The background image cannot be downloaded at this time",
+    "no_unsplash_key": "No Unsplash access key found. The app will work with standard and not customizable background only"
   },
   "search": {
     "search": "search",

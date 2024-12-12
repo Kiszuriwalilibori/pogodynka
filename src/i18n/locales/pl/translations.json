@@ -11,7 +11,8 @@
     "two_and_alpha": " Nie mniej niż dwa znaki w tym jeden alfanumeryczny",
     "no_API_key": "Nie znaleziono klucza API. Aplikacja nie będzie działać",
     "invalid_data": "W {{type}} wystapił błąd przetwarzania pobranych danych. Nazwa błędu: {{name}} Opis błędu: {{description}} ",
-    "no_background": " W tej chwili nie można pobrać obrazu tła"
+    "no_background": " W tej chwili nie można pobrać obrazu tła",
+    "no_unsplash_key": "Nie znaleziono klucza Unsplash. Aplikacja będzie działać ze standardowym tłem"
   },
   "search": {
     "search": "Wyszukaj",

@@ -14,6 +14,7 @@ import useGetParamsForComparision from "./useGetParamsForComparision";
 import useCreateComparisionData from "./useCreateComparisionData";
 import useFetchComparision from "./useFetchComparision";
 import useMessage from "./useMessage";
+import usePrepareBackground from "./usePrepareBackground";
 
 export {
   useAxiosArray,
@@ -24,6 +25,7 @@ export {
   useFavorites,
   useHandleConnectionStatus,
   useMessage,
+  usePrepareBackground,
   useProcessCurrentData,
   useProcessForecastData,
   useTypedSelector,

@@ -5,14 +5,29 @@
  *
  */
 
-const setBackground = (backgroundURL?: string): void => {
+import { ActionCreatorWithoutPayload } from "@reduxjs/toolkit";
+
+const setBackground = (handleDone: ActionCreatorWithoutPayload<"BACKGROUND_IS_READY">, backgroundURL: string): void => {
   const root = document.getElementById("root");
-  if (root) {
-    if (backgroundURL) {
-      root.style.background = `url(${backgroundURL}) no-repeat center center fixed`;
-      root.style.backgroundSize = `cover`;
+  var image = new Image();
+  image.addEventListener("load", function () {
+    if (root) {
+      if (backgroundURL) {
+        root.style.background = `url(${backgroundURL}) no-repeat center center fixed`;
+        root.style.backgroundSize = `cover`;
+        handleDone();
+      }
     }
-  }
+  });
+
+  image.src = backgroundURL;
+
+  // if (root) {
+  //   if (backgroundURL) {
+  //     root.style.background = `url(${backgroundURL}) no-repeat center center fixed`;
+  //     root.style.backgroundSize = `cover`;
+  //   }
+  // }
 };
 
 export default setBackground;

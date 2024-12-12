@@ -63,7 +63,6 @@
 @font-face {
   font-family: Brush;
   src: url(../fonts/brush.ttf) format("truetype");
-  font-display: swap;
 }
 * {
   box-sizing: border-box;

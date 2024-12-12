@@ -10,7 +10,7 @@ import { register } from "../serviceWorkerRegistration";
 import reducer from "../js/Redux/reducer";
 import CheckSupportForLocalStorage from "./CheckSupportForLocalStorage";
 import CheckSupportForGeolocation from "./CheckSupportForGeolocation";
-import SetBackground from "./SetBackground";
+
 import theme from "themes/theme";
 
 import { PlaceContextProvider } from "contexts";
@@ -41,9 +41,9 @@ export const AppProvider: FC = ({ children }) => {
             <PlaceContextProvider>
               <CheckSupportForLocalStorage>
                 <CheckSupportForGeolocation>
-                  <SetBackground>
-                    <Router>{children}</Router>
-                  </SetBackground>
+                  {/* <SetBackground> */}
+                  <Router>{children}</Router>
+                  {/* </SetBackground> */}
                 </CheckSupportForGeolocation>
               </CheckSupportForLocalStorage>
             </PlaceContextProvider>

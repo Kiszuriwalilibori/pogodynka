@@ -7,5 +7,6 @@ export const setSearchFormSourceType = createAction<Omit<Source, "current">>("SE
 export const setGeoLocationSupport = createAction<boolean>("SET_GEOLOCATION_SUPPORT");
 export const hideErrorMessage = createAction("ERROR_MESSAGE_HIDE");
 export const showErrorMessage = createAction<string>("ERROR_MESSAGE_SHOW");
+export const setBackgroundReady = createAction("BACKGROUND_IS_READY");
 
 export const setGeoLocationPosition = createAction<Geolocation | undefined>("SET_GEOLOCATION_POSITION");

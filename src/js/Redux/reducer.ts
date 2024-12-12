@@ -11,6 +11,7 @@ const {
   setGeoLocationSupport,
   setSearchFormSourceType,
   showErrorMessage,
+  setBackgroundReady,
   setGeoLocationPosition,
 } = actionCreators;
 
@@ -24,6 +25,7 @@ const initialState = {
   isForecastVisible: false,
   isSearchFactoryVisible: false,
   isError: false,
+  isBackgroundReady: false,
 };
 
 const reducer = createReducer(initialState, builder => {
@@ -50,6 +52,9 @@ const reducer = createReducer(initialState, builder => {
         state.isCacheSupported = action.payload;
       }
     })
+    .addCase(setBackgroundReady, state => {
+      state.isBackgroundReady = true;
+    })
     .addCase(setGeoLocationPosition, (state, action) => {
       if (action.payload) {
         state.geoLocationPosition = action.payload;
@@ -71,4 +76,8 @@ export default reducer;
 
 export function useGetSourceType() {
   return useSelector((state: RootStateType) => state.searchFormSourceType);
+}
+
+export function useIsBackgroundReady() {
+  return useSelector((state: RootStateType) => state.isBackgroundReady);
 }

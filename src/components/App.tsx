@@ -5,7 +5,7 @@ import * as ROUTES from "../routes";
 import { Routes, Route, useLocation } from "react-router-dom";
 
 import { LandingPage } from "../Pages";
-import { useCheckApiKey, useHandleConnectionStatus } from "hooks";
+import { useCheckApiKey, useHandleConnectionStatus, usePrepareBackground } from "hooks";
 import { breakWhenInternetExplorer } from "js/functions";
 import { withProblemMessage } from "HOCs";
 
@@ -15,6 +15,7 @@ const NoPage = loadable(() => import("Pages/NoPage"));
 
 const App = () => {
   useHandleConnectionStatus();
+  usePrepareBackground();
   breakWhenInternetExplorer();
 
   const isAPIKeyAvailable = useCheckApiKey();
