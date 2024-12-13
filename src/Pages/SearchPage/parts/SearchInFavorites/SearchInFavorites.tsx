@@ -52,6 +52,7 @@ const SearchInFavorites = () => {
           {favorites.map(item => {
             return (
               <MenuItem
+                className="menu-item"
                 key={item.label}
                 value={
                   {
