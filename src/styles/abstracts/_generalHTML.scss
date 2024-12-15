@@ -14,15 +14,7 @@ body,
   padding: 0;
 }
 html {
-  @extend .root--fallback-background;
-
-  @media (max-width: 330px) {
-    font-size: 10px;
-  }
-
-  @media (min-width: 569px) {
-    font-size: 16px;
-  }
+  @extend .background-fallback;
 }
 
 body {
@@ -31,6 +23,14 @@ body {
     "Droid Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   min-width: 100%;
+
+  @media (max-width: 330px) {
+    font-size: 10px;
+  }
+
+  @media (min-width: 569px) {
+    font-size: 16px;
+  }
 }
 
 #root {
