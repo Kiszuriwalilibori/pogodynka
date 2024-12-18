@@ -1,21 +1,20 @@
 import { Fade } from "@mui/material";
 
-import { Loader, TabHeader } from "components";
-import { usePlaceContext } from "contexts";
-import { useDelayedCondition, useFetchCurrentWeather } from "hooks";
+import { TabHeader } from "components";
+
 import { CurrentData } from "./parts";
 import { WeatherDataStack } from "styles/Common.styles";
 import { TIMEOUT_SHORT } from "fixtures";
 
 import "./_CurrentWeather.scss";
 
-const Current = () => {
-  const { labelCurrent } = { ...usePlaceContext().place };
-  const { currentWeatherData, isCurrentWeatherLoading } = useFetchCurrentWeather();
-  const isLoading = useDelayedCondition(isCurrentWeatherLoading);
+interface Props {
+  currentWeatherData: string[] | undefined;
+  labelCurrent: string;
+}
 
-  if (!navigator.onLine) return null;
-  if (isLoading) return <Loader />;
+const Current = (props: Props) => {
+  const { currentWeatherData, labelCurrent } = props;
   if (!currentWeatherData) return null;
 
   return (

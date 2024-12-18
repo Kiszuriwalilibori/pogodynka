@@ -6,11 +6,12 @@ import isEmpty from "lodash/isEmpty";
 import { useTranslation } from "react-i18next";
 
 import { Comparision, Current, Forecast } from "..";
-import { useFavorites } from "hooks";
+import { useDelayedCondition, useFavorites, useFetchCurrentWeather } from "hooks";
 import { usePlaceContext } from "contexts";
 import { WeatherTabsWrapper, tabSX } from "./WeatherTabs.styles";
 import { TabPanel } from "./TabPanel";
 import { a11yProps } from "./utils";
+import Loader from "components/Loader";
 
 const TAB = "Tab ";
 
@@ -20,6 +21,9 @@ export function WeatherTabs() {
   const comparisionDisabled = isEmpty(Favorites.getForComparision());
   const [, updateState] = React.useState();
   const { t } = useTranslation();
+
+  const { currentWeatherData, isCurrentWeatherLoading } = useFetchCurrentWeather(); //
+  const isLoading = useDelayedCondition(isCurrentWeatherLoading); //
 
   const forceUpdate = React.useCallback(() => updateState({} as React.SetStateAction<undefined>), []);
   window &&
@@ -33,7 +37,13 @@ export function WeatherTabs() {
 
   const placeContext = usePlaceContext();
 
+  const { labelCurrent } = { ...usePlaceContext().place };
+
   if (isEmpty(placeContext.place)) return null;
+  if (isLoading) {
+    return <Loader />;
+  }
+  if (!currentWeatherData) return null;
 
   return (
     <WeatherTabsWrapper>
@@ -66,7 +76,7 @@ export function WeatherTabs() {
       </Tabs>
 
       <TabPanel value={value} index={0}>
-        <Current />
+        <Current currentWeatherData={currentWeatherData} labelCurrent={labelCurrent} />
       </TabPanel>
       <TabPanel value={value} index={1}>
         <Forecast />

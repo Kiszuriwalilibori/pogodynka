@@ -1,12 +1,10 @@
 import uuid from "react-uuid";
-import { useSpeechSynthesis } from "react-speech-kit";
 import { useTranslation } from "react-i18next";
 
 import Cell from "./Cell";
 
 import { currentArray, weatherConfig } from "models";
 import { WeatherPaper } from "styles/Common.styles";
-import { useEffect } from "react";
 
 interface Props {
   weatherData: string[];
