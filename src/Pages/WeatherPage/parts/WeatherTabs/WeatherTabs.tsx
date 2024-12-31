@@ -6,7 +6,7 @@ import isEmpty from "lodash/isEmpty";
 import { useTranslation } from "react-i18next";
 
 import { Comparision, Current, Forecast } from "..";
-import { useDelayedCondition, useFavorites, useFetchCurrentWeather } from "hooks";
+import { useDelayedCondition, useFavorites, useFetchCurrentWeather, useForceUpdate } from "hooks";
 import { usePlaceContext } from "contexts";
 import { WeatherTabsWrapper, tabSX } from "./WeatherTabs.styles";
 import { TabPanel } from "./TabPanel";
@@ -19,13 +19,13 @@ export function WeatherTabs() {
   const [value, setValue] = React.useState(0);
   const { Favorites } = useFavorites();
   const comparisionDisabled = isEmpty(Favorites.getForComparision());
-  const [, updateState] = React.useState();
+  const forceUpdate = useForceUpdate();
+
   const { t } = useTranslation();
 
   const { currentWeatherData, isCurrentWeatherLoading } = useFetchCurrentWeather();
   const isLoading = useDelayedCondition(isCurrentWeatherLoading);
 
-  const forceUpdate = React.useCallback(() => updateState({} as React.SetStateAction<undefined>), []);
   window &&
     window.addEventListener("storage", () => {
       forceUpdate();
