@@ -1,11 +1,10 @@
-import { t } from "i18next";
-
-import { setBackground } from "js/functions";
-import { useDispatchAction, useMessage } from "hooks";
+import { useEffect } from "react";
 
 import useGetWorker from "./useGetWorker";
+
+import { setBackground } from "js/functions";
+import { useDispatchAction } from "hooks";
 import { WorkerMessage } from "./model";
-import { useEffect } from "react";
 
 export function usePrepareBackground() {
   const worker = useGetWorker();

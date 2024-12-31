@@ -22,8 +22,8 @@ export function WeatherTabs() {
   const [, updateState] = React.useState();
   const { t } = useTranslation();
 
-  const { currentWeatherData, isCurrentWeatherLoading } = useFetchCurrentWeather(); //
-  const isLoading = useDelayedCondition(isCurrentWeatherLoading); //
+  const { currentWeatherData, isCurrentWeatherLoading } = useFetchCurrentWeather();
+  const isLoading = useDelayedCondition(isCurrentWeatherLoading);
 
   const forceUpdate = React.useCallback(() => updateState({} as React.SetStateAction<undefined>), []);
   window &&
