@@ -15,8 +15,6 @@ interface eventTargetValue {
   place: Position;
 }
 
-type ChangeEvent = React.ChangeEvent<{ name?: string | undefined; value: unknown }>;
-
 const SearchInFavorites = () => {
   const placeContext = usePlaceContext();
   const classes = useStyles();
@@ -25,8 +23,8 @@ const SearchInFavorites = () => {
   const favorites = Favorites.getAllItems();
   const { clearSearchFactory } = useDispatchAction();
 
-  const handleChange = React.useCallback((event: ChangeEvent) => {
-    const input = event.target.value as eventTargetValue;
+  const handleChange = React.useCallback((event: SelectChangeEvent<string>) => {
+    const input = JSON.parse(event.target.value) as eventTargetValue;
     const place = new Place(input.source, input.place, true);
     placeContext.setPlace(place);
     navigate(place.redirectURL, { state: { results: place.redirectURL } });
@@ -45,21 +43,17 @@ const SearchInFavorites = () => {
           className={classes.select}
           MenuProps={{ classes: { paper: classes.dropdownStyle } }}
           value=""
-          onChange={(event: SelectChangeEvent<"">) => {
-            handleChange(event as ChangeEvent);
-          }}
+          onChange={handleChange}
         >
           {favorites.map(item => {
             return (
               <MenuItem
                 className="menu-item"
                 key={item.label}
-                value={
-                  {
-                    source: item.source,
-                    place: item.place,
-                  } as unknown as string | ReadonlyArray<string> | number | undefined
-                }
+                value={JSON.stringify({
+                  source: item.source,
+                  place: item.place,
+                })}
               >
                 {item.label}
               </MenuItem>
