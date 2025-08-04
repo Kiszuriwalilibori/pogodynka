@@ -27,10 +27,21 @@ export function WeatherTabs() {
   const { currentWeatherData, isCurrentWeatherLoading } = useFetchCurrentWeather();
   const isLoading = useDelayedCondition(isCurrentWeatherLoading);
 
-  window &&
-    window.addEventListener("storage", () => {
+  React.useEffect(() => {
+    const handleStorage = () => {
       forceUpdate();
-    });
+    };
+
+    if (window) {
+      window.addEventListener("storage", handleStorage);
+    }
+
+    return () => {
+      if (window) {
+        window.removeEventListener("storage", handleStorage);
+      }
+    };
+  }, [forceUpdate]);
 
   const handleChange = React.useCallback((event: React.SyntheticEvent, newValue: React.SetStateAction<number>) => {
     setValue(newValue);
