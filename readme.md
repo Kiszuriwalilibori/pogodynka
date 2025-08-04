@@ -1,19 +1,124 @@
-# POGODYNKA
+# POGODYNKA - Weather Forecast Application
 
 [![N|Solid](https://cldup.com/dTxpPi9lDf.thumb.png)](https://nodesource.com/products/nsolid)
 
-## The Objective
+## Overview
 
-- present my skills
-- act as playground for relatively new skills: Redux and React-Router
+Pogodynka is a modern weather application built with React and TypeScript that provides comprehensive weather information for cities around the world. The app offers real-time weather updates, forecasts, and comparisons with Polish cities.
 
 ## Features
 
-- This app shows current weather in chosen city
-- This app also presents weather forecast for that city
-- Last but not least it compares weather in target city and weather in few polish towns
+- **Real-time Weather Data**
+  - Current weather conditions for any city
+  - Detailed weather information including temperature, humidity, wind speed, and more
+  - Dynamic background images based on weather conditions
+
+- **Weather Forecast**
+  - 5-day weather forecast for selected cities
+  - Hourly weather updates
+  - Visual representation of weather patterns
+
+- **City Comparison**
+  - Compare weather conditions between selected city and multiple Polish cities
+  - Quick overview of temperature differences
+  - Real-time updates for all compared locations
+
+- **User Experience**
+  - Voice search functionality using speech recognition
+  - Favorite cities management
+  - Dark theme with modern UI design
+  - Responsive layout for all devices
 
 ## Technologies
+
+- **Frontend Framework**: React 18 with TypeScript
+- **State Management**: Redux Toolkit
+- **Routing**: React Router v6
+- **UI Components**: Material-UI v5
+- **API Integration**: OpenWeatherMap API
+- **Background Images**: Unsplash API
+- **Form Handling**: Formik
+- **Internationalization**: i18next
+- **Speech Recognition**: React Speech Kit
+- **Service Workers**: Workbox
+- **Type Checking**: TypeScript
+- **Linting**: ESLint
+- **Styling**: Emotion
+
+## Installation
+
+1. Clone the repository:
+```bash
+git clone https://github.com/Kiszuriwalilibori/pogodynka.git
+```
+
+2. Install dependencies:
+```bash
+cd pogodynka
+npm install
+```
+
+3. Create a `.env` file in the root directory with your API keys:
+```
+REACT_APP_WEATHER_API_KEY=your_weather_api_key
+REACT_APP_UNSPLASH_ACCESS_KEY=your_unsplash_api_key
+```
+
+4. Start the development server:
+```bash
+npm start
+```
+
+The app will be available at `http://localhost:3000`
+
+## Usage
+
+1. **Search for Weather**
+   - Enter a city name in the search box
+   - Use voice search by clicking the microphone icon
+   - View current weather and 5-day forecast
+
+2. **Compare Cities**
+   - Click the "Compare" button to see weather comparison
+   - Compare selected city with multiple Polish cities
+   - View temperature differences and weather conditions
+
+3. **Manage Favorites**
+   - Add cities to your favorites list
+   - Quick access to frequently checked cities
+   - Remove cities from favorites when needed
+
+## Project Structure
+
+```
+src/
+├── components/         # Reusable UI components
+├── hooks/             # Custom React hooks
+├── Pages/             # Page components
+├── styles/            # Global styles and themes
+├── themes/            # Theme configurations
+├── utils/             # Utility functions
+└── i18n/             # Internationalization files
+```
+
+## Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Acknowledgments
+
+- OpenWeatherMap for weather data
+- Unsplash for background images
+- Material-UI team for the excellent UI components
+- All contributors who helped improve this project
 
 - HTML 5.2
 - SASS/SCSS
@@ -54,6 +159,6 @@ initial version with tanstack-query
 
 Better WCAG compliance, more meaningfull names, simplified
 
-### 0.2.2 voice message om weather
+### 0.2.2 voice message on weather
 
 ## TODO

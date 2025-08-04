@@ -1,6 +1,5 @@
 import FormControlLabel from "@mui/material/FormControlLabel";
 import withStyles from "@mui/styles/withStyles";
-
 import Fab from "@mui/material/Fab";
 import AddIcon from "@mui/icons-material/Add";
 import { COLOR_BORDERS } from "themes/constans";
@@ -23,12 +22,13 @@ type Props = {
 };
 
 /**
- *
- * @param func function which will be triggered when switch changes
+ * renders styled switch component with label
+ * @param handleClick function which will be triggered when switch changes
  * @param labelText text which will be displayed as title
  * @param isChecked boolean indicating whether switch is checked or not
  * @returns basic switch component
  */
+
 export const Confirm = (props: Props): JSX.Element => {
   const { handleClick, labelText } = props;
 
@@ -44,4 +44,5 @@ export const Confirm = (props: Props): JSX.Element => {
     />
   );
 };
+
 export default Confirm;

@@ -1,7 +1,7 @@
 {
   "name": "pogodynka",
   "homepage": "http://kiszuriwalilibori.github.io/pogodynka",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.7.0",
