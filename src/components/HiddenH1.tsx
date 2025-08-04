@@ -1,10 +1,11 @@
 import React from "react";
+import { FC } from "react";
 
-interface Props {
+type Props = {
   headingText: string;
 }
 
-export const HiddenH1 = (props: Props) => {
+const HiddenH1Component: FC<Props> = (props) => {
   const { headingText: text } = props;
   return (
     <header>
@@ -13,4 +14,5 @@ export const HiddenH1 = (props: Props) => {
   );
 };
 
+export const HiddenH1 = React.memo(HiddenH1Component);
 export default HiddenH1;

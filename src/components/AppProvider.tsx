@@ -1,3 +1,4 @@
+import React from "react";
 import { FC } from "react";
 import { configureStore } from "@reduxjs/toolkit";
 
@@ -19,13 +20,13 @@ import "styles/App.css";
 import "../i18n/config";
 
 declare module "@mui/styles/defaultTheme" {
-  // eslint-disable-next-line @typescript-eslint/no-empty-interface
+
   interface DefaultTheme extends Theme {}
 }
 
 export const store = configureStore({ reducer });
 
-export const AppProvider: FC = ({ children }) => {
+const AppProviderComponent: FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
     <Provider store={store}>
       <StyledEngineProvider injectFirst>
@@ -42,9 +43,7 @@ export const AppProvider: FC = ({ children }) => {
               <CheckSupportForLocalStorage>
                 <CheckSupportForGeolocation>
                   <SpeechProvider>
-                    {/* <SetBackground> */}
                     <Router>{children}</Router>
-                    {/* </SetBackground> */}
                   </SpeechProvider>
                 </CheckSupportForGeolocation>
               </CheckSupportForLocalStorage>
@@ -55,6 +54,8 @@ export const AppProvider: FC = ({ children }) => {
     </Provider>
   );
 };
+
+export const AppProvider = React.memo(AppProviderComponent);
 
 register();
 

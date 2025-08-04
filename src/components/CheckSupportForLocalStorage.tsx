@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import { useFavorites } from "hooks";
 
 /**
@@ -7,15 +7,16 @@ import { useFavorites } from "hooks";
  * @returns
  */
 
-const CheckSupportForLocalStorage = ({ children }: { children?: React.ReactNode }): JSX.Element => {
+const CheckSupportForLocalStorageComponent = ({ children }: { children?: React.ReactNode }): JSX.Element => {
   const { Favorites } = useFavorites();
 
   React.useEffect(() => {
     Favorites.manageSupport();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+
   }, []);
 
   return children as JSX.Element;
 };
 
+export const CheckSupportForLocalStorage = React.memo(CheckSupportForLocalStorageComponent);
 export default CheckSupportForLocalStorage;

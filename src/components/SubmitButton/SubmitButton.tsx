@@ -1,3 +1,4 @@
+import React from "react";
 import SendIcon from "@mui/icons-material/Send";
 import { Button } from "@mui/material";
 
@@ -11,7 +12,7 @@ type Props = { text: string };
  * @returns button component
  */
 
-const SubmitButton = (props: Props): JSX.Element => {
+const SubmitButtonComponent = (props: Props): JSX.Element => {
   const classes = useStyles();
 
   return (
@@ -20,4 +21,6 @@ const SubmitButton = (props: Props): JSX.Element => {
     </Button>
   );
 };
+
+export const SubmitButton = React.memo(SubmitButtonComponent);
 export default SubmitButton;
