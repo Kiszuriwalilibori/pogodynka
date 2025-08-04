@@ -1,24 +1,24 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
 import { Fade } from "@mui/material";
 import VolumeOffIcon from "@mui/icons-material/VolumeOff";
-import { useSpeechSynthesis } from "react-speech-kit";
 
 import { useFetchCurrentWeather } from "hooks";
 import { TIMEOUT_LONG } from "fixtures";
 import { MuteButton, TextAndVoiceWeatherDescriptionPaper } from "./WeatherDescription.styles";
-import { createWeatherIconURL, getVoiceCode } from "./WeatherDescription.utils";
+import { createWeatherIconURL } from "./WeatherDescription.utils";
+import { SpeechContext } from "contexts/index";
 
 const TextAndVoiceWeatherDescription = () => {
   const [isLoadingImageCompleted, setIsLoadingImageCompleted] = useState(false);
   const { descriptionData, speakableWeatherDescription } = useFetchCurrentWeather();
-  const { cancel, speak, speaking, voices } = useSpeechSynthesis();
 
+  const { speakText, isSpeaking, cancelSpeech } = useContext(SpeechContext);
   const handleLoadingImageCompleted = useCallback(() => {
     setIsLoadingImageCompleted(true);
   }, []);
 
   useEffect(() => {
-    speakableWeatherDescription && speak({ text: speakableWeatherDescription, voice: voices[getVoiceCode()] });
+    speakableWeatherDescription && speakText(speakableWeatherDescription);
   }, [speakableWeatherDescription]);
 
   if (!descriptionData) return null;
@@ -38,9 +38,9 @@ const TextAndVoiceWeatherDescription = () => {
           {weatherDescription}
         </TextAndVoiceWeatherDescriptionPaper>
       </Fade>
-      {speaking && (
-        <Fade timeout={TIMEOUT_LONG} in={speaking}>
-          <MuteButton onClick={cancel} id="MuteButton">
+      {isSpeaking && (
+        <Fade timeout={TIMEOUT_LONG} in={isSpeaking}>
+          <MuteButton onClick={cancelSpeech} id="MuteButton">
             <VolumeOffIcon />
           </MuteButton>
         </Fade>

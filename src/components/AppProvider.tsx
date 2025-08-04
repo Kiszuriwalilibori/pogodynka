@@ -13,7 +13,7 @@ import CheckSupportForGeolocation from "./CheckSupportForGeolocation";
 
 import theme from "themes/theme";
 
-import { PlaceContextProvider } from "contexts";
+import { PlaceContextProvider, SpeechProvider } from "contexts";
 
 import "styles/App.css";
 import "../i18n/config";
@@ -41,9 +41,11 @@ export const AppProvider: FC = ({ children }) => {
             <PlaceContextProvider>
               <CheckSupportForLocalStorage>
                 <CheckSupportForGeolocation>
-                  {/* <SetBackground> */}
-                  <Router>{children}</Router>
-                  {/* </SetBackground> */}
+                  <SpeechProvider>
+                    {/* <SetBackground> */}
+                    <Router>{children}</Router>
+                    {/* </SetBackground> */}
+                  </SpeechProvider>
                 </CheckSupportForGeolocation>
               </CheckSupportForLocalStorage>
             </PlaceContextProvider>

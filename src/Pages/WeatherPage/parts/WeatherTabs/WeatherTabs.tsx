@@ -7,7 +7,7 @@ import { useTranslation } from "react-i18next";
 
 import { Comparision, Current, Forecast } from "..";
 import { useDelayedCondition, useFavorites, useFetchCurrentWeather, useForceUpdate } from "hooks";
-import { usePlaceContext } from "contexts";
+import { usePlaceContext, SpeechContext } from "contexts";
 import { WeatherTabsWrapper, tabSX } from "./WeatherTabs.styles";
 import { TabPanel } from "./TabPanel";
 import { a11yProps } from "./utils";
@@ -20,6 +20,7 @@ export function WeatherTabs() {
   const { Favorites } = useFavorites();
   const comparisionDisabled = isEmpty(Favorites.getForComparision());
   const forceUpdate = useForceUpdate();
+  const { cancelSpeech } = React.useContext(SpeechContext);
 
   const { t } = useTranslation();
 
@@ -33,6 +34,7 @@ export function WeatherTabs() {
 
   const handleChange = React.useCallback((event: React.SyntheticEvent, newValue: React.SetStateAction<number>) => {
     setValue(newValue);
+    cancelSpeech();
   }, []);
 
   const placeContext = usePlaceContext();
