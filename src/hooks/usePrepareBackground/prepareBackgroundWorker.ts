@@ -4,11 +4,11 @@ import getSeason from "js/functions/getSeason";
 import WorkerMessage from "./model";
 
 self.onmessage = function (event: MessageEvent<WorkerMessage["post"]>) {
-  const isMobile = event.data;
+  const { isMobile, apiKey } = event.data;
   const season = getSeason(new Date());
   let result = null;
   let error = null;
-  const unsplash = new Unsplash({ accessKey: process.env.REACT_APP_UNSPLASH_ACCESS_KEY as string });
+  const unsplash = new Unsplash({ accessKey: apiKey });
 
   unsplash.photos
     .getRandomPhoto({ query: season, orientation: "landscape" })

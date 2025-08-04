@@ -19,7 +19,10 @@ export function usePrepareBackground() {
     }
 
     if (window.Worker) {
-      worker.postMessage(isMobile);
+      worker.postMessage({
+        isMobile,
+        apiKey: process.env.REACT_APP_UNSPLASH_ACCESS_KEY || ''
+      });
       worker.onerror = function (e) {
         setBackgroundReady();
       };
