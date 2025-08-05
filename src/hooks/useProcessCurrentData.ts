@@ -12,7 +12,7 @@ export const useProcessCurrentData = (data: object | undefined) => {
   useEffect(() => {
     if (data) {
       try {
-        let parameters = processFetchedData[ReportVariants.CURRENT](data);
+        let parameters = processFetchedData[ReportVariants.CURRENT](data!);
         if (parameters.length === 0) throw new Error("No parameters found for current weather");
         setProcessedData(parameters);
       } catch (err) {

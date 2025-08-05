@@ -6,15 +6,12 @@ import { ReportVariants, WeatherDataWithEndpoint, ComparableWeatherData, Compari
 function useCreateComparisionData(
   favoritesWeather: WeatherDataWithEndpoint[],
   currentWeather: ComparableWeatherData | undefined
-) {
+): (string | ComparisionResult)[][] | undefined {
   const { showErrorMessage } = useDispatchAction();
 
   try {
     if (favoritesWeather && favoritesWeather.length && currentWeather) {
-      return processFetchedData[ReportVariants.COMPARISION](favoritesWeather, currentWeather) as [
-        string,
-        ...Array<ComparisionResult>
-      ][];
+      return processFetchedData[ReportVariants.COMPARISION](favoritesWeather, currentWeather);
     } else {
       return undefined;
     }
