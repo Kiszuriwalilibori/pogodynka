@@ -1,7 +1,7 @@
 import Tab from "@mui/material/Tab";
 import { a11yProps } from "./utils";
 import { useTranslation } from "react-i18next";
-import { ReportVariants } from "types/index";
+import { ReportVariants } from "types";
 
 const TAB = "Tab ";
 const tabSX = {
