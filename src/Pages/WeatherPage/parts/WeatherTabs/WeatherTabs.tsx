@@ -1,21 +1,19 @@
 import * as React from "react";
 import Tabs from "@mui/material/Tabs";
-import Tab from "@mui/material/Tab";
-import isEmpty from "lodash/isEmpty";
 
-import { useTranslation } from "react-i18next";
+import isEmpty from "lodash/isEmpty";
 
 import { useDelayedCondition, useFavorites, useFetchCurrentWeather, useForceUpdate } from "hooks";
 import { usePlaceContext, SpeechContext } from "contexts";
-import { WeatherTabsWrapper, tabSX } from "./WeatherTabs.styles";
+import { WeatherTabsWrapper } from "./WeatherTabs.styles";
 import { TabPanel } from "./TabPanel";
-import { a11yProps } from "./utils";
+
 import Loader from "components/Loader";
 import Current from "./Current";
 import Forecast from "./Forecast";
 import Comparision from "./Comparision";
-
-const TAB = "Tab ";
+import { ReportVariants} from "types";
+import TabComponent from "./Tab";
 
 export function WeatherTabs() {
   const [value, setValue] = React.useState(0);
@@ -23,9 +21,6 @@ export function WeatherTabs() {
   const comparisionDisabled = isEmpty(Favorites.getForComparision());
   const forceUpdate = useForceUpdate();
   const { cancelSpeech } = React.useContext(SpeechContext);
-
-  const { t } = useTranslation();
-
   const { currentWeatherData, isCurrentWeatherLoading } = useFetchCurrentWeather();
   const isLoading = useDelayedCondition(isCurrentWeatherLoading);
 
@@ -63,31 +58,9 @@ export function WeatherTabs() {
   return (
     <WeatherTabsWrapper>
       <Tabs value={value} onChange={handleChange} aria-label="Available reports">
-        <Tab
-          sx={tabSX}
-          label={t("tabs.current")}
-          {...a11yProps(0)}
-          tabIndex={0}
-          disableFocusRipple
-          id={TAB + t("tabs.current")}
-        />
-        <Tab
-          sx={tabSX}
-          label={t("tabs.forecast")}
-          {...a11yProps(1)}
-          tabIndex={0}
-          disableFocusRipple
-          id={TAB + t("tabs.current")}
-        />
-        <Tab
-          sx={tabSX}
-          label={t("tabs.comparision")}
-          {...a11yProps(2)}
-          disabled={comparisionDisabled}
-          tabIndex={0}
-          disableFocusRipple
-          id={TAB + t("tabs.current")}
-        />
+        <TabComponent index={0} title={ReportVariants.CURRENT}/>
+        <TabComponent index={1} title={ReportVariants.FORECAST}/>
+        <TabComponent index={2} title={ReportVariants.COMPARISION} disabled={comparisionDisabled} />
       </Tabs>
 
       <TabPanel value={value} index={0}>
