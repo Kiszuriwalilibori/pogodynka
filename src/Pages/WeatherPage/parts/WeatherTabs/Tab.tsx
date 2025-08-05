@@ -1,6 +1,7 @@
 import Tab from "@mui/material/Tab";
 import { a11yProps } from "./utils";
 import { useTranslation } from "react-i18next";
+import { ReportVariants } from "types/index";
 
 const TAB = "Tab ";
 const tabSX = {
@@ -13,8 +14,8 @@ const tabSX = {
 
 
 interface Props {
-  index:number;
-  title:string;
+  index: number;
+  title: ReportVariants;
   disabled?: boolean;
 }
 
@@ -26,12 +27,12 @@ export const TabComponent = (props: Props) => {
   return (
     <Tab
       sx={tabSX}
-      label={t("tabs"+title)}
+      label={t(`tabs.${title}`)}
       {...a11yProps(index)}
       tabIndex={index}
       disabled={disabled}
       disableFocusRipple
-      id={TAB + t("tabs"+title)}
+      id={TAB + t(`tabs.${title}`)}
     />
   );
 };
