@@ -1,6 +1,6 @@
 import React from "react";
 import { FC } from "react";
-import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
+import { configureStore} from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
 import { SnackbarProvider } from "notistack";
 import { HashRouter as Router } from "react-router-dom";

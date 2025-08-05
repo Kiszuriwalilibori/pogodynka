@@ -5,13 +5,15 @@ import isEmpty from "lodash/isEmpty";
 
 import { useTranslation } from "react-i18next";
 
-import { Comparision, Current, Forecast } from "..";
 import { useDelayedCondition, useFavorites, useFetchCurrentWeather, useForceUpdate } from "hooks";
 import { usePlaceContext, SpeechContext } from "contexts";
 import { WeatherTabsWrapper, tabSX } from "./WeatherTabs.styles";
 import { TabPanel } from "./TabPanel";
 import { a11yProps } from "./utils";
 import Loader from "components/Loader";
+import Current from "./Current";
+import Forecast from "./Forecast";
+import Comparision from "./Comparision";
 
 const TAB = "Tab ";
 

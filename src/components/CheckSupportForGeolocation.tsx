@@ -2,7 +2,7 @@ import React from "react";
 
 import { connect } from "react-redux";
 
-import { AnyAction, ThunkAction, ExtendedThunkDispatch, RootStateType } from "types";
+import { ExtendedThunkDispatch} from "types";
 import { checkSupportForGeolocation_Thunk } from "../js/Redux/checkSupportForGeolocationThunk";
 import { setGeoLocationSupport } from "js/Redux/actionCreators";
 

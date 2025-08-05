@@ -1,14 +1,14 @@
-import { useCallback, useRef, useState } from "react";
-import { Fade, IconButton, TextField } from "@mui/material";
-import KeyboardVoiceIcon from "@mui/icons-material/KeyboardVoice";
+import { /*useCallback,*/ /*useRef,*/ useState } from "react";
+import { Fade, /*IconButton,*/ TextField } from "@mui/material";
+// import KeyboardVoiceIcon from "@mui/icons-material/KeyboardVoice";
 import { FieldInputProps } from "formik/dist/types";
 import { useTranslation } from "react-i18next";
 import { useSpeechRecognition } from "react-speech-kit";
 
 import { Tooltip, SubmitButton } from "components";
 import { TIMEOUT_LONG } from "fixtures";
-import { listeningMicrophoneSx, microphoneSx } from "./Form.styles";
-import useManageTextField from "hooks/useManageTextField";
+// import { listeningMicrophoneSx, microphoneSx } from "./Form.styles";
+// import useManageTextField from "hooks/useManageTextField";
 
 interface Props {
   formClassName: string | undefined;
@@ -18,10 +18,10 @@ interface Props {
 
 const Form = (props: Props) => {
   const { formClassName, handleSubmit, fieldProps } = props;
-  const textFieldRef = useRef<HTMLInputElement | null>(null);
-  const [told, setTold] = useState<string>("");
+  // const textFieldRef = useRef<HTMLInputElement | null>(null);
+  const [/*told*/, setTold] = useState<string>("");
 
-  const { listen, listening, stop, supported } = useSpeechRecognition({
+  const { /*listen, listening, stop, supported */} = useSpeechRecognition({
     onResult: (result: string) => {
       if (result) setTold(result);
       // console.log(
@@ -34,9 +34,9 @@ const Form = (props: Props) => {
     },
   });
 
-  const handleClickMicrophone = useCallback(() => {
-    listening ? stop() : listen();
-  }, [listening, listen, stop]);
+  // const handleClickMicrophone = useCallback(() => {
+  //   listening ? stop() : listen();
+  // }, [listening, listen, stop]);
 
   const { t } = useTranslation();
 

@@ -2,11 +2,12 @@ import { Fade } from "@mui/material";
 
 import { TabHeader } from "components";
 
-import { CurrentData } from "./parts";
+
 import { WeatherDataStack } from "styles/Common.styles";
 import { TIMEOUT_SHORT } from "fixtures";
 
 import "./_CurrentWeather.scss";
+import CurrentData from "./CurrentData";
 
 interface Props {
   currentWeatherData: string[] | undefined;
