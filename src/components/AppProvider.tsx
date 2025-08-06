@@ -21,6 +21,13 @@ import "styles/App.css";
 import "../i18n/config";
 import { snackbarConfig } from "../config/snackbar";
 
+
+declare module '@mui/styles/defaultTheme' {
+  // eslint-disable-next-line @typescript-eslint/no-empty-interface
+  interface DefaultTheme extends Theme {}
+}
+
+
 declare module "@mui/styles/defaultTheme" {
   interface DefaultTheme extends Theme {}
 }

@@ -1,13 +1,12 @@
 import { createTheme } from "@mui/material";
 import { common, grey } from "@mui/material/colors";
+import { COLOR_GREENISH, COLOR_GREENISH_LIGHTER } from "./constans";
+
 
 import {
   COLOR_BACKGROUND,
   COLOR_BORDERS,
-  COLOR_GREENISH,
-  COLOR_GREENISH_LIGHTER,
   COLOR_SUNNY,
-  COLOR_SUNNY_DARK,
   COLOR_SUNNY_HOVER,
 } from "./constans";
 
@@ -40,9 +39,17 @@ declare module "@mui/material/Paper" {
   }
 }
 
-let theme = createTheme({});
-
-theme = createTheme({
+const theme = createTheme({
+  palette: {
+    sunny: { main: COLOR_SUNNY, light: COLOR_SUNNY_HOVER },
+    warning: { main: COLOR_SUNNY_HOVER },
+    common: { white: "#fff" },
+    greenish: {
+      main: COLOR_GREENISH,
+      light: COLOR_GREENISH_LIGHTER,
+      dark: "#2c474a"
+    },
+  },
   typography: {
     fontFamily: `MontSerrat,"Roboto", "Helvetica", "Arial", sans-serif`,
     tabHeader: {
@@ -60,21 +67,21 @@ theme = createTheme({
           alignItems: "center",
           flexDirection: "row",
           textTransform: "capitalize",
-          fontSize: theme.spacing(3),
-          fontWeight: "600",
-          gap: theme.spacing(1),
-          padding: theme.spacing(3, 3.5),
+          fontSize: "1.5rem",
+          fontWeight: 600,
+          gap: "0.75rem",
+          padding: "1.5rem 2.125rem",
           textShadow: `-1px -1px 0 ${COLOR_BORDERS}, 1px -1px 0 ${COLOR_BORDERS}, -1px 1px 0 ${COLOR_BORDERS}, 1px 1px 0 ${COLOR_BORDERS}`,
           color: common.white,
-          "@media (max-width: 548px)": { padding: "0" },
-          [`& > .MuiTab-iconWrapper`]: {
+          '@media (max-width: 548px)': { padding: "0" },
+          '& > .MuiTab-iconWrapper': {
             marginBottom: 0,
           },
-          "&.Mui-disabled": {
+          '&.Mui-disabled': {
             color: grey[600],
             textShadow: "none",
           },
-          "&.Mui-selected": {
+          '&.Mui-selected': {
             color: COLOR_SUNNY,
             textShadow: "none",
           },
@@ -88,16 +95,15 @@ theme = createTheme({
       styleOverrides: {
         root: {
           borderBottom: "0 !important",
-
-          "& .MuiTabs-indicator": {
+          '& .MuiTabs-indicator': {
             height: 3,
             backgroundColor: COLOR_SUNNY,
-            "@media (max-width: 548px)": { display: "none" },
+            '@media (max-width: 548px)': { display: "none" },
           },
-          "& .MuiTabs-flexContainer": {
+          '& .MuiTabs-flexContainer': {
             display: "flex",
             justifyContent: "center",
-            "@media (max-width: 548px)": { flexDirection: "column", alignItems: "center" },
+            '@media (max-width: 548px)': { flexDirection: "column", alignItems: "center" },
           },
         },
       },
@@ -105,21 +111,17 @@ theme = createTheme({
     MuiSwitch: {
       styleOverrides: {
         switchBase: {
-          // Controls default (unchecked) color for the thumb
-          color: theme.palette.common.white,
+          color: common.white,
         },
         colorPrimary: {
-          "&.Mui-checked": {
-            // Controls checked color for the thumb
+          '&.Mui-checked': {
             color: COLOR_BACKGROUND,
           },
         },
         track: {
-          // Controls default (unchecked) color for the track
           opacity: 0.6,
           backgroundColor: COLOR_BACKGROUND,
-          ".Mui-checked.Mui-checked + &": {
-            // Controls checked color for the track
+          '&.Mui-checked.Mui-checked + &': {
             opacity: 0.9,
             backgroundColor: COLOR_BACKGROUND,
           },
@@ -131,13 +133,13 @@ theme = createTheme({
         {
           props: { variant: "dark" },
           style: {
-            color: theme.palette.common.white,
+            color: common.white,
             borderStyle: "groove",
-            padding: theme.spacing(2.5),
-            borderRadius: theme.spacing(1.25),
+            padding: "1.25rem",
+            borderRadius: "0.75rem",
             backgroundColor: COLOR_BACKGROUND,
-            border: `2px solid ${theme.palette.common.white}`,
-            boxShadow: theme.shadows[2],
+            border: `2px solid ${common.white}`,
+            boxShadow: "0 2px 4px rgba(0,0,0,0.12), 0 4px 8px rgba(0,0,0,0.08)",
             overflow: "auto !important",
           },
         },
@@ -147,15 +149,12 @@ theme = createTheme({
       styleOverrides: {
         root: {
           backgroundColor: COLOR_SUNNY,
-          color: theme.palette.common.black,
-          "&:hover": { backgroundColor: theme.palette.warning.main },
+          color: common.black,
+          '&:hover': { backgroundColor: COLOR_SUNNY_HOVER },
         },
       },
     },
   },
-  palette: {
-    sunny: { main: COLOR_SUNNY, light: COLOR_SUNNY_HOVER, dark: COLOR_SUNNY_DARK },
-    greenish: { light: COLOR_GREENISH_LIGHTER, main: COLOR_GREENISH },
-  },
 });
+
 export default theme;

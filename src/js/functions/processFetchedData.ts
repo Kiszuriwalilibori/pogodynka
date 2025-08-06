@@ -1,4 +1,6 @@
-import moment from "moment";
+import { format } from "date-fns";
+import { pl, enGB } from "date-fns/locale";
+import i18n from "i18next";
 
 import compareCurrentWithFavoriteWeather from "./compareCurrentWithFavoriteWeather";
 
@@ -54,7 +56,7 @@ const processFetchedData = {
     });
 
     forecastsArray.forEach((forecast, index: number) => {
-      forecast.date = moment(data.list[index].dt_txt).format("MMMM D, H:mm ");
+      forecast.date = format(new Date(data.list[index].dt_txt), "MMMM d, H:mm", { locale: i18n.language === "pl" ? pl : enGB });
       for (const property in forecast) {
         if (!isNaN(forecast[property])) {
           forecast[property] = Number(forecast[property]).toFixed(weatherConfig[property as any].decimalPlaces);

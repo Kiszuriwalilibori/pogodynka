@@ -38,7 +38,7 @@ const withProblemMessage = (Component: React.ComponentType<unknown>) => {
             <ProblemBoxContainer>
               <ProblemBox component="article">
                 <Stack spacing="8px">
-                  <IconButton onClick={handleClose} sx={iconButtonSx}>
+                  <IconButton onClick={handleClose} sx={iconButtonSx} size="large">
                     <CancelIcon />
                   </IconButton>
                   <Divider sx={dividerSx} />
