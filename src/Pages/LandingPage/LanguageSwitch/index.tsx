@@ -1,4 +1,4 @@
-// Removed moment.js imports since date-fns is now handling date formatting
+
 
 import { useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -15,11 +15,11 @@ export default function LanguageSwitch() {
     () => {
       if (language === "en") {
         setLanguage("pl");
-// Removed moment.locale since date-fns is now handling date formatting
+
         i18n.changeLanguage("pl");
       } else {
         setLanguage("en");
-// Removed moment.locale since date-fns is now handling date formatting
+
         i18n.changeLanguage("en");
       }
     },

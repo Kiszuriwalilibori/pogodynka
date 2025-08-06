@@ -41,15 +41,7 @@ const processFetchedData = {
    * @param {*} city current location
    * @returns data structure in desired format
    */
-  // weather: function (data: Object | undefined, city: Position) {
-  //   return { currentCity: city, currentCityData: data };
-  // },
-  // /**
-  //  * Processes raw data fetched to preferred structure
-  //  * @param {*} data fetched data
-  //  * @returns array containing arrays which contain date,time and forecasted weather params
-  //  */
-
+  
   forecast: function (data: ForecastDetails) {
     const forecastsArray = { ...data }.list.map((item: any) => {
       return copySelectedWeatherProperties(forecastArray, item.main);
