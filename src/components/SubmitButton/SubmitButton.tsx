@@ -16,7 +16,15 @@ const SubmitButtonComponent = (props: Props): JSX.Element => {
   const classes = useStyles();
 
   return (
-    <Button className={classes.root} type="submit" size="small" endIcon={<SendIcon />} variant="contained">
+    <Button 
+      className={classes.root} 
+      type="submit" 
+      size="small" 
+      variant="contained"
+      title={`Submit ${props.text} form`} 
+      aria-label={`Submit ${props.text} form`} 
+    >
+      <SendIcon titleAccess="Send" aria-label="Send" />
       {props.text}
     </Button>
   );

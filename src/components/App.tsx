@@ -24,7 +24,7 @@ const App = () => {
   if (!isAPIKeyAvailable) return null;
 
   return (
-    <main>
+    <main role="main" aria-label="Weather Application">
       <Routes>
         <Route path={ROUTES.LANDING} element={<LandingPage />} />
         <Route path={ROUTES.SEARCH} element={<SearchPage />} />
