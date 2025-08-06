@@ -1,26 +1,61 @@
-import { getVoiceCode } from "Pages/WeatherPage/parts/WeatherDescription/WeatherDescription.utils";
-import { createContext, useEffect, useState } from "react";
-import { useSpeechSynthesis } from "react-speech-kit";
+import { createContext, useMemo } from "react";
+import { useSpeechSynthesis } from "hooks";
 
-const SpeechContext = createContext({ cancelSpeech: () => {}, speakText: (text: string) => {}, isSpeaking: false });
+interface SpeechContextType {
+  cancelSpeech: () => void;
+  speakText: (text: string) => void;
+  isSpeaking: boolean;
+  error: string | null; // Expose error for debugging or UI feedback
+  voices: Voice[]; // Expose voices for manual selection if needed
+  setSelectedVoice: (voice: Voice | null) => void; // Allow manual voice override
+}
+
+interface Voice {
+  name: string;
+  lang: string;
+  default: boolean;
+  localService: boolean;
+  voiceURI: string;
+}
+
+const SpeechContext = createContext<SpeechContextType>({
+  cancelSpeech: () => {},
+  speakText: () => {},
+  isSpeaking: false,
+  error: null,
+  voices: [],
+  setSelectedVoice: () => {},
+});
 
 const SpeechProvider = ({ children }: { children: React.ReactNode }) => {
-  const { cancel, speak, speaking, voices } = useSpeechSynthesis();
-  const [isSpeaking, setIsSpeaking] = useState(speaking);
+  const { stop, speak, isSpeaking, error, voices, setSelectedVoice } = useSpeechSynthesis();
 
-  useEffect(() => {
-    setIsSpeaking(speaking);
-  }, [speaking]);
-
-  const cancelSpeech = () => {
-    cancel();
-  };
-
+  // Wrap the speak function to match the original speakText interface
   const speakText = (text: string) => {
-    speak({ text, voice: voices[getVoiceCode()] });
+    speak(text); // Use default pitch, rate, volume; language is handled by i18next
   };
 
-  return <SpeechContext.Provider value={{ cancelSpeech, speakText, isSpeaking }}>{children}</SpeechContext.Provider>;
+  // Wrap the stop function to match the original cancelSpeech interface
+  const cancelSpeech = () => {
+    stop();
+  };
+
+  // Memoize the context value to prevent unnecessary re-renders
+  const contextValue = useMemo(
+    () => ({
+      cancelSpeech,
+      speakText,
+      isSpeaking,
+      error,
+      voices,
+      setSelectedVoice,
+    }),
+    [isSpeaking, error, voices, setSelectedVoice]
+  );
+
+  return <SpeechContext.Provider value={contextValue}>{children}</SpeechContext.Provider>;
 };
 
 export { SpeechProvider, SpeechContext };
+
+//* TODO ogarnąć błędy ewentualne

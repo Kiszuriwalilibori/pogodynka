@@ -2,23 +2,7 @@ import axios, { AxiosError } from "axios";
 import { showErrorMessage } from "../Redux/actionCreators";
 
 interface WeatherData {
-  
-  temp: number;          
-  feels_like: number;    
-  temp_min: number;      
-  temp_max: number;     
-  
-  humidity: number;      
-  pressure: number;      
-  
-  description: string;   
-  icon: string;          
-  
-  windSpeed: number;     
-  windDirection: number; 
-  
-  dt: number;            
-  dt_txt: string;        
+         
 }
 
 interface WeatherError {

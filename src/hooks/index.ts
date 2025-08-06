@@ -15,7 +15,9 @@ import useMessage from "./useMessage";
 import usePrepareBackground from "./usePrepareBackground";
 import useProcessForecastData from "./useProcessForecastData";
 import useProcessCurrentData from "./useProcessCurrentData";
+
 import useTypedSelector from "./useTypedSelector";
+import useSpeechSynthesis from "./useSpeechSynthesis";
 
 export {
   useAxiosArray,
@@ -35,5 +37,6 @@ export {
   usePrepareBackground,
   useProcessCurrentData,
   useProcessForecastData,
+  useSpeechSynthesis,
   useTypedSelector,
 };

@@ -11,18 +11,16 @@ const tabSX = {
   },
 };
 
-
-
 interface Props {
   index: number;
   title: ReportVariants;
   disabled?: boolean;
+  onClick?: (event: React.MouseEvent, index: number) => void;
 }
 
 export const TabComponent = (props: Props) => {
-  const { index, title, disabled } = props;
+  const { index, title, disabled, onClick } = props;
   const { t } = useTranslation();
-
 
   return (
     <Tab
@@ -33,6 +31,7 @@ export const TabComponent = (props: Props) => {
       disabled={disabled}
       disableFocusRipple
       id={TAB + t(`tabs.${title}`)}
+      onClick={(event) => onClick?.(event, index)}
     />
   );
 };

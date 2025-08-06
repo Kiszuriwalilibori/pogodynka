@@ -10,6 +10,7 @@
     "click": "Click to continue"
   },
   "msgs": {
+    "validation_failed": "Validation failed.",
     "gees": "Oh my, mistake!",
     "nopage": "Pages about the address  {{url}} it just isn't there",
     "too_short": "Too short string - must be at least two characters",

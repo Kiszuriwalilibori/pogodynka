@@ -3,6 +3,7 @@
   "params": { "temp": "Temperatura" },
   "landing": { "welcome": "Witamy w Pogodynce :)", "click": "Kliknij aby przejść dalej" },
   "msgs": {
+    "validation_failed": "Nie zwalidowano.",
     "gees": "Ojejku, błąd!",
     "nopage": "Strony o adresie  {{url}} po prostu nie ma  &#128549;",
     "too_short": "Za krótki ciąg - muszą być conajmniej dwa znaki",

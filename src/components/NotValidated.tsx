@@ -1,19 +1,20 @@
-import Box from "@mui/material/Box";
-
 import { ProblemBox } from "styles/Common.styles";
+import { useTranslation } from "react-i18next";
 
 type Props = { message?: string };
 /**
- * renders message that informs about validation failure
- * @param message not validated fields names
- * @returns component or null
+ * Renders a message that informs about validation failure
+ * @param message Error message details
+ * @returns Component or null
  */
 const NotValidated = (props: Props): JSX.Element | null => {
   const { message } = props;
+  const { t } = useTranslation();
 
   return (
     <ProblemBox component="article">
-      <Box component="span">{"Nie zwalidowano " + message}</Box>
+      <p>{t("msgs.validation_failed")}</p>
+      <p>{message}</p>
     </ProblemBox>
   );
 };

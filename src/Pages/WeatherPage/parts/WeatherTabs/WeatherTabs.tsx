@@ -12,13 +12,13 @@ import Loader from "components/Loader";
 import Current from "./Current";
 import Forecast from "./Forecast";
 import Comparision from "./Comparision";
-import { ReportVariants} from "types";
-import TabComponent from "./Tab";
+import { ReportVariants } from "types";
+import { TabComponent as Tab } from "./Tab";
 
 export function WeatherTabs() {
   const [value, setValue] = React.useState(0);
   const { Favorites } = useFavorites();
-  const comparisionDisabled = isEmpty(Favorites.getForComparision());
+  const isComparisionDisabled = isEmpty(Favorites.getForComparision());
   const forceUpdate = useForceUpdate();
   const { cancelSpeech } = React.useContext(SpeechContext);
   const { currentWeatherData, isCurrentWeatherLoading } = useFetchCurrentWeather();
@@ -40,11 +40,6 @@ export function WeatherTabs() {
     };
   }, [forceUpdate]);
 
-  const handleChange = React.useCallback((event: React.SyntheticEvent, newValue: React.SetStateAction<number>) => {
-    setValue(newValue);
-    cancelSpeech();
-  }, []);
-
   const placeContext = usePlaceContext();
 
   const { labelCurrent } = { ...usePlaceContext().place };
@@ -55,12 +50,17 @@ export function WeatherTabs() {
   }
   if (!currentWeatherData) return null;
 
+  const handleTabClick = (event: React.MouseEvent, index: number) => {
+    setValue(index);
+    cancelSpeech();
+  };
+
   return (
     <WeatherTabsWrapper>
-      <Tabs value={value} onChange={handleChange} aria-label="Available reports">
-        <TabComponent index={0} title={ReportVariants.CURRENT}/>
-        <TabComponent index={1} title={ReportVariants.FORECAST}/>
-        <TabComponent index={2} title={ReportVariants.COMPARISION} disabled={comparisionDisabled} />
+      <Tabs value={value} aria-label="Available reports">
+        <Tab index={0} title={ReportVariants.CURRENT} onClick={handleTabClick} />
+        <Tab index={1} title={ReportVariants.FORECAST} onClick={handleTabClick} />
+        <Tab index={2} title={ReportVariants.COMPARISION} onClick={handleTabClick} disabled={isComparisionDisabled} />
       </Tabs>
 
       <TabPanel value={value} index={0}>
