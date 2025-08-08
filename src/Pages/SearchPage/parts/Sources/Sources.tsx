@@ -17,6 +17,7 @@ import { TIMEOUT_SHORT } from "fixtures";
 import Radio from "./parts/Radio";
 import Radios from "./parts/Radios";
 import { formLabelSx, sourcesSx } from "./Sources.styles";
+import { SelectChangeEvent } from "@mui/material/Select";
 
 interface Props {
   currentPosition: RootStateType["geoLocationPosition"];
@@ -32,7 +33,7 @@ const Sources = (props: Props) => {
   const { currentPosition } = props;
 
   const handleChange = React.useCallback(
-    (event) => {
+    (event: SelectChangeEvent<Source> ) => {
       const actionHandlers: {
         [key in Source]: { [key: string]: () => void };
       } = {
@@ -101,3 +102,4 @@ const mapStateToProps = (state: RootStateType) => ({
 });
 
 export default connect(mapStateToProps, {})(Sources);
+// TODO proawdopodobnie mozna dać lepszy typ na event
