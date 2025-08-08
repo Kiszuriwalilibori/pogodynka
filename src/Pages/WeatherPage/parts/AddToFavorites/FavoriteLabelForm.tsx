@@ -3,7 +3,7 @@ import * as Yup from "yup";
 import { useFormik } from "formik";
 
 import { NotValidated } from "components";
-import { useFormStyles } from "styles/Common.styles";
+
 import { usePlaceContext } from "contexts";
 import { useFavorites } from "hooks";
 
@@ -18,8 +18,6 @@ const FavoriteLabelForm = (props: Props) => {
   const {
     place: { type, place },
   } = usePlaceContext();
-
-  const classes = useFormStyles();
 
   const { Favorites } = useFavorites();
 
@@ -59,7 +57,7 @@ const FavoriteLabelForm = (props: Props) => {
 
   return (
     <>
-      <Form formClassName={classes.root} fieldProps={getFieldProps("label")} handleSubmit={handleSubmit} />
+      <Form fieldProps={getFieldProps("label")} handleSubmit={handleSubmit} />
       {submitCount > 0 && errors?.label && <NotValidated message={`"${label}". ${JSON.stringify(errors, null, 2)}`} />}
     </>
   );

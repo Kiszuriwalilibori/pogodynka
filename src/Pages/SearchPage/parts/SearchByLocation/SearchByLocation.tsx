@@ -1,4 +1,3 @@
-
 import * as Yup from "yup";
 
 import { useFormik } from "formik";
@@ -9,16 +8,15 @@ import { Place } from "js/functions";
 import { usePlaceContext } from "contexts";
 import { PlaceVariants } from "types";
 import { useDispatchAction } from "hooks";
-import { useFormStyles } from "styles/Common.styles";
 
-import Form from "./Form";
+import SearchByLocationForm from "./SearchByLocationForm";
 import { t } from "i18next";
 
 const SearchByLocation = () => {
   const placeContext = usePlaceContext();
 
   const { clearSearchFactory } = useDispatchAction();
-  const classes = useFormStyles();
+
   let navigate = useNavigate();
 
   const {
@@ -69,8 +67,7 @@ const SearchByLocation = () => {
 
   return (
     <>
-      <Form
-        formClassName={classes.root}
+      <SearchByLocationForm
         handleSubmit={handleSubmit}
         fieldPropsLongitude={getFieldProps("longitude")}
         fieldPropsLatitude={getFieldProps("latitude")}

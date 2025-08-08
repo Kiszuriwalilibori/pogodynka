@@ -1,21 +1,19 @@
-import clsx from "clsx";
-import RawRadio from "@mui/material/Radio";
+import RawRadio, { RadioProps } from "@mui/material/Radio";
+import { Box } from "@mui/material";
 
-import useStyles from "../Sources.styles";
+import { radioSx, iconSx, checkedIconMergedSx } from "./Radio.styles";
 
-function Radio<T>(props: T) {
-  const classes = useStyles();
-
-  return (
-    <RawRadio
-      className={classes.root}
-      disableRipple
-      color="default"
-      checkedIcon={<span className={clsx(classes.icon, classes.checkedIcon)} />}
-      icon={<span className={classes.icon} />}
-      {...props}
-    />
-  );
-}
+const Radio = <T extends RadioProps>(props: T) => (
+  <RawRadio
+    sx={radioSx}
+    disableRipple
+    color="default"
+    checkedIcon={<Box component="span" sx={checkedIconMergedSx} id="checkedIcon" />}
+    icon={<Box component="span" sx={iconSx} />}
+    {...props}
+  />
+);
 
 export default Radio;
+
+// TODO czy jeszcze gdzieś używany clsx

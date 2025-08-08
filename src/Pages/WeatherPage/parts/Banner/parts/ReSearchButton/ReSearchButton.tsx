@@ -5,7 +5,7 @@ import * as ROUTES from "routes";
 
 import { SearchButton, RestartIcon } from "./ReSearchButton.styles";
 
-export default function ReSearchButton() {
+const ReSearchButton = () => {
   const navigate = useNavigate();
 
   const handleClick = useCallback(() => {
@@ -17,4 +17,6 @@ export default function ReSearchButton() {
       <RestartIcon />
     </SearchButton>
   );
-}
+};
+
+export default ReSearchButton;

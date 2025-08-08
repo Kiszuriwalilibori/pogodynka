@@ -1,20 +1,17 @@
 import * as Yup from "yup";
-
 import { useFormik } from "formik";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
-import Form from "./Form";
-
-import { NotValidated } from "components";
-import { useFormStyles } from "styles/Common.styles";
-import { Place } from "js/functions";
-import { usePlaceContext } from "contexts";
 import { PlaceVariants, PlaceType } from "types";
 import { useDispatchAction } from "hooks";
+import { usePlaceContext } from "contexts";
+import { Place } from "js/functions";
+
+import { NotValidated } from "components";
+import Form from "./Form";
 
 const CitySearchForm = () => {
-  const classes = useFormStyles();
   const placeContext = usePlaceContext();
   const { clearSearchFactory } = useDispatchAction();
   let navigate = useNavigate();
@@ -48,7 +45,7 @@ const CitySearchForm = () => {
 
   return (
     <>
-      <Form formClassName={classes.root} handleSubmit={handleSubmit} fieldProps={getFieldProps(PlaceVariants.CITY)} />
+      <Form handleSubmit={handleSubmit} fieldProps={getFieldProps(PlaceVariants.CITY)} />
       {submitCount > 0 && errors?.city && <NotValidated message={`"${city}". ${JSON.stringify(errors, null, 2)}`} />}
     </>
   );

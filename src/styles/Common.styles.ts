@@ -1,8 +1,7 @@
-import makeStyles from "@mui/styles/makeStyles";
-
 import { styled } from "@mui/material/styles";
 import { Box, Stack, Paper } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
+
 import { COLOR_BORDERS } from "themes/constans";
 
 export const ProblemBox = styled(Box)(({ theme }) => ({
@@ -33,45 +32,7 @@ export const ProblemBoxContainer = styled(Box)(({ theme }) => ({
   justifyContent: "center",
   zIndex: "10000",
 }));
-
-export const useFormStyles = makeStyles(theme => ({
-  root: {
-    display: "flex",
-    flexDirection: "row",
-    flexWrap: "wrap",
-    justifyContent: "center",
-    border: `4px solid ${COLOR_BORDERS}`,
-    borderRadius: theme.spacing(6),
-    padding: "10px 20px",
-    background: theme.palette.grey[400],
-    margin: "0 1vw",
-    marginTop: "60px",
-    boxShadow:
-      "0 1px 1px rgba(0,0,0,0.08), 0 2px 2px rgba(0,0,0,0.12), 0 4px 4px rgba(0,0,0,0.16),0 8px 8px rgba(0,0,0,0.20);",
-    "@media (max-width: 700px)": { flexDirection: "column" },
-    "& .MuiOutlinedInput-root": {
-      borderRadius: "initial",
-    },
-
-    "& .MuiTextField-root": {
-      margin: theme.spacing(1),
-      width: "25ch",
-      boxShadow:
-        "0 1px 1px rgba(0,0,0,0.08), 0 2px 2px rgba(0,0,0,0.12), 0 4px 4px rgba(0,0,0,0.16),0 8px 8px rgba(0,0,0,0.20);",
-    },
-    "& .MuiInputBase-root": {
-      color: "white !important",
-      fontFamily: "Open Sans, sans-serif !important",
-      backgroundColor: theme.palette.greenish.main,
-      padding: "5px 0",
-      "&:hover": {
-        backgroundColor: theme.palette.greenish.light,
-      },
-    },
-    "& .MuiFormLabel-root": { color: `${theme.palette.common.white} !important` },
-    "& .MuiOutlinedInput-notchedOutline": { border: "3px solid", borderColor: `${COLOR_BORDERS} !important` },
-  },
-}));
+//todo powyższy jest pojedynczy
 
 export const StyledDataGrid = styled(DataGrid)(({ theme }) => ({
   color: theme.palette.common.white,
@@ -112,4 +73,47 @@ export const WeatherDataStack = styled(Stack)(({ theme }) => ({
 
 export const WeatherPaper = styled(Paper)(({ theme }) => ({
   maxWidth: "95%",
+}));
+
+export const StyledForm = styled("form")(({ theme }) => ({
+  display: "flex",
+  flexDirection: "row",
+  flexWrap: "wrap",
+  justifyContent: "center",
+  border: `4px solid ${COLOR_BORDERS}`,
+  borderRadius: theme.spacing(6),
+  padding: "10px 20px",
+  background: theme.palette.grey[400],
+  margin: "0 1vw",
+  marginTop: "60px",
+  boxShadow:
+    "0 1px 1px rgba(0,0,0,0.08), 0 2px 2px rgba(0,0,0,0.12), 0 4px 4px rgba(0,0,0,0.16), 0 8px 8px rgba(0,0,0,0.20)",
+  [theme.breakpoints.down("sm")]: {
+    flexDirection: "column",
+  },
+  "& .MuiOutlinedInput-root": {
+    borderRadius: "initial",
+  },
+  "& .MuiTextField-root": {
+    margin: theme.spacing(1),
+    width: "25ch",
+    boxShadow:
+      "0 1px 1px rgba(0,0,0,0.08), 0 2px 2px rgba(0,0,0,0.12), 0 4px 4px rgba(0,0,0,0.16), 0 8px 8px rgba(0,0,0,0.20)",
+  },
+  "& .MuiInputBase-root": {
+    color: "white !important",
+    fontFamily: "Open Sans, sans-serif !important",
+    backgroundColor: theme.palette.greenish.main,
+    padding: "5px 0",
+    "&:hover": {
+      backgroundColor: theme.palette.greenish.light,
+    },
+  },
+  "& .MuiFormLabel-root": {
+    color: `${theme.palette.common.white} !important`,
+  },
+  "& .MuiOutlinedInput-notchedOutline": {
+    border: "3px solid",
+    borderColor: `${COLOR_BORDERS} !important`,
+  },
 }));

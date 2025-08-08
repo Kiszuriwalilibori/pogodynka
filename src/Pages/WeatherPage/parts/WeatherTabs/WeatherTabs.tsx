@@ -5,17 +5,17 @@ import isEmpty from "lodash/isEmpty";
 
 import { useDelayedCondition, useFavorites, useFetchCurrentWeather, useForceUpdate } from "hooks";
 import { usePlaceContext, SpeechContext } from "contexts";
-import { WeatherTabsWrapper } from "./WeatherTabs.styles";
-import { TabPanel } from "./TabPanel";
+import { ReportVariants } from "types";
 
 import Loader from "components/Loader";
 import Current from "./Current";
 import Forecast from "./Forecast";
 import Comparision from "./Comparision";
-import { ReportVariants } from "types";
 import { TabComponent as Tab } from "./Tab";
+import { WeatherTabsWrapper } from "./WeatherTabs.styles";
+import { TabPanel } from "./TabPanel";
 
-export function WeatherTabs() {
+export const WeatherTabs = () => {
   const [value, setValue] = React.useState(0);
   const { Favorites } = useFavorites();
   const isComparisionDisabled = isEmpty(Favorites.getForComparision());
@@ -74,6 +74,6 @@ export function WeatherTabs() {
       </TabPanel>
     </WeatherTabsWrapper>
   );
-}
+};
 
 export default WeatherTabs;

@@ -1,133 +1,56 @@
-// import makeStyles from "@mui/styles/makeStyles";
-// import theme from "themes/theme";
+import { SxProps, Theme, MenuProps } from "@mui/material";
 
-// export const classes ={
-//   formControl: {
-//     margin: theme.spacing(1),
-//     minWidth: 250,
-//     "& .MuiOutlinedInput-notchedOutline": {
-//       border: "none !important",
-//     },
-//   },
-
-//   inputLabel: {
-//     color: "black !important",
-//     paddingLeft: 4,
-//     fontWeight: 700,
-//     letterSpacing: "0.00938em",
-//   },
-//   dropdownStyle: {
-//     border: "4px solid orange",
-//     backgroundColor: "lightgrey",
-//     marginTop: -7,
-//     color: "black",
-//   },
-//   fieldset: { border: "none !important" },
-//   select: {
-//     backgroundColor: "transparent",
-//     "&:before": {
-//       // normal
-//       borderBottom: "none",
-//       backgroundColor: "transparent",
-//     },
-//     "&:after": {
-//       // focused
-//       borderBottom: "none",
-//       backgroundColor: "transparent",
-//     },
-//     "&:hover:not(.Mui-disabled):not(.Mui-focused):not(.Mui-error):before": {
-//       // hover
-//       borderBottom: "none",
-//       backgroundColor: "transparent",
-//     },
-//   },
-
-//   selectEmpty: {
-//     marginTop: theme.spacing(2),
-//   },
-//   icon: {
-//     fill: "green",
-//   },
-// };
-
-// export const paperSx = { padding: "0", marginTop: "60px" };
-
-// export const inputLabelSx = {
-//   color: "black !important",
-//   paddingLeft: 4,
-//   fontWeight: 700,
-//   letterSpacing: "0.00938em",
-// };
-
-// export const selectSx = {
-//   backgroundColor: "transparent",
-//   "&:before": {
-//     // normal
-//     borderBottom: "none",
-//     backgroundColor: "transparent",
-//   },
-//   "&:after": {
-//     // focused
-//     borderBottom: "none",
-//     backgroundColor: "transparent",
-//   },
-//   "&:hover:not(.Mui-disabled):not(.Mui-focused):not(.Mui-error):before": {
-//     // hover
-//     borderBottom: "none",
-//     backgroundColor: "transparent",
-//   },
-// };
-import makeStyles from "@mui/styles/makeStyles";
-
-const useStyles = makeStyles(theme => ({
-  formControl: {
-    margin: theme.spacing(1),
-    minWidth: 250,
-    "& .MuiOutlinedInput-notchedOutline": {
-      border: "none !important",
-    },
+export const formControlSx: SxProps<Theme> = {
+  margin: theme => theme.spacing(1),
+  minWidth: 250,
+  "& .MuiOutlinedInput-notchedOutline": {
+    border: "none !important",
   },
+};
 
-  inputLabel: {
-    color: "black !important",
-    paddingLeft: 4,
-    fontWeight: 700,
-    letterSpacing: "0.00938em",
+export const inputLabelSx: SxProps<Theme> = {
+  color: "black !important",
+  paddingLeft: 4,
+  fontWeight: 700,
+  letterSpacing: "0.00938em",
+  transform: "translate(14px, 16px) scale(1) !important",
+  "&.MuiInputLabel-shrink": {
+    transform: "translate(14px, 16px) scale(1) !important",
   },
-  dropdownStyle: {
-    border: "4px solid orange",
-    backgroundColor: "lightgrey",
-    marginTop: -7,
-    color: "black",
-  },
-  fieldset: { border: "none !important" },
-  select: {
+};
+
+export const dropdownStyleSx: SxProps<Theme> = {
+  border: "4px solid orange",
+  backgroundColor: "lightgrey",
+  color: "black",
+};
+
+export const selectSx: SxProps<Theme> = {
+  backgroundColor: "transparent",
+  "&:before": {
+    borderBottom: "none",
     backgroundColor: "transparent",
-    "&:before": {
-      // normal
-      borderBottom: "none",
-      backgroundColor: "transparent",
-    },
-    "&:after": {
-      // focused
-      borderBottom: "none",
-      backgroundColor: "transparent",
-    },
-    "&:hover:not(.Mui-disabled):not(.Mui-focused):not(.Mui-error):before": {
-      // hover
-      borderBottom: "none",
-      backgroundColor: "transparent",
-    },
   },
-
-  selectEmpty: {
-    marginTop: theme.spacing(2),
+  "&:after": {
+    borderBottom: "none",
+    backgroundColor: "transparent",
   },
-  icon: {
-    fill: "green",
+  "&:hover:not(.Mui-disabled):not(.Mui-focused):not(.Mui-error):before": {
+    borderBottom: "none",
+    backgroundColor: "transparent",
   },
-}));
-
-export default useStyles;
-
-export const paperSx = { padding: "0", marginTop: "60px" };
+};
+export const menuProps: Partial<MenuProps> = {
+  PaperProps: {
+    sx: dropdownStyleSx,
+  },
+  anchorOrigin: {
+    vertical: "bottom",
+    horizontal: "left",
+  },
+  transformOrigin: {
+    vertical: "top",
+    horizontal: "left",
+  },
+};
+export const paperSx: SxProps<Theme> = { padding: "0", marginTop: "60px" };

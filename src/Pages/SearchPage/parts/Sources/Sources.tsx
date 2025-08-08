@@ -8,22 +8,22 @@ import { connect } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
-import Radio from "./parts/Radio";
-import Radios from "./parts/Radios";
-import useStyles from "./Sources.styles";
-
 import { Place } from "js/functions";
 import { usePlaceContext } from "contexts";
 import { FormVariants, PlaceVariants, RootStateType, Source } from "types";
 import { useFavorites, useDispatchAction } from "hooks";
 import { TIMEOUT_SHORT } from "fixtures";
 
+import Radio from "./parts/Radio";
+import Radios from "./parts/Radios";
+import { formLabelSx, sourcesSx } from "./Sources.styles";
+
 interface Props {
   currentPosition: RootStateType["geoLocationPosition"];
 }
-function Sources(props: Props) {
+
+const Sources = (props: Props) => {
   const placeContext = usePlaceContext();
-  const classes = useStyles();
   const navigate = useNavigate();
 
   const { t } = useTranslation();
@@ -32,7 +32,7 @@ function Sources(props: Props) {
   const { currentPosition } = props;
 
   const handleChange = React.useCallback(
-    event => {
+    (event) => {
       const actionHandlers: {
         [key in Source]: { [key: string]: () => void };
       } = {
@@ -71,8 +71,8 @@ function Sources(props: Props) {
 
   return (
     <Fade in={true} timeout={TIMEOUT_SHORT} id="Sources">
-      <FormControl component="fieldset" className={classes.sources}>
-        <FormLabel className={classes.formLabel} component="legend">
+      <FormControl component="fieldset" sx={sourcesSx}>
+        <FormLabel sx={formLabelSx} component="legend">
           {t("search.show_for")}
         </FormLabel>
         <Radios row defaultValue="" aria-label="source" name="customized-radios" onChange={handleChange}>
@@ -94,7 +94,7 @@ function Sources(props: Props) {
       </FormControl>
     </Fade>
   );
-}
+};
 
 const mapStateToProps = (state: RootStateType) => ({
   currentPosition: state.geoLocationPosition,

@@ -1,6 +1,8 @@
 {
   "buttons": {
-    "save": "Save"
+    "save": "Save",
+    "submit_form": "Submit {{context}} form",
+    "send": "Send"
   },
   "params": {
     "temp": "Temperature"

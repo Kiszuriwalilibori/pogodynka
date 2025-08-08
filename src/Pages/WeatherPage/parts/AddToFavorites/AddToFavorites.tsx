@@ -1,14 +1,14 @@
 import * as React from "react";
-
+import { useTranslation } from "react-i18next";
 import { connect } from "react-redux";
 
-import { usePlaceContext } from "contexts";
-import { renderConditionally } from "HOCs";
 import { FormVariants, PlaceVariants, RootStateType } from "types";
 import { useFavorites, useBoolean } from "hooks";
-import FavoriteLabelForm from "./FavoriteLabelForm";
+import { usePlaceContext } from "contexts";
+
 import { Confirm } from "./Confirm";
-import { useTranslation } from "react-i18next";
+import FavoriteLabelForm from "./FavoriteLabelForm";
+import { renderConditionally } from "HOCs";
 
 interface Props {
   shouldRender: RootStateType["isCacheSupported"];

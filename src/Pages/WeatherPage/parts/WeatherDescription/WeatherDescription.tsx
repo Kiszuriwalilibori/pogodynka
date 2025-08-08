@@ -4,9 +4,10 @@ import VolumeOffIcon from "@mui/icons-material/VolumeOff";
 
 import { useFetchCurrentWeather } from "hooks";
 import { TIMEOUT_LONG } from "fixtures";
-import { MuteButton, TextAndVoiceWeatherDescriptionPaper } from "./WeatherDescription.styles";
+import { SpeechContext } from "contexts";
 import { createWeatherIconURL } from "./WeatherDescription.utils";
-import { SpeechContext } from "contexts/index";
+
+import { MuteButton, TextAndVoiceWeatherDescriptionPaper } from "./WeatherDescription.styles";
 
 const TextAndVoiceWeatherDescription = () => {
   const [isLoadingImageCompleted, setIsLoadingImageCompleted] = useState(false);

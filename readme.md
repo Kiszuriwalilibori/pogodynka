@@ -161,4 +161,6 @@ Better WCAG compliance, more meaningfull names, simplified
 
 ### 0.2.2 voice message on weather
 
+### 0.2.3 refactored to MUI v5
+
 ## TODO

@@ -7,7 +7,7 @@ import Switch from "./switch";
 
 import { LanguageSwitchStack } from "./LanguageSwitch.styles";
 
-export default function LanguageSwitch() {
+const LanguageSwitch = () => {
   const [language, setLanguage] = useState("pl");
   const { i18n } = useTranslation();
 
@@ -34,4 +34,6 @@ export default function LanguageSwitch() {
       <img alt="country flag" src={require("images/gb.png")} />
     </LanguageSwitchStack>
   );
-}
+};
+
+export default LanguageSwitch;

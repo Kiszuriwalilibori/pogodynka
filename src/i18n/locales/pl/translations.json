@@ -1,5 +1,9 @@
 {
-  "buttons": { "save": "Zapisz" },
+  "buttons": { 
+    "save": "Zapisz",
+    "submit_form": "Wyślij formularz {{context}}",
+    "send": "Wyślij"
+  },
   "params": { "temp": "Temperatura" },
   "landing": { "welcome": "Witamy w Pogodynce :)", "click": "Kliknij aby przejść dalej" },
   "msgs": {

@@ -30,17 +30,10 @@ const SpeechContext = createContext<SpeechContextType>({
 const SpeechProvider = ({ children }: { children: React.ReactNode }) => {
   const { stop, speak, isSpeaking, error, voices, setSelectedVoice } = useSpeechSynthesis();
 
-  // Wrap the speak function to match the original speakText interface
-  const speakText = (text: string) => {
-    speak(text); // Use default pitch, rate, volume; language is handled by i18next
-  };
+  const speakText = (text: string) => speak(text);
 
-  // Wrap the stop function to match the original cancelSpeech interface
-  const cancelSpeech = () => {
-    stop();
-  };
+  const cancelSpeech = () => stop();
 
-  // Memoize the context value to prevent unnecessary re-renders
   const contextValue = useMemo(
     () => ({
       cancelSpeech,

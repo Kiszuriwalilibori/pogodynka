@@ -1,19 +1,31 @@
 import FormControlLabel from "@mui/material/FormControlLabel";
-import withStyles from "@mui/styles/withStyles";
 import Fab from "@mui/material/Fab";
 import AddIcon from "@mui/icons-material/Add";
 import { COLOR_BORDERS } from "themes/constans";
 
-const StyledFormControlLabel = withStyles({
-  label: {
+import { styled } from "@mui/material";
+
+const StyledFormControlLabel = styled(FormControlLabel)(({ theme }) => ({
+  "& .MuiFormControlLabel-label": {
     fontSize: "20px",
     color: "white",
     textShadow: `-1px -1px 0 ${COLOR_BORDERS}, 1px -1px 0 ${COLOR_BORDERS}, -1px 1px 0 ${COLOR_BORDERS}, 1px 1px 0 ${COLOR_BORDERS}`,
-    "@media only screen and (max-width: 640px)": {
+    [theme.breakpoints.down(640)]: {
       fontSize: "calc(12px + 8 * ((100vw - 320px) / 320))",
     },
   },
-})(FormControlLabel);
+}));
+
+// const StyledFormControlLabel = withStyles({
+//   label: {
+//     fontSize: "20px",
+//     color: "white",
+//     textShadow: `-1px -1px 0 ${COLOR_BORDERS}, 1px -1px 0 ${COLOR_BORDERS}, -1px 1px 0 ${COLOR_BORDERS}, 1px 1px 0 ${COLOR_BORDERS}`,
+//     "@media only screen and (max-width: 640px)": {
+//       fontSize: "calc(12px + 8 * ((100vw - 320px) / 320))",
+//     },
+//   },
+// })(FormControlLabel);
 
 type Props = {
   handleClick: (e: React.MouseEvent<HTMLElement>) => void;

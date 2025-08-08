@@ -1,0 +1,55 @@
+import { SxProps, Theme } from "@mui/material";
+import theme from "themes/theme";
+
+export const radioSx: SxProps<Theme> = {
+  "&:hover": {
+    backgroundColor: "transparent",
+  },
+  "& span": { fontWeight: "bolder" },
+};
+
+export const iconSx: SxProps<Theme> = {
+  borderRadius: "50%",
+  width: 20,
+  height: 20,
+  boxShadow: "inset 0 0 0 1px rgba(16,22,26,.2), inset 0 -1px 0 rgba(16,22,26,.1)",
+  backgroundColor: "#f5f8fa",
+  backgroundImage: "linear-gradient(180deg,hsla(0,0%,100%,.8),hsla(0,0%,100%,0))",
+  ".Mui-focusVisible &": {
+    outline: "2px auto rgba(19,124,189,.6)",
+    outlineOffset: 2,
+  },
+  "input:hover ~ &": {
+    backgroundColor: theme.palette.greenish.light,
+  },
+  "input:disabled ~ &": {
+    boxShadow: "none",
+    background: "rgba(206,217,224,.5)",
+  },
+};
+
+export const checkedIconSx: SxProps<Theme> = {
+  backgroundColor: theme.palette.greenish.main,
+  backgroundImage: "linear-gradient(180deg,hsla(0,0%,100%,.1),hsla(0,0%,100%,0))",
+  "&:before": {
+    display: "block",
+    width: 20,
+    height: 20,
+    backgroundImage: "radial-gradient(#fff,#fff 28%,transparent 32%)",
+    content: '""',
+  },
+  "input:hover ~ &": {
+    backgroundColor: theme.palette.greenish.light,
+  },
+};
+
+export const checkedIconMergedSx: SxProps<Theme> = {
+  ...iconSx,
+  ...checkedIconSx,
+};
+
+
+export const formControlLabelSx: SxProps<Theme> = {
+  color: theme.palette.common.black,
+  "& span": { fontWeight: "700 !important" },
+};

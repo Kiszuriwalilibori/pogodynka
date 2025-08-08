@@ -1,13 +1,13 @@
+import { useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
-import { useCallback } from "react";
+import Fade from "@mui/material/Fade";
 
-import * as ROUTES from "../../routes";
+import * as ROUTES from "routes";
+import { useIsBackgroundReady } from "js/Redux/reducer";
 
 import "./_LandingPage.scss";
 import LanguageSwitch from "./LanguageSwitch";
-import { useIsBackgroundReady } from "js/Redux/reducer";
-import Fade from "@mui/material/Fade";
 
 const LandingPage = () => {
   const { t } = useTranslation();

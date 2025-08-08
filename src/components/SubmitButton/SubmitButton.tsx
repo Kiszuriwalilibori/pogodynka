@@ -1,8 +1,8 @@
 import React from "react";
 import SendIcon from "@mui/icons-material/Send";
 import { Button } from "@mui/material";
-
-import useStyles from "./SubmitButton.style";
+import { buttonSx } from "./SubmitButton.style";
+import { useTranslation } from "react-i18next";
 
 type Props = { text: string };
 
@@ -13,18 +13,21 @@ type Props = { text: string };
  */
 
 const SubmitButtonComponent = (props: Props): JSX.Element => {
-  const classes = useStyles();
-
+  const { t } = useTranslation();
+  
+  const submitFormTitle = t('buttons.submit_form', { context: t(props.text) }) as string;
+  const sendTitle = t('buttons.send') as string;
+  
   return (
-    <Button 
-      className={classes.root} 
-      type="submit" 
-      size="small" 
+    <Button
+      sx={buttonSx}
+      type="submit"
+      size="small"
       variant="contained"
-      title={`Submit ${props.text} form`} 
-      aria-label={`Submit ${props.text} form`} 
+      title={submitFormTitle}
+      aria-label={submitFormTitle}
     >
-      <SendIcon titleAccess="Send" aria-label="Send" />
+      <SendIcon titleAccess={sendTitle} aria-label={sendTitle} />
       {props.text}
     </Button>
   );
@@ -32,3 +35,5 @@ const SubmitButtonComponent = (props: Props): JSX.Element => {
 
 export const SubmitButton = React.memo(SubmitButtonComponent);
 export default SubmitButton;
+
+//TODO: hardcoded content of title

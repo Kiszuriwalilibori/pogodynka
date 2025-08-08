@@ -1,11 +1,11 @@
 import { connect } from "react-redux";
 
+import { FormVariants, RootStateType } from "types";
+import { renderConditionally } from "HOCs";
+
 import CitySearchForm from "./SearchByCity";
 import SearchByLocation from "./SearchByLocation";
 import SearchInFavorites from "./SearchInFavorites";
-
-import { renderConditionally } from "HOCs";
-import { FormVariants, RootStateType } from "types";
 
 type Props = {
   formVariant: RootStateType["searchFormSourceType"];

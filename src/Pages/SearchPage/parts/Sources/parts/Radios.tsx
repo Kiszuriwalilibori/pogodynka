@@ -1,10 +1,11 @@
 import RadioGroup from "@mui/material/RadioGroup";
 
-import useStyles from "../Sources.styles";
+import { formControlLabelSx } from "./Radio.styles";
 
-function Radios<T>(props: T) {
-  const classes = useStyles();
+type RadioGroupProps = React.ComponentProps<typeof RadioGroup>;
 
-  return <RadioGroup className={classes.formControlLabel} {...props} />;
-}
+const Radios = <T extends RadioGroupProps>(props: T) => (
+  <RadioGroup sx={formControlLabelSx} {...props} />
+);
+
 export default Radios;
