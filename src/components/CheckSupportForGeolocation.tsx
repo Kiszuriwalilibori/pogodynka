@@ -1,31 +1,24 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 
-import { connect } from "react-redux";
-
-import { ExtendedThunkDispatch} from "types";
+import { ExtendedThunkDispatch, AnyAction } from "types";
 import { checkSupportForGeolocation_Thunk } from "../js/Redux/checkSupportForGeolocationThunk";
-import { setGeoLocationSupport } from "js/Redux/actionCreators";
 
 type Props = {
   children: React.ReactNode;
-  thunk: () => void;
 };
 
-const CheckSupportForGeolocationComponent = ({ thunk, children }: Readonly<Props>): React.ReactElement | null => {
+const CheckSupportForGeolocation = ({ children }: Props) => {
+  const dispatch = useDispatch<ExtendedThunkDispatch<AnyAction>>();
+  const thunk = React.useCallback(() => {
+    dispatch(checkSupportForGeolocation_Thunk());
+  }, [dispatch]);
+
   React.useEffect(() => {
     thunk();
-
-  }, []);
+  }, [thunk]);
 
   return <>{children}</>;
 };
 
-const mapDispatchToProps = (dispatch: ExtendedThunkDispatch<ReturnType<typeof setGeoLocationSupport>>) => ({
-  thunk: () => {
-    dispatch(checkSupportForGeolocation_Thunk());
-  },
-});
-
-const CheckSupportForGeolocationMemo = React.memo(CheckSupportForGeolocationComponent);
-export const CheckSupportForGeolocation = connect(null, mapDispatchToProps)(CheckSupportForGeolocationMemo);
-export default CheckSupportForGeolocation;
+export default React.memo(CheckSupportForGeolocation);

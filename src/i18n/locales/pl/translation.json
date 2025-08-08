@@ -1,0 +1,9 @@
+{
+  "connection": {
+    "restored": "Przywrócono połączenie",
+    "lost": "Utracono połączenie"
+  },
+  "msgs": {
+    "non_specified_error": "Niesprecyzowany błąd"
+  }
+}

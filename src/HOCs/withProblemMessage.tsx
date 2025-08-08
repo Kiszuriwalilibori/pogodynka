@@ -1,8 +1,8 @@
 import CancelIcon from "@mui/icons-material/Cancel";
-import React, { Dispatch } from "react";
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 import { t } from "i18next";
-import { connect, ConnectedProps } from "react-redux";
 import { Fade, Box, Divider, Stack, IconButton } from "@mui/material";
 
 import { ProblemBox, ProblemBoxContainer } from "styles/Common.styles";
@@ -12,24 +12,15 @@ import { hideErrorMessage } from "js/Redux/actionCreators";
 const dividerSx = { height: "2px !important" };
 const iconButtonSx = { marginLeft: "-10px", alignSelf: "flex-start" };
 
-const mapStateToProps = (state: RootStateType) => ({
-  isError: state.isError,
-  errorMessage: state.errorMessage,
-});
-
-const mapDispatchToProps = (dispatch: Dispatch<any>) => ({
-  hideErrorMessage: () => dispatch(hideErrorMessage()),
-});
-
-const connector = connect(mapStateToProps, mapDispatchToProps);
-
 const withProblemMessage = (Component: React.ComponentType<unknown>) => {
-  return connector((props: ConnectedProps<typeof connector>) => {
-    const { isError, errorMessage, hideErrorMessage, ...rest } = props;
+  const WithProblemMessage = (props: any) => {
+    const dispatch = useDispatch();
+    const isError = useSelector((state: RootStateType) => state.isError);
+    const errorMessage = useSelector((state: RootStateType) => state.errorMessage);
 
     const handleClose = React.useCallback(() => {
-      hideErrorMessage();
-    }, [hideErrorMessage]);
+      dispatch(hideErrorMessage());
+    }, [dispatch]);
 
     return (
       <>
@@ -49,16 +40,18 @@ const withProblemMessage = (Component: React.ComponentType<unknown>) => {
                     </span>
                   </Box>
                   <br></br>
-                  <Box component="span">{errorMessage ? errorMessage : "Non-specified error"}</Box>
+                  <Box component="span">{errorMessage ? errorMessage : t("msgs.non_specified_error")}</Box>
                 </Stack>
               </ProblemBox>
             </ProblemBoxContainer>
           </Fade>
         ) : null}
-        <Component {...rest} />
+        <Component {...props} />
       </>
     );
-  });
+  };
+
+  return WithProblemMessage;
 };
 
 export default withProblemMessage;

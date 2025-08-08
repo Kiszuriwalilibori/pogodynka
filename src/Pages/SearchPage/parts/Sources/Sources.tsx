@@ -4,7 +4,7 @@ import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
 import Fade from "@mui/material/Fade";
 
-import { connect } from "react-redux";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
@@ -19,21 +19,17 @@ import Radios from "./parts/Radios";
 import { formLabelSx, sourcesSx } from "./Sources.styles";
 import { SelectChangeEvent } from "@mui/material/Select";
 
-interface Props {
-  currentPosition: RootStateType["geoLocationPosition"];
-}
-
-const Sources = (props: Props) => {
+const Sources = () => {
   const placeContext = usePlaceContext();
   const navigate = useNavigate();
 
   const { t } = useTranslation();
   const { Favorites } = useFavorites();
   const { clearSearchFactory, setSearchFormSourceType } = useDispatchAction();
-  const { currentPosition } = props;
+  const currentPosition = useSelector((state: RootStateType) => state.geoLocationPosition);
 
   const handleChange = React.useCallback(
-    (event: SelectChangeEvent<Source> ) => {
+    (event: SelectChangeEvent<Source>) => {
       const actionHandlers: {
         [key in Source]: { [key: string]: () => void };
       } = {
@@ -97,9 +93,4 @@ const Sources = (props: Props) => {
   );
 };
 
-const mapStateToProps = (state: RootStateType) => ({
-  currentPosition: state.geoLocationPosition,
-});
-
-export default connect(mapStateToProps, {})(Sources);
-// TODO proawdopodobnie mozna dać lepszy typ na event
+export default Sources;

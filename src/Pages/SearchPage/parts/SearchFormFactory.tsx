@@ -1,24 +1,20 @@
-import { connect } from "react-redux";
+import { useSelector } from "react-redux";
 
 import { FormVariants, RootStateType } from "types";
-import { renderConditionally } from "HOCs";
-
 import CitySearchForm from "./SearchByCity";
 import SearchByLocation from "./SearchByLocation";
 import SearchInFavorites from "./SearchInFavorites";
 
-type Props = {
-  formVariant: RootStateType["searchFormSourceType"];
-  shouldRender: RootStateType["isSearchFactoryVisible"];
-};
 /**
  * Component Factory which renders certain adequate component depending on props
- * @param formVariant string that holds information where the component has beeen actually fired
  * @returns form component or null
  */
 
-const _SearchFormFactory = (props: Props): JSX.Element | null => {
-  const { formVariant } = props;
+const SearchFormFactory = (): JSX.Element | null => {
+  const shouldRender = useSelector((state: RootStateType) => state.isSearchFactoryVisible);
+  const formVariant = useSelector((state: RootStateType) => state.searchFormSourceType);
+
+  if (!shouldRender) return null;
 
   switch (formVariant) {
     case FormVariants.CITY:
@@ -32,9 +28,4 @@ const _SearchFormFactory = (props: Props): JSX.Element | null => {
   }
 };
 
-const mapStateToProps = (state: RootStateType) => ({
-  shouldRender: state.isSearchFactoryVisible,
-  formVariant: state.searchFormSourceType,
-});
-const SearchFormFactory = connect(mapStateToProps, null)(renderConditionally(_SearchFormFactory));
 export default SearchFormFactory;
