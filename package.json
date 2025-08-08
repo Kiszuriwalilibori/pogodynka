@@ -89,6 +89,6 @@
     "@types/react-redux": "^7.1.33",
     "@types/react-router-dom": "^5.3.3",
     "@types/unsplash-js": "^6.3.0",
-    "gh-pages": "^2.2.0"
+    "gh-pages": "^6.3.0"
   }
 }
