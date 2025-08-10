@@ -19,22 +19,23 @@ export const NavigationToolbar = styled(Stack)({
   gap: 4,
 });
 
-export const NavigationButton = styled(Button)<{ isActive?: boolean; language?: string }>(({ isActive, language }) => ({
+export const NavigationButton = styled(Button, {
+  shouldForwardProp: (prop: string) => prop !== 'isActive' && prop !== 'language',
+})<{ isActive?: boolean; language?: string }>(({ isActive, language, theme }) => ({
   borderRadius: 0,
   border: `3px solid ${COLOR_BORDERS}`,
   padding: `0 ${theme.spacing(1)}px`,
-  textTransform: "capitalize",
+  textTransform: 'capitalize',
   flex: 1,
   backgroundColor: isActive ? theme.palette.greenish.light : theme.palette.greenish.main,
   color: isActive ? theme.palette.common.black : theme.palette.common.white,
   minWidth: 0,
-  whiteSpace: "normal",
+  whiteSpace: 'normal',
   width: language === 'pl' ? '140px' : '100px',
   '&:hover': {
     backgroundColor: theme.palette.greenish.light,
   },
 }));
-
 export const NavigationLeftBox = styled(Stack)({
   display: "flex",
   flexDirection: "row",
@@ -56,7 +57,7 @@ export const NavigationTitle = styled(Typography)<{
   color: theme.palette.greenish.main,
 }));
 
-export const NavigationPlace = styled(Typography)<{
+export const NavigationLeftBoxItem = styled(Typography)<{
   variant?: string;
   component?: string;
 }>(({ variant = "h6", component = "div" }) => ({

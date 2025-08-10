@@ -1,12 +1,12 @@
 import { usePlaceContext } from "contexts";
-import{ NavigationPlace} from "./Navigation.styles";
+import{ NavigationLeftBoxItem} from "./Navigation.styles";
 
 export const Place = () => {
    const { label } = usePlaceContext().place;
     return (
-        <NavigationPlace variant="h6" component="span">
+        <NavigationLeftBoxItem variant="h6" component="span">
             {label}
-        </NavigationPlace>
+        </NavigationLeftBoxItem>
     );
 };
 

@@ -9,9 +9,9 @@ import {
   NavigationPaper,
   NavigationToolbar,
   NavigationButton,
-  NavigationTitle,
   NavigationLeftBox,
   NavigationRightBox,
+  NavigationLeftBoxItem,
   
 } from "./Navigation.styles";
 import Place from "./Place";
@@ -38,9 +38,9 @@ const Navigation = () => {
     <NavigationPaper>
       <Toolbar component="nav" sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
         <NavigationLeftBox>
-          <NavigationTitle variant="h6" component="span">
+          <NavigationLeftBoxItem variant="h6" component="span">
             {t("navigation.weather")}
-          </NavigationTitle>
+          </NavigationLeftBoxItem>
           <Place />
           <Time />
         </NavigationLeftBox>

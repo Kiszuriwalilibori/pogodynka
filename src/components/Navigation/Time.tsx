@@ -2,7 +2,7 @@ import { useTranslation } from "react-i18next";
 import { format, Locale } from "date-fns";
 import { enUS, pl } from "date-fns/locale";
 import { useEffect, useState } from "react";
-import { NavigationPlace } from "./Navigation.styles";
+import { NavigationLeftBoxItem } from "./Navigation.styles";
 
 const INTERVAL = 60000;
 const TIME_FORMAT = "d MMMM H:mm";
@@ -32,9 +32,9 @@ export const Time = () => {
   }, [i18n.language]);
 
   return (
-    <NavigationPlace variant="h6" component="span">
+    <NavigationLeftBoxItem variant="h6" component="span">
       {time}
-    </NavigationPlace>
+    </NavigationLeftBoxItem>
   );
 };
 
