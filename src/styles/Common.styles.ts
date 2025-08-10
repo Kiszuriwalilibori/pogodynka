@@ -69,6 +69,7 @@ export const WeatherDataStack = styled(Stack)(({ theme }) => ({
   alignItems: "center",
   padding: "50px 0",
   maxWidth: "1200px",
+  margin: "0 auto",
 }));
 
 export const WeatherPaper = styled(Paper)(({ theme }) => ({

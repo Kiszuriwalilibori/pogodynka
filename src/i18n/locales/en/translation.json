@@ -1,9 +1,0 @@
-{
-  "connection": {
-    "restored": "Restored connection",
-    "lost": "Lost connection"
-  },
-  "msgs": {
-    "non_specified_error": "Non-specified error"
-  }
-}

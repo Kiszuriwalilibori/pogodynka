@@ -1,32 +1,73 @@
-import { format } from "date-fns";
-import { pl } from "date-fns/locale";
+// import { format } from "date-fns";
+// import { pl } from "date-fns/locale";
+// import { useEffect, useState } from "react";
+// import { useTranslation } from "react-i18next";
+
+// const INTERVAL = 60000;
+// // const TIME_FORMAT = "D MMMM [godzina ]H:mm";
+// const TIME_FORMAT = "d MMMM H:mm";
+
+// const getTime = () => format(new Date(), TIME_FORMAT, { locale: pl });
+
+// const Time = () => {
+//   const [time, setTime] = useState(getTime());
+//   const { t } = useTranslation();
+
+//   useEffect(() => {
+//     const intervalId = setInterval(() => {
+//       const time = getTime();
+//       setTime(time);
+//     }, INTERVAL);
+
+//     return () => clearInterval(intervalId);
+//   }, []);
+
+//   return (
+//     <div className="time">
+//       <h1>{`${t("page-weather.weather")} `}</h1>
+//       <span>{time}</span>
+//     </div>
+//   );
+// };
+// export default Time;
+import { format, Locale } from "date-fns";
+import { enUS, pl } from "date-fns/locale";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 const INTERVAL = 60000;
-// const TIME_FORMAT = "D MMMM [godzina ]H:mm";
 const TIME_FORMAT = "d MMMM H:mm";
 
-const getTime = () => format(new Date(), TIME_FORMAT, { locale: pl });
+// Map i18next language codes to date-fns locales
+const localeMap: { [key: string]: Locale } = {
+  pl: pl,
+  en: enUS,
+};
+
+const getTime = (lang: string) =>
+  format(new Date(), TIME_FORMAT, { locale: localeMap[lang] || enUS });
 
 const Time = () => {
-  const [time, setTime] = useState(getTime());
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const [time, setTime] = useState(getTime(i18n.language));
 
   useEffect(() => {
+    // Update time immediately when language changes
+    setTime(getTime(i18n.language));
+
     const intervalId = setInterval(() => {
-      const time = getTime();
-      setTime(time);
+      setTime(getTime(i18n.language));
     }, INTERVAL);
 
     return () => clearInterval(intervalId);
-  }, []);
+  }, [i18n.language]); // Re-run effect when language changes
 
   return (
     <div className="time">
-      <h1>{`${t("page-weather.weather")} `}</h1>
+      <h1>{t("page-weather.weather")}</h1>
       <span>{time}</span>
     </div>
   );
 };
+
 export default Time;

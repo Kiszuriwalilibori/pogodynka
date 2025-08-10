@@ -1,4 +1,13 @@
 {
+  "navigation": {
+    "title": "Pogodynka",
+    "weather": "Pogoda",
+    "home": "Strona główna",
+    "search": "Szukaj",
+    "weather_page": "Pogoda",
+    "forecast": "Prognoza",
+    "comparison": "Porównanie"
+  },
   "buttons": { 
     "save": "Zapisz",
     "submit_form": "Wyślij formularz {{context}}",
@@ -17,7 +26,8 @@
     "no_API_key": "Nie znaleziono klucza API. Aplikacja nie będzie działać",
     "invalid_data": "W {{type}} wystapił błąd przetwarzania pobranych danych. Nazwa błędu: {{name}} Opis błędu: {{description}} ",
     "no_background": " W tej chwili nie można pobrać obrazu tła",
-    "no_unsplash_key": "Nie znaleziono klucza Unsplash. Aplikacja będzie działać ze standardowym tłem"
+    "no_unsplash_key": "Nie znaleziono klucza Unsplash. Aplikacja będzie działać ze standardowym tłem",
+    "non_specified_error": "Niesprecyzowany błąd"
   },
   "search": {
     "search": "Wyszukaj",
@@ -87,5 +97,9 @@
     "lower_feminine": "niższa",
     "higher_feminine": "wyższa",
     "same_feminine": "taka sama"
+  },
+  "connection": {
+    "restored": "Przywrócono połączenie",
+    "lost": "Utracono połączenie"
   }
 }

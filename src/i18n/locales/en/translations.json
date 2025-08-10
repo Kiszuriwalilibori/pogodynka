@@ -7,6 +7,19 @@
   "params": {
     "temp": "Temperature"
   },
+  "navigation": {
+    "title": "Weather Station",
+    "weather": "Weather",
+    "home": "Home",
+    "search": "Search",
+    "weather_page": "Weather",
+    "forecast": "Forecast",
+    "comparison": "Comparison"
+  },
+  "connection": {
+    "restored": "Restored connection",
+    "lost": "Lost connection"
+  },
   "landing": {
     "welcome": "Welcome to Pogodynka :)",
     "click": "Click to continue"
