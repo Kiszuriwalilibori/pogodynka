@@ -36,9 +36,9 @@ const Navigation = () => {
 
   return (
     <NavigationPaper>
-      <Toolbar component="nav" sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-        <NavigationLeftBox>
-          <NavigationLeftBoxItem variant="h6" component="span">
+      <Toolbar component="nav" role="navigation" aria-label="weather navigation" sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+        <NavigationLeftBox role="region" aria-label="navigation controls">
+          <NavigationLeftBoxItem variant="h6" component="span" role="heading" aria-level={1}>
             {t("navigation.weather")}
           </NavigationLeftBoxItem>
           <Place />

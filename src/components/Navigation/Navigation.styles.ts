@@ -35,6 +35,14 @@ export const NavigationButton = styled(Button, {
   '&:hover': {
     backgroundColor: theme.palette.greenish.light,
   },
+  '&:focus-visible': {
+    outline: '2px solid ${theme.palette.primary.main}',
+    outlineOffset: '2px',
+  },
+  '&:active': {
+    backgroundColor: theme.palette.greenish.dark,
+  },
+  transition: 'background-color 0.2s ease',
 }));
 export const NavigationLeftBox = styled(Stack)({
   display: "flex",
