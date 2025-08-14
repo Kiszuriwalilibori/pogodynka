@@ -1,9 +1,9 @@
 {
   "files": {
-    "main.css": "/pogodynka/static/css/main.ff480c51.css",
-    "main.js": "/pogodynka/static/js/main.6fbe0891.js",
-    "static/js/115.024bbb0b.chunk.js": "/pogodynka/static/js/115.024bbb0b.chunk.js",
-    "static/js/653.f2ef03fb.chunk.js": "/pogodynka/static/js/653.f2ef03fb.chunk.js",
+    "main.css": "/pogodynka/static/css/main.eaa7dc6d.css",
+    "main.js": "/pogodynka/static/js/main.2a6406fc.js",
+    "static/js/91.bd024e6d.chunk.js": "/pogodynka/static/js/91.bd024e6d.chunk.js",
+    "static/js/46.72b9eef8.chunk.js": "/pogodynka/static/js/46.72b9eef8.chunk.js",
     "static/media/background.webp": "/pogodynka/static/media/background.3e3f69d4f1ab2fcddfcb.webp",
     "static/media/brush.ttf": "/pogodynka/static/media/brush.3df63a6f8112a52db22d.ttf",
     "static/media/background_desktop.webp": "/pogodynka/static/media/background_desktop.1b013843d6095bcefaa6.webp",
@@ -32,13 +32,13 @@
     "static/media/montserrat-v15-latin-ext_latin-600.woff2": "/pogodynka/static/media/montserrat-v15-latin-ext_latin-600.f6d165b6156c888a5da2.woff2",
     "service-worker.js": "/pogodynka/service-worker.js",
     "index.html": "/pogodynka/index.html",
-    "main.ff480c51.css.map": "/pogodynka/static/css/main.ff480c51.css.map",
-    "main.6fbe0891.js.map": "/pogodynka/static/js/main.6fbe0891.js.map",
-    "115.024bbb0b.chunk.js.map": "/pogodynka/static/js/115.024bbb0b.chunk.js.map",
-    "653.f2ef03fb.chunk.js.map": "/pogodynka/static/js/653.f2ef03fb.chunk.js.map"
+    "main.eaa7dc6d.css.map": "/pogodynka/static/css/main.eaa7dc6d.css.map",
+    "main.2a6406fc.js.map": "/pogodynka/static/js/main.2a6406fc.js.map",
+    "91.bd024e6d.chunk.js.map": "/pogodynka/static/js/91.bd024e6d.chunk.js.map",
+    "46.72b9eef8.chunk.js.map": "/pogodynka/static/js/46.72b9eef8.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.ff480c51.css",
-    "static/js/main.6fbe0891.js"
+    "static/css/main.eaa7dc6d.css",
+    "static/js/main.2a6406fc.js"
   ]
 }
