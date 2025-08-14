@@ -165,4 +165,4 @@ Better WCAG compliance, more meaningfull names, simplified
 
 ### 0.2.6 enhanced index.html
 
-## TODO
+### 0.3.0 general refactoring, Navigation component instead of previous Banner and Tabs choice
