@@ -1,6 +1,5 @@
 import { createReducer } from "@reduxjs/toolkit";
-import { useSelector } from "react-redux";
-
+import { useSelector, useDispatch } from "react-redux";
 import { actionCreators } from ".";
 import { Geolocation, Source, RootStateType } from "types";
 
@@ -13,6 +12,8 @@ const {
   showErrorMessage,
   setBackgroundReady,
   setGeoLocationPosition,
+  setSelectedTab,
+  setHasFavorites
 } = actionCreators;
 
 const initialState = {
@@ -26,6 +27,8 @@ const initialState = {
   isSearchFactoryVisible: false,
   isError: false,
   isBackgroundReady: false,
+  selectedTab: 1,
+  hasFavorites: false,
 };
 
 const reducer = createReducer(initialState, builder => {
@@ -46,6 +49,9 @@ const reducer = createReducer(initialState, builder => {
         state.searchFormSourceType = action.payload;
         state.isSearchFactoryVisible = true;
       }
+    })
+    .addCase(setSelectedTab, (state, action) => {
+      state.selectedTab = action.payload;
     })
     .addCase(cacheSupported, (state, action) => {
       if (action.payload) {
@@ -69,6 +75,11 @@ const reducer = createReducer(initialState, builder => {
       state.isSearchFactoryVisible = initialState.isSearchFactoryVisible;
       state.searchFormSourceType = initialState.searchFormSourceType;
     })
+    .addCase(setHasFavorites, (state, action) => {
+      
+        state.hasFavorites = action.payload;
+     
+    })
     .addDefaultCase(() => {});
 });
 
@@ -81,3 +92,12 @@ export function useGetSourceType() {
 export function useIsBackgroundReady() {
   return useSelector((state: RootStateType) => state.isBackgroundReady);
 }
+
+export const useSelectedTab = () => {
+  return useSelector((state: RootStateType) => state.selectedTab);
+};
+
+export const useSetSelectedTab = () => {
+  const dispatch = useDispatch();
+  return (tabNumber: number) => dispatch(setSelectedTab(tabNumber));
+};

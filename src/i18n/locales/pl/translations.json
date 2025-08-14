@@ -6,7 +6,8 @@
     "search": "Szukaj",
     "weather_page": "Pogoda",
     "forecast": "Prognoza",
-    "comparison": "Porównanie"
+    "comparison": "Porównanie",
+    "reset": "Wyczyść"
   },
   "buttons": { 
     "save": "Zapisz",

@@ -126,9 +126,11 @@ const useSpeechSynthesis = (): SpeechSynthesisHook => {
 
   // Stop speech
   const stop = useCallback(() => {
-    window.speechSynthesis.cancel();
-    setIsSpeaking(false);
-  }, []);
+    if (isSpeaking) {
+      window.speechSynthesis.cancel();
+      setIsSpeaking(false);
+    }
+  }, [isSpeaking]);
 
   return {
     voices,

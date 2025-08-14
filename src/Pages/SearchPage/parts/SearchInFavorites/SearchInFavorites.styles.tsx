@@ -1,14 +1,14 @@
 import { SxProps, Theme, MenuProps } from "@mui/material";
 
-export const formControlSx: SxProps<Theme> = {
+export const formControlSx:SxProps<Theme>= (theme: Theme) => ({
   margin: theme => theme.spacing(1),
   minWidth: 250,
   "& .MuiOutlinedInput-notchedOutline": {
     border: "none !important",
   },
-};
+});
 
-export const inputLabelSx: SxProps<Theme> = {
+export const inputLabelSx:SxProps<Theme>= (theme: Theme) => ({
   color: "black !important",
   paddingLeft: 4,
   fontWeight: 700,
@@ -17,15 +17,15 @@ export const inputLabelSx: SxProps<Theme> = {
   "&.MuiInputLabel-shrink": {
     transform: "translate(14px, 16px) scale(1) !important",
   },
-};
+});
 
-export const dropdownStyleSx: SxProps<Theme> = {
+export const dropdownStyleSx:SxProps<Theme>= (theme: Theme) => ({
   border: "4px solid orange",
   backgroundColor: "lightgrey",
   color: "black",
-};
+});
 
-export const selectSx: SxProps<Theme> = {
+export const selectSx:SxProps<Theme>= (theme: Theme) =>({
   backgroundColor: "transparent",
   "&:before": {
     borderBottom: "none",
@@ -39,7 +39,7 @@ export const selectSx: SxProps<Theme> = {
     borderBottom: "none",
     backgroundColor: "transparent",
   },
-};
+});
 export const menuProps: Partial<MenuProps> = {
   PaperProps: {
     sx: dropdownStyleSx,
@@ -53,4 +53,4 @@ export const menuProps: Partial<MenuProps> = {
     horizontal: "left",
   },
 };
-export const paperSx: SxProps<Theme> = { padding: "0", marginTop: "60px" };
+export const paperSx:SxProps<Theme>= (theme: Theme) =>({ padding: "0", marginTop: "60px" });

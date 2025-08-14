@@ -1,14 +1,14 @@
 import { SxProps, Theme } from "@mui/material";
-import theme from "themes/theme";
 
-export const radioSx: SxProps<Theme> = {
+
+export const radioSx:SxProps<Theme>= (theme: Theme) =>({
   "&:hover": {
     backgroundColor: "transparent",
   },
   "& span": { fontWeight: "bolder" },
-};
+});
 
-export const iconSx: SxProps<Theme> = {
+export const iconSx:SxProps<Theme>= (theme: Theme) =>({
   borderRadius: "50%",
   width: 20,
   height: 20,
@@ -26,9 +26,9 @@ export const iconSx: SxProps<Theme> = {
     boxShadow: "none",
     background: "rgba(206,217,224,.5)",
   },
-};
+});
 
-export const checkedIconSx: SxProps<Theme> = {
+export const checkedIconSx:SxProps<Theme>= (theme: Theme) =>({
   backgroundColor: theme.palette.greenish.main,
   backgroundImage: "linear-gradient(180deg,hsla(0,0%,100%,.1),hsla(0,0%,100%,0))",
   "&:before": {
@@ -41,15 +41,15 @@ export const checkedIconSx: SxProps<Theme> = {
   "input:hover ~ &": {
     backgroundColor: theme.palette.greenish.light,
   },
-};
+});
 
-export const checkedIconMergedSx: SxProps<Theme> = {
+export const checkedIconMergedSx:SxProps<Theme>= (theme: Theme) =>({
   ...iconSx,
   ...checkedIconSx,
-};
+});
 
 
-export const formControlLabelSx: SxProps<Theme> = {
+export const formControlLabelSx:SxProps<Theme>= (theme: Theme) =>({
   color: theme.palette.common.black,
   "& span": { fontWeight: "700 !important" },
-};
+});

@@ -8,5 +8,6 @@ export const setGeoLocationSupport = createAction<boolean>("SET_GEOLOCATION_SUPP
 export const hideErrorMessage = createAction("ERROR_MESSAGE_HIDE");
 export const showErrorMessage = createAction<string>("ERROR_MESSAGE_SHOW");
 export const setBackgroundReady = createAction("BACKGROUND_IS_READY");
-
+export const setSelectedTab = createAction<number>("SET_SELECTED_TAB");
 export const setGeoLocationPosition = createAction<Geolocation | undefined>("SET_GEOLOCATION_POSITION");
+export const setHasFavorites = createAction<boolean>("SET_HAS_FAVORITES");

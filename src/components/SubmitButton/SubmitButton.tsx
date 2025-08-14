@@ -14,7 +14,7 @@ type Props = { text: string };
 
 const SubmitButtonComponent = (props: Props): JSX.Element => {
   const { t } = useTranslation();
-  console.log("");
+  
   const submitFormTitle = t('buttons.submit_form', { context: t(props.text) }) as string;
   const sendTitle = t('buttons.send') as string;
   
@@ -35,5 +35,3 @@ const SubmitButtonComponent = (props: Props): JSX.Element => {
 
 export const SubmitButton = React.memo(SubmitButtonComponent);
 export default SubmitButton;
-
-//TODO: hardcoded content of title

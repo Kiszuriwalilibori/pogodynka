@@ -14,7 +14,8 @@
     "search": "Search",
     "weather_page": "Weather",
     "forecast": "Forecast",
-    "comparison": "Comparison"
+    "comparison": "Comparison",
+    "reset": "Reset"
   },
   "connection": {
     "restored": "Restored connection",

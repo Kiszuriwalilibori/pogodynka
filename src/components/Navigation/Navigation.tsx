@@ -1,9 +1,14 @@
-import { Toolbar } from "@mui/material";
+import { IconButton, Theme, useMediaQuery } from "@mui/material";
 import { useNavigate, useLocation } from "react-router-dom";
+import { useContext, useState } from "react";
+import { useSelector } from "react-redux";
+import { useTranslation } from "react-i18next";
 
 import * as ROUTES from "routes";
-import { useFavorites } from "hooks";
-import { useTranslation } from "react-i18next";
+
+import { SpeechContext } from "contexts";
+import MenuIcon from "@mui/icons-material/Menu";
+import CloseIcon from "@mui/icons-material/Close";
 
 import {
   NavigationPaper,
@@ -12,23 +17,28 @@ import {
   NavigationLeftBox,
   NavigationRightBox,
   NavigationLeftBoxItem,
-  
+  MobileMenuBox,
+  mobileHidden,
+  HamburgerContainer,
+  LargeToolbar,
+  tabletVisible,
 } from "./Navigation.styles";
 import Place from "./Place";
 import Time from "./Time";
-
+import { useSetSelectedTab } from "js/Redux/reducer";
+import ResetButton from "./ResetButton";
+import { RootStateType } from "types";
 
 const Navigation = () => {
   const navigate = useNavigate();
-  const location = useLocation();
-  const { Favorites } = useFavorites();
   const { t, i18n } = useTranslation();
-  
-
-  // Don't render navigation on landing page
-  if (location.pathname === ROUTES.LANDING) {
-    return null;
-  }
+  const hasFavorites = useSelector((state: RootStateType) => state.hasFavorites);
+  const setSelectedTab = useSetSelectedTab();
+  const location = useLocation();
+  const { cancelSpeech } = useContext(SpeechContext);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const isDisabled = !location.state?.results;
+  const isTablet = useMediaQuery((theme: Theme) => theme.breakpoints.down("md"));
 
   const isActive = (path: string) => {
     return location.pathname === path;
@@ -36,39 +46,152 @@ const Navigation = () => {
 
   return (
     <NavigationPaper>
-      <Toolbar component="nav" role="navigation" aria-label="weather navigation" sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+      <LargeToolbar component="nav" role="navigation" aria-label="weather navigation">
         <NavigationLeftBox role="region" aria-label="navigation controls">
-          <NavigationLeftBoxItem variant="h6" component="span" role="heading" aria-level={1}>
+          <NavigationLeftBoxItem variant="h6" component="span" role="heading" aria-level={1} sx={mobileHidden}>
             {t("navigation.weather")}
           </NavigationLeftBoxItem>
+
           <Place />
           <Time />
         </NavigationLeftBox>
-        <NavigationRightBox>
+        <HamburgerContainer>
+          <IconButton
+            sx={tabletVisible}
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label="open menu"
+            color="inherit"
+          >
+            {mobileMenuOpen ? <CloseIcon /> : <MenuIcon />}
+          </IconButton>
+        </HamburgerContainer>
+        {isTablet ? null : (
+          <NavigationRightBox>
+            <NavigationToolbar>
+              <ResetButton disabled={!location.state?.results} />
+              <NavigationButton
+                isActive={isActive(ROUTES.LANDING)}
+                onClick={() => {
+                  cancelSpeech?.();
+                  navigate(ROUTES.LANDING);
+                }}
+                language={i18n.language}
+              >
+                {t("navigation.home")}
+              </NavigationButton>
+              <NavigationButton
+                isActive={isActive(ROUTES.SEARCH)}
+                onClick={() => {
+                  cancelSpeech?.();
+                  navigate(ROUTES.SEARCH);
+                }}
+                language={i18n.language}
+              >
+                {t("navigation.search")}
+              </NavigationButton>
+              <NavigationButton
+                isActive={isActive(ROUTES.WEATHER)}
+                disabled={isDisabled}
+                onClick={() => {
+                  cancelSpeech?.();
+                  setSelectedTab(1);
+                }}
+                language={i18n.language}
+              >
+                {t("navigation.weather_page")}
+              </NavigationButton>
+              <NavigationButton
+                isActive={isActive(ROUTES.WEATHER)}
+                disabled={isDisabled}
+                onClick={() => {
+                  cancelSpeech?.();
+                  setSelectedTab(2);
+                }}
+                language={i18n.language}
+              >
+                {t("navigation.forecast")}
+              </NavigationButton>
+              <NavigationButton
+                isActive={isActive(ROUTES.WEATHER)}
+                disabled={isDisabled || !hasFavorites}
+                onClick={() => {
+                  cancelSpeech?.();
+                  setSelectedTab(3);
+                }}
+                language={i18n.language}
+              >
+                {t("navigation.comparison")}
+              </NavigationButton>
+            </NavigationToolbar>
+          </NavigationRightBox>
+        )}
+      </LargeToolbar>
+      {isTablet && mobileMenuOpen && (
+        <MobileMenuBox id="mobile-menu-box">
           <NavigationToolbar>
-            <NavigationButton isActive={isActive(ROUTES.LANDING)} onClick={() => navigate(ROUTES.LANDING)} language={i18n.language}>
-              {t('navigation.home')}
-            </NavigationButton>
-            <NavigationButton isActive={isActive(ROUTES.SEARCH)} onClick={() => navigate(ROUTES.SEARCH)} language={i18n.language}>
-              {t('navigation.search')}
-            </NavigationButton>
-            <NavigationButton isActive={isActive(ROUTES.WEATHER)} onClick={() => navigate(ROUTES.WEATHER)} language={i18n.language}>
-              {t('navigation.weather_page')}
-            </NavigationButton>
-            <NavigationButton isActive={isActive(ROUTES.FORECAST)} onClick={() => navigate(ROUTES.FORECAST)} language={i18n.language}>
-              {t('navigation.forecast')}
-            </NavigationButton>
+            <ResetButton />
+
             <NavigationButton
-              isActive={isActive(ROUTES.COMPARISON)}
-              disabled={Favorites.getLength() === 0}
-              onClick={() => navigate(ROUTES.COMPARISON)}
+              isActive={isActive(ROUTES.LANDING)}
+              onClick={() => {
+                cancelSpeech?.();
+                navigate(ROUTES.LANDING);
+                setMobileMenuOpen(false);
+              }}
               language={i18n.language}
             >
-              {t('navigation.comparison')}
+              {t("navigation.home")}
+            </NavigationButton>
+            <NavigationButton
+              isActive={isActive(ROUTES.SEARCH)}
+              onClick={() => {
+                cancelSpeech?.();
+                navigate(ROUTES.SEARCH);
+                setMobileMenuOpen(false);
+              }}
+              language={i18n.language}
+            >
+              {t("navigation.search")}
+            </NavigationButton>
+            <NavigationButton
+              isActive={isActive(ROUTES.WEATHER)}
+              disabled={isDisabled}
+              onClick={() => {
+                cancelSpeech?.();
+                setSelectedTab(1);
+                setMobileMenuOpen(false);
+              }}
+              language={i18n.language}
+            >
+              {t("navigation.weather_page")}
+            </NavigationButton>
+            <NavigationButton
+              isActive={isActive(ROUTES.WEATHER)}
+              disabled={isDisabled}
+              onClick={() => {
+                cancelSpeech?.();
+                setSelectedTab(2);
+                setMobileMenuOpen(false);
+              }}
+              language={i18n.language}
+            >
+              {t("navigation.forecast")}
+            </NavigationButton>
+            <NavigationButton
+              isActive={isActive(ROUTES.WEATHER)}
+              disabled={isDisabled || !hasFavorites}
+              onClick={() => {
+                cancelSpeech?.();
+                setSelectedTab(3);
+                setMobileMenuOpen(false);
+              }}
+              language={i18n.language}
+            >
+              {t("navigation.comparison")}
             </NavigationButton>
           </NavigationToolbar>
-        </NavigationRightBox>
-      </Toolbar>
+        </MobileMenuBox>
+      )}
     </NavigationPaper>
   );
 };

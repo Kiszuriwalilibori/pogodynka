@@ -14,6 +14,7 @@ type FavoritesType = FilteredStorage & {
 
 const useFavorites = () => {
   const { cacheSupported } = useDispatchAction();
+  const {setHasFavorites}=useDispatchAction();
   const showMessage = useMessage();
 
   const Favorites = new FilteredStorage(item => item.category === "place") as FavoritesType;
@@ -56,12 +57,11 @@ const useFavorites = () => {
       LocalStorage.set(label, place);
       showMessage.success(t("favs.add_success", { label: label }));
       window && window.dispatchEvent(new Event("storage")); //puszcza zdarzenie zmiany localStorage. odczytywane póxniej
-
+      setHasFavorites(true);
       return true;
     } catch (error) {
       showMessage.error(t("favs.add_error", { label: label }));
-
-      return false;
+return false;
     }
   };
 

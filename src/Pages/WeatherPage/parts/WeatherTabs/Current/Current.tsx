@@ -8,14 +8,17 @@ import { TIMEOUT_SHORT } from "fixtures";
 
 import "./_CurrentWeather.scss";
 import CurrentData from "./CurrentData";
+import { usePlaceContext } from "contexts";
 
 interface Props {
   currentWeatherData: string[] | undefined;
-  labelCurrent: string;
+  
 }
 
 const Current = (props: Props) => {
-  const { currentWeatherData, labelCurrent } = props;
+  const { currentWeatherData} = props;
+  const { labelCurrent } = { ...usePlaceContext().place };
+
   if (!currentWeatherData) return null;
 
   return (

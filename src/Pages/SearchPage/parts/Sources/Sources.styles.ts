@@ -1,8 +1,7 @@
 import { SxProps, Theme } from "@mui/material";
 import { COLOR_BORDERS } from "themes/constans";
-import theme from "themes/theme";
 
-export const formLabelSx:SxProps<Theme>= {
+export const formLabelSx:SxProps<Theme>= (theme: Theme) =>({
     color: "white !important",
     textShadow: `-1px -1px 0 ${COLOR_BORDERS}, 1px -1px 0 ${COLOR_BORDERS}, -1px 1px 0 ${COLOR_BORDERS}, 1px 1px 0 ${COLOR_BORDERS}`,
     position: "absolute",
@@ -14,11 +13,11 @@ export const formLabelSx:SxProps<Theme>= {
     textAlign: "center",
     transform: "translateX(-50%)",
     "@media (max-width: 700px)": { marginTop: "-60px", top: "-80px" },
-  }
+  });
 
 
 
-export const sourcesSx:SxProps<Theme>= {  
+export const sourcesSx:SxProps<Theme>= (theme: Theme) =>({  
     backgroundColor: theme.palette.grey[400],
     display: "flex",
     justifyContent: "center",
@@ -36,4 +35,4 @@ export const sourcesSx:SxProps<Theme>= {
       "@media (max-width: 700px)": { flexDirection: "column" },
     },
   
-}
+})

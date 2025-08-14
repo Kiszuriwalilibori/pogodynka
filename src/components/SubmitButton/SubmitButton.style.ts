@@ -1,7 +1,6 @@
-import theme from "themes/theme";
 import { SxProps, Theme } from "@mui/material";
 
-export const buttonSx: SxProps<Theme> = {
+export const buttonSx:SxProps<Theme>= (theme: Theme) => ({
   color: theme.palette.common.white,
   backgroundColor: theme.palette.greenish.main,
   height: "50px",
@@ -14,4 +13,4 @@ export const buttonSx: SxProps<Theme> = {
   "&:hover": {
     backgroundColor: theme.palette.greenish.light,
   },
-};
+});

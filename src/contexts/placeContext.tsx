@@ -36,3 +36,5 @@ function usePlaceContext() {
 }
 
 export { PlaceContextProvider, usePlaceContext, PlaceContext };
+
+//TODO: jednak nie wygląda najlepiej place jako pusty zwykły obiekt początkowo. Poza tym inne wartości w nim też powinny być nullowalne, np location

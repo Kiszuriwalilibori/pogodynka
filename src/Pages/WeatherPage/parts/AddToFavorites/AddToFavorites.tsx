@@ -9,11 +9,13 @@ import { usePlaceContext } from "contexts";
 import { Confirm } from "./Confirm";
 import FavoriteLabelForm from "./FavoriteLabelForm";
 
+
 const AddToFavorites = (): JSX.Element | null => {
   const {
     place: { type, place, label, isFromFavorites },
   } = usePlaceContext();
   const { t } = useTranslation();
+  
   const { Favorites } = useFavorites();
   const [isChecked, , setIsCheckedFalse, toggleIsChecked] = useBoolean(false);
   const [isStored, setIsStored, ,] = useBoolean(false);
@@ -30,7 +32,8 @@ const AddToFavorites = (): JSX.Element | null => {
           source: PlaceVariants.CITY,
           place: place,
         });
-        setIsStored();
+       setIsStored();
+       
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -42,7 +45,7 @@ const AddToFavorites = (): JSX.Element | null => {
   if (!place) return null;
   return !isStored ? (
     <>
-      <Confirm handleClick={toggleIsChecked} labelText={t("page-weather.addtofavs?")} isChecked={isChecked} />
+      <Confirm handleClick={toggleIsChecked} labelText={t("page-weather.addtofavs?")} isChecked={isChecked}  />
 
       {isChecked && type && type !== FormVariants.CITY ? (
         <FavoriteLabelForm handleFavoritesStored={setIsStored} />

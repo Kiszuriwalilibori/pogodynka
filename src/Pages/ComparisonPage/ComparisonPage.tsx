@@ -37,8 +37,7 @@ export const ComparisonPage = () => {
   const { favoritesWeatherDataForComparision, isComparisionLoading, isComparisionError, label } = useFetchComparision();
   const { isCurrentWeatherLoading, currentWeatherDataForComparision } = useFetchCurrentWeather();
   const isLoading = useDelayedCondition(isComparisionLoading || isCurrentWeatherLoading);
-console.log("favoritesWeatherDataForComparision",favoritesWeatherDataForComparision);
-  console.log("currentWeatherDataForComparision",currentWeatherDataForComparision);
+
 const weatherComparisionData = useCreateComparisionData(
     favoritesWeatherDataForComparision,
     currentWeatherDataForComparision
