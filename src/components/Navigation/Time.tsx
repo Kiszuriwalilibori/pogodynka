@@ -2,7 +2,7 @@ import { useTranslation } from "react-i18next";
 import { format, Locale } from "date-fns";
 import { enUS, pl } from "date-fns/locale";
 import { useEffect, useState } from "react";
-import { NavigationLeftBoxItem } from "./Navigation.styles";
+import { ReactElement } from "react";
 
 const INTERVAL = 60000;
 const TIME_FORMAT = "d MMMM H:mm";
@@ -13,10 +13,14 @@ const localeMap: { [key: string]: Locale } = {
   en: enUS,
 };
 
+interface Props {
+    renderer: (text: string) => ReactElement;
+}
 const getTime = (lang: string) =>
   format(new Date(), TIME_FORMAT, { locale: localeMap[lang] || enUS });
 
-export const Time = () => {
+export const Time = (props:Props) => {
+  const { renderer } = props;
   const { i18n } = useTranslation();
   const [time, setTime] = useState(getTime(i18n.language));
 
@@ -30,12 +34,8 @@ export const Time = () => {
 
     return () => clearInterval(intervalId);
   }, [i18n.language]);
-
-  return (
-    <NavigationLeftBoxItem variant="h6" component="span">
-      {time}
-    </NavigationLeftBoxItem>
-  );
+ if (!time) return null;
+  return renderer(time);
 };
 
 export default Time;

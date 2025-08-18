@@ -23,11 +23,14 @@ import {
   LargeToolbar,
   tabletVisible,
 } from "./Navigation.styles";
-import Place from "./Place";
+
 import Time from "./Time";
 import { useSetSelectedTab } from "js/Redux/reducer";
 import ResetButton from "./ResetButton";
 import { RootStateType } from "types";
+
+import NavigationLeftBoxItemRenderer from "./NavigationLeftBoxItemRenderer";
+import Place from "./Place";
 
 const Navigation = () => {
   const navigate = useNavigate();
@@ -51,9 +54,8 @@ const Navigation = () => {
           <NavigationLeftBoxItem variant="h6" component="span" role="heading" aria-level={1} sx={mobileHidden}>
             {t("navigation.weather")}
           </NavigationLeftBoxItem>
-
-          <Place />
-          <Time />
+          <Place renderer = {NavigationLeftBoxItemRenderer}/>
+          <Time renderer = {NavigationLeftBoxItemRenderer}/>
         </NavigationLeftBox>
         <HamburgerContainer>
           <IconButton

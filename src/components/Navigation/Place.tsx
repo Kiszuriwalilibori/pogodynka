@@ -1,13 +1,17 @@
 import { usePlaceContext } from "contexts";
-import{ NavigationLeftBoxItem} from "./Navigation.styles";
+import { ReactElement } from "react";
 
-export const Place = () => {
-   const { label } = usePlaceContext().place;
-    return (
-        <NavigationLeftBoxItem variant="h6" component="span">
-            {label}
-        </NavigationLeftBoxItem>
-    );
+interface Props {
+    renderer: (text: string) => ReactElement;
+}
+
+export const Place = (props: Props) => {
+    const { renderer } = props;
+    const { label } = usePlaceContext().place;
+    
+    if (!label) return null;
+    
+    return renderer(label);
 };
 
 export default Place;
