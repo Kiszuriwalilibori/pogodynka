@@ -76,7 +76,7 @@ const Navigation = () => {
                 isActive={isActive(ROUTES.LANDING)}
                 onClick={() => {
                   cancelSpeech?.();
-                  navigate(ROUTES.LANDING);
+                  navigate(ROUTES.LANDING,{state: location.state});
                 }}
                 language={i18n.language}
               >
@@ -86,7 +86,7 @@ const Navigation = () => {
                 isActive={isActive(ROUTES.SEARCH)}
                 onClick={() => {
                   cancelSpeech?.();
-                  navigate(ROUTES.SEARCH);
+                  navigate(ROUTES.SEARCH,{state: location.state});
                 }}
                 language={i18n.language}
               >
@@ -97,6 +97,7 @@ const Navigation = () => {
                 disabled={isDisabled}
                 onClick={() => {
                   cancelSpeech?.();
+                  navigate(ROUTES.WEATHER+redirectURL,{state: location.state});
                   setSelectedTab(1);
                 }}
                 language={i18n.language}
@@ -108,7 +109,7 @@ const Navigation = () => {
                 disabled={isDisabled}
                 onClick={() => {
                   cancelSpeech?.();
-                  navigate(ROUTES.FORECAST+redirectURL);
+                  navigate(ROUTES.FORECAST+redirectURL, {state: location.state});
                 }}
                 language={i18n.language}
               >
@@ -119,6 +120,7 @@ const Navigation = () => {
                 disabled={isDisabled || !hasFavorites}
                 onClick={() => {
                   cancelSpeech?.();
+                  navigate(ROUTES.WEATHER+redirectURL,{state: location.state});
                   setSelectedTab(3);
                 }}
                 language={i18n.language}
@@ -138,7 +140,7 @@ const Navigation = () => {
               isActive={isActive(ROUTES.LANDING)}
               onClick={() => {
                 cancelSpeech?.();
-                navigate(ROUTES.LANDING);
+                navigate(ROUTES.LANDING,{state: location.state});
                 setMobileMenuOpen(false);
               }}
               language={i18n.language}
@@ -149,7 +151,7 @@ const Navigation = () => {
               isActive={isActive(ROUTES.SEARCH)}
               onClick={() => {
                 cancelSpeech?.();
-                navigate(ROUTES.SEARCH);
+                navigate(ROUTES.SEARCH,{state: location.state});
                 setMobileMenuOpen(false);
               }}
               language={i18n.language}
@@ -161,6 +163,7 @@ const Navigation = () => {
               disabled={isDisabled}
               onClick={() => {
                 cancelSpeech?.();
+                navigate(ROUTES.WEATHER+redirectURL,{state: location.state});
                 setSelectedTab(1);
                 setMobileMenuOpen(false);
               }}
@@ -173,7 +176,7 @@ const Navigation = () => {
               disabled={isDisabled}
               onClick={() => {
                 cancelSpeech?.();
-                navigate(ROUTES.FORECAST+redirectURL);
+                navigate(ROUTES.FORECAST+redirectURL,{state: location.state});
                 setMobileMenuOpen(false);
               }}
               language={i18n.language}
@@ -185,6 +188,7 @@ const Navigation = () => {
               disabled={isDisabled || !hasFavorites}
               onClick={() => {
                 cancelSpeech?.();
+                navigate(ROUTES.WEATHER+redirectURL,{state: location.state});
                 setSelectedTab(3);
                 setMobileMenuOpen(false);
               }}

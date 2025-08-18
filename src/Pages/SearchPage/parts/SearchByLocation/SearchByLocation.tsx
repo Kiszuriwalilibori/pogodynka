@@ -60,9 +60,8 @@ const SearchByLocation = () => {
         latitude: Number(latitude),
         longitude: Number(longitude),
       });
-      console.log("place",place);
+      
       placeContext.setPlace(place);
-      console.log("SearchByLocation",place.redirectURL);
       navigate(ROUTES.WEATHER + place.redirectURL, { state: { results: place.redirectURL } });
       clearSearchFactory();
     },
