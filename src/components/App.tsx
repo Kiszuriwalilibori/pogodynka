@@ -27,7 +27,8 @@ const App = () => {
           <Route path={ROUTES.SEARCH} element={<SearchPage />} />
           {location?.state?.results && (
             <Route path={"/" + location.state.results} element={<WeatherPage />} />
-          )}         
+          )}  
+          <Route path={ROUTES.WEATHER +"/:place"}element={<WeatherPage />}/>      
           <Route path={ROUTES.NOPAGE} element={<NoPage />} />
         </Route>
       </Routes>

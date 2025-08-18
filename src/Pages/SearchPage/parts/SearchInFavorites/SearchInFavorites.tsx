@@ -27,6 +27,7 @@ const SearchInFavorites = () => {
       const input = JSON.parse(event.target.value) as eventTargetValue;
       const place = new Place(input.source, input.place, true);
       placeContext.setPlace(place);
+      console.log("SearchInFavorites",place.redirectURL);
       navigate(place.redirectURL, { state: { results: place.redirectURL } });
       clearSearchFactory();
     },

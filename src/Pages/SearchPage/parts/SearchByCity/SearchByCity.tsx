@@ -37,7 +37,7 @@ const CitySearchForm = () => {
     onSubmit() {
       const place: PlaceType = new Place(PlaceVariants.CITY, city);
       placeContext.setPlace(place);
-      
+      console.log("SearchByCityForm",place.redirectURL);
       navigate(place.redirectURL, { state: { results: place.redirectURL } }); //
 
       clearSearchFactory();

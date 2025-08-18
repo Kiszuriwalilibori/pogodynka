@@ -51,6 +51,7 @@ const Sources = () => {
               });
 
               placeContext.setPlace(place);
+              console.log("SearchBySoureces",place.redirectURL);
               navigate(place.redirectURL, { state: { results: place.redirectURL } });
               setSearchFormSourceType(FormVariants.LOCATION);
               clearSearchFactory();

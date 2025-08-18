@@ -1,11 +1,12 @@
 import { useTranslation } from "react-i18next";
-import { useCallback } from "react";
+import { useCallback, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { usePlaceContext } from "contexts/placeContext";
 
 import * as ROUTES from "routes";
 import { NavigationButton } from "./Navigation.styles";
 import { PlaceType } from "types";
+import { SpeechContext } from "contexts/speechContext";
 
 interface ResetButtonProps {
   disabled?: boolean;
@@ -14,13 +15,15 @@ interface ResetButtonProps {
 export const ResetButton = ({ disabled = false }: ResetButtonProps) => {
   const { t, i18n } = useTranslation();
   const navigate = useNavigate();
+  const { cancelSpeech } = useContext(SpeechContext);
   
     const { setPlace } = usePlaceContext();
   
     const handleClick = useCallback(() => {
       setPlace({} as PlaceType);
+      cancelSpeech?.();
       navigate(ROUTES.SEARCH);
-    }, [navigate, setPlace]);
+    }, [navigate, setPlace,cancelSpeech]);
   
   
   return (
