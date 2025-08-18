@@ -6,7 +6,7 @@ import { useTranslation } from "react-i18next";
 
 import * as ROUTES from "routes";
 
-import { SpeechContext } from "contexts";
+import { SpeechContext, usePlaceContext } from "contexts";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 
@@ -41,6 +41,7 @@ const Navigation = () => {
   const { cancelSpeech } = useContext(SpeechContext);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const isDisabled = !location.state?.results;
+  const { redirectURL } = { ...usePlaceContext().place };
   const isTablet = useMediaQuery((theme: Theme) => theme.breakpoints.down("md"));
 
   const isActive = (path: string) => {
@@ -107,7 +108,7 @@ const Navigation = () => {
                 disabled={isDisabled}
                 onClick={() => {
                   cancelSpeech?.();
-                  setSelectedTab(2);
+                  navigate(ROUTES.FORECAST+redirectURL);
                 }}
                 language={i18n.language}
               >
@@ -172,7 +173,7 @@ const Navigation = () => {
               disabled={isDisabled}
               onClick={() => {
                 cancelSpeech?.();
-                setSelectedTab(2);
+                navigate(ROUTES.FORECAST+redirectURL);
                 setMobileMenuOpen(false);
               }}
               language={i18n.language}

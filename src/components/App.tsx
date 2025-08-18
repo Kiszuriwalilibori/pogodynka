@@ -8,6 +8,7 @@ import Layout from "./Layout/Layout";
 import { useCheckApiKey, useHandleConnectionStatus, usePrepareBackground } from "hooks";
 import { breakWhenInternetExplorer } from "js/functions";
 import { withProblemMessage } from "HOCs";
+import { ForecastPage } from "Pages/ForecastPage";
 
 const App = () => {
   useHandleConnectionStatus();
@@ -23,7 +24,8 @@ const App = () => {
         <Route path={ROUTES.LANDING} element={<LandingPage />} />
         <Route element={<Layout />}>
           <Route path={ROUTES.SEARCH} element={<SearchPage />} />
-          <Route path={ROUTES.WEATHER +"/:place"} element={<WeatherPage />}/>      
+          <Route path={ROUTES.WEATHER +"/:place"} element={<WeatherPage />}/>
+          <Route path={ROUTES.FORECAST +"/:place"} element={<ForecastPage />}/>            
           <Route path={ROUTES.NOPAGE} element={<NoPage />} />
         </Route>
       </Routes>
