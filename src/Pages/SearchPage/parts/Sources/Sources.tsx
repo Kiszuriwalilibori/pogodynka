@@ -10,6 +10,7 @@ import { useTranslation } from "react-i18next";
 
 import { Place } from "js/functions";
 import { usePlaceContext } from "contexts";
+import * as ROUTES from "routes";
 import { FormVariants, PlaceVariants, RootStateType, Source } from "types";
 import { useFavorites, useDispatchAction } from "hooks";
 import { TIMEOUT_SHORT } from "fixtures";
@@ -51,8 +52,7 @@ const Sources = () => {
               });
 
               placeContext.setPlace(place);
-              console.log("SearchBySoureces",place.redirectURL);
-              navigate(place.redirectURL, { state: { results: place.redirectURL } });
+              navigate(ROUTES.WEATHER + place.redirectURL, { state: { results: place.redirectURL } });
               setSearchFormSourceType(FormVariants.LOCATION);
               clearSearchFactory();
             }

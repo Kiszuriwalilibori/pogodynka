@@ -8,6 +8,7 @@ import { Place } from "js/functions";
 import { usePlaceContext } from "contexts";
 import { PlaceVariants } from "types";
 import { useDispatchAction } from "hooks";
+import * as ROUTES from "routes";
 
 import SearchByLocationForm from "./SearchByLocationForm";
 import { t } from "i18next";
@@ -62,7 +63,7 @@ const SearchByLocation = () => {
       console.log("place",place);
       placeContext.setPlace(place);
       console.log("SearchByLocation",place.redirectURL);
-      navigate(place.redirectURL, { state: { results: place.redirectURL } });
+      navigate(ROUTES.WEATHER + place.redirectURL, { state: { results: place.redirectURL } });
       clearSearchFactory();
     },
   });

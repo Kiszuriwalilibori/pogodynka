@@ -3,7 +3,7 @@ import { InputLabel, MenuItem, FormControl, Select, Paper, SelectChangeEvent } f
 import { useNavigate } from "react-router-dom";
 
 import { formControlSx, inputLabelSx, menuProps, selectSx, paperSx } from "./SearchInFavorites.styles";
-
+import * as ROUTES from "routes";
 import { Place } from "js/functions";
 import { usePlaceContext } from "contexts";
 import { useFavorites, useDispatchAction } from "hooks";
@@ -28,7 +28,7 @@ const SearchInFavorites = () => {
       const place = new Place(input.source, input.place, true);
       placeContext.setPlace(place);
       console.log("SearchInFavorites",place.redirectURL);
-      navigate(place.redirectURL, { state: { results: place.redirectURL } });
+      navigate(ROUTES.WEATHER + place.redirectURL, { state: { results: place.redirectURL } });
       clearSearchFactory();
     },
     [navigate, placeContext, clearSearchFactory]

@@ -166,3 +166,6 @@ Better WCAG compliance, more meaningfull names, simplified
 ### 0.2.6 enhanced index.html
 
 ### 0.3.0 general refactoring, Navigation component instead of previous Banner and Tabs choice
+
+### 0.3.1 fixed dynamic routes in WeatherPage, Banner removed as it was not needed anymore
+
