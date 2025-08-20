@@ -1,14 +1,28 @@
 import { useQuery } from "@tanstack/react-query";
 
+import { usePlaceContext } from "contexts";
 import getWeather from "js/functions/getWeather";
-
-import { usePlaceContext } from "contexts/placeContext";
-import useProcessForecastData from "./useProcessForecastData";
+import { useDispatchAction, useProcessForecastData } from "hooks";
 
 export const useFetchForecast = () => {
-  const { forecastURL } = { ...usePlaceContext().place };
-  const { data, isLoading } = useQuery([forecastURL], () => getWeather(forecastURL));
-  const forecastData = useProcessForecastData(data);
+  const { showErrorMessage } = useDispatchAction();
+  const { place} = usePlaceContext();
+  const { forecastURL } = { ...place };
+
+
+  const { data, isLoading } = useQuery({
+    queryKey: [forecastURL],
+    queryFn: () => getWeather(forecastURL),
+    onError: (error: Error) => {
+      showErrorMessage(`Forecast data error: ${error.message}`);
+      
+    },
+    retry: false,
+    refetchOnWindowFocus: false,
+    enabled: !!forecastURL
+  });
+
+  const forecastData = useProcessForecastData(data || null);
 
   return { forecastData, isLoading };
 };

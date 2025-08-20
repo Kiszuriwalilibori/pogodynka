@@ -5,14 +5,13 @@ import { useDelayedCondition,useFetchCurrentWeather, useForceUpdate } from "hook
 import { usePlaceContext} from "contexts";
 import {Loader} from "components";
 import Current from "./Current";
-import Forecast from "./Forecast";
-import Comparision from "./Comparision";
 
-import { TabPanel } from "./TabPanel";
-import { useSelectedTab} from "js/Redux/reducer";
 
-export const WeatherTabs = () => {
-  const value = useSelectedTab();
+
+// todo usunąć w reducerze import { useSelectedTab} from "js/Redux/reducer";
+
+export const CurrentWeather = () => {
+ 
   
   const forceUpdate = useForceUpdate();
   const { currentWeatherData, isCurrentWeatherLoading } = useFetchCurrentWeather();
@@ -44,21 +43,9 @@ export const WeatherTabs = () => {
 
   return (
     <>
-      <TabPanel value={value} index={1}>
         <Current currentWeatherData={currentWeatherData} />
-      </TabPanel>
-      <TabPanel value={value} index={2}>
-        <Forecast />
-      </TabPanel>
-      <TabPanel value={value} index={3}>
-        <Comparision />
-      </TabPanel>
     </>
   );
 };
 
-export default WeatherTabs;
-
-
-
-// 
+export default CurrentWeather;

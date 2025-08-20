@@ -1,27 +1,5 @@
-// import { Box, Typography } from '@mui/material';
-// import { useFavorites } from 'hooks';
 
-// export const ComparisonPage = () => {
-//   const { Favorites } = useFavorites();
-
-//   return (
-//     <Box sx={{ p: 4 }}>
-//       <Typography variant="h4" gutterBottom>
-//         Weather Comparison
-//       </Typography>
-//       {Favorites.getLength() > 0 ? (
-//         <Typography variant="body1">
-//           Compare weather data for your favorite locations.
-//         </Typography>
-//       ) : (
-//         <Typography variant="body1" color="error">
-//           No favorites selected. Please add some locations to your favorites first.
-//         </Typography>
-//       )}
-//     </Box>
-//   );
-// };
-import { useFetchCurrentWeather, useCreateComparisionData, useFetchComparision, useDelayedCondition } from "hooks";
+import { useFetchCurrentWeather, useCreateComparisonData, useFetchComparison, useDelayedCondition } from "hooks";
 import { WeatherDataStack } from "styles/Common.styles";
 import { showErrorMessage } from "js/Redux/actionCreators";
 import { Fade, Typography } from "@mui/material";
@@ -29,25 +7,24 @@ import Loader from "components/Loader";
 import TabHeader from "components/TabHeader";
 import { t } from "i18next";
 import { useEffect } from "react";
-import ComparisionData from "../WeatherPage/parts/WeatherTabs/Comparision/ComparisionData";
-import { WEATHER_DATA_STACK_SPACING } from "../WeatherPage/parts/WeatherTabs/Comparision/config";
-
+import ComparisionData from "./ComparisonData";
+import { WEATHER_DATA_STACK_SPACING } from "./config";
 
 export const ComparisonPage = () => {
-  const { favoritesWeatherDataForComparision, isComparisionLoading, isComparisionError, label } = useFetchComparision();
+  const { favoritesWeatherDataForComparison, isComparisonLoading, isComparisonError, label } = useFetchComparison();
   const { isCurrentWeatherLoading, currentWeatherDataForComparision } = useFetchCurrentWeather();
-  const isLoading = useDelayedCondition(isComparisionLoading || isCurrentWeatherLoading);
+  const isLoading = useDelayedCondition(isComparisonLoading || isCurrentWeatherLoading);
 
-const weatherComparisionData = useCreateComparisionData(
-    favoritesWeatherDataForComparision,
+const weatherComparisionData = useCreateComparisonData(
+    favoritesWeatherDataForComparison,
     currentWeatherDataForComparision
   );
 
 useEffect(() => {
-    if (!favoritesWeatherDataForComparision || !currentWeatherDataForComparision) {
+    if (!favoritesWeatherDataForComparison || !currentWeatherDataForComparision) {
       showErrorMessage(t("favs.fetch_error"));
     }
-  }, [favoritesWeatherDataForComparision, currentWeatherDataForComparision]);
+  }, [favoritesWeatherDataForComparison, currentWeatherDataForComparision]);
 
 
 
@@ -56,9 +33,9 @@ useEffect(() => {
 
 
   useEffect(() => {
-    isComparisionError && showErrorMessage(t("favs.fetch_error")); // todo w tym momencie nie rozróżnia sytuacji pojedynczego błędu gdzie powinno dać tylko komentarz ale i wyświetlić resztę od błędu całości. W sumie powinno wywalać ciąg złożony z poszczególnych błędów
+    isComparisonError && showErrorMessage(t("favs.fetch_error")); // todo w tym momencie nie rozróżnia sytuacji pojedynczego błędu gdzie powinno dać tylko komentarz ale i wyświetlić resztę od błędu całości. W sumie powinno wywalać ciąg złożony z poszczególnych błędów
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isComparisionError]);
+  }, [isComparisonError]);
 
   if (isLoading) return <Loader />;
 

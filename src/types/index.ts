@@ -20,14 +20,14 @@ import {
   Units,
   WeatherDataWithEndpoint,
   WeatherParameters,
-  ComparisionResult,
+  ComparisonResult,
 } from "./types";
 
 export type {
   AnyAction,
   AppDispatch,
   ComparableWeatherData,
-  ComparisionResult,
+  ComparisonResult,
   Description,
   ExtendedThunkDispatch,
   Favorite,

@@ -2,5 +2,7 @@ import LandingPage from "./LandingPage";
 import SearchPage from "./SearchPage";
 import WeatherPage from "./WeatherPage";
 import NoPage from "./NoPage";
+import ForecastPage from "./ForecastPage";
+import ComparisonPage from "./ComparisonPage";
 
-export { LandingPage, SearchPage, WeatherPage, NoPage};
+export { ComparisonPage, ForecastPage,LandingPage, SearchPage, WeatherPage, NoPage};

@@ -1,15 +1,15 @@
 import useAxiosArray from "./useAxiosArray";
 import useBoolean from "./useBoolean";
 import useCheckApiKey from "./useCheckApiKey";
-import useCreateComparisionData from "./useCreateComparisionData";
+import useCreateComparisonData from "./useCreateComparisonData";
 import useDelayedCondition from "./useDelayedCondition";
 import useDispatchAction from "./useDispatchAction";
 import useFavorites from "./useFavorites";
-import useFetchComparision from "./useFetchComparision";
+import useFetchComparison from "./useFetchComparison";
 import useFetchCurrentWeather from "./useFetchCurrentWeather";
 import useFetchForecast from "./useFetchForecast";
 import useForceUpdate from "./useForceUpdate";
-import useGetParamsForComparision from "./useGetParamsForComparision";
+import useGetParamsForComparison from "./useGetParamsForComparison";
 import useHandleConnectionStatus from "./useHandleConnectionStatus";
 import useMessage from "./useMessage";
 import usePrepareBackground from "./usePrepareBackground";
@@ -23,15 +23,15 @@ export {
   useAxiosArray,
   useBoolean,
   useCheckApiKey,
-  useCreateComparisionData,
+  useCreateComparisonData,
   useDelayedCondition,
   useDispatchAction,
   useFavorites,
-  useFetchComparision,
+  useFetchComparison,
   useFetchCurrentWeather,
   useFetchForecast,
   useForceUpdate,
-  useGetParamsForComparision,
+  useGetParamsForComparison,
   useHandleConnectionStatus,
   useMessage,
   usePrepareBackground,

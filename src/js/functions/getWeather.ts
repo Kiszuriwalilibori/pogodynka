@@ -1,8 +1,7 @@
-import axios, { AxiosError } from "axios";
-import { showErrorMessage } from "../Redux/actionCreators";
+import axios from "axios";
 
 interface WeatherData {
-         
+  // Add your weather data interface here
 }
 
 interface WeatherError {
@@ -11,38 +10,30 @@ interface WeatherError {
   code?: number;
 }
 
-export default async function getWeather(url: string): Promise<WeatherData | undefined> {
+export default async function getWeather(url: string): Promise<WeatherData | null> {
   try {
     const response = await axios.get<WeatherData>(url);
     
     if (!response.data) {
       throw new Error('No data received from weather API');
     }
-
+    
     return response.data;
   } catch (error) {
-    if (axios.isAxiosError(error)) {
-      const axiosError = error as AxiosError<WeatherError>;
-      
-      if (axiosError.response) {
+    if (axios.isAxiosError<WeatherError>(error)) {
+      if (error.response) {
         // Server responded with error status
-        const errorMessage = axiosError.response.data?.message || 
-                           axiosError.response.data?.error || 
-                           axiosError.response.statusText;
-        showErrorMessage(`Server error: ${errorMessage}`);
-      } else if (axiosError.request) {
+        const errorMessage = error.response.data?.message || 
+                           error.response.data?.error || 
+                           error.response.statusText;
+        throw new Error(errorMessage || 'Failed to fetch weather data');
+      } else if (error.request) {
         // Request made but no response
-        showErrorMessage('No response from weather API');
-      } else {
-        // Error in setting up the request
-        showErrorMessage('Error creating request to weather API');
+        throw new Error('No response from weather API');
       }
-    } else {
-      // Non-axios error
-      showErrorMessage('Error fetching weather data');
     }
-
-    console.error('Weather API error:', error);
-    return undefined;
+    
+    // For any other errors, rethrow them
+    throw error instanceof Error ? error : new Error('Error fetching weather data');
   }
 }

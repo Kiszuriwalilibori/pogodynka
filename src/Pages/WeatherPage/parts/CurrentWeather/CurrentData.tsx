@@ -13,7 +13,7 @@ interface Props {
 const CurrentData = (props: Props) => {
   const { weatherData } = props;
   const { t } = useTranslation();
-
+  if(!weatherData) return null;
   return (
     <WeatherPaper variant="dark">
       <section className="CurrentWeather__table">

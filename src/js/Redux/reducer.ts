@@ -1,5 +1,5 @@
 import { createReducer } from "@reduxjs/toolkit";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector} from "react-redux";
 import { actionCreators } from ".";
 import { Geolocation, Source, RootStateType } from "types";
 
@@ -12,7 +12,6 @@ const {
   showErrorMessage,
   setBackgroundReady,
   setGeoLocationPosition,
-  setSelectedTab,
   setHasFavorites
 } = actionCreators;
 
@@ -27,7 +26,6 @@ const initialState = {
   isSearchFactoryVisible: false,
   isError: false,
   isBackgroundReady: false,
-  selectedTab: 1,
   hasFavorites: false,
 };
 
@@ -50,9 +48,7 @@ const reducer = createReducer(initialState, builder => {
         state.isSearchFactoryVisible = true;
       }
     })
-    .addCase(setSelectedTab, (state, action) => {
-      state.selectedTab = action.payload;
-    })
+    
     .addCase(cacheSupported, (state, action) => {
       if (action.payload) {
         state.isCacheSupported = action.payload;
@@ -93,11 +89,3 @@ export function useIsBackgroundReady() {
   return useSelector((state: RootStateType) => state.isBackgroundReady);
 }
 
-export const useSelectedTab = () => {
-  return useSelector((state: RootStateType) => state.selectedTab);
-};
-
-export const useSetSelectedTab = () => {
-  const dispatch = useDispatch();
-  return (tabNumber: number) => dispatch(setSelectedTab(tabNumber));
-};

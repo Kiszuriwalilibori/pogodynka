@@ -5,7 +5,7 @@ import processFetchedData from "js/functions/processFetchedData";
 import { ReportVariants, ForecastDetails } from "types";
 import useDispatchAction from "./useDispatchAction";
 
-export const useProcessForecastData = (data: Object | undefined) => {
+export const useProcessForecastData = (data: Object | undefined |null) => {
   const [preparedData, setPreparedData] = useState(undefined as undefined | (string | number)[][]);
   const { showErrorMessage } = useDispatchAction();
   useEffect(() => {

@@ -1,9 +1,9 @@
-import getComparision, {
-  ComparisionParameter,
-  ComparisionResults,
-  comparisionArray,
-  getComparisionPrefix,
-} from "./comparision";
+import getComparison, {
+  ComparisonParameter,
+  ComparisonResults,
+  comparisonArray,
+  getComparisonPrefix,
+} from "./comparison";
 
 import { forecastArray, getForecastPrefix } from "./forecast";
 import { addHeaders, copySelectedWeatherProperties, weatherConfig, Parameter, currentArray } from "./weather";
@@ -11,13 +11,13 @@ import { addHeaders, copySelectedWeatherProperties, weatherConfig, Parameter, cu
 export {
   addHeaders,
   copySelectedWeatherProperties,
-  comparisionArray,
+  comparisonArray,
   currentArray,
   forecastArray,
-  getComparision,
-  getComparisionPrefix,
+  getComparison,
+  getComparisonPrefix,
   getForecastPrefix,
   weatherConfig,
 };
 
-export type { ComparisionParameter, ComparisionResults, Parameter };
+export type { ComparisonParameter, ComparisonResults, Parameter };

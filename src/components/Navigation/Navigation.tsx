@@ -1,6 +1,6 @@
 import { IconButton, Theme, useMediaQuery } from "@mui/material";
 import { useNavigate, useLocation } from "react-router-dom";
-import { useContext, useState } from "react";
+import { useCallback, useContext, useState } from "react";
 import { useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 
@@ -25,7 +25,7 @@ import {
 } from "./Navigation.styles";
 
 import Time from "./Time";
-import { useSetSelectedTab } from "js/Redux/reducer";
+
 import ResetButton from "./ResetButton";
 import { RootStateType } from "types";
 
@@ -36,17 +36,25 @@ const Navigation = () => {
   const navigate = useNavigate();
   const { t, i18n } = useTranslation();
   const hasFavorites = useSelector((state: RootStateType) => state.hasFavorites);
-  const setSelectedTab = useSetSelectedTab();
   const location = useLocation();
   const { cancelSpeech } = useContext(SpeechContext);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const isDisabled = !location.state?.results;
   const { redirectURL } = { ...usePlaceContext().place };
+  const isDisabled =!redirectURL
   const isTablet = useMediaQuery((theme: Theme) => theme.breakpoints.down("md"));
 
-  const isActive = (path: string) => {
-    return location.pathname === path;
-  };
+  const isActive = useCallback((path: string) => {  
+    const currentPath = '/' + location.pathname.split('/').filter(Boolean)[0];
+    return currentPath === path;
+  }, [location.pathname]);
+
+const handleClick =useCallback((path:string,isMobile:boolean)=>{
+  cancelSpeech?.();
+  navigate(path,{state: location.state});
+ if(isMobile){
+ setMobileMenuOpen(false);}
+},[cancelSpeech,navigate,location.state]);
+
 
   return (
     <NavigationPaper>
@@ -71,23 +79,18 @@ const Navigation = () => {
         {isTablet ? null : (
           <NavigationRightBox>
             <NavigationToolbar>
-              <ResetButton disabled={!location.state?.results} />
+              <ResetButton disabled={isDisabled} />
               <NavigationButton
+
                 isActive={isActive(ROUTES.LANDING)}
-                onClick={() => {
-                  cancelSpeech?.();
-                  navigate(ROUTES.LANDING,{state: location.state});
-                }}
+                onClick={()=>handleClick(ROUTES.LANDING,false)}
                 language={i18n.language}
               >
                 {t("navigation.home")}
               </NavigationButton>
               <NavigationButton
                 isActive={isActive(ROUTES.SEARCH)}
-                onClick={() => {
-                  cancelSpeech?.();
-                  navigate(ROUTES.SEARCH,{state: location.state});
-                }}
+                onClick={()=>handleClick(ROUTES.SEARCH,false)}
                 language={i18n.language}
               >
                 {t("navigation.search")}
@@ -95,34 +98,26 @@ const Navigation = () => {
               <NavigationButton
                 isActive={isActive(ROUTES.WEATHER)}
                 disabled={isDisabled}
-                onClick={() => {
-                  cancelSpeech?.();
-                  navigate(ROUTES.WEATHER+redirectURL,{state: location.state});
-                  setSelectedTab(1);
-                }}
+                onClick={()=>handleClick(ROUTES.WEATHER+redirectURL,false)}
+                
                 language={i18n.language}
               >
                 {t("navigation.weather_page")}
               </NavigationButton>
               <NavigationButton
-                isActive={isActive(ROUTES.WEATHER)}
+                isActive={isActive(ROUTES.FORECAST)}
                 disabled={isDisabled}
-                onClick={() => {
-                  cancelSpeech?.();
-                  navigate(ROUTES.FORECAST+redirectURL, {state: location.state});
-                }}
+                onClick={()=>handleClick(ROUTES.FORECAST+redirectURL,false)}
+                
                 language={i18n.language}
               >
                 {t("navigation.forecast")}
               </NavigationButton>
               <NavigationButton
-                isActive={isActive(ROUTES.WEATHER)}
+                isActive={isActive(ROUTES.COMPARISON)}
                 disabled={isDisabled || !hasFavorites}
-                onClick={() => {
-                  cancelSpeech?.();
-                  navigate(ROUTES.WEATHER+redirectURL,{state: location.state});
-                  setSelectedTab(3);
-                }}
+                onClick={()=>handleClick(ROUTES.COMPARISON+redirectURL,false)}
+                
                 language={i18n.language}
               >
                 {t("navigation.comparison")}
@@ -138,22 +133,16 @@ const Navigation = () => {
 
             <NavigationButton
               isActive={isActive(ROUTES.LANDING)}
-              onClick={() => {
-                cancelSpeech?.();
-                navigate(ROUTES.LANDING,{state: location.state});
-                setMobileMenuOpen(false);
-              }}
+              onClick={()=>handleClick(ROUTES.LANDING,true)}
+              
               language={i18n.language}
             >
               {t("navigation.home")}
             </NavigationButton>
             <NavigationButton
               isActive={isActive(ROUTES.SEARCH)}
-              onClick={() => {
-                cancelSpeech?.();
-                navigate(ROUTES.SEARCH,{state: location.state});
-                setMobileMenuOpen(false);
-              }}
+              onClick={()=>handleClick(ROUTES.SEARCH,true)}
+              
               language={i18n.language}
             >
               {t("navigation.search")}
@@ -161,37 +150,26 @@ const Navigation = () => {
             <NavigationButton
               isActive={isActive(ROUTES.WEATHER)}
               disabled={isDisabled}
-              onClick={() => {
-                cancelSpeech?.();
-                navigate(ROUTES.WEATHER+redirectURL,{state: location.state});
-                setSelectedTab(1);
-                setMobileMenuOpen(false);
-              }}
+              onClick={()=>handleClick(ROUTES.WEATHER+redirectURL,true)}
+              
               language={i18n.language}
             >
               {t("navigation.weather_page")}
             </NavigationButton>
             <NavigationButton
-              isActive={isActive(ROUTES.WEATHER)}
+              isActive={isActive(ROUTES.FORECAST)}
               disabled={isDisabled}
-              onClick={() => {
-                cancelSpeech?.();
-                navigate(ROUTES.FORECAST+redirectURL,{state: location.state});
-                setMobileMenuOpen(false);
-              }}
+              onClick={()=>handleClick(ROUTES.FORECAST+redirectURL,true)}
+              
               language={i18n.language}
             >
               {t("navigation.forecast")}
             </NavigationButton>
             <NavigationButton
-              isActive={isActive(ROUTES.WEATHER)}
+              isActive={isActive(ROUTES.COMPARISON)}
               disabled={isDisabled || !hasFavorites}
-              onClick={() => {
-                cancelSpeech?.();
-                navigate(ROUTES.WEATHER+redirectURL,{state: location.state});
-                setSelectedTab(3);
-                setMobileMenuOpen(false);
-              }}
+              onClick={()=>handleClick(ROUTES.COMPARISON+redirectURL,true)}
+              
               language={i18n.language}
             >
               {t("navigation.comparison")}

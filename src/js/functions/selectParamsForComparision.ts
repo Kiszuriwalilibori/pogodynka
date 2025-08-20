@@ -1,16 +1,16 @@
 // import { comparisionArray } from "models/Weather";
-import { comparisionArray } from "models";
+import { comparisonArray } from "models";
 import { ComparableWeatherData } from "types";
 import getValue from "./getValue";
 
 export function selectParamsForComparision(weather: Object) {
-  const comparisionObject = {} as ComparableWeatherData;
+  const comparisonObject = {} as ComparableWeatherData;
 
-  comparisionArray.forEach(element => {
-    comparisionObject[element] = getValue(weather, element);
+  comparisonArray.forEach(element => {
+    comparisonObject[element] = getValue(weather, element);
   });
 
-  return comparisionObject;
+  return comparisonObject;
 }
 
 export default selectParamsForComparision;

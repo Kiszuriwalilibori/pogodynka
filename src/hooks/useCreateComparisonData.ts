@@ -1,12 +1,12 @@
 import { t } from "i18next";
 import processFetchedData from "../js/functions/processFetchedData";
 import useDispatchAction from "./useDispatchAction";
-import { ReportVariants, WeatherDataWithEndpoint, ComparableWeatherData, ComparisionResult } from "types";
+import { ReportVariants, WeatherDataWithEndpoint, ComparableWeatherData, ComparisonResult } from "types";
 
-function useCreateComparisionData(
+function useCreateComparisonData(
   favoritesWeather: WeatherDataWithEndpoint[],
   currentWeather: ComparableWeatherData | undefined
-): (string | ComparisionResult)[][] | undefined {
+): (string | ComparisonResult)[][] | undefined {
   const { showErrorMessage } = useDispatchAction();
 
   try {
@@ -19,16 +19,16 @@ function useCreateComparisionData(
     if (err instanceof Error) {
       showErrorMessage(
         `${t("msgs.invalid_data", {
-          type: "funkcji useCreateComparisionData",
+          type: "funkcji useCreateComparisonData",
           name: (err as Error).name,
           description: (err as Error).message,
         })} `
       );
     } else {
-      showErrorMessage(`W useCreateComparisionData wystąpił błąd nieznanego typu.`);
+      showErrorMessage(`W useCreateComparisonData wystąpił błąd nieznanego typu.`);
     }
     return undefined;
   }
 }
 
-export default useCreateComparisionData;
+export default useCreateComparisonData;

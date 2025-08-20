@@ -95,7 +95,7 @@ export class FilteredStorage extends LocalStorage {
   hasCertainItem(fn: FilteringFunction) {
     return this.data.some(fn);
   }
-  getForComparision() {
+  getForComparison() {
     const result = this.data.map(item => {
       return { label: item.label, url: createURL.weather(item.place, item.source, i18next.language) };
     });

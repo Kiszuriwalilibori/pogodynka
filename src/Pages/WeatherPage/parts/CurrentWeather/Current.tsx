@@ -12,7 +12,6 @@ import { usePlaceContext } from "contexts";
 
 interface Props {
   currentWeatherData: string[] | undefined;
-  
 }
 
 const Current = (props: Props) => {

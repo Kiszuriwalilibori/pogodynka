@@ -34,6 +34,7 @@ const useFavorites = () => {
       const length = Favorites.getLength();
       const size = length ? t("favs.place_number", { length: length }) : t("favs.empty");
       showMessage.info(`${t("favs.serviced")} ${size}`);
+      length && setHasFavorites(true);
     } else {
       cacheSupported(false);
       showMessage.warning(t("favs.not_serviced"));

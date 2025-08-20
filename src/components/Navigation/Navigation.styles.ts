@@ -54,22 +54,25 @@ export const NavigationButton = styled(Button, {
   padding: `0 ${theme.spacing(1)}px`,
   textTransform: "capitalize",
   flex: 1,
-  backgroundColor: isActive ? theme.palette.greenish.light : theme.palette.greenish.main,
-  color: isActive ? theme.palette.common.black : theme.palette.common.white,
+  backgroundColor: isActive ? 'transparent' : theme.palette.greenish.main,
+  color: isActive ? theme.palette.common.white : theme.palette.common.white,
   minWidth: 0,
   whiteSpace: "normal",
   width: language === "pl" ? "140px" : "100px",
+  fontWeight: isActive ? 600 : 400,
+  position: 'relative',
+  overflow: 'hidden',
   "&:hover": {
-    backgroundColor: theme.palette.greenish.light,
+    backgroundColor: isActive ? 'rgba(255, 255, 255, 0.1)' : theme.palette.greenish.light,
   },
   "&:focus-visible": {
-    outline: "2px solid ${theme.palette.primary.main}",
+    outline: `2px solid ${theme.palette.primary.main}`,
     outlineOffset: "2px",
   },
   "&:active": {
-    backgroundColor: theme.palette.greenish.dark,
+    backgroundColor: isActive ? 'rgba(255, 255, 255, 0.2)' : theme.palette.greenish.dark,
   },
-  transition: "background-color 0.2s ease",
+  transition: "all 0.2s ease",
 }));
 export const NavigationLeftBox = styled(Stack)({
   display: "flex",

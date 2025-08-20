@@ -6,9 +6,10 @@ import useDispatchAction from "./useDispatchAction";
 
 import { ReportVariants } from "types";
 
-export const useProcessCurrentData = (data: object | undefined) => {
+export const useProcessCurrentData = (data: object | undefined | null) => {
   const [processedData, setProcessedData] = useState(undefined as undefined | string[]); // todo czy to na pewno musi być stan?
   const { showErrorMessage } = useDispatchAction();
+ 
   useEffect(() => {
     if (data) {
       try {
@@ -26,7 +27,7 @@ export const useProcessCurrentData = (data: object | undefined) => {
           );
         }
       }
-    }
+    }else{return undefined;}
   }, [data]);
   return processedData;
 };

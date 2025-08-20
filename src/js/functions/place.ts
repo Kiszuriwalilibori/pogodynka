@@ -11,7 +11,7 @@ export class Place {
   weatherURL: string;
   label: string;
   redirectURL: string;
-  labelComparision: string;
+  labelComparison: string;
   labelForecast: string;
   labelCurrent: string;
 
@@ -48,7 +48,7 @@ export class Place {
         this.redirectURL = i18next.t("place.invalid_URL");
     }
 
-    this.labelComparision = ` ${i18next.t("place.comparision_pre")}  ${this.label} ${i18next.t(
+    this.labelComparison = ` ${i18next.t("place.comparision_pre")}  ${this.label} ${i18next.t(
       "place.comparision_post"
     )}`;
     this.labelForecast = `${i18next.t("place.forecast")} ${this.label}`;

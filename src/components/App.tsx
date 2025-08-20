@@ -2,13 +2,13 @@ import { Routes, Route} from "react-router-dom";
 import { Box } from "@mui/material";
 
 import * as ROUTES from "routes";
-import { LandingPage, SearchPage, NoPage, WeatherPage } from "../Pages";
+import { ComparisonPage,ForecastPage, LandingPage, SearchPage, NoPage, WeatherPage } from "../Pages";
 import Layout from "./Layout/Layout";
 
 import { useCheckApiKey, useHandleConnectionStatus, usePrepareBackground } from "hooks";
 import { breakWhenInternetExplorer } from "js/functions";
 import { withProblemMessage } from "HOCs";
-import { ForecastPage } from "Pages/ForecastPage";
+
 
 const App = () => {
   useHandleConnectionStatus();
@@ -25,7 +25,8 @@ const App = () => {
         <Route element={<Layout />}>
           <Route path={ROUTES.SEARCH} element={<SearchPage />} />
           <Route path={ROUTES.WEATHER +"/:place"} element={<WeatherPage />}/>
-          <Route path={ROUTES.FORECAST +"/:place"} element={<ForecastPage />}/>            
+          <Route path={ROUTES.FORECAST +"/:place"} element={<ForecastPage />}/>  
+          <Route path={ROUTES.COMPARISON+"/:place"} element={<ComparisonPage />}/>          
           <Route path={ROUTES.NOPAGE} element={<NoPage />} />
         </Route>
       </Routes>

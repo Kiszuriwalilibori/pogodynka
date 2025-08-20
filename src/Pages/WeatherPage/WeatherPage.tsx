@@ -1,6 +1,6 @@
 import { Container } from "./WeatherPage.styles";
 
-import { AddToFavorites, TextAndVoiceWeatherDescription, WeatherTabs } from "./parts";
+import { AddToFavorites, CurrentWeather,TextAndVoiceWeatherDescription} from "./parts";
 
 const WeatherPage = () => (
   <>
@@ -8,7 +8,7 @@ const WeatherPage = () => (
     <Container>
       <AddToFavorites />
       <TextAndVoiceWeatherDescription />
-      <WeatherTabs />
+      <CurrentWeather />
     </Container>
   </>
 );

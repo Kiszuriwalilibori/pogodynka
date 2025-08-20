@@ -41,7 +41,7 @@ export interface Geolocation {
 
 export type Position = Geolocation | string;
 
-export type ComparisionResult =
+export type ComparisonResult =
   | {
       value: number;
       comment: string;

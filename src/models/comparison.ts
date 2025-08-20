@@ -1,8 +1,8 @@
 import i18next from "i18next";
 
-import { ComparisionResult } from "types";
+import { ComparisonResult } from "types";
 
-enum ComparisionItems {
+enum ComparisonItems {
   temp,
   feels_like,
   temp_min,
@@ -11,8 +11,8 @@ enum ComparisionItems {
   humidity,
 }
 
-export type ComparisionParameter = keyof typeof ComparisionItems;
-export const comparisionArray: ComparisionParameter[] = [
+export type ComparisonParameter = keyof typeof ComparisonItems;
+export const comparisonArray: ComparisonParameter[] = [
   "temp",
   "feels_like",
   "temp_min",
@@ -22,14 +22,14 @@ export const comparisionArray: ComparisionParameter[] = [
 ];
 // type RelationDescriptions = { [key in ComparisionParameter]: [string, string, string] };
 
-export function getComparisionPrefix() {
+export function getComparisonPrefix() {
   return [
     { field: "place", headerName: i18next.t("model-weather.place") },
     { field: "description", headerName: i18next.t("model-weather.description") },
   ];
 }
 
-export const getComparision = () => {
+export const getComparison = () => {
   const temperatureRelation = [
     i18next.t("model-weather.colder_adv"),
     i18next.t("model-weather.same_adv"),
@@ -47,8 +47,8 @@ export const getComparision = () => {
   ];
 
   return {
-    fields: ["place", "description", ...comparisionArray],
-    parameters: comparisionArray,
+    fields: ["place", "description", ...comparisonArray],
+    parameters: comparisonArray,
     relation: {
       temp: temperatureRelation,
       feels_like: temperatureRelation,
@@ -60,6 +60,6 @@ export const getComparision = () => {
   };
 };
 
-export type ComparisionResults = ComparisionResult[];
+export type ComparisonResults = ComparisonResult[];
 
-export default getComparision;
+export default getComparison;

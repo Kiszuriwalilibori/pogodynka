@@ -1,1 +1,1 @@
-export {default} from "./ComparisonPage";
+export { default } from "./Comparison";

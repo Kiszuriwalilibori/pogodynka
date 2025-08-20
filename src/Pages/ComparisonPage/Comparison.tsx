@@ -2,28 +2,28 @@ import { useEffect } from "react";
 import { t } from "i18next";
 import { Fade } from "@mui/material";
 
-import ComparisionData from "./ComparisionData";
+import ComparisionData from "./ComparisonData";
 
 import { Loader, TabHeader } from "components";
-import { useFetchCurrentWeather, useCreateComparisionData, useFetchComparision, useDelayedCondition } from "hooks";
+import { useFetchCurrentWeather, useCreateComparisonData, useFetchComparison, useDelayedCondition } from "hooks";
 import { WeatherDataStack } from "styles/Common.styles";
 import { showErrorMessage } from "js/Redux/actionCreators";
 import { WEATHER_DATA_STACK_SPACING } from "./config";
 
 const Comparision = () => {
-  const { favoritesWeatherDataForComparision, isComparisionLoading, isComparisionError, label } = useFetchComparision();
+  const { favoritesWeatherDataForComparison, isComparisonLoading, isComparisonError, label } = useFetchComparison();
   const { isCurrentWeatherLoading, currentWeatherDataForComparision } = useFetchCurrentWeather();
-  const isLoading = useDelayedCondition(isComparisionLoading || isCurrentWeatherLoading);
+  const isLoading = useDelayedCondition(isComparisonLoading || isCurrentWeatherLoading);
 
-  const weatherComparisionData = useCreateComparisionData(
-    favoritesWeatherDataForComparision,
+  const weatherComparisionData = useCreateComparisonData(
+    favoritesWeatherDataForComparison,
     currentWeatherDataForComparision
   );
 
   useEffect(() => {
-    isComparisionError && showErrorMessage(t("favs.fetch_error")); // todo w tym momencie nie rozróżnia sytuacji pojedynczego błędu gdzie powinno dać tylko komentarz ale i wyświetlić resztę od błędu całości. W sumie powinno wywalać ciąg złożony z poszczególnych błędów
+    isComparisonError && showErrorMessage(t("favs.fetch_error")); // todo w tym momencie nie rozróżnia sytuacji pojedynczego błędu gdzie powinno dać tylko komentarz ale i wyświetlić resztę od błędu całości. W sumie powinno wywalać ciąg złożony z poszczególnych błędów
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isComparisionError]);
+  }, [isComparisonError]);
 
   if (isLoading) return <Loader />;
 

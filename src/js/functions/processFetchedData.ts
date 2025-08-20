@@ -6,13 +6,13 @@ import compareCurrentWithFavoriteWeather from "./compareCurrentWithFavoriteWeath
 
 import {
   ComparableWeatherData,
-  ComparisionResult,
+  ComparisonResult,
   WeatherDataWithEndpoint,
   ForecastDetails,
   WeatherParameters,
 } from "types";
 import { getValue, selectParamsForComparision } from "js/functions";
-import { copySelectedWeatherProperties, currentArray, forecastArray, getComparision, weatherConfig } from "models";
+import { copySelectedWeatherProperties, currentArray, forecastArray, getComparison, weatherConfig } from "models";
 
 const processFetchedData = {
   /**
@@ -81,8 +81,8 @@ const processFetchedData = {
         const description = getValue(favorite, "description");
         generalDescriptionsFromFavorites.push(description);
       });
-      const comparision = getComparision();
-      const comparativeArray: ComparisionResult[][] = selectedParamsFavorites.map(item => {
+      const comparision = getComparison();
+      const comparativeArray: ComparisonResult[][] = selectedParamsFavorites.map(item => {
         return compareCurrentWithFavoriteWeather(
           selectedParamsCurrent as ComparableWeatherData,
           item,
@@ -98,7 +98,7 @@ const processFetchedData = {
       });
       const objectParameters = comparativeArray.map(item => {
         const result = {} as any;
-        item.forEach((x: ComparisionResult, index) => {
+        item.forEach((x: ComparisonResult, index) => {
           result[comparision.fields[index]] = x;
         });
 
