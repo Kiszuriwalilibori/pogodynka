@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/pogodynka/static/css/main.eaa7dc6d.css",
-    "main.js": "/pogodynka/static/js/main.84a990fa.js",
+    "main.js": "/pogodynka/static/js/main.281d1200.js",
     "static/js/91.bd024e6d.chunk.js": "/pogodynka/static/js/91.bd024e6d.chunk.js",
     "static/js/46.72b9eef8.chunk.js": "/pogodynka/static/js/46.72b9eef8.chunk.js",
     "static/media/background.webp": "/pogodynka/static/media/background.3e3f69d4f1ab2fcddfcb.webp",
@@ -33,12 +33,12 @@
     "service-worker.js": "/pogodynka/service-worker.js",
     "index.html": "/pogodynka/index.html",
     "main.eaa7dc6d.css.map": "/pogodynka/static/css/main.eaa7dc6d.css.map",
-    "main.84a990fa.js.map": "/pogodynka/static/js/main.84a990fa.js.map",
+    "main.281d1200.js.map": "/pogodynka/static/js/main.281d1200.js.map",
     "91.bd024e6d.chunk.js.map": "/pogodynka/static/js/91.bd024e6d.chunk.js.map",
     "46.72b9eef8.chunk.js.map": "/pogodynka/static/js/46.72b9eef8.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.eaa7dc6d.css",
-    "static/js/main.84a990fa.js"
+    "static/js/main.281d1200.js"
   ]
 }
