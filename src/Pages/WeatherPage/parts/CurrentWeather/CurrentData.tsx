@@ -7,7 +7,7 @@ import { currentArray, weatherConfig } from "models";
 import { WeatherPaper } from "styles/Common.styles";
 
 interface Props {
-  weatherData: string[];
+  weatherData: string[] | undefined;
 }
 
 const CurrentData = (props: Props) => {

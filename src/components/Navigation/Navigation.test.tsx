@@ -61,22 +61,23 @@ const MockSpeechProvider: React.FC<{children: React.ReactNode}> = ({ children })
   );
 };
 
-// Mock the contexts module with CommonJS syntax
-const originalContexts = jest.requireActual('../../contexts');
-
-jest.mock('../../contexts', () => ({
-  __esModule: true,
-  ...originalContexts,
-  usePlaceContext: () => mockUsePlaceContext(),
-  SpeechContext: {
-    ...originalContexts.SpeechContext,
-    _currentValue: mockSpeechContext,
-    _currentValue2: mockSpeechContext,
-    Consumer: ({ children }: { children: (value: typeof mockSpeechContext) => React.ReactNode }) => 
-      children(mockSpeechContext),
-    Provider: MockSpeechProvider,
-  }
-}));
+// Mock the contexts module with proper initialization
+jest.mock('../../contexts', () => {
+  const originalContexts = jest.requireActual('../../contexts');
+  return {
+    __esModule: true,
+    ...originalContexts,
+    usePlaceContext: () => mockUsePlaceContext(),
+    SpeechContext: {
+      ...originalContexts.SpeechContext,
+      _currentValue: mockSpeechContext,
+      _currentValue2: mockSpeechContext,
+      Consumer: ({ children }: { children: (value: typeof mockSpeechContext) => React.ReactNode }) => 
+        children(mockSpeechContext),
+      Provider: MockSpeechProvider,
+    }
+  };
+});
 
 // Mock components
 jest.mock('./Navigation.styles', () => ({
