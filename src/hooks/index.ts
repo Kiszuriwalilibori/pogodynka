@@ -8,7 +8,6 @@ import useFavorites from "./useFavorites";
 import useFetchComparison from "./useFetchComparison";
 import useFetchCurrentWeather from "./useFetchCurrentWeather";
 import useFetchForecast from "./useFetchForecast";
-import useForceUpdate from "./useForceUpdate";
 import useGetParamsForComparison from "./useGetParamsForComparison";
 import useHandleConnectionStatus from "./useHandleConnectionStatus";
 import useMessage from "./useMessage";
@@ -30,7 +29,6 @@ export {
   useFetchComparison,
   useFetchCurrentWeather,
   useFetchForecast,
-  useForceUpdate,
   useGetParamsForComparison,
   useHandleConnectionStatus,
   useMessage,
