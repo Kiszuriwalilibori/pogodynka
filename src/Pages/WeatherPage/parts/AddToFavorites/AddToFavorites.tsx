@@ -23,7 +23,7 @@ const AddToFavorites = (): JSX.Element | null => {
 
   React.useEffect(() => {
     if (isChecked && type === PlaceVariants.CITY) {
-      if (Favorites.placeAlreadyStored(label)) {
+      if (Favorites.placeInFavoritesAlready(label)) {
         setIsCheckedFalse();
       } else {
         Favorites.add(place, {
@@ -41,7 +41,7 @@ const AddToFavorites = (): JSX.Element | null => {
 
   if (!shouldRender) return null;
   if (isFromFavorites) return null;
-  if (Favorites.placeAlreadyStored(label)) return null;
+  if (Favorites.placeInFavoritesAlready(label)) return null;
   if (!place) return null;
   return !isStored ? (
     <>

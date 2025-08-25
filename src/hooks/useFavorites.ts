@@ -6,11 +6,13 @@ import useDispatchAction from "./useDispatchAction";
 import { LocalStorage, FilteredStorage } from "js/functions";
 import { PlaceType } from "types";
 
-type FavoritesType = FilteredStorage & {
-  placeAlreadyStored: Function;
-} & { placeNotYetStored: Function } & { showSize: Function } & { manageSupport: Function } & {
+interface FavoritesType extends FilteredStorage {
+  placeInFavoritesAlready: Function;
+  placeNotInFavoritesYet: Function;
+  showSize: ()=>void;
+  manageSupport: ()=>boolean;
   add: Function;
-};
+}
 
 const useFavorites = () => {
   const { cacheSupported } = useDispatchAction();
@@ -42,12 +44,12 @@ const useFavorites = () => {
 
     return isSupported;
   };
-  const placeAlreadyStored = (str: string) => {
+  const placeInFavoritesAlready = (str: string) => {
     const result = Favorites.hasCertainItem((item: { label: string }) => item.label === str);
     //todo w tym miejscu powyżej wyrzuci błąd jeżeli w localStorage zamienimy any na T w FilteringFunction
     return result;
   };
-  const placeNotYetStored = (str: string) => {
+  const placeNotInFavoritesYet = (str: string) => {
     const result = !Favorites.hasCertainItem((item: { label: string }) => item.label === str);
 
     return result;
@@ -66,12 +68,12 @@ return false;
     }
   };
 
-  Favorites.placeNotYetStored = placeNotYetStored;
-  Favorites.placeAlreadyStored = placeAlreadyStored;
+  Favorites.placeNotInFavoritesYet = placeNotInFavoritesYet;
+  Favorites.placeInFavoritesAlready = placeInFavoritesAlready;
   Favorites.showSize = showFavoritesSize;
   Favorites.manageSupport = manageSupport;
   Favorites.add = addToFavorites;
 
-  return { Favorites, placeAlreadyStored, addToFavorites };
+  return { Favorites, placeInFavoritesAlready, addToFavorites };
 };
 export default useFavorites;

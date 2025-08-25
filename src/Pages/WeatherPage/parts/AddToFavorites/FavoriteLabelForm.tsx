@@ -42,7 +42,7 @@ const FavoriteLabelForm = (props: Props) => {
           "alreadyTaken",
           "Ta etykieta jest już użyta",
 
-          label => !Favorites.placeAlreadyStored(label)
+          label => !Favorites.placeInFavoritesAlready(label)
         ),
     }),
     onSubmit() {
